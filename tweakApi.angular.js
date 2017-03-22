@@ -1,6 +1,6 @@
 /*jshint -W069 */
 /*global angular:false */
-angular.module('', [])
+angular.module('Tweak', [])
     .factory('TweakApi', ['$q', '$http', '$rootScope', function($q, $http, $rootScope) {
         'use strict';
 
