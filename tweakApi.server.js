@@ -15,7 +15,7 @@ var TweakApi = (function() {
 
     function TweakApi(options) {
         var domain = (typeof options === 'object') ? options.domain : options;
-        this.domain = domain ? domain : 'http://apidevcdn.tweak.com/api';
+        this.domain = domain ? domain : '';
         if (this.domain.length === 0) {
             throw new Error('Domain parameter must be specified as a string.');
         }
@@ -109,7 +109,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -167,7 +167,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -227,7 +227,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -290,7 +290,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -346,7 +346,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -400,7 +400,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -451,7 +451,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -505,7 +505,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -552,7 +552,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -599,7 +599,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -646,7 +646,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -693,7 +693,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -741,7 +741,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -792,7 +792,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -842,7 +842,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -893,7 +893,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -947,7 +947,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -998,7 +998,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1053,7 +1053,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1108,7 +1108,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1162,7 +1162,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -1210,7 +1210,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -1261,7 +1261,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -1309,7 +1309,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             form['options'] = parameters['options'];
@@ -1357,7 +1357,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];
@@ -1406,7 +1406,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['credentials'] !== undefined) {
             body = parameters['credentials'];
@@ -1461,7 +1461,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters)
@@ -1509,7 +1509,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['uid'] !== undefined) {
             queryParameters['uid'] = parameters['uid'];
@@ -1575,7 +1575,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             body = parameters['options'];
@@ -1628,7 +1628,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['msg'] !== undefined) {
             queryParameters['msg'] = parameters['msg'];
@@ -1676,7 +1676,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1734,7 +1734,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1794,7 +1794,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1856,7 +1856,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1914,7 +1914,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -1974,7 +1974,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2037,7 +2037,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2093,7 +2093,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2147,7 +2147,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2198,7 +2198,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2254,7 +2254,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2310,7 +2310,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2364,7 +2364,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2415,7 +2415,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2469,7 +2469,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -2516,7 +2516,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -2563,7 +2563,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -2610,7 +2610,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -2657,7 +2657,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -2705,7 +2705,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -2756,7 +2756,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2806,7 +2806,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2857,7 +2857,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2911,7 +2911,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -2962,7 +2962,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3017,7 +3017,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3072,7 +3072,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3126,7 +3126,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -3174,7 +3174,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -3225,7 +3225,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -3273,7 +3273,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             form['options'] = parameters['options'];
@@ -3321,7 +3321,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];
@@ -3370,7 +3370,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['credentials'] !== undefined) {
             body = parameters['credentials'];
@@ -3425,7 +3425,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters)
@@ -3473,7 +3473,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['uid'] !== undefined) {
             queryParameters['uid'] = parameters['uid'];
@@ -3539,7 +3539,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             body = parameters['options'];
@@ -3593,7 +3593,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3648,7 +3648,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3706,7 +3706,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3766,7 +3766,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3828,7 +3828,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3886,7 +3886,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -3946,7 +3946,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4009,7 +4009,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4065,7 +4065,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4119,7 +4119,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4170,7 +4170,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4226,7 +4226,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4282,7 +4282,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4336,7 +4336,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4387,7 +4387,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4441,7 +4441,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -4488,7 +4488,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -4535,7 +4535,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -4582,7 +4582,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -4629,7 +4629,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -4677,7 +4677,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -4728,7 +4728,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4778,7 +4778,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4829,7 +4829,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4883,7 +4883,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4934,7 +4934,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -4989,7 +4989,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5044,7 +5044,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5098,7 +5098,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -5146,7 +5146,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -5197,7 +5197,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -5245,7 +5245,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             form['options'] = parameters['options'];
@@ -5293,7 +5293,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];
@@ -5340,7 +5340,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -5387,7 +5387,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -5434,7 +5434,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -5481,7 +5481,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -5528,7 +5528,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -5576,7 +5576,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -5627,7 +5627,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5677,7 +5677,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5728,7 +5728,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5782,7 +5782,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5833,7 +5833,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5888,7 +5888,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5943,7 +5943,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -5997,7 +5997,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -6045,7 +6045,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -6096,7 +6096,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -6144,7 +6144,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             form['options'] = parameters['options'];
@@ -6192,7 +6192,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];
@@ -6240,7 +6240,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6298,7 +6298,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6358,7 +6358,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6421,7 +6421,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6477,7 +6477,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6533,7 +6533,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6587,7 +6587,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6638,7 +6638,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -6692,7 +6692,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -6739,7 +6739,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -6786,7 +6786,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -6833,7 +6833,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -6880,7 +6880,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['data'] !== undefined) {
             body = parameters['data'];
@@ -6928,7 +6928,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -6979,7 +6979,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7029,7 +7029,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7080,7 +7080,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7134,7 +7134,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7185,7 +7185,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7240,7 +7240,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7295,7 +7295,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         path = path.replace('{id}', parameters['id']);
 
@@ -7349,7 +7349,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
@@ -7397,7 +7397,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -7448,7 +7448,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
@@ -7496,7 +7496,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             form['options'] = parameters['options'];
@@ -7544,7 +7544,7 @@ var TweakApi = (function() {
             headers['Authorization'] = 'Bearer ' + this.token.value;
         }
 
-        headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+        headers['Content-Type'] = ['application/json'];
 
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];

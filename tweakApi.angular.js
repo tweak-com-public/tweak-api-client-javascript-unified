@@ -17,7 +17,7 @@ angular.module('', [])
         var TweakApi = (function() {
             function TweakApi(options, cache) {
                 var domain = (typeof options === 'object') ? options.domain : options;
-                this.domain = typeof(domain) === 'string' ? domain : 'http://apidevcdn.tweak.com/api';
+                this.domain = typeof(domain) === 'string' ? domain : '';
                 if (this.domain.length === 0) {
                     throw new Error('Domain parameter must be specified as a string.');
                 }
@@ -133,7 +133,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -191,7 +191,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -251,7 +251,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -314,7 +314,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -370,7 +370,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -424,7 +424,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -475,7 +475,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -529,7 +529,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -576,7 +576,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -623,7 +623,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -670,7 +670,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -717,7 +717,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -765,7 +765,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -816,7 +816,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -866,7 +866,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -917,7 +917,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -971,7 +971,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1022,7 +1022,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1077,7 +1077,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1132,7 +1132,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1186,7 +1186,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -1234,7 +1234,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -1285,7 +1285,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -1333,7 +1333,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     form['options'] = parameters['options'];
@@ -1381,7 +1381,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     queryParameters['options'] = parameters['options'];
@@ -1430,7 +1430,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['credentials'] !== undefined) {
                     body = parameters['credentials'];
@@ -1485,7 +1485,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters.$queryParameters) {
                     Object.keys(parameters.$queryParameters)
@@ -1533,7 +1533,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['uid'] !== undefined) {
                     queryParameters['uid'] = parameters['uid'];
@@ -1599,7 +1599,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     body = parameters['options'];
@@ -1652,7 +1652,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['msg'] !== undefined) {
                     queryParameters['msg'] = parameters['msg'];
@@ -1700,7 +1700,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1758,7 +1758,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1818,7 +1818,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1880,7 +1880,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1938,7 +1938,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -1998,7 +1998,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2061,7 +2061,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2117,7 +2117,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2171,7 +2171,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2222,7 +2222,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2278,7 +2278,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2334,7 +2334,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2388,7 +2388,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2439,7 +2439,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2493,7 +2493,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -2540,7 +2540,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -2587,7 +2587,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -2634,7 +2634,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -2681,7 +2681,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -2729,7 +2729,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -2780,7 +2780,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2830,7 +2830,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2881,7 +2881,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2935,7 +2935,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -2986,7 +2986,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3041,7 +3041,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3096,7 +3096,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3150,7 +3150,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -3198,7 +3198,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -3249,7 +3249,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -3297,7 +3297,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     form['options'] = parameters['options'];
@@ -3345,7 +3345,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     queryParameters['options'] = parameters['options'];
@@ -3394,7 +3394,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['credentials'] !== undefined) {
                     body = parameters['credentials'];
@@ -3449,7 +3449,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters.$queryParameters) {
                     Object.keys(parameters.$queryParameters)
@@ -3497,7 +3497,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['uid'] !== undefined) {
                     queryParameters['uid'] = parameters['uid'];
@@ -3563,7 +3563,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     body = parameters['options'];
@@ -3617,7 +3617,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3672,7 +3672,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3730,7 +3730,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3790,7 +3790,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3852,7 +3852,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3910,7 +3910,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -3970,7 +3970,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4033,7 +4033,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4089,7 +4089,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4143,7 +4143,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4194,7 +4194,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4250,7 +4250,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4306,7 +4306,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4360,7 +4360,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4411,7 +4411,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4465,7 +4465,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -4512,7 +4512,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -4559,7 +4559,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -4606,7 +4606,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -4653,7 +4653,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -4701,7 +4701,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -4752,7 +4752,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4802,7 +4802,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4853,7 +4853,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4907,7 +4907,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -4958,7 +4958,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5013,7 +5013,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5068,7 +5068,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5122,7 +5122,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -5170,7 +5170,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -5221,7 +5221,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -5269,7 +5269,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     form['options'] = parameters['options'];
@@ -5317,7 +5317,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     queryParameters['options'] = parameters['options'];
@@ -5364,7 +5364,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -5411,7 +5411,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -5458,7 +5458,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -5505,7 +5505,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -5552,7 +5552,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -5600,7 +5600,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -5651,7 +5651,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5701,7 +5701,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5752,7 +5752,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5806,7 +5806,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5857,7 +5857,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5912,7 +5912,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -5967,7 +5967,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6021,7 +6021,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -6069,7 +6069,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -6120,7 +6120,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -6168,7 +6168,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     form['options'] = parameters['options'];
@@ -6216,7 +6216,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     queryParameters['options'] = parameters['options'];
@@ -6264,7 +6264,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6322,7 +6322,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6382,7 +6382,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6445,7 +6445,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6501,7 +6501,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6557,7 +6557,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6611,7 +6611,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6662,7 +6662,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -6716,7 +6716,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -6763,7 +6763,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -6810,7 +6810,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -6857,7 +6857,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -6904,7 +6904,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['data'] !== undefined) {
                     body = parameters['data'];
@@ -6952,7 +6952,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -7003,7 +7003,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7053,7 +7053,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7104,7 +7104,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7158,7 +7158,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7209,7 +7209,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7264,7 +7264,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7319,7 +7319,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 path = path.replace('{id}', parameters['id']);
 
@@ -7373,7 +7373,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
@@ -7421,7 +7421,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -7472,7 +7472,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
@@ -7520,7 +7520,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     form['options'] = parameters['options'];
@@ -7568,7 +7568,7 @@ angular.module('', [])
                     headers['Authorization'] = 'Bearer ' + this.token.value;
                 }
 
-                headers['Content-Type'] = ['application/json,application/x-www-form-urlencoded,application/xml,text/xml'];
+                headers['Content-Type'] = ['application/json'];
 
                 if (parameters['options'] !== undefined) {
                     queryParameters['options'] = parameters['options'];
