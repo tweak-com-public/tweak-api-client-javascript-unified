@@ -26,7 +26,7 @@ type Logger = {
  */
 export default class TweakApi {
 
-    private domain: string = "";
+    private domain: string = "http://apidevcdn.tweak.com/api";
     private errorHandlers: CallbackHandler[] = [];
 
     constructor(domain ? : string, private logger ? : Logger) {
@@ -77,7 +77,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___findById__accessTokensURL(parameters: {
+    getUsersByIdAccessTokensByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -104,11 +104,11 @@ export default class TweakApi {
     /**
      * Find a related item by id for accessTokens.
      * @method
-     * @name TweakApi#User_prototype___findById__accessTokens
+     * @name TweakApi#getUsersByIdAccessTokensByFk
      * @param {string} id - User id
      * @param {string} fk - Foreign key for accessTokens
      */
-    User_prototype___findById__accessTokens(parameters: {
+    getUsersByIdAccessTokensByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -147,7 +147,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___destroyById__accessTokensURL(parameters: {
+    deleteUsersByIdAccessTokensByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -174,11 +174,11 @@ export default class TweakApi {
     /**
      * Delete a related item by id for accessTokens.
      * @method
-     * @name TweakApi#User_prototype___destroyById__accessTokens
+     * @name TweakApi#deleteUsersByIdAccessTokensByFk
      * @param {string} id - User id
      * @param {string} fk - Foreign key for accessTokens
      */
-    User_prototype___destroyById__accessTokens(parameters: {
+    deleteUsersByIdAccessTokensByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -217,7 +217,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___updateById__accessTokensURL(parameters: {
+    putUsersByIdAccessTokensByFkURL(parameters: {
         'id': string,
         'fk': string,
         'data' ? : AccessToken,
@@ -245,13 +245,13 @@ export default class TweakApi {
     /**
     * Update a related item by id for accessTokens.
     * @method
-    * @name TweakApi#User_prototype___updateById__accessTokens
+    * @name TweakApi#putUsersByIdAccessTokensByFk
          * @param {string} id - User id
          * @param {string} fk - Foreign key for accessTokens
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_prototype___updateById__accessTokens(parameters: {
+    putUsersByIdAccessTokensByFk(parameters: {
         'id': string,
         'fk': string,
         'data' ? : AccessToken,
@@ -295,7 +295,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___get__accessTokensURL(parameters: {
+    getUsersByIdAccessTokensURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -323,12 +323,12 @@ export default class TweakApi {
     /**
     * Queries accessTokens of User.
     * @method
-    * @name TweakApi#User_prototype___get__accessTokens
+    * @name TweakApi#getUsersByIdAccessTokens
          * @param {string} id - User id
          * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_prototype___get__accessTokens(parameters: {
+    getUsersByIdAccessTokens(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -364,7 +364,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___create__accessTokensURL(parameters: {
+    postUsersByIdAccessTokensURL(parameters: {
         'id': string,
         'data' ? : AccessToken,
         $queryParameters ? : any,
@@ -391,12 +391,12 @@ export default class TweakApi {
     /**
     * Creates a new instance in accessTokens of this model.
     * @method
-    * @name TweakApi#User_prototype___create__accessTokens
+    * @name TweakApi#postUsersByIdAccessTokens
          * @param {string} id - User id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_prototype___create__accessTokens(parameters: {
+    postUsersByIdAccessTokens(parameters: {
         'id': string,
         'data' ? : AccessToken,
         $queryParameters ? : any,
@@ -435,7 +435,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___delete__accessTokensURL(parameters: {
+    deleteUsersByIdAccessTokensURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -459,10 +459,10 @@ export default class TweakApi {
     /**
      * Deletes all accessTokens of this model.
      * @method
-     * @name TweakApi#User_prototype___delete__accessTokens
+     * @name TweakApi#deleteUsersByIdAccessTokens
      * @param {string} id - User id
      */
-    User_prototype___delete__accessTokens(parameters: {
+    deleteUsersByIdAccessTokens(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -493,7 +493,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype___count__accessTokensURL(parameters: {
+    getUsersByIdAccessTokensCountURL(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -521,11 +521,11 @@ export default class TweakApi {
     /**
      * Counts accessTokens of User.
      * @method
-     * @name TweakApi#User_prototype___count__accessTokens
+     * @name TweakApi#getUsersByIdAccessTokensCount
      * @param {string} id - User id
      * @param {string} where - Criteria to match model instances
      */
-    User_prototype___count__accessTokens(parameters: {
+    getUsersByIdAccessTokensCount(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -561,7 +561,7 @@ export default class TweakApi {
         });
     }
 
-    User_createURL(parameters: {
+    postUsersURL(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -585,10 +585,10 @@ export default class TweakApi {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#User_create
+     * @name TweakApi#postUsers
      * @param {} data - Model instance data
      */
-    User_create(parameters: {
+    postUsers(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -619,7 +619,7 @@ export default class TweakApi {
         });
     }
 
-    User_upsert__put_UsersURL(parameters: {
+    putUsersURL(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -641,10 +641,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#User_upsert__put_Users
+     * @name TweakApi#putUsers
      * @param {} data - Model instance data
      */
-    User_upsert__put_Users(parameters: {
+    putUsers(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -672,7 +672,7 @@ export default class TweakApi {
         });
     }
 
-    User_upsert__patch_UsersURL(parameters: {
+    patchUsersURL(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -694,10 +694,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#User_upsert__patch_Users
+     * @name TweakApi#patchUsers
      * @param {} data - Model instance data
      */
-    User_upsert__patch_Users(parameters: {
+    patchUsers(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -725,7 +725,7 @@ export default class TweakApi {
         });
     }
 
-    User_findURL(parameters: {
+    getUsersURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -750,10 +750,10 @@ export default class TweakApi {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#User_find
+     * @name TweakApi#getUsers
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    User_find(parameters: {
+    getUsers(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -781,7 +781,7 @@ export default class TweakApi {
         });
     }
 
-    User_replaceOrCreateURL(parameters: {
+    postUsersReplaceOrCreateURL(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -805,10 +805,10 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#User_replaceOrCreate
+     * @name TweakApi#postUsersReplaceOrCreate
      * @param {} data - Model instance data
      */
-    User_replaceOrCreate(parameters: {
+    postUsersReplaceOrCreate(parameters: {
         'data' ? : User,
         $queryParameters ? : any,
         $domain ? : string
@@ -839,7 +839,7 @@ export default class TweakApi {
         });
     }
 
-    User_upsertWithWhereURL(parameters: {
+    postUsersUpsertWithWhereURL(parameters: {
         'where' ? : string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -867,11 +867,11 @@ export default class TweakApi {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#User_upsertWithWhere
+     * @name TweakApi#postUsersUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    User_upsertWithWhere(parameters: {
+    postUsersUpsertWithWhere(parameters: {
         'where' ? : string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -907,7 +907,7 @@ export default class TweakApi {
         });
     }
 
-    User_exists__get_Users__id__existsURL(parameters: {
+    getUsersByIdExistsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -931,10 +931,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#User_exists__get_Users__id__exists
+     * @name TweakApi#getUsersByIdExists
      * @param {string} id - Model id
      */
-    User_exists__get_Users__id__exists(parameters: {
+    getUsersByIdExists(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -965,7 +965,7 @@ export default class TweakApi {
         });
     }
 
-    User_exists__head_Users__id_URL(parameters: {
+    headUsersByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -989,10 +989,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#User_exists__head_Users__id_
+     * @name TweakApi#headUsersById
      * @param {string} id - Model id
      */
-    User_exists__head_Users__id_(parameters: {
+    headUsersById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1023,7 +1023,7 @@ export default class TweakApi {
         });
     }
 
-    User_findByIdURL(parameters: {
+    getUsersByIdURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -1051,11 +1051,11 @@ export default class TweakApi {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#User_findById
+     * @name TweakApi#getUsersById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      */
-    User_findById(parameters: {
+    getUsersById(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -1091,7 +1091,7 @@ export default class TweakApi {
         });
     }
 
-    User_deleteByIdURL(parameters: {
+    deleteUsersByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1115,10 +1115,10 @@ export default class TweakApi {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#User_deleteById
+     * @name TweakApi#deleteUsersById
      * @param {string} id - Model id
      */
-    User_deleteById(parameters: {
+    deleteUsersById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1149,7 +1149,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype_updateAttributes__put_Users__id_URL(parameters: {
+    putUsersByIdURL(parameters: {
         'id': string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1174,11 +1174,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#User_prototype_updateAttributes__put_Users__id_
+     * @name TweakApi#putUsersById
      * @param {string} id - User id
      * @param {} data - An object of model property name/value pairs
      */
-    User_prototype_updateAttributes__put_Users__id_(parameters: {
+    putUsersById(parameters: {
         'id': string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1214,7 +1214,7 @@ export default class TweakApi {
         });
     }
 
-    User_prototype_updateAttributes__patch_Users__id_URL(parameters: {
+    patchUsersByIdURL(parameters: {
         'id': string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1239,11 +1239,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#User_prototype_updateAttributes__patch_Users__id_
+     * @name TweakApi#patchUsersById
      * @param {string} id - User id
      * @param {} data - An object of model property name/value pairs
      */
-    User_prototype_updateAttributes__patch_Users__id_(parameters: {
+    patchUsersById(parameters: {
         'id': string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1279,7 +1279,7 @@ export default class TweakApi {
         });
     }
 
-    User_replaceByIdURL(parameters: {
+    postUsersByIdReplaceURL(parameters: {
         'id': string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1306,11 +1306,11 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#User_replaceById
+     * @name TweakApi#postUsersByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    User_replaceById(parameters: {
+    postUsersByIdReplace(parameters: {
         'id': string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1349,7 +1349,7 @@ export default class TweakApi {
         });
     }
 
-    User_findOneURL(parameters: {
+    getUsersFindOneURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1374,10 +1374,10 @@ export default class TweakApi {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#User_findOne
+     * @name TweakApi#getUsersFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    User_findOne(parameters: {
+    getUsersFindOne(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1405,7 +1405,7 @@ export default class TweakApi {
         });
     }
 
-    User_updateAllURL(parameters: {
+    postUsersUpdateURL(parameters: {
         'where' ? : string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1433,11 +1433,11 @@ export default class TweakApi {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#User_updateAll
+     * @name TweakApi#postUsersUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    User_updateAll(parameters: {
+    postUsersUpdate(parameters: {
         'where' ? : string,
         'data' ? : User,
         $queryParameters ? : any,
@@ -1473,7 +1473,7 @@ export default class TweakApi {
         });
     }
 
-    User_countURL(parameters: {
+    getUsersCountURL(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1498,10 +1498,10 @@ export default class TweakApi {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#User_count
+     * @name TweakApi#getUsersCount
      * @param {string} where - Criteria to match model instances
      */
-    User_count(parameters: {
+    getUsersCount(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1529,7 +1529,7 @@ export default class TweakApi {
         });
     }
 
-    User_createChangeStream__post_Users_change_streamURL(parameters: {
+    postUsersChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1553,11 +1553,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#User_createChangeStream__post_Users_change_stream
+    * @name TweakApi#postUsersChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_createChangeStream__post_Users_change_stream(parameters: {
+    postUsersChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1588,7 +1588,7 @@ export default class TweakApi {
         });
     }
 
-    User_createChangeStream__get_Users_change_streamURL(parameters: {
+    getUsersChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1613,11 +1613,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#User_createChangeStream__get_Users_change_stream
+    * @name TweakApi#getUsersChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_createChangeStream__get_Users_change_stream(parameters: {
+    getUsersChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1645,7 +1645,7 @@ export default class TweakApi {
         });
     }
 
-    User_loginURL(parameters: {
+    postUsersLoginURL(parameters: {
         'credentials': {},
         'include' ? : string,
         $queryParameters ? : any,
@@ -1674,12 +1674,12 @@ export default class TweakApi {
     /**
     * Login a user with username/email and password.
     * @method
-    * @name TweakApi#User_login
+    * @name TweakApi#postUsersLogin
          * @param {} credentials - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
          * @param {string} include - Related objects to include in the response. See the description of return value for more details.
     */
-    User_login(parameters: {
+    postUsersLogin(parameters: {
         'credentials': {},
         'include' ? : string,
         $queryParameters ? : any,
@@ -1720,7 +1720,7 @@ export default class TweakApi {
         });
     }
 
-    User_logoutURL(parameters: {
+    postUsersLogoutURL(parameters: {
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -1743,9 +1743,9 @@ export default class TweakApi {
     /**
      * Logout a user with access token.
      * @method
-     * @name TweakApi#User_logout
+     * @name TweakApi#postUsersLogout
      */
-    User_logout(parameters: {
+    postUsersLogout(parameters: {
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -1771,7 +1771,7 @@ export default class TweakApi {
         });
     }
 
-    User_confirmURL(parameters: {
+    getUsersConfirmURL(parameters: {
         'uid': string,
         'token': string,
         'redirect' ? : string,
@@ -1806,7 +1806,7 @@ export default class TweakApi {
     /**
     * Confirm a user registration with email verification token.
     * @method
-    * @name TweakApi#User_confirm
+    * @name TweakApi#getUsersConfirm
          * @param {string} uid - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
          * @param {string} token - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
@@ -1814,7 +1814,7 @@ export default class TweakApi {
          * @param {string} redirect - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_confirm(parameters: {
+    getUsersConfirm(parameters: {
         'uid': string,
         'token': string,
         'redirect' ? : string,
@@ -1862,7 +1862,7 @@ export default class TweakApi {
         });
     }
 
-    User_resetPasswordURL(parameters: {
+    postUsersResetURL(parameters: {
         'options': {},
         $queryParameters ? : any,
         $domain ? : string
@@ -1886,11 +1886,11 @@ export default class TweakApi {
     /**
     * Reset password for a user with email.
     * @method
-    * @name TweakApi#User_resetPassword
+    * @name TweakApi#postUsersReset
          * @param {} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    User_resetPassword(parameters: {
+    postUsersReset(parameters: {
         'options': {},
         $queryParameters ? : any,
         $domain ? : string
@@ -1926,7 +1926,7 @@ export default class TweakApi {
         });
     }
 
-    Message_greetURL(parameters: {
+    getMessagesGreetURL(parameters: {
         'msg' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1951,11 +1951,11 @@ export default class TweakApi {
     /**
     * 
     * @method
-    * @name TweakApi#Message_greet
+    * @name TweakApi#getMessagesGreet
          * @param {string} msg - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Message_greet(parameters: {
+    getMessagesGreet(parameters: {
         'msg' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -1983,7 +1983,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___findById__accessTokensURL(parameters: {
+    getCustomersByIdAccessTokensByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2010,11 +2010,11 @@ export default class TweakApi {
     /**
      * Find a related item by id for accessTokens.
      * @method
-     * @name TweakApi#Customer_prototype___findById__accessTokens
+     * @name TweakApi#getCustomersByIdAccessTokensByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for accessTokens
      */
-    Customer_prototype___findById__accessTokens(parameters: {
+    getCustomersByIdAccessTokensByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2053,7 +2053,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___destroyById__accessTokensURL(parameters: {
+    deleteCustomersByIdAccessTokensByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2080,11 +2080,11 @@ export default class TweakApi {
     /**
      * Delete a related item by id for accessTokens.
      * @method
-     * @name TweakApi#Customer_prototype___destroyById__accessTokens
+     * @name TweakApi#deleteCustomersByIdAccessTokensByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for accessTokens
      */
-    Customer_prototype___destroyById__accessTokens(parameters: {
+    deleteCustomersByIdAccessTokensByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2123,7 +2123,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___updateById__accessTokensURL(parameters: {
+    putCustomersByIdAccessTokensByFkURL(parameters: {
         'id': string,
         'fk': string,
         'data' ? : AccessToken,
@@ -2151,13 +2151,13 @@ export default class TweakApi {
     /**
     * Update a related item by id for accessTokens.
     * @method
-    * @name TweakApi#Customer_prototype___updateById__accessTokens
+    * @name TweakApi#putCustomersByIdAccessTokensByFk
          * @param {string} id - Customer id
          * @param {string} fk - Foreign key for accessTokens
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_prototype___updateById__accessTokens(parameters: {
+    putCustomersByIdAccessTokensByFk(parameters: {
         'id': string,
         'fk': string,
         'data' ? : AccessToken,
@@ -2201,7 +2201,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___findById__designsURL(parameters: {
+    getCustomersByIdDesignsByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2228,11 +2228,11 @@ export default class TweakApi {
     /**
      * Find a related item by id for designs.
      * @method
-     * @name TweakApi#Customer_prototype___findById__designs
+     * @name TweakApi#getCustomersByIdDesignsByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for designs
      */
-    Customer_prototype___findById__designs(parameters: {
+    getCustomersByIdDesignsByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2271,7 +2271,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___destroyById__designsURL(parameters: {
+    deleteCustomersByIdDesignsByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2298,11 +2298,11 @@ export default class TweakApi {
     /**
      * Delete a related item by id for designs.
      * @method
-     * @name TweakApi#Customer_prototype___destroyById__designs
+     * @name TweakApi#deleteCustomersByIdDesignsByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for designs
      */
-    Customer_prototype___destroyById__designs(parameters: {
+    deleteCustomersByIdDesignsByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -2341,7 +2341,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___updateById__designsURL(parameters: {
+    putCustomersByIdDesignsByFkURL(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Design,
@@ -2369,13 +2369,13 @@ export default class TweakApi {
     /**
     * Update a related item by id for designs.
     * @method
-    * @name TweakApi#Customer_prototype___updateById__designs
+    * @name TweakApi#putCustomersByIdDesignsByFk
          * @param {string} id - Customer id
          * @param {string} fk - Foreign key for designs
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_prototype___updateById__designs(parameters: {
+    putCustomersByIdDesignsByFk(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Design,
@@ -2419,7 +2419,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___get__accessTokensURL(parameters: {
+    getCustomersByIdAccessTokensURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -2447,12 +2447,12 @@ export default class TweakApi {
     /**
     * Queries accessTokens of Customer.
     * @method
-    * @name TweakApi#Customer_prototype___get__accessTokens
+    * @name TweakApi#getCustomersByIdAccessTokens
          * @param {string} id - Customer id
          * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_prototype___get__accessTokens(parameters: {
+    getCustomersByIdAccessTokens(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -2488,7 +2488,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___create__accessTokensURL(parameters: {
+    postCustomersByIdAccessTokensURL(parameters: {
         'id': string,
         'data' ? : AccessToken,
         $queryParameters ? : any,
@@ -2515,12 +2515,12 @@ export default class TweakApi {
     /**
     * Creates a new instance in accessTokens of this model.
     * @method
-    * @name TweakApi#Customer_prototype___create__accessTokens
+    * @name TweakApi#postCustomersByIdAccessTokens
          * @param {string} id - Customer id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_prototype___create__accessTokens(parameters: {
+    postCustomersByIdAccessTokens(parameters: {
         'id': string,
         'data' ? : AccessToken,
         $queryParameters ? : any,
@@ -2559,7 +2559,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___delete__accessTokensURL(parameters: {
+    deleteCustomersByIdAccessTokensURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -2583,10 +2583,10 @@ export default class TweakApi {
     /**
      * Deletes all accessTokens of this model.
      * @method
-     * @name TweakApi#Customer_prototype___delete__accessTokens
+     * @name TweakApi#deleteCustomersByIdAccessTokens
      * @param {string} id - Customer id
      */
-    Customer_prototype___delete__accessTokens(parameters: {
+    deleteCustomersByIdAccessTokens(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -2617,7 +2617,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___count__accessTokensURL(parameters: {
+    getCustomersByIdAccessTokensCountURL(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -2645,11 +2645,11 @@ export default class TweakApi {
     /**
      * Counts accessTokens of Customer.
      * @method
-     * @name TweakApi#Customer_prototype___count__accessTokens
+     * @name TweakApi#getCustomersByIdAccessTokensCount
      * @param {string} id - Customer id
      * @param {string} where - Criteria to match model instances
      */
-    Customer_prototype___count__accessTokens(parameters: {
+    getCustomersByIdAccessTokensCount(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -2685,7 +2685,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___get__designsURL(parameters: {
+    getCustomersByIdDesignsURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -2713,12 +2713,12 @@ export default class TweakApi {
     /**
     * Queries designs of Customer.
     * @method
-    * @name TweakApi#Customer_prototype___get__designs
+    * @name TweakApi#getCustomersByIdDesigns
          * @param {string} id - Customer id
          * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_prototype___get__designs(parameters: {
+    getCustomersByIdDesigns(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -2754,7 +2754,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___create__designsURL(parameters: {
+    postCustomersByIdDesignsURL(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -2781,12 +2781,12 @@ export default class TweakApi {
     /**
     * Creates a new instance in designs of this model.
     * @method
-    * @name TweakApi#Customer_prototype___create__designs
+    * @name TweakApi#postCustomersByIdDesigns
          * @param {string} id - Customer id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_prototype___create__designs(parameters: {
+    postCustomersByIdDesigns(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -2825,7 +2825,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___delete__designsURL(parameters: {
+    deleteCustomersByIdDesignsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -2849,10 +2849,10 @@ export default class TweakApi {
     /**
      * Deletes all designs of this model.
      * @method
-     * @name TweakApi#Customer_prototype___delete__designs
+     * @name TweakApi#deleteCustomersByIdDesigns
      * @param {string} id - Customer id
      */
-    Customer_prototype___delete__designs(parameters: {
+    deleteCustomersByIdDesigns(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -2883,7 +2883,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype___count__designsURL(parameters: {
+    getCustomersByIdDesignsCountURL(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -2911,11 +2911,11 @@ export default class TweakApi {
     /**
      * Counts designs of Customer.
      * @method
-     * @name TweakApi#Customer_prototype___count__designs
+     * @name TweakApi#getCustomersByIdDesignsCount
      * @param {string} id - Customer id
      * @param {string} where - Criteria to match model instances
      */
-    Customer_prototype___count__designs(parameters: {
+    getCustomersByIdDesignsCount(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -2951,7 +2951,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_createURL(parameters: {
+    postCustomersURL(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -2975,10 +2975,10 @@ export default class TweakApi {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_create
+     * @name TweakApi#postCustomers
      * @param {} data - Model instance data
      */
-    Customer_create(parameters: {
+    postCustomers(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3009,7 +3009,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_upsert__put_CustomersURL(parameters: {
+    putCustomersURL(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3031,10 +3031,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Customer_upsert__put_Customers
+     * @name TweakApi#putCustomers
      * @param {} data - Model instance data
      */
-    Customer_upsert__put_Customers(parameters: {
+    putCustomers(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3062,7 +3062,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_upsert__patch_CustomersURL(parameters: {
+    patchCustomersURL(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3084,10 +3084,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Customer_upsert__patch_Customers
+     * @name TweakApi#patchCustomers
      * @param {} data - Model instance data
      */
-    Customer_upsert__patch_Customers(parameters: {
+    patchCustomers(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3115,7 +3115,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_findURL(parameters: {
+    getCustomersURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3140,10 +3140,10 @@ export default class TweakApi {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Customer_find
+     * @name TweakApi#getCustomers
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Customer_find(parameters: {
+    getCustomers(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3171,7 +3171,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_replaceOrCreateURL(parameters: {
+    postCustomersReplaceOrCreateURL(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3195,10 +3195,10 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Customer_replaceOrCreate
+     * @name TweakApi#postCustomersReplaceOrCreate
      * @param {} data - Model instance data
      */
-    Customer_replaceOrCreate(parameters: {
+    postCustomersReplaceOrCreate(parameters: {
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
@@ -3229,7 +3229,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_upsertWithWhereURL(parameters: {
+    postCustomersUpsertWithWhereURL(parameters: {
         'where' ? : string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3257,11 +3257,11 @@ export default class TweakApi {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Customer_upsertWithWhere
+     * @name TweakApi#postCustomersUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Customer_upsertWithWhere(parameters: {
+    postCustomersUpsertWithWhere(parameters: {
         'where' ? : string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3297,7 +3297,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_exists__get_Customers__id__existsURL(parameters: {
+    getCustomersByIdExistsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3321,10 +3321,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Customer_exists__get_Customers__id__exists
+     * @name TweakApi#getCustomersByIdExists
      * @param {string} id - Model id
      */
-    Customer_exists__get_Customers__id__exists(parameters: {
+    getCustomersByIdExists(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3355,7 +3355,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_exists__head_Customers__id_URL(parameters: {
+    headCustomersByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3379,10 +3379,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Customer_exists__head_Customers__id_
+     * @name TweakApi#headCustomersById
      * @param {string} id - Model id
      */
-    Customer_exists__head_Customers__id_(parameters: {
+    headCustomersById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3413,7 +3413,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_findByIdURL(parameters: {
+    getCustomersByIdURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -3441,11 +3441,11 @@ export default class TweakApi {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Customer_findById
+     * @name TweakApi#getCustomersById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      */
-    Customer_findById(parameters: {
+    getCustomersById(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -3481,7 +3481,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_deleteByIdURL(parameters: {
+    deleteCustomersByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3505,10 +3505,10 @@ export default class TweakApi {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Customer_deleteById
+     * @name TweakApi#deleteCustomersById
      * @param {string} id - Model id
      */
-    Customer_deleteById(parameters: {
+    deleteCustomersById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3539,7 +3539,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype_updateAttributes__put_Customers__id_URL(parameters: {
+    putCustomersByIdURL(parameters: {
         'id': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3564,11 +3564,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_prototype_updateAttributes__put_Customers__id_
+     * @name TweakApi#putCustomersById
      * @param {string} id - Customer id
      * @param {} data - An object of model property name/value pairs
      */
-    Customer_prototype_updateAttributes__put_Customers__id_(parameters: {
+    putCustomersById(parameters: {
         'id': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3604,7 +3604,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_prototype_updateAttributes__patch_Customers__id_URL(parameters: {
+    patchCustomersByIdURL(parameters: {
         'id': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3629,11 +3629,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_prototype_updateAttributes__patch_Customers__id_
+     * @name TweakApi#patchCustomersById
      * @param {string} id - Customer id
      * @param {} data - An object of model property name/value pairs
      */
-    Customer_prototype_updateAttributes__patch_Customers__id_(parameters: {
+    patchCustomersById(parameters: {
         'id': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3669,7 +3669,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_replaceByIdURL(parameters: {
+    postCustomersByIdReplaceURL(parameters: {
         'id': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3696,11 +3696,11 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_replaceById
+     * @name TweakApi#postCustomersByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    Customer_replaceById(parameters: {
+    postCustomersByIdReplace(parameters: {
         'id': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3739,7 +3739,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_findOneURL(parameters: {
+    getCustomersFindOneURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3764,10 +3764,10 @@ export default class TweakApi {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Customer_findOne
+     * @name TweakApi#getCustomersFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Customer_findOne(parameters: {
+    getCustomersFindOne(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3795,7 +3795,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_updateAllURL(parameters: {
+    postCustomersUpdateURL(parameters: {
         'where' ? : string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3823,11 +3823,11 @@ export default class TweakApi {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Customer_updateAll
+     * @name TweakApi#postCustomersUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Customer_updateAll(parameters: {
+    postCustomersUpdate(parameters: {
         'where' ? : string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -3863,7 +3863,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_countURL(parameters: {
+    getCustomersCountURL(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3888,10 +3888,10 @@ export default class TweakApi {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Customer_count
+     * @name TweakApi#getCustomersCount
      * @param {string} where - Criteria to match model instances
      */
-    Customer_count(parameters: {
+    getCustomersCount(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3919,7 +3919,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_createChangeStream__post_Customers_change_streamURL(parameters: {
+    postCustomersChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3943,11 +3943,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Customer_createChangeStream__post_Customers_change_stream
+    * @name TweakApi#postCustomersChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_createChangeStream__post_Customers_change_stream(parameters: {
+    postCustomersChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -3978,7 +3978,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_createChangeStream__get_Customers_change_streamURL(parameters: {
+    getCustomersChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -4003,11 +4003,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Customer_createChangeStream__get_Customers_change_stream
+    * @name TweakApi#getCustomersChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_createChangeStream__get_Customers_change_stream(parameters: {
+    getCustomersChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -4035,7 +4035,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_loginURL(parameters: {
+    postCustomersLoginURL(parameters: {
         'credentials': {},
         'include' ? : string,
         $queryParameters ? : any,
@@ -4064,12 +4064,12 @@ export default class TweakApi {
     /**
     * Login a user with username/email and password.
     * @method
-    * @name TweakApi#Customer_login
+    * @name TweakApi#postCustomersLogin
          * @param {} credentials - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
          * @param {string} include - Related objects to include in the response. See the description of return value for more details.
     */
-    Customer_login(parameters: {
+    postCustomersLogin(parameters: {
         'credentials': {},
         'include' ? : string,
         $queryParameters ? : any,
@@ -4110,7 +4110,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_logoutURL(parameters: {
+    postCustomersLogoutURL(parameters: {
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -4133,9 +4133,9 @@ export default class TweakApi {
     /**
      * Logout a user with access token.
      * @method
-     * @name TweakApi#Customer_logout
+     * @name TweakApi#postCustomersLogout
      */
-    Customer_logout(parameters: {
+    postCustomersLogout(parameters: {
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -4161,7 +4161,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_confirmURL(parameters: {
+    getCustomersConfirmURL(parameters: {
         'uid': string,
         'token': string,
         'redirect' ? : string,
@@ -4196,7 +4196,7 @@ export default class TweakApi {
     /**
     * Confirm a user registration with email verification token.
     * @method
-    * @name TweakApi#Customer_confirm
+    * @name TweakApi#getCustomersConfirm
          * @param {string} uid - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
          * @param {string} token - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
@@ -4204,7 +4204,7 @@ export default class TweakApi {
          * @param {string} redirect - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_confirm(parameters: {
+    getCustomersConfirm(parameters: {
         'uid': string,
         'token': string,
         'redirect' ? : string,
@@ -4252,7 +4252,7 @@ export default class TweakApi {
         });
     }
 
-    Customer_resetPasswordURL(parameters: {
+    postCustomersResetURL(parameters: {
         'options': {},
         $queryParameters ? : any,
         $domain ? : string
@@ -4276,11 +4276,11 @@ export default class TweakApi {
     /**
     * Reset password for a user with email.
     * @method
-    * @name TweakApi#Customer_resetPassword
+    * @name TweakApi#postCustomersReset
          * @param {} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Customer_resetPassword(parameters: {
+    postCustomersReset(parameters: {
         'options': {},
         $queryParameters ? : any,
         $domain ? : string
@@ -4316,7 +4316,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___get__customerURL(parameters: {
+    getDesignsByIdCustomerURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
@@ -4344,12 +4344,12 @@ export default class TweakApi {
     /**
     * Fetches belongsTo relation customer.
     * @method
-    * @name TweakApi#Design_prototype___get__customer
+    * @name TweakApi#getDesignsByIdCustomer
          * @param {string} id - Design id
          * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___get__customer(parameters: {
+    getDesignsByIdCustomer(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
@@ -4385,7 +4385,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___findById__tagsURL(parameters: {
+    getDesignsByIdTagsByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4412,11 +4412,11 @@ export default class TweakApi {
     /**
      * Find a related item by id for tags.
      * @method
-     * @name TweakApi#Design_prototype___findById__tags
+     * @name TweakApi#getDesignsByIdTagsByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for tags
      */
-    Design_prototype___findById__tags(parameters: {
+    getDesignsByIdTagsByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4455,7 +4455,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___destroyById__tagsURL(parameters: {
+    deleteDesignsByIdTagsByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4482,11 +4482,11 @@ export default class TweakApi {
     /**
      * Delete a related item by id for tags.
      * @method
-     * @name TweakApi#Design_prototype___destroyById__tags
+     * @name TweakApi#deleteDesignsByIdTagsByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for tags
      */
-    Design_prototype___destroyById__tags(parameters: {
+    deleteDesignsByIdTagsByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4525,7 +4525,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___updateById__tagsURL(parameters: {
+    putDesignsByIdTagsByFkURL(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Tag,
@@ -4553,13 +4553,13 @@ export default class TweakApi {
     /**
     * Update a related item by id for tags.
     * @method
-    * @name TweakApi#Design_prototype___updateById__tags
+    * @name TweakApi#putDesignsByIdTagsByFk
          * @param {string} id - Design id
          * @param {string} fk - Foreign key for tags
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___updateById__tags(parameters: {
+    putDesignsByIdTagsByFk(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Tag,
@@ -4603,7 +4603,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___findById__categoriesURL(parameters: {
+    getDesignsByIdCategoriesByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4630,11 +4630,11 @@ export default class TweakApi {
     /**
      * Find a related item by id for categories.
      * @method
-     * @name TweakApi#Design_prototype___findById__categories
+     * @name TweakApi#getDesignsByIdCategoriesByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for categories
      */
-    Design_prototype___findById__categories(parameters: {
+    getDesignsByIdCategoriesByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4673,7 +4673,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___destroyById__categoriesURL(parameters: {
+    deleteDesignsByIdCategoriesByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4700,11 +4700,11 @@ export default class TweakApi {
     /**
      * Delete a related item by id for categories.
      * @method
-     * @name TweakApi#Design_prototype___destroyById__categories
+     * @name TweakApi#deleteDesignsByIdCategoriesByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for categories
      */
-    Design_prototype___destroyById__categories(parameters: {
+    deleteDesignsByIdCategoriesByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -4743,7 +4743,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___updateById__categoriesURL(parameters: {
+    putDesignsByIdCategoriesByFkURL(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Category,
@@ -4771,13 +4771,13 @@ export default class TweakApi {
     /**
     * Update a related item by id for categories.
     * @method
-    * @name TweakApi#Design_prototype___updateById__categories
+    * @name TweakApi#putDesignsByIdCategoriesByFk
          * @param {string} id - Design id
          * @param {string} fk - Foreign key for categories
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___updateById__categories(parameters: {
+    putDesignsByIdCategoriesByFk(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Category,
@@ -4821,7 +4821,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___get__tagsURL(parameters: {
+    getDesignsByIdTagsURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -4849,12 +4849,12 @@ export default class TweakApi {
     /**
     * Queries tags of Design.
     * @method
-    * @name TweakApi#Design_prototype___get__tags
+    * @name TweakApi#getDesignsByIdTags
          * @param {string} id - Design id
          * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___get__tags(parameters: {
+    getDesignsByIdTags(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -4890,7 +4890,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___create__tagsURL(parameters: {
+    postDesignsByIdTagsURL(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -4917,12 +4917,12 @@ export default class TweakApi {
     /**
     * Creates a new instance in tags of this model.
     * @method
-    * @name TweakApi#Design_prototype___create__tags
+    * @name TweakApi#postDesignsByIdTags
          * @param {string} id - Design id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___create__tags(parameters: {
+    postDesignsByIdTags(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -4961,7 +4961,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___delete__tagsURL(parameters: {
+    deleteDesignsByIdTagsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -4985,10 +4985,10 @@ export default class TweakApi {
     /**
      * Deletes all tags of this model.
      * @method
-     * @name TweakApi#Design_prototype___delete__tags
+     * @name TweakApi#deleteDesignsByIdTags
      * @param {string} id - Design id
      */
-    Design_prototype___delete__tags(parameters: {
+    deleteDesignsByIdTags(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5019,7 +5019,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___count__tagsURL(parameters: {
+    getDesignsByIdTagsCountURL(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -5047,11 +5047,11 @@ export default class TweakApi {
     /**
      * Counts tags of Design.
      * @method
-     * @name TweakApi#Design_prototype___count__tags
+     * @name TweakApi#getDesignsByIdTagsCount
      * @param {string} id - Design id
      * @param {string} where - Criteria to match model instances
      */
-    Design_prototype___count__tags(parameters: {
+    getDesignsByIdTagsCount(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -5087,7 +5087,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___get__categoriesURL(parameters: {
+    getDesignsByIdCategoriesURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -5115,12 +5115,12 @@ export default class TweakApi {
     /**
     * Queries categories of Design.
     * @method
-    * @name TweakApi#Design_prototype___get__categories
+    * @name TweakApi#getDesignsByIdCategories
          * @param {string} id - Design id
          * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___get__categories(parameters: {
+    getDesignsByIdCategories(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -5156,7 +5156,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___create__categoriesURL(parameters: {
+    postDesignsByIdCategoriesURL(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -5183,12 +5183,12 @@ export default class TweakApi {
     /**
     * Creates a new instance in categories of this model.
     * @method
-    * @name TweakApi#Design_prototype___create__categories
+    * @name TweakApi#postDesignsByIdCategories
          * @param {string} id - Design id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_prototype___create__categories(parameters: {
+    postDesignsByIdCategories(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -5227,7 +5227,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___delete__categoriesURL(parameters: {
+    deleteDesignsByIdCategoriesURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5251,10 +5251,10 @@ export default class TweakApi {
     /**
      * Deletes all categories of this model.
      * @method
-     * @name TweakApi#Design_prototype___delete__categories
+     * @name TweakApi#deleteDesignsByIdCategories
      * @param {string} id - Design id
      */
-    Design_prototype___delete__categories(parameters: {
+    deleteDesignsByIdCategories(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5285,7 +5285,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype___count__categoriesURL(parameters: {
+    getDesignsByIdCategoriesCountURL(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -5313,11 +5313,11 @@ export default class TweakApi {
     /**
      * Counts categories of Design.
      * @method
-     * @name TweakApi#Design_prototype___count__categories
+     * @name TweakApi#getDesignsByIdCategoriesCount
      * @param {string} id - Design id
      * @param {string} where - Criteria to match model instances
      */
-    Design_prototype___count__categories(parameters: {
+    getDesignsByIdCategoriesCount(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -5353,7 +5353,7 @@ export default class TweakApi {
         });
     }
 
-    Design_createURL(parameters: {
+    postDesignsURL(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5377,10 +5377,10 @@ export default class TweakApi {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Design_create
+     * @name TweakApi#postDesigns
      * @param {} data - Model instance data
      */
-    Design_create(parameters: {
+    postDesigns(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5411,7 +5411,7 @@ export default class TweakApi {
         });
     }
 
-    Design_upsert__put_DesignsURL(parameters: {
+    putDesignsURL(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5433,10 +5433,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Design_upsert__put_Designs
+     * @name TweakApi#putDesigns
      * @param {} data - Model instance data
      */
-    Design_upsert__put_Designs(parameters: {
+    putDesigns(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5464,7 +5464,7 @@ export default class TweakApi {
         });
     }
 
-    Design_upsert__patch_DesignsURL(parameters: {
+    patchDesignsURL(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5486,10 +5486,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Design_upsert__patch_Designs
+     * @name TweakApi#patchDesigns
      * @param {} data - Model instance data
      */
-    Design_upsert__patch_Designs(parameters: {
+    patchDesigns(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5517,7 +5517,7 @@ export default class TweakApi {
         });
     }
 
-    Design_findURL(parameters: {
+    getDesignsURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5542,10 +5542,10 @@ export default class TweakApi {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Design_find
+     * @name TweakApi#getDesigns
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Design_find(parameters: {
+    getDesigns(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5573,7 +5573,7 @@ export default class TweakApi {
         });
     }
 
-    Design_replaceOrCreateURL(parameters: {
+    postDesignsReplaceOrCreateURL(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5597,10 +5597,10 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Design_replaceOrCreate
+     * @name TweakApi#postDesignsReplaceOrCreate
      * @param {} data - Model instance data
      */
-    Design_replaceOrCreate(parameters: {
+    postDesignsReplaceOrCreate(parameters: {
         'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
@@ -5631,7 +5631,7 @@ export default class TweakApi {
         });
     }
 
-    Design_upsertWithWhereURL(parameters: {
+    postDesignsUpsertWithWhereURL(parameters: {
         'where' ? : string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -5659,11 +5659,11 @@ export default class TweakApi {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Design_upsertWithWhere
+     * @name TweakApi#postDesignsUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Design_upsertWithWhere(parameters: {
+    postDesignsUpsertWithWhere(parameters: {
         'where' ? : string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -5699,7 +5699,7 @@ export default class TweakApi {
         });
     }
 
-    Design_exists__get_Designs__id__existsURL(parameters: {
+    getDesignsByIdExistsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5723,10 +5723,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Design_exists__get_Designs__id__exists
+     * @name TweakApi#getDesignsByIdExists
      * @param {string} id - Model id
      */
-    Design_exists__get_Designs__id__exists(parameters: {
+    getDesignsByIdExists(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5757,7 +5757,7 @@ export default class TweakApi {
         });
     }
 
-    Design_exists__head_Designs__id_URL(parameters: {
+    headDesignsByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5781,10 +5781,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Design_exists__head_Designs__id_
+     * @name TweakApi#headDesignsById
      * @param {string} id - Model id
      */
-    Design_exists__head_Designs__id_(parameters: {
+    headDesignsById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5815,7 +5815,7 @@ export default class TweakApi {
         });
     }
 
-    Design_findByIdURL(parameters: {
+    getDesignsByIdURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -5843,11 +5843,11 @@ export default class TweakApi {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Design_findById
+     * @name TweakApi#getDesignsById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      */
-    Design_findById(parameters: {
+    getDesignsById(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -5883,7 +5883,7 @@ export default class TweakApi {
         });
     }
 
-    Design_deleteByIdURL(parameters: {
+    deleteDesignsByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5907,10 +5907,10 @@ export default class TweakApi {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Design_deleteById
+     * @name TweakApi#deleteDesignsById
      * @param {string} id - Model id
      */
-    Design_deleteById(parameters: {
+    deleteDesignsById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -5941,7 +5941,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype_updateAttributes__put_Designs__id_URL(parameters: {
+    putDesignsByIdURL(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -5966,11 +5966,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Design_prototype_updateAttributes__put_Designs__id_
+     * @name TweakApi#putDesignsById
      * @param {string} id - Design id
      * @param {} data - An object of model property name/value pairs
      */
-    Design_prototype_updateAttributes__put_Designs__id_(parameters: {
+    putDesignsById(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6006,7 +6006,7 @@ export default class TweakApi {
         });
     }
 
-    Design_prototype_updateAttributes__patch_Designs__id_URL(parameters: {
+    patchDesignsByIdURL(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6031,11 +6031,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Design_prototype_updateAttributes__patch_Designs__id_
+     * @name TweakApi#patchDesignsById
      * @param {string} id - Design id
      * @param {} data - An object of model property name/value pairs
      */
-    Design_prototype_updateAttributes__patch_Designs__id_(parameters: {
+    patchDesignsById(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6071,7 +6071,7 @@ export default class TweakApi {
         });
     }
 
-    Design_replaceByIdURL(parameters: {
+    postDesignsByIdReplaceURL(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6098,11 +6098,11 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Design_replaceById
+     * @name TweakApi#postDesignsByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    Design_replaceById(parameters: {
+    postDesignsByIdReplace(parameters: {
         'id': string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6141,7 +6141,7 @@ export default class TweakApi {
         });
     }
 
-    Design_findOneURL(parameters: {
+    getDesignsFindOneURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6166,10 +6166,10 @@ export default class TweakApi {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Design_findOne
+     * @name TweakApi#getDesignsFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Design_findOne(parameters: {
+    getDesignsFindOne(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6197,7 +6197,7 @@ export default class TweakApi {
         });
     }
 
-    Design_updateAllURL(parameters: {
+    postDesignsUpdateURL(parameters: {
         'where' ? : string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6225,11 +6225,11 @@ export default class TweakApi {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Design_updateAll
+     * @name TweakApi#postDesignsUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Design_updateAll(parameters: {
+    postDesignsUpdate(parameters: {
         'where' ? : string,
         'data' ? : Design,
         $queryParameters ? : any,
@@ -6265,7 +6265,7 @@ export default class TweakApi {
         });
     }
 
-    Design_countURL(parameters: {
+    getDesignsCountURL(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6290,10 +6290,10 @@ export default class TweakApi {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Design_count
+     * @name TweakApi#getDesignsCount
      * @param {string} where - Criteria to match model instances
      */
-    Design_count(parameters: {
+    getDesignsCount(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6321,7 +6321,7 @@ export default class TweakApi {
         });
     }
 
-    Design_createChangeStream__post_Designs_change_streamURL(parameters: {
+    postDesignsChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6345,11 +6345,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Design_createChangeStream__post_Designs_change_stream
+    * @name TweakApi#postDesignsChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_createChangeStream__post_Designs_change_stream(parameters: {
+    postDesignsChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6380,7 +6380,7 @@ export default class TweakApi {
         });
     }
 
-    Design_createChangeStream__get_Designs_change_streamURL(parameters: {
+    getDesignsChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6405,11 +6405,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Design_createChangeStream__get_Designs_change_stream
+    * @name TweakApi#getDesignsChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Design_createChangeStream__get_Designs_change_stream(parameters: {
+    getDesignsChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6437,7 +6437,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_createURL(parameters: {
+    postTagsURL(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6461,10 +6461,10 @@ export default class TweakApi {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_create
+     * @name TweakApi#postTags
      * @param {} data - Model instance data
      */
-    Tag_create(parameters: {
+    postTags(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6495,7 +6495,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_upsert__put_TagsURL(parameters: {
+    putTagsURL(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6517,10 +6517,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Tag_upsert__put_Tags
+     * @name TweakApi#putTags
      * @param {} data - Model instance data
      */
-    Tag_upsert__put_Tags(parameters: {
+    putTags(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6548,7 +6548,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_upsert__patch_TagsURL(parameters: {
+    patchTagsURL(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6570,10 +6570,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Tag_upsert__patch_Tags
+     * @name TweakApi#patchTags
      * @param {} data - Model instance data
      */
-    Tag_upsert__patch_Tags(parameters: {
+    patchTags(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6601,7 +6601,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_findURL(parameters: {
+    getTagsURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6626,10 +6626,10 @@ export default class TweakApi {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Tag_find
+     * @name TweakApi#getTags
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Tag_find(parameters: {
+    getTags(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6657,7 +6657,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_replaceOrCreateURL(parameters: {
+    postTagsReplaceOrCreateURL(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6681,10 +6681,10 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Tag_replaceOrCreate
+     * @name TweakApi#postTagsReplaceOrCreate
      * @param {} data - Model instance data
      */
-    Tag_replaceOrCreate(parameters: {
+    postTagsReplaceOrCreate(parameters: {
         'data' ? : Tag,
         $queryParameters ? : any,
         $domain ? : string
@@ -6715,7 +6715,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_upsertWithWhereURL(parameters: {
+    postTagsUpsertWithWhereURL(parameters: {
         'where' ? : string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -6743,11 +6743,11 @@ export default class TweakApi {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Tag_upsertWithWhere
+     * @name TweakApi#postTagsUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Tag_upsertWithWhere(parameters: {
+    postTagsUpsertWithWhere(parameters: {
         'where' ? : string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -6783,7 +6783,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_exists__get_Tags__id__existsURL(parameters: {
+    getTagsByIdExistsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6807,10 +6807,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Tag_exists__get_Tags__id__exists
+     * @name TweakApi#getTagsByIdExists
      * @param {string} id - Model id
      */
-    Tag_exists__get_Tags__id__exists(parameters: {
+    getTagsByIdExists(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6841,7 +6841,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_exists__head_Tags__id_URL(parameters: {
+    headTagsByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6865,10 +6865,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Tag_exists__head_Tags__id_
+     * @name TweakApi#headTagsById
      * @param {string} id - Model id
      */
-    Tag_exists__head_Tags__id_(parameters: {
+    headTagsById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6899,7 +6899,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_findByIdURL(parameters: {
+    getTagsByIdURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -6927,11 +6927,11 @@ export default class TweakApi {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Tag_findById
+     * @name TweakApi#getTagsById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      */
-    Tag_findById(parameters: {
+    getTagsById(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -6967,7 +6967,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_deleteByIdURL(parameters: {
+    deleteTagsByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -6991,10 +6991,10 @@ export default class TweakApi {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Tag_deleteById
+     * @name TweakApi#deleteTagsById
      * @param {string} id - Model id
      */
-    Tag_deleteById(parameters: {
+    deleteTagsById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7025,7 +7025,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_prototype_updateAttributes__put_Tags__id_URL(parameters: {
+    putTagsByIdURL(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7050,11 +7050,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_prototype_updateAttributes__put_Tags__id_
+     * @name TweakApi#putTagsById
      * @param {string} id - Tag id
      * @param {} data - An object of model property name/value pairs
      */
-    Tag_prototype_updateAttributes__put_Tags__id_(parameters: {
+    putTagsById(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7090,7 +7090,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_prototype_updateAttributes__patch_Tags__id_URL(parameters: {
+    patchTagsByIdURL(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7115,11 +7115,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_prototype_updateAttributes__patch_Tags__id_
+     * @name TweakApi#patchTagsById
      * @param {string} id - Tag id
      * @param {} data - An object of model property name/value pairs
      */
-    Tag_prototype_updateAttributes__patch_Tags__id_(parameters: {
+    patchTagsById(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7155,7 +7155,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_replaceByIdURL(parameters: {
+    postTagsByIdReplaceURL(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7182,11 +7182,11 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_replaceById
+     * @name TweakApi#postTagsByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    Tag_replaceById(parameters: {
+    postTagsByIdReplace(parameters: {
         'id': string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7225,7 +7225,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_findOneURL(parameters: {
+    getTagsFindOneURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7250,10 +7250,10 @@ export default class TweakApi {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Tag_findOne
+     * @name TweakApi#getTagsFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Tag_findOne(parameters: {
+    getTagsFindOne(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7281,7 +7281,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_updateAllURL(parameters: {
+    postTagsUpdateURL(parameters: {
         'where' ? : string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7309,11 +7309,11 @@ export default class TweakApi {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Tag_updateAll
+     * @name TweakApi#postTagsUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Tag_updateAll(parameters: {
+    postTagsUpdate(parameters: {
         'where' ? : string,
         'data' ? : Tag,
         $queryParameters ? : any,
@@ -7349,7 +7349,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_countURL(parameters: {
+    getTagsCountURL(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7374,10 +7374,10 @@ export default class TweakApi {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Tag_count
+     * @name TweakApi#getTagsCount
      * @param {string} where - Criteria to match model instances
      */
-    Tag_count(parameters: {
+    getTagsCount(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7405,7 +7405,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_createChangeStream__post_Tags_change_streamURL(parameters: {
+    postTagsChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7429,11 +7429,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Tag_createChangeStream__post_Tags_change_stream
+    * @name TweakApi#postTagsChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Tag_createChangeStream__post_Tags_change_stream(parameters: {
+    postTagsChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7464,7 +7464,7 @@ export default class TweakApi {
         });
     }
 
-    Tag_createChangeStream__get_Tags_change_streamURL(parameters: {
+    getTagsChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7489,11 +7489,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Tag_createChangeStream__get_Tags_change_stream
+    * @name TweakApi#getTagsChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Tag_createChangeStream__get_Tags_change_stream(parameters: {
+    getTagsChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7521,7 +7521,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___findById__childrenURL(parameters: {
+    getCategoriesByIdChildrenByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -7548,11 +7548,11 @@ export default class TweakApi {
     /**
      * Find a related item by id for children.
      * @method
-     * @name TweakApi#Category_prototype___findById__children
+     * @name TweakApi#getCategoriesByIdChildrenByFk
      * @param {string} id - Category id
      * @param {string} fk - Foreign key for children
      */
-    Category_prototype___findById__children(parameters: {
+    getCategoriesByIdChildrenByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -7591,7 +7591,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___destroyById__childrenURL(parameters: {
+    deleteCategoriesByIdChildrenByFkURL(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -7618,11 +7618,11 @@ export default class TweakApi {
     /**
      * Delete a related item by id for children.
      * @method
-     * @name TweakApi#Category_prototype___destroyById__children
+     * @name TweakApi#deleteCategoriesByIdChildrenByFk
      * @param {string} id - Category id
      * @param {string} fk - Foreign key for children
      */
-    Category_prototype___destroyById__children(parameters: {
+    deleteCategoriesByIdChildrenByFk(parameters: {
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -7661,7 +7661,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___updateById__childrenURL(parameters: {
+    putCategoriesByIdChildrenByFkURL(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Category,
@@ -7689,13 +7689,13 @@ export default class TweakApi {
     /**
     * Update a related item by id for children.
     * @method
-    * @name TweakApi#Category_prototype___updateById__children
+    * @name TweakApi#putCategoriesByIdChildrenByFk
          * @param {string} id - Category id
          * @param {string} fk - Foreign key for children
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Category_prototype___updateById__children(parameters: {
+    putCategoriesByIdChildrenByFk(parameters: {
         'id': string,
         'fk': string,
         'data' ? : Category,
@@ -7739,7 +7739,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___get__parentURL(parameters: {
+    getCategoriesByIdParentURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
@@ -7767,12 +7767,12 @@ export default class TweakApi {
     /**
     * Fetches belongsTo relation parent.
     * @method
-    * @name TweakApi#Category_prototype___get__parent
+    * @name TweakApi#getCategoriesByIdParent
          * @param {string} id - Category id
          * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Category_prototype___get__parent(parameters: {
+    getCategoriesByIdParent(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
@@ -7808,7 +7808,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___get__childrenURL(parameters: {
+    getCategoriesByIdChildrenURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -7836,12 +7836,12 @@ export default class TweakApi {
     /**
     * Queries children of Category.
     * @method
-    * @name TweakApi#Category_prototype___get__children
+    * @name TweakApi#getCategoriesByIdChildren
          * @param {string} id - Category id
          * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Category_prototype___get__children(parameters: {
+    getCategoriesByIdChildren(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -7877,7 +7877,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___create__childrenURL(parameters: {
+    postCategoriesByIdChildrenURL(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -7904,12 +7904,12 @@ export default class TweakApi {
     /**
     * Creates a new instance in children of this model.
     * @method
-    * @name TweakApi#Category_prototype___create__children
+    * @name TweakApi#postCategoriesByIdChildren
          * @param {string} id - Category id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Category_prototype___create__children(parameters: {
+    postCategoriesByIdChildren(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -7948,7 +7948,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___delete__childrenURL(parameters: {
+    deleteCategoriesByIdChildrenURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -7972,10 +7972,10 @@ export default class TweakApi {
     /**
      * Deletes all children of this model.
      * @method
-     * @name TweakApi#Category_prototype___delete__children
+     * @name TweakApi#deleteCategoriesByIdChildren
      * @param {string} id - Category id
      */
-    Category_prototype___delete__children(parameters: {
+    deleteCategoriesByIdChildren(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8006,7 +8006,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype___count__childrenURL(parameters: {
+    getCategoriesByIdChildrenCountURL(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -8034,11 +8034,11 @@ export default class TweakApi {
     /**
      * Counts children of Category.
      * @method
-     * @name TweakApi#Category_prototype___count__children
+     * @name TweakApi#getCategoriesByIdChildrenCount
      * @param {string} id - Category id
      * @param {string} where - Criteria to match model instances
      */
-    Category_prototype___count__children(parameters: {
+    getCategoriesByIdChildrenCount(parameters: {
         'id': string,
         'where' ? : string,
         $queryParameters ? : any,
@@ -8074,7 +8074,7 @@ export default class TweakApi {
         });
     }
 
-    Category_createURL(parameters: {
+    postCategoriesURL(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8098,10 +8098,10 @@ export default class TweakApi {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Category_create
+     * @name TweakApi#postCategories
      * @param {} data - Model instance data
      */
-    Category_create(parameters: {
+    postCategories(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8132,7 +8132,7 @@ export default class TweakApi {
         });
     }
 
-    Category_upsert__put_CategoriesURL(parameters: {
+    putCategoriesURL(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8154,10 +8154,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Category_upsert__put_Categories
+     * @name TweakApi#putCategories
      * @param {} data - Model instance data
      */
-    Category_upsert__put_Categories(parameters: {
+    putCategories(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8185,7 +8185,7 @@ export default class TweakApi {
         });
     }
 
-    Category_upsert__patch_CategoriesURL(parameters: {
+    patchCategoriesURL(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8207,10 +8207,10 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Category_upsert__patch_Categories
+     * @name TweakApi#patchCategories
      * @param {} data - Model instance data
      */
-    Category_upsert__patch_Categories(parameters: {
+    patchCategories(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8238,7 +8238,7 @@ export default class TweakApi {
         });
     }
 
-    Category_findURL(parameters: {
+    getCategoriesURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8263,10 +8263,10 @@ export default class TweakApi {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Category_find
+     * @name TweakApi#getCategories
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Category_find(parameters: {
+    getCategories(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8294,7 +8294,7 @@ export default class TweakApi {
         });
     }
 
-    Category_replaceOrCreateURL(parameters: {
+    postCategoriesReplaceOrCreateURL(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8318,10 +8318,10 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Category_replaceOrCreate
+     * @name TweakApi#postCategoriesReplaceOrCreate
      * @param {} data - Model instance data
      */
-    Category_replaceOrCreate(parameters: {
+    postCategoriesReplaceOrCreate(parameters: {
         'data' ? : Category,
         $queryParameters ? : any,
         $domain ? : string
@@ -8352,7 +8352,7 @@ export default class TweakApi {
         });
     }
 
-    Category_upsertWithWhereURL(parameters: {
+    postCategoriesUpsertWithWhereURL(parameters: {
         'where' ? : string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8380,11 +8380,11 @@ export default class TweakApi {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Category_upsertWithWhere
+     * @name TweakApi#postCategoriesUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Category_upsertWithWhere(parameters: {
+    postCategoriesUpsertWithWhere(parameters: {
         'where' ? : string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8420,7 +8420,7 @@ export default class TweakApi {
         });
     }
 
-    Category_exists__get_Categories__id__existsURL(parameters: {
+    getCategoriesByIdExistsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8444,10 +8444,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Category_exists__get_Categories__id__exists
+     * @name TweakApi#getCategoriesByIdExists
      * @param {string} id - Model id
      */
-    Category_exists__get_Categories__id__exists(parameters: {
+    getCategoriesByIdExists(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8478,7 +8478,7 @@ export default class TweakApi {
         });
     }
 
-    Category_exists__head_Categories__id_URL(parameters: {
+    headCategoriesByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8502,10 +8502,10 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Category_exists__head_Categories__id_
+     * @name TweakApi#headCategoriesById
      * @param {string} id - Model id
      */
-    Category_exists__head_Categories__id_(parameters: {
+    headCategoriesById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8536,7 +8536,7 @@ export default class TweakApi {
         });
     }
 
-    Category_findByIdURL(parameters: {
+    getCategoriesByIdURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -8564,11 +8564,11 @@ export default class TweakApi {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Category_findById
+     * @name TweakApi#getCategoriesById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      */
-    Category_findById(parameters: {
+    getCategoriesById(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -8604,7 +8604,7 @@ export default class TweakApi {
         });
     }
 
-    Category_deleteByIdURL(parameters: {
+    deleteCategoriesByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8628,10 +8628,10 @@ export default class TweakApi {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Category_deleteById
+     * @name TweakApi#deleteCategoriesById
      * @param {string} id - Model id
      */
-    Category_deleteById(parameters: {
+    deleteCategoriesById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8662,7 +8662,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype_updateAttributes__put_Categories__id_URL(parameters: {
+    putCategoriesByIdURL(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8687,11 +8687,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Category_prototype_updateAttributes__put_Categories__id_
+     * @name TweakApi#putCategoriesById
      * @param {string} id - Category id
      * @param {} data - An object of model property name/value pairs
      */
-    Category_prototype_updateAttributes__put_Categories__id_(parameters: {
+    putCategoriesById(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8727,7 +8727,7 @@ export default class TweakApi {
         });
     }
 
-    Category_prototype_updateAttributes__patch_Categories__id_URL(parameters: {
+    patchCategoriesByIdURL(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8752,11 +8752,11 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Category_prototype_updateAttributes__patch_Categories__id_
+     * @name TweakApi#patchCategoriesById
      * @param {string} id - Category id
      * @param {} data - An object of model property name/value pairs
      */
-    Category_prototype_updateAttributes__patch_Categories__id_(parameters: {
+    patchCategoriesById(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8792,7 +8792,7 @@ export default class TweakApi {
         });
     }
 
-    Category_replaceByIdURL(parameters: {
+    postCategoriesByIdReplaceURL(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8819,11 +8819,11 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Category_replaceById
+     * @name TweakApi#postCategoriesByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    Category_replaceById(parameters: {
+    postCategoriesByIdReplace(parameters: {
         'id': string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8862,7 +8862,7 @@ export default class TweakApi {
         });
     }
 
-    Category_findOneURL(parameters: {
+    getCategoriesFindOneURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8887,10 +8887,10 @@ export default class TweakApi {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Category_findOne
+     * @name TweakApi#getCategoriesFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      */
-    Category_findOne(parameters: {
+    getCategoriesFindOne(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -8918,7 +8918,7 @@ export default class TweakApi {
         });
     }
 
-    Category_updateAllURL(parameters: {
+    postCategoriesUpdateURL(parameters: {
         'where' ? : string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8946,11 +8946,11 @@ export default class TweakApi {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Category_updateAll
+     * @name TweakApi#postCategoriesUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    Category_updateAll(parameters: {
+    postCategoriesUpdate(parameters: {
         'where' ? : string,
         'data' ? : Category,
         $queryParameters ? : any,
@@ -8986,7 +8986,7 @@ export default class TweakApi {
         });
     }
 
-    Category_countURL(parameters: {
+    getCategoriesCountURL(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -9011,10 +9011,10 @@ export default class TweakApi {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Category_count
+     * @name TweakApi#getCategoriesCount
      * @param {string} where - Criteria to match model instances
      */
-    Category_count(parameters: {
+    getCategoriesCount(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -9042,7 +9042,7 @@ export default class TweakApi {
         });
     }
 
-    Category_createChangeStream__post_Categories_change_streamURL(parameters: {
+    postCategoriesChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -9066,11 +9066,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Category_createChangeStream__post_Categories_change_stream
+    * @name TweakApi#postCategoriesChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Category_createChangeStream__post_Categories_change_stream(parameters: {
+    postCategoriesChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -9101,7 +9101,7 @@ export default class TweakApi {
         });
     }
 
-    Category_createChangeStream__get_Categories_change_streamURL(parameters: {
+    getCategoriesChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -9126,11 +9126,11 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#Category_createChangeStream__get_Categories_change_stream
+    * @name TweakApi#getCategoriesChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    Category_createChangeStream__get_Categories_change_stream(parameters: {
+    getCategoriesChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string

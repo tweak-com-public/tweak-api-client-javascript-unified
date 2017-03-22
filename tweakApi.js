@@ -17,7 +17,7 @@ var TweakApi = (function() {
 
     function TweakApi(options) {
         var domain = (typeof options === 'object') ? options.domain : options;
-        this.domain = domain ? domain : '';
+        this.domain = domain ? domain : 'http://apidevcdn.tweak.com/api';
         if (this.domain.length === 0) {
             throw new Error('Domain parameter must be specified as a string.');
         }
@@ -84,12 +84,12 @@ var TweakApi = (function() {
     /**
      * Find a related item by id for accessTokens.
      * @method
-     * @name TweakApi#User_prototype___findById__accessTokens
+     * @name TweakApi#getUsersByIdAccessTokensByFk
      * @param {string} id - User id
      * @param {string} fk - Foreign key for accessTokens
      * 
      */
-    TweakApi.prototype.User_prototype___findById__accessTokens = function(parameters) {
+    TweakApi.prototype.getUsersByIdAccessTokensByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -142,12 +142,12 @@ var TweakApi = (function() {
     /**
      * Delete a related item by id for accessTokens.
      * @method
-     * @name TweakApi#User_prototype___destroyById__accessTokens
+     * @name TweakApi#deleteUsersByIdAccessTokensByFk
      * @param {string} id - User id
      * @param {string} fk - Foreign key for accessTokens
      * 
      */
-    TweakApi.prototype.User_prototype___destroyById__accessTokens = function(parameters) {
+    TweakApi.prototype.deleteUsersByIdAccessTokensByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -200,14 +200,14 @@ var TweakApi = (function() {
     /**
      * Update a related item by id for accessTokens.
      * @method
-     * @name TweakApi#User_prototype___updateById__accessTokens
+     * @name TweakApi#putUsersByIdAccessTokensByFk
      * @param {string} id - User id
      * @param {string} fk - Foreign key for accessTokens
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_prototype___updateById__accessTokens = function(parameters) {
+    TweakApi.prototype.putUsersByIdAccessTokensByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -264,13 +264,13 @@ var TweakApi = (function() {
     /**
      * Queries accessTokens of User.
      * @method
-     * @name TweakApi#User_prototype___get__accessTokens
+     * @name TweakApi#getUsersByIdAccessTokens
      * @param {string} id - User id
      * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_prototype___get__accessTokens = function(parameters) {
+    TweakApi.prototype.getUsersByIdAccessTokens = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -320,13 +320,13 @@ var TweakApi = (function() {
     /**
      * Creates a new instance in accessTokens of this model.
      * @method
-     * @name TweakApi#User_prototype___create__accessTokens
+     * @name TweakApi#postUsersByIdAccessTokens
      * @param {string} id - User id
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_prototype___create__accessTokens = function(parameters) {
+    TweakApi.prototype.postUsersByIdAccessTokens = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -376,11 +376,11 @@ var TweakApi = (function() {
     /**
      * Deletes all accessTokens of this model.
      * @method
-     * @name TweakApi#User_prototype___delete__accessTokens
+     * @name TweakApi#deleteUsersByIdAccessTokens
      * @param {string} id - User id
      * 
      */
-    TweakApi.prototype.User_prototype___delete__accessTokens = function(parameters) {
+    TweakApi.prototype.deleteUsersByIdAccessTokens = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -426,12 +426,12 @@ var TweakApi = (function() {
     /**
      * Counts accessTokens of User.
      * @method
-     * @name TweakApi#User_prototype___count__accessTokens
+     * @name TweakApi#getUsersByIdAccessTokensCount
      * @param {string} id - User id
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.User_prototype___count__accessTokens = function(parameters) {
+    TweakApi.prototype.getUsersByIdAccessTokensCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -481,11 +481,11 @@ var TweakApi = (function() {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#User_create
+     * @name TweakApi#postUsers
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.User_create = function(parameters) {
+    TweakApi.prototype.postUsers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -528,11 +528,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#User_upsert__put_Users
+     * @name TweakApi#putUsers
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.User_upsert__put_Users = function(parameters) {
+    TweakApi.prototype.putUsers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -575,11 +575,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#User_upsert__patch_Users
+     * @name TweakApi#patchUsers
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.User_upsert__patch_Users = function(parameters) {
+    TweakApi.prototype.patchUsers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -622,11 +622,11 @@ var TweakApi = (function() {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#User_find
+     * @name TweakApi#getUsers
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.User_find = function(parameters) {
+    TweakApi.prototype.getUsers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -669,11 +669,11 @@ var TweakApi = (function() {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#User_replaceOrCreate
+     * @name TweakApi#postUsersReplaceOrCreate
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.User_replaceOrCreate = function(parameters) {
+    TweakApi.prototype.postUsersReplaceOrCreate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -716,12 +716,12 @@ var TweakApi = (function() {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#User_upsertWithWhere
+     * @name TweakApi#postUsersUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.User_upsertWithWhere = function(parameters) {
+    TweakApi.prototype.postUsersUpsertWithWhere = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -768,11 +768,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#User_exists__get_Users__id__exists
+     * @name TweakApi#getUsersByIdExists
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.User_exists__get_Users__id__exists = function(parameters) {
+    TweakApi.prototype.getUsersByIdExists = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -818,11 +818,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#User_exists__head_Users__id_
+     * @name TweakApi#headUsersById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.User_exists__head_Users__id_ = function(parameters) {
+    TweakApi.prototype.headUsersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -868,12 +868,12 @@ var TweakApi = (function() {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#User_findById
+     * @name TweakApi#getUsersById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      * 
      */
-    TweakApi.prototype.User_findById = function(parameters) {
+    TweakApi.prototype.getUsersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -923,11 +923,11 @@ var TweakApi = (function() {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#User_deleteById
+     * @name TweakApi#deleteUsersById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.User_deleteById = function(parameters) {
+    TweakApi.prototype.deleteUsersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -973,12 +973,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#User_prototype_updateAttributes__put_Users__id_
+     * @name TweakApi#putUsersById
      * @param {string} id - User id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.User_prototype_updateAttributes__put_Users__id_ = function(parameters) {
+    TweakApi.prototype.putUsersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1028,12 +1028,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#User_prototype_updateAttributes__patch_Users__id_
+     * @name TweakApi#patchUsersById
      * @param {string} id - User id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.User_prototype_updateAttributes__patch_Users__id_ = function(parameters) {
+    TweakApi.prototype.patchUsersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1083,12 +1083,12 @@ var TweakApi = (function() {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#User_replaceById
+     * @name TweakApi#postUsersByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.User_replaceById = function(parameters) {
+    TweakApi.prototype.postUsersByIdReplace = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1138,11 +1138,11 @@ var TweakApi = (function() {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#User_findOne
+     * @name TweakApi#getUsersFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.User_findOne = function(parameters) {
+    TweakApi.prototype.getUsersFindOne = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1185,12 +1185,12 @@ var TweakApi = (function() {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#User_updateAll
+     * @name TweakApi#postUsersUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.User_updateAll = function(parameters) {
+    TweakApi.prototype.postUsersUpdate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1237,11 +1237,11 @@ var TweakApi = (function() {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#User_count
+     * @name TweakApi#getUsersCount
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.User_count = function(parameters) {
+    TweakApi.prototype.getUsersCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1284,12 +1284,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#User_createChangeStream__post_Users_change_stream
+     * @name TweakApi#postUsersChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_createChangeStream__post_Users_change_stream = function(parameters) {
+    TweakApi.prototype.postUsersChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1332,12 +1332,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#User_createChangeStream__get_Users_change_stream
+     * @name TweakApi#getUsersChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_createChangeStream__get_Users_change_stream = function(parameters) {
+    TweakApi.prototype.getUsersChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1380,13 +1380,13 @@ var TweakApi = (function() {
     /**
      * Login a user with username/email and password.
      * @method
-     * @name TweakApi#User_login
+     * @name TweakApi#postUsersLogin
      * @param {} credentials - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * @param {string} include - Related objects to include in the response. See the description of return value for more details.
      * 
      */
-    TweakApi.prototype.User_login = function(parameters) {
+    TweakApi.prototype.postUsersLogin = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1438,10 +1438,10 @@ var TweakApi = (function() {
     /**
      * Logout a user with access token.
      * @method
-     * @name TweakApi#User_logout
+     * @name TweakApi#postUsersLogout
      * 
      */
-    TweakApi.prototype.User_logout = function(parameters) {
+    TweakApi.prototype.postUsersLogout = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1480,7 +1480,7 @@ var TweakApi = (function() {
     /**
      * Confirm a user registration with email verification token.
      * @method
-     * @name TweakApi#User_confirm
+     * @name TweakApi#getUsersConfirm
      * @param {string} uid - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * @param {string} token - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
@@ -1489,7 +1489,7 @@ var TweakApi = (function() {
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_confirm = function(parameters) {
+    TweakApi.prototype.getUsersConfirm = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1550,12 +1550,12 @@ var TweakApi = (function() {
     /**
      * Reset password for a user with email.
      * @method
-     * @name TweakApi#User_resetPassword
+     * @name TweakApi#postUsersReset
      * @param {} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.User_resetPassword = function(parameters) {
+    TweakApi.prototype.postUsersReset = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1603,12 +1603,12 @@ var TweakApi = (function() {
     /**
      * 
      * @method
-     * @name TweakApi#Message_greet
+     * @name TweakApi#getMessagesGreet
      * @param {string} msg - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Message_greet = function(parameters) {
+    TweakApi.prototype.getMessagesGreet = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1651,12 +1651,12 @@ var TweakApi = (function() {
     /**
      * Find a related item by id for accessTokens.
      * @method
-     * @name TweakApi#Customer_prototype___findById__accessTokens
+     * @name TweakApi#getCustomersByIdAccessTokensByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for accessTokens
      * 
      */
-    TweakApi.prototype.Customer_prototype___findById__accessTokens = function(parameters) {
+    TweakApi.prototype.getCustomersByIdAccessTokensByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1709,12 +1709,12 @@ var TweakApi = (function() {
     /**
      * Delete a related item by id for accessTokens.
      * @method
-     * @name TweakApi#Customer_prototype___destroyById__accessTokens
+     * @name TweakApi#deleteCustomersByIdAccessTokensByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for accessTokens
      * 
      */
-    TweakApi.prototype.Customer_prototype___destroyById__accessTokens = function(parameters) {
+    TweakApi.prototype.deleteCustomersByIdAccessTokensByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1767,14 +1767,14 @@ var TweakApi = (function() {
     /**
      * Update a related item by id for accessTokens.
      * @method
-     * @name TweakApi#Customer_prototype___updateById__accessTokens
+     * @name TweakApi#putCustomersByIdAccessTokensByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for accessTokens
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_prototype___updateById__accessTokens = function(parameters) {
+    TweakApi.prototype.putCustomersByIdAccessTokensByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1831,12 +1831,12 @@ var TweakApi = (function() {
     /**
      * Find a related item by id for designs.
      * @method
-     * @name TweakApi#Customer_prototype___findById__designs
+     * @name TweakApi#getCustomersByIdDesignsByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for designs
      * 
      */
-    TweakApi.prototype.Customer_prototype___findById__designs = function(parameters) {
+    TweakApi.prototype.getCustomersByIdDesignsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1889,12 +1889,12 @@ var TweakApi = (function() {
     /**
      * Delete a related item by id for designs.
      * @method
-     * @name TweakApi#Customer_prototype___destroyById__designs
+     * @name TweakApi#deleteCustomersByIdDesignsByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for designs
      * 
      */
-    TweakApi.prototype.Customer_prototype___destroyById__designs = function(parameters) {
+    TweakApi.prototype.deleteCustomersByIdDesignsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -1947,14 +1947,14 @@ var TweakApi = (function() {
     /**
      * Update a related item by id for designs.
      * @method
-     * @name TweakApi#Customer_prototype___updateById__designs
+     * @name TweakApi#putCustomersByIdDesignsByFk
      * @param {string} id - Customer id
      * @param {string} fk - Foreign key for designs
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_prototype___updateById__designs = function(parameters) {
+    TweakApi.prototype.putCustomersByIdDesignsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2011,13 +2011,13 @@ var TweakApi = (function() {
     /**
      * Queries accessTokens of Customer.
      * @method
-     * @name TweakApi#Customer_prototype___get__accessTokens
+     * @name TweakApi#getCustomersByIdAccessTokens
      * @param {string} id - Customer id
      * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_prototype___get__accessTokens = function(parameters) {
+    TweakApi.prototype.getCustomersByIdAccessTokens = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2067,13 +2067,13 @@ var TweakApi = (function() {
     /**
      * Creates a new instance in accessTokens of this model.
      * @method
-     * @name TweakApi#Customer_prototype___create__accessTokens
+     * @name TweakApi#postCustomersByIdAccessTokens
      * @param {string} id - Customer id
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_prototype___create__accessTokens = function(parameters) {
+    TweakApi.prototype.postCustomersByIdAccessTokens = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2123,11 +2123,11 @@ var TweakApi = (function() {
     /**
      * Deletes all accessTokens of this model.
      * @method
-     * @name TweakApi#Customer_prototype___delete__accessTokens
+     * @name TweakApi#deleteCustomersByIdAccessTokens
      * @param {string} id - Customer id
      * 
      */
-    TweakApi.prototype.Customer_prototype___delete__accessTokens = function(parameters) {
+    TweakApi.prototype.deleteCustomersByIdAccessTokens = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2173,12 +2173,12 @@ var TweakApi = (function() {
     /**
      * Counts accessTokens of Customer.
      * @method
-     * @name TweakApi#Customer_prototype___count__accessTokens
+     * @name TweakApi#getCustomersByIdAccessTokensCount
      * @param {string} id - Customer id
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Customer_prototype___count__accessTokens = function(parameters) {
+    TweakApi.prototype.getCustomersByIdAccessTokensCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2228,13 +2228,13 @@ var TweakApi = (function() {
     /**
      * Queries designs of Customer.
      * @method
-     * @name TweakApi#Customer_prototype___get__designs
+     * @name TweakApi#getCustomersByIdDesigns
      * @param {string} id - Customer id
      * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_prototype___get__designs = function(parameters) {
+    TweakApi.prototype.getCustomersByIdDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2284,13 +2284,13 @@ var TweakApi = (function() {
     /**
      * Creates a new instance in designs of this model.
      * @method
-     * @name TweakApi#Customer_prototype___create__designs
+     * @name TweakApi#postCustomersByIdDesigns
      * @param {string} id - Customer id
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_prototype___create__designs = function(parameters) {
+    TweakApi.prototype.postCustomersByIdDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2340,11 +2340,11 @@ var TweakApi = (function() {
     /**
      * Deletes all designs of this model.
      * @method
-     * @name TweakApi#Customer_prototype___delete__designs
+     * @name TweakApi#deleteCustomersByIdDesigns
      * @param {string} id - Customer id
      * 
      */
-    TweakApi.prototype.Customer_prototype___delete__designs = function(parameters) {
+    TweakApi.prototype.deleteCustomersByIdDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2390,12 +2390,12 @@ var TweakApi = (function() {
     /**
      * Counts designs of Customer.
      * @method
-     * @name TweakApi#Customer_prototype___count__designs
+     * @name TweakApi#getCustomersByIdDesignsCount
      * @param {string} id - Customer id
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Customer_prototype___count__designs = function(parameters) {
+    TweakApi.prototype.getCustomersByIdDesignsCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2445,11 +2445,11 @@ var TweakApi = (function() {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_create
+     * @name TweakApi#postCustomers
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Customer_create = function(parameters) {
+    TweakApi.prototype.postCustomers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2492,11 +2492,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Customer_upsert__put_Customers
+     * @name TweakApi#putCustomers
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Customer_upsert__put_Customers = function(parameters) {
+    TweakApi.prototype.putCustomers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2539,11 +2539,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Customer_upsert__patch_Customers
+     * @name TweakApi#patchCustomers
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Customer_upsert__patch_Customers = function(parameters) {
+    TweakApi.prototype.patchCustomers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2586,11 +2586,11 @@ var TweakApi = (function() {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Customer_find
+     * @name TweakApi#getCustomers
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Customer_find = function(parameters) {
+    TweakApi.prototype.getCustomers = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2633,11 +2633,11 @@ var TweakApi = (function() {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Customer_replaceOrCreate
+     * @name TweakApi#postCustomersReplaceOrCreate
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Customer_replaceOrCreate = function(parameters) {
+    TweakApi.prototype.postCustomersReplaceOrCreate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2680,12 +2680,12 @@ var TweakApi = (function() {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Customer_upsertWithWhere
+     * @name TweakApi#postCustomersUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Customer_upsertWithWhere = function(parameters) {
+    TweakApi.prototype.postCustomersUpsertWithWhere = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2732,11 +2732,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Customer_exists__get_Customers__id__exists
+     * @name TweakApi#getCustomersByIdExists
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Customer_exists__get_Customers__id__exists = function(parameters) {
+    TweakApi.prototype.getCustomersByIdExists = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2782,11 +2782,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Customer_exists__head_Customers__id_
+     * @name TweakApi#headCustomersById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Customer_exists__head_Customers__id_ = function(parameters) {
+    TweakApi.prototype.headCustomersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2832,12 +2832,12 @@ var TweakApi = (function() {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Customer_findById
+     * @name TweakApi#getCustomersById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      * 
      */
-    TweakApi.prototype.Customer_findById = function(parameters) {
+    TweakApi.prototype.getCustomersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2887,11 +2887,11 @@ var TweakApi = (function() {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Customer_deleteById
+     * @name TweakApi#deleteCustomersById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Customer_deleteById = function(parameters) {
+    TweakApi.prototype.deleteCustomersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2937,12 +2937,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_prototype_updateAttributes__put_Customers__id_
+     * @name TweakApi#putCustomersById
      * @param {string} id - Customer id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Customer_prototype_updateAttributes__put_Customers__id_ = function(parameters) {
+    TweakApi.prototype.putCustomersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -2992,12 +2992,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_prototype_updateAttributes__patch_Customers__id_
+     * @name TweakApi#patchCustomersById
      * @param {string} id - Customer id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Customer_prototype_updateAttributes__patch_Customers__id_ = function(parameters) {
+    TweakApi.prototype.patchCustomersById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3047,12 +3047,12 @@ var TweakApi = (function() {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Customer_replaceById
+     * @name TweakApi#postCustomersByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Customer_replaceById = function(parameters) {
+    TweakApi.prototype.postCustomersByIdReplace = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3102,11 +3102,11 @@ var TweakApi = (function() {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Customer_findOne
+     * @name TweakApi#getCustomersFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Customer_findOne = function(parameters) {
+    TweakApi.prototype.getCustomersFindOne = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3149,12 +3149,12 @@ var TweakApi = (function() {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Customer_updateAll
+     * @name TweakApi#postCustomersUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Customer_updateAll = function(parameters) {
+    TweakApi.prototype.postCustomersUpdate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3201,11 +3201,11 @@ var TweakApi = (function() {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Customer_count
+     * @name TweakApi#getCustomersCount
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Customer_count = function(parameters) {
+    TweakApi.prototype.getCustomersCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3248,12 +3248,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Customer_createChangeStream__post_Customers_change_stream
+     * @name TweakApi#postCustomersChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_createChangeStream__post_Customers_change_stream = function(parameters) {
+    TweakApi.prototype.postCustomersChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3296,12 +3296,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Customer_createChangeStream__get_Customers_change_stream
+     * @name TweakApi#getCustomersChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_createChangeStream__get_Customers_change_stream = function(parameters) {
+    TweakApi.prototype.getCustomersChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3344,13 +3344,13 @@ var TweakApi = (function() {
     /**
      * Login a user with username/email and password.
      * @method
-     * @name TweakApi#Customer_login
+     * @name TweakApi#postCustomersLogin
      * @param {} credentials - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * @param {string} include - Related objects to include in the response. See the description of return value for more details.
      * 
      */
-    TweakApi.prototype.Customer_login = function(parameters) {
+    TweakApi.prototype.postCustomersLogin = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3402,10 +3402,10 @@ var TweakApi = (function() {
     /**
      * Logout a user with access token.
      * @method
-     * @name TweakApi#Customer_logout
+     * @name TweakApi#postCustomersLogout
      * 
      */
-    TweakApi.prototype.Customer_logout = function(parameters) {
+    TweakApi.prototype.postCustomersLogout = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3444,7 +3444,7 @@ var TweakApi = (function() {
     /**
      * Confirm a user registration with email verification token.
      * @method
-     * @name TweakApi#Customer_confirm
+     * @name TweakApi#getCustomersConfirm
      * @param {string} uid - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * @param {string} token - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
@@ -3453,7 +3453,7 @@ var TweakApi = (function() {
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_confirm = function(parameters) {
+    TweakApi.prototype.getCustomersConfirm = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3514,12 +3514,12 @@ var TweakApi = (function() {
     /**
      * Reset password for a user with email.
      * @method
-     * @name TweakApi#Customer_resetPassword
+     * @name TweakApi#postCustomersReset
      * @param {} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Customer_resetPassword = function(parameters) {
+    TweakApi.prototype.postCustomersReset = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3567,13 +3567,13 @@ var TweakApi = (function() {
     /**
      * Fetches belongsTo relation customer.
      * @method
-     * @name TweakApi#Design_prototype___get__customer
+     * @name TweakApi#getDesignsByIdCustomer
      * @param {string} id - Design id
      * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___get__customer = function(parameters) {
+    TweakApi.prototype.getDesignsByIdCustomer = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3623,12 +3623,12 @@ var TweakApi = (function() {
     /**
      * Find a related item by id for tags.
      * @method
-     * @name TweakApi#Design_prototype___findById__tags
+     * @name TweakApi#getDesignsByIdTagsByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for tags
      * 
      */
-    TweakApi.prototype.Design_prototype___findById__tags = function(parameters) {
+    TweakApi.prototype.getDesignsByIdTagsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3681,12 +3681,12 @@ var TweakApi = (function() {
     /**
      * Delete a related item by id for tags.
      * @method
-     * @name TweakApi#Design_prototype___destroyById__tags
+     * @name TweakApi#deleteDesignsByIdTagsByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for tags
      * 
      */
-    TweakApi.prototype.Design_prototype___destroyById__tags = function(parameters) {
+    TweakApi.prototype.deleteDesignsByIdTagsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3739,14 +3739,14 @@ var TweakApi = (function() {
     /**
      * Update a related item by id for tags.
      * @method
-     * @name TweakApi#Design_prototype___updateById__tags
+     * @name TweakApi#putDesignsByIdTagsByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for tags
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___updateById__tags = function(parameters) {
+    TweakApi.prototype.putDesignsByIdTagsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3803,12 +3803,12 @@ var TweakApi = (function() {
     /**
      * Find a related item by id for categories.
      * @method
-     * @name TweakApi#Design_prototype___findById__categories
+     * @name TweakApi#getDesignsByIdCategoriesByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for categories
      * 
      */
-    TweakApi.prototype.Design_prototype___findById__categories = function(parameters) {
+    TweakApi.prototype.getDesignsByIdCategoriesByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3861,12 +3861,12 @@ var TweakApi = (function() {
     /**
      * Delete a related item by id for categories.
      * @method
-     * @name TweakApi#Design_prototype___destroyById__categories
+     * @name TweakApi#deleteDesignsByIdCategoriesByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for categories
      * 
      */
-    TweakApi.prototype.Design_prototype___destroyById__categories = function(parameters) {
+    TweakApi.prototype.deleteDesignsByIdCategoriesByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3919,14 +3919,14 @@ var TweakApi = (function() {
     /**
      * Update a related item by id for categories.
      * @method
-     * @name TweakApi#Design_prototype___updateById__categories
+     * @name TweakApi#putDesignsByIdCategoriesByFk
      * @param {string} id - Design id
      * @param {string} fk - Foreign key for categories
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___updateById__categories = function(parameters) {
+    TweakApi.prototype.putDesignsByIdCategoriesByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -3983,13 +3983,13 @@ var TweakApi = (function() {
     /**
      * Queries tags of Design.
      * @method
-     * @name TweakApi#Design_prototype___get__tags
+     * @name TweakApi#getDesignsByIdTags
      * @param {string} id - Design id
      * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___get__tags = function(parameters) {
+    TweakApi.prototype.getDesignsByIdTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4039,13 +4039,13 @@ var TweakApi = (function() {
     /**
      * Creates a new instance in tags of this model.
      * @method
-     * @name TweakApi#Design_prototype___create__tags
+     * @name TweakApi#postDesignsByIdTags
      * @param {string} id - Design id
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___create__tags = function(parameters) {
+    TweakApi.prototype.postDesignsByIdTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4095,11 +4095,11 @@ var TweakApi = (function() {
     /**
      * Deletes all tags of this model.
      * @method
-     * @name TweakApi#Design_prototype___delete__tags
+     * @name TweakApi#deleteDesignsByIdTags
      * @param {string} id - Design id
      * 
      */
-    TweakApi.prototype.Design_prototype___delete__tags = function(parameters) {
+    TweakApi.prototype.deleteDesignsByIdTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4145,12 +4145,12 @@ var TweakApi = (function() {
     /**
      * Counts tags of Design.
      * @method
-     * @name TweakApi#Design_prototype___count__tags
+     * @name TweakApi#getDesignsByIdTagsCount
      * @param {string} id - Design id
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Design_prototype___count__tags = function(parameters) {
+    TweakApi.prototype.getDesignsByIdTagsCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4200,13 +4200,13 @@ var TweakApi = (function() {
     /**
      * Queries categories of Design.
      * @method
-     * @name TweakApi#Design_prototype___get__categories
+     * @name TweakApi#getDesignsByIdCategories
      * @param {string} id - Design id
      * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___get__categories = function(parameters) {
+    TweakApi.prototype.getDesignsByIdCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4256,13 +4256,13 @@ var TweakApi = (function() {
     /**
      * Creates a new instance in categories of this model.
      * @method
-     * @name TweakApi#Design_prototype___create__categories
+     * @name TweakApi#postDesignsByIdCategories
      * @param {string} id - Design id
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_prototype___create__categories = function(parameters) {
+    TweakApi.prototype.postDesignsByIdCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4312,11 +4312,11 @@ var TweakApi = (function() {
     /**
      * Deletes all categories of this model.
      * @method
-     * @name TweakApi#Design_prototype___delete__categories
+     * @name TweakApi#deleteDesignsByIdCategories
      * @param {string} id - Design id
      * 
      */
-    TweakApi.prototype.Design_prototype___delete__categories = function(parameters) {
+    TweakApi.prototype.deleteDesignsByIdCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4362,12 +4362,12 @@ var TweakApi = (function() {
     /**
      * Counts categories of Design.
      * @method
-     * @name TweakApi#Design_prototype___count__categories
+     * @name TweakApi#getDesignsByIdCategoriesCount
      * @param {string} id - Design id
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Design_prototype___count__categories = function(parameters) {
+    TweakApi.prototype.getDesignsByIdCategoriesCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4417,11 +4417,11 @@ var TweakApi = (function() {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Design_create
+     * @name TweakApi#postDesigns
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Design_create = function(parameters) {
+    TweakApi.prototype.postDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4464,11 +4464,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Design_upsert__put_Designs
+     * @name TweakApi#putDesigns
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Design_upsert__put_Designs = function(parameters) {
+    TweakApi.prototype.putDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4511,11 +4511,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Design_upsert__patch_Designs
+     * @name TweakApi#patchDesigns
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Design_upsert__patch_Designs = function(parameters) {
+    TweakApi.prototype.patchDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4558,11 +4558,11 @@ var TweakApi = (function() {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Design_find
+     * @name TweakApi#getDesigns
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Design_find = function(parameters) {
+    TweakApi.prototype.getDesigns = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4605,11 +4605,11 @@ var TweakApi = (function() {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Design_replaceOrCreate
+     * @name TweakApi#postDesignsReplaceOrCreate
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Design_replaceOrCreate = function(parameters) {
+    TweakApi.prototype.postDesignsReplaceOrCreate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4652,12 +4652,12 @@ var TweakApi = (function() {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Design_upsertWithWhere
+     * @name TweakApi#postDesignsUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Design_upsertWithWhere = function(parameters) {
+    TweakApi.prototype.postDesignsUpsertWithWhere = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4704,11 +4704,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Design_exists__get_Designs__id__exists
+     * @name TweakApi#getDesignsByIdExists
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Design_exists__get_Designs__id__exists = function(parameters) {
+    TweakApi.prototype.getDesignsByIdExists = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4754,11 +4754,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Design_exists__head_Designs__id_
+     * @name TweakApi#headDesignsById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Design_exists__head_Designs__id_ = function(parameters) {
+    TweakApi.prototype.headDesignsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4804,12 +4804,12 @@ var TweakApi = (function() {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Design_findById
+     * @name TweakApi#getDesignsById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      * 
      */
-    TweakApi.prototype.Design_findById = function(parameters) {
+    TweakApi.prototype.getDesignsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4859,11 +4859,11 @@ var TweakApi = (function() {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Design_deleteById
+     * @name TweakApi#deleteDesignsById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Design_deleteById = function(parameters) {
+    TweakApi.prototype.deleteDesignsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4909,12 +4909,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Design_prototype_updateAttributes__put_Designs__id_
+     * @name TweakApi#putDesignsById
      * @param {string} id - Design id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Design_prototype_updateAttributes__put_Designs__id_ = function(parameters) {
+    TweakApi.prototype.putDesignsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -4964,12 +4964,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Design_prototype_updateAttributes__patch_Designs__id_
+     * @name TweakApi#patchDesignsById
      * @param {string} id - Design id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Design_prototype_updateAttributes__patch_Designs__id_ = function(parameters) {
+    TweakApi.prototype.patchDesignsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5019,12 +5019,12 @@ var TweakApi = (function() {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Design_replaceById
+     * @name TweakApi#postDesignsByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Design_replaceById = function(parameters) {
+    TweakApi.prototype.postDesignsByIdReplace = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5074,11 +5074,11 @@ var TweakApi = (function() {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Design_findOne
+     * @name TweakApi#getDesignsFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Design_findOne = function(parameters) {
+    TweakApi.prototype.getDesignsFindOne = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5121,12 +5121,12 @@ var TweakApi = (function() {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Design_updateAll
+     * @name TweakApi#postDesignsUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Design_updateAll = function(parameters) {
+    TweakApi.prototype.postDesignsUpdate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5173,11 +5173,11 @@ var TweakApi = (function() {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Design_count
+     * @name TweakApi#getDesignsCount
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Design_count = function(parameters) {
+    TweakApi.prototype.getDesignsCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5220,12 +5220,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Design_createChangeStream__post_Designs_change_stream
+     * @name TweakApi#postDesignsChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_createChangeStream__post_Designs_change_stream = function(parameters) {
+    TweakApi.prototype.postDesignsChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5268,12 +5268,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Design_createChangeStream__get_Designs_change_stream
+     * @name TweakApi#getDesignsChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Design_createChangeStream__get_Designs_change_stream = function(parameters) {
+    TweakApi.prototype.getDesignsChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5316,11 +5316,11 @@ var TweakApi = (function() {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_create
+     * @name TweakApi#postTags
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Tag_create = function(parameters) {
+    TweakApi.prototype.postTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5363,11 +5363,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Tag_upsert__put_Tags
+     * @name TweakApi#putTags
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Tag_upsert__put_Tags = function(parameters) {
+    TweakApi.prototype.putTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5410,11 +5410,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Tag_upsert__patch_Tags
+     * @name TweakApi#patchTags
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Tag_upsert__patch_Tags = function(parameters) {
+    TweakApi.prototype.patchTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5457,11 +5457,11 @@ var TweakApi = (function() {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Tag_find
+     * @name TweakApi#getTags
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Tag_find = function(parameters) {
+    TweakApi.prototype.getTags = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5504,11 +5504,11 @@ var TweakApi = (function() {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Tag_replaceOrCreate
+     * @name TweakApi#postTagsReplaceOrCreate
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Tag_replaceOrCreate = function(parameters) {
+    TweakApi.prototype.postTagsReplaceOrCreate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5551,12 +5551,12 @@ var TweakApi = (function() {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Tag_upsertWithWhere
+     * @name TweakApi#postTagsUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Tag_upsertWithWhere = function(parameters) {
+    TweakApi.prototype.postTagsUpsertWithWhere = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5603,11 +5603,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Tag_exists__get_Tags__id__exists
+     * @name TweakApi#getTagsByIdExists
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Tag_exists__get_Tags__id__exists = function(parameters) {
+    TweakApi.prototype.getTagsByIdExists = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5653,11 +5653,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Tag_exists__head_Tags__id_
+     * @name TweakApi#headTagsById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Tag_exists__head_Tags__id_ = function(parameters) {
+    TweakApi.prototype.headTagsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5703,12 +5703,12 @@ var TweakApi = (function() {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Tag_findById
+     * @name TweakApi#getTagsById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      * 
      */
-    TweakApi.prototype.Tag_findById = function(parameters) {
+    TweakApi.prototype.getTagsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5758,11 +5758,11 @@ var TweakApi = (function() {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Tag_deleteById
+     * @name TweakApi#deleteTagsById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Tag_deleteById = function(parameters) {
+    TweakApi.prototype.deleteTagsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5808,12 +5808,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_prototype_updateAttributes__put_Tags__id_
+     * @name TweakApi#putTagsById
      * @param {string} id - Tag id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Tag_prototype_updateAttributes__put_Tags__id_ = function(parameters) {
+    TweakApi.prototype.putTagsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5863,12 +5863,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_prototype_updateAttributes__patch_Tags__id_
+     * @name TweakApi#patchTagsById
      * @param {string} id - Tag id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Tag_prototype_updateAttributes__patch_Tags__id_ = function(parameters) {
+    TweakApi.prototype.patchTagsById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5918,12 +5918,12 @@ var TweakApi = (function() {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Tag_replaceById
+     * @name TweakApi#postTagsByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Tag_replaceById = function(parameters) {
+    TweakApi.prototype.postTagsByIdReplace = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -5973,11 +5973,11 @@ var TweakApi = (function() {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Tag_findOne
+     * @name TweakApi#getTagsFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Tag_findOne = function(parameters) {
+    TweakApi.prototype.getTagsFindOne = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6020,12 +6020,12 @@ var TweakApi = (function() {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Tag_updateAll
+     * @name TweakApi#postTagsUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Tag_updateAll = function(parameters) {
+    TweakApi.prototype.postTagsUpdate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6072,11 +6072,11 @@ var TweakApi = (function() {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Tag_count
+     * @name TweakApi#getTagsCount
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Tag_count = function(parameters) {
+    TweakApi.prototype.getTagsCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6119,12 +6119,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Tag_createChangeStream__post_Tags_change_stream
+     * @name TweakApi#postTagsChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Tag_createChangeStream__post_Tags_change_stream = function(parameters) {
+    TweakApi.prototype.postTagsChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6167,12 +6167,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Tag_createChangeStream__get_Tags_change_stream
+     * @name TweakApi#getTagsChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Tag_createChangeStream__get_Tags_change_stream = function(parameters) {
+    TweakApi.prototype.getTagsChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6215,12 +6215,12 @@ var TweakApi = (function() {
     /**
      * Find a related item by id for children.
      * @method
-     * @name TweakApi#Category_prototype___findById__children
+     * @name TweakApi#getCategoriesByIdChildrenByFk
      * @param {string} id - Category id
      * @param {string} fk - Foreign key for children
      * 
      */
-    TweakApi.prototype.Category_prototype___findById__children = function(parameters) {
+    TweakApi.prototype.getCategoriesByIdChildrenByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6273,12 +6273,12 @@ var TweakApi = (function() {
     /**
      * Delete a related item by id for children.
      * @method
-     * @name TweakApi#Category_prototype___destroyById__children
+     * @name TweakApi#deleteCategoriesByIdChildrenByFk
      * @param {string} id - Category id
      * @param {string} fk - Foreign key for children
      * 
      */
-    TweakApi.prototype.Category_prototype___destroyById__children = function(parameters) {
+    TweakApi.prototype.deleteCategoriesByIdChildrenByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6331,14 +6331,14 @@ var TweakApi = (function() {
     /**
      * Update a related item by id for children.
      * @method
-     * @name TweakApi#Category_prototype___updateById__children
+     * @name TweakApi#putCategoriesByIdChildrenByFk
      * @param {string} id - Category id
      * @param {string} fk - Foreign key for children
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Category_prototype___updateById__children = function(parameters) {
+    TweakApi.prototype.putCategoriesByIdChildrenByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6395,13 +6395,13 @@ var TweakApi = (function() {
     /**
      * Fetches belongsTo relation parent.
      * @method
-     * @name TweakApi#Category_prototype___get__parent
+     * @name TweakApi#getCategoriesByIdParent
      * @param {string} id - Category id
      * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Category_prototype___get__parent = function(parameters) {
+    TweakApi.prototype.getCategoriesByIdParent = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6451,13 +6451,13 @@ var TweakApi = (function() {
     /**
      * Queries children of Category.
      * @method
-     * @name TweakApi#Category_prototype___get__children
+     * @name TweakApi#getCategoriesByIdChildren
      * @param {string} id - Category id
      * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Category_prototype___get__children = function(parameters) {
+    TweakApi.prototype.getCategoriesByIdChildren = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6507,13 +6507,13 @@ var TweakApi = (function() {
     /**
      * Creates a new instance in children of this model.
      * @method
-     * @name TweakApi#Category_prototype___create__children
+     * @name TweakApi#postCategoriesByIdChildren
      * @param {string} id - Category id
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Category_prototype___create__children = function(parameters) {
+    TweakApi.prototype.postCategoriesByIdChildren = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6563,11 +6563,11 @@ var TweakApi = (function() {
     /**
      * Deletes all children of this model.
      * @method
-     * @name TweakApi#Category_prototype___delete__children
+     * @name TweakApi#deleteCategoriesByIdChildren
      * @param {string} id - Category id
      * 
      */
-    TweakApi.prototype.Category_prototype___delete__children = function(parameters) {
+    TweakApi.prototype.deleteCategoriesByIdChildren = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6613,12 +6613,12 @@ var TweakApi = (function() {
     /**
      * Counts children of Category.
      * @method
-     * @name TweakApi#Category_prototype___count__children
+     * @name TweakApi#getCategoriesByIdChildrenCount
      * @param {string} id - Category id
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Category_prototype___count__children = function(parameters) {
+    TweakApi.prototype.getCategoriesByIdChildrenCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6668,11 +6668,11 @@ var TweakApi = (function() {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#Category_create
+     * @name TweakApi#postCategories
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Category_create = function(parameters) {
+    TweakApi.prototype.postCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6715,11 +6715,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Category_upsert__put_Categories
+     * @name TweakApi#putCategories
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Category_upsert__put_Categories = function(parameters) {
+    TweakApi.prototype.putCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6762,11 +6762,11 @@ var TweakApi = (function() {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Category_upsert__patch_Categories
+     * @name TweakApi#patchCategories
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Category_upsert__patch_Categories = function(parameters) {
+    TweakApi.prototype.patchCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6809,11 +6809,11 @@ var TweakApi = (function() {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Category_find
+     * @name TweakApi#getCategories
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Category_find = function(parameters) {
+    TweakApi.prototype.getCategories = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6856,11 +6856,11 @@ var TweakApi = (function() {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#Category_replaceOrCreate
+     * @name TweakApi#postCategoriesReplaceOrCreate
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Category_replaceOrCreate = function(parameters) {
+    TweakApi.prototype.postCategoriesReplaceOrCreate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6903,12 +6903,12 @@ var TweakApi = (function() {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#Category_upsertWithWhere
+     * @name TweakApi#postCategoriesUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Category_upsertWithWhere = function(parameters) {
+    TweakApi.prototype.postCategoriesUpsertWithWhere = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -6955,11 +6955,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Category_exists__get_Categories__id__exists
+     * @name TweakApi#getCategoriesByIdExists
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Category_exists__get_Categories__id__exists = function(parameters) {
+    TweakApi.prototype.getCategoriesByIdExists = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7005,11 +7005,11 @@ var TweakApi = (function() {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#Category_exists__head_Categories__id_
+     * @name TweakApi#headCategoriesById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Category_exists__head_Categories__id_ = function(parameters) {
+    TweakApi.prototype.headCategoriesById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7055,12 +7055,12 @@ var TweakApi = (function() {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Category_findById
+     * @name TweakApi#getCategoriesById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include
      * 
      */
-    TweakApi.prototype.Category_findById = function(parameters) {
+    TweakApi.prototype.getCategoriesById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7110,11 +7110,11 @@ var TweakApi = (function() {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#Category_deleteById
+     * @name TweakApi#deleteCategoriesById
      * @param {string} id - Model id
      * 
      */
-    TweakApi.prototype.Category_deleteById = function(parameters) {
+    TweakApi.prototype.deleteCategoriesById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7160,12 +7160,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Category_prototype_updateAttributes__put_Categories__id_
+     * @name TweakApi#putCategoriesById
      * @param {string} id - Category id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Category_prototype_updateAttributes__put_Categories__id_ = function(parameters) {
+    TweakApi.prototype.putCategoriesById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7215,12 +7215,12 @@ var TweakApi = (function() {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Category_prototype_updateAttributes__patch_Categories__id_
+     * @name TweakApi#patchCategoriesById
      * @param {string} id - Category id
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Category_prototype_updateAttributes__patch_Categories__id_ = function(parameters) {
+    TweakApi.prototype.patchCategoriesById = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7270,12 +7270,12 @@ var TweakApi = (function() {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#Category_replaceById
+     * @name TweakApi#postCategoriesByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      * 
      */
-    TweakApi.prototype.Category_replaceById = function(parameters) {
+    TweakApi.prototype.postCategoriesByIdReplace = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7325,11 +7325,11 @@ var TweakApi = (function() {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#Category_findOne
+     * @name TweakApi#getCategoriesFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit
      * 
      */
-    TweakApi.prototype.Category_findOne = function(parameters) {
+    TweakApi.prototype.getCategoriesFindOne = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7372,12 +7372,12 @@ var TweakApi = (function() {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#Category_updateAll
+     * @name TweakApi#postCategoriesUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      * 
      */
-    TweakApi.prototype.Category_updateAll = function(parameters) {
+    TweakApi.prototype.postCategoriesUpdate = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7424,11 +7424,11 @@ var TweakApi = (function() {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#Category_count
+     * @name TweakApi#getCategoriesCount
      * @param {string} where - Criteria to match model instances
      * 
      */
-    TweakApi.prototype.Category_count = function(parameters) {
+    TweakApi.prototype.getCategoriesCount = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7471,12 +7471,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Category_createChangeStream__post_Categories_change_stream
+     * @name TweakApi#postCategoriesChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Category_createChangeStream__post_Categories_change_stream = function(parameters) {
+    TweakApi.prototype.postCategoriesChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
@@ -7519,12 +7519,12 @@ var TweakApi = (function() {
     /**
      * Create a change stream.
      * @method
-     * @name TweakApi#Category_createChangeStream__get_Categories_change_stream
+     * @name TweakApi#getCategoriesChangeStream
      * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * 
      */
-    TweakApi.prototype.Category_createChangeStream__get_Categories_change_stream = function(parameters) {
+    TweakApi.prototype.getCategoriesChangeStream = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
