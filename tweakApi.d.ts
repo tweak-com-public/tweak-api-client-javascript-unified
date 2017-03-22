@@ -26,7 +26,7 @@ type Logger = {
  */
 export default class TweakApi {
 
-    private domain: string = "";
+    private domain: string = "https://apidevcdn.tweak.com/api";
     private errorHandlers: CallbackHandler[] = [];
 
     constructor(domain ? : string, private logger ? : Logger) {

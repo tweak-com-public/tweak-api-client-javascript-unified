@@ -17,7 +17,7 @@ angular.module('', [])
         var TweakApi = (function() {
             function TweakApi(options, cache) {
                 var domain = (typeof options === 'object') ? options.domain : options;
-                this.domain = typeof(domain) === 'string' ? domain : '';
+                this.domain = typeof(domain) === 'string' ? domain : 'https://apidevcdn.tweak.com/api';
                 if (this.domain.length === 0) {
                     throw new Error('Domain parameter must be specified as a string.');
                 }

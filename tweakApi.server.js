@@ -15,7 +15,7 @@ var TweakApi = (function() {
 
     function TweakApi(options) {
         var domain = (typeof options === 'object') ? options.domain : options;
-        this.domain = domain ? domain : '';
+        this.domain = domain ? domain : 'https://apidevcdn.tweak.com/api';
         if (this.domain.length === 0) {
             throw new Error('Domain parameter must be specified as a string.');
         }
