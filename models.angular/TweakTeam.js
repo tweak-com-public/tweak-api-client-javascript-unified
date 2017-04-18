@@ -21,10 +21,10 @@
          * @param windowsKey    {string}                  
          * @param masterKey     {string}                  
          * @param status        {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
-         * @param members       {array}                   items: type: object    
-         * @param portals       {array}                   items: type: object    
-         * @param templates     {array}                   items: type: object    
-         * @param brand         {object}                  
+         * @param members       {array}                   items: $ref: #/definitions/Customer    
+         * @param portals       {array}                   items: $ref: #/definitions/Portal    
+         * @param templates     {array}                   items: $ref: #/definitions/Template    
+         * @param brand         {string}                  $ref: #/definitions/TeamBrand  
          */
         function TweakTeam(name, logo, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand) {
             this.name = name;
@@ -50,7 +50,7 @@
          * Private properties
          */
         var parameters = ['name', 'logo', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'object'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string'];
         var requiredParameters = ['name', 'id'];
 
         /**

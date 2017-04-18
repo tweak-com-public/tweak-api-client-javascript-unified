@@ -15,14 +15,14 @@
          * @param targetModel  {string}    [REQUIRED]    enum: Team, Portal, Template, Design
          * @param targetId     {string}    [REQUIRED]    
          * @param targetAttrs  {object}                  default:   
-         * @param status       {string}                  default: pending  enum: pending, accepted, rejected
+         * @param status       {string}                  default: pending  enum: pending, accepted
          * @param created      {string}                  format: date-time  
          * @param modified     {string}                  format: date-time  
          * @param id           {number}                  format: double  
          * @param inviteeId    {number}                  format: double  
          * @param inviterId    {number}                  format: double  
-         * @param invitee      {object}                  
-         * @param inviter      {object}                  
+         * @param invitee      {string}                  $ref: #/definitions/Customer  
+         * @param inviter      {string}                  $ref: #/definitions/TeamMember  
          */
         function TweakInvitationTicket(message, token, inviteeEmail, targetModel, targetId, targetAttrs, status, created, modified, id, inviteeId, inviterId, invitee, inviter) {
             this.message = message;
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['message', 'token', 'inviteeEmail', 'targetModel', 'targetId', 'targetAttrs', 'status', 'created', 'modified', 'id', 'inviteeId', 'inviterId', 'invitee', 'inviter'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'number', 'number', 'number', 'object', 'object'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'number', 'number', 'number', 'string', 'string'];
         var requiredParameters = ['targetModel', 'targetId'];
 
         /**

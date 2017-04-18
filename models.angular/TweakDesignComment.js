@@ -19,10 +19,10 @@
          * @param designId    {number}                  format: double  
          * @param commentId   {number}                  format: double  
          * @param commenterId {number}                  format: double  
-         * @param design      {object}                  
-         * @param replies     {array}                   items: type: object    
-         * @param commenter   {object}                  
-         * @param replyOf     {object}                  
+         * @param design      {string}                  $ref: #/definitions/Design  
+         * @param replies     {array}                   items: $ref: #/definitions/DesignComment    
+         * @param commenter   {string}                  $ref: #/definitions/PortalMember  
+         * @param replyOf     {string}                  $ref: #/definitions/DesignComment  
          */
         function TweakDesignComment(comment, position, pageIndex, status, created, modified, id, designId, commentId, commenterId, design, replies, commenter, replyOf) {
             this.comment = comment;
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['comment', 'position', 'pageIndex', 'status', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'object', 'array', 'object', 'object'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'array', 'string', 'string'];
         var requiredParameters = ['comment'];
 
         /**

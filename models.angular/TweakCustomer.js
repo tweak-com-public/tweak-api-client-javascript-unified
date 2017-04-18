@@ -21,10 +21,10 @@
          * @param email             {string}    [REQUIRED]    
          * @param emailVerified     {boolean}                 
          * @param id                {number}                  format: double  
-         * @param designs           {array}                   items: type: object    
-         * @param teams             {array}                   items: type: object    
-         * @param invitationTickets {array}                   items: type: object    
-         * @param accessTokens      {array}                   items: type: object    
+         * @param designs           {array}                   items: $ref: #/definitions/Design    
+         * @param teams             {array}                   items: $ref: #/definitions/Team    
+         * @param invitationTickets {array}                   items: $ref: #/definitions/InvitationTicket    
+         * @param accessTokens      {array}                   items: $ref: #/definitions/TeamMemberAccessToken    
          */
         function TweakCustomer(profilePicture, firstName, lastName, initials, status, created, modified, realm, username, email, emailVerified, id, designs, teams, invitationTickets, accessTokens) {
             this.profilePicture = profilePicture;

@@ -14,12 +14,12 @@
          * @param id                {number}    format: double  
          * @param customerId        {number}    format: double  
          * @param teamId            {string}    
-         * @param customer          {object}    
-         * @param team              {object}    
-         * @param portals           {array}     items: type: object    
-         * @param uploadedTemplates {array}     items: type: object    
-         * @param templates         {array}     items: type: object    
-         * @param invitationTickets {array}     items: type: object    
+         * @param customer          {string}    $ref: #/definitions/Customer  
+         * @param team              {string}    $ref: #/definitions/Team  
+         * @param portals           {array}     items: $ref: #/definitions/Portal    
+         * @param uploadedTemplates {array}     items: $ref: #/definitions/Template    
+         * @param templates         {array}     items: $ref: #/definitions/Template    
+         * @param invitationTickets {array}     items: $ref: #/definitions/InvitationTicket    
          */
         function TweakTeamMember(created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets) {
             this.created = created;
@@ -40,7 +40,7 @@
          * Private properties
          */
         var parameters = ['created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets'];
-        var parametersType = ['string', 'string', 'number', 'number', 'string', 'object', 'object', 'array', 'array', 'array', 'array'];
+        var parametersType = ['string', 'string', 'number', 'number', 'string', 'string', 'string', 'array', 'array', 'array', 'array'];
         var requiredParameters = [];
 
         /**

@@ -15,9 +15,9 @@
          * @param userId       {number}                  format: double  
          * @param teamId       {string}                  
          * @param teamMemberId {number}                  format: double  
-         * @param customer     {object}                  
-         * @param team         {object}                  
-         * @param teamMember   {object}                  
+         * @param customer     {string}                  $ref: #/definitions/Customer  
+         * @param team         {string}                  $ref: #/definitions/Team  
+         * @param teamMember   {string}                  $ref: #/definitions/TeamMember  
          */
         function TweakTeamMemberAccessToken(id, ttl, created, userId, teamId, teamMemberId, customer, team, teamMember) {
             this.id = id;
@@ -36,7 +36,7 @@
          * Private properties
          */
         var parameters = ['id', 'ttl', 'created', 'userId', 'teamId', 'teamMemberId', 'customer', 'team', 'teamMember'];
-        var parametersType = ['string', 'number', 'string', 'number', 'string', 'number', 'object', 'object', 'object'];
+        var parametersType = ['string', 'number', 'string', 'number', 'string', 'number', 'string', 'string', 'string'];
         var requiredParameters = ['id'];
 
         /**

@@ -16,12 +16,12 @@
          * @param id         {number}                  format: double  
          * @param teamId     {string}                  
          * @param memberId   {number}                  format: double  
-         * @param portals    {array}                   items: type: object    
-         * @param team       {object}                  
-         * @param members    {array}                   items: type: object    
-         * @param permission {object}                  
-         * @param designs    {array}                   items: type: object    
-         * @param tags       {array}                   items: type: object    
+         * @param portals    {array}                   items: $ref: #/definitions/Portal    
+         * @param team       {string}                  $ref: #/definitions/Team  
+         * @param members    {array}                   items: $ref: #/definitions/TeamMember    
+         * @param permission {string}                  $ref: #/definitions/TemplatePermissionSet  
+         * @param designs    {array}                   items: $ref: #/definitions/Design    
+         * @param tags       {array}                   items: $ref: #/definitions/Tag    
          */
         function TweakTemplate(name, thumbnail, created, modified, id, teamId, memberId, portals, team, members, permission, designs, tags) {
             this.name = name;
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['name', 'thumbnail', 'created', 'modified', 'id', 'teamId', 'memberId', 'portals', 'team', 'members', 'permission', 'designs', 'tags'];
-        var parametersType = ['string', 'string', 'string', 'string', 'number', 'string', 'number', 'array', 'object', 'array', 'object', 'array', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'number', 'string', 'number', 'array', 'string', 'array', 'string', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**

@@ -13,8 +13,8 @@
          * @param id         {number}    format: double  
          * @param designId   {number}    format: double  
          * @param reviewerId {number}    format: double  
-         * @param design     {object}    
-         * @param reviewer   {object}    
+         * @param design     {string}    $ref: #/definitions/Design  
+         * @param reviewer   {string}    $ref: #/definitions/PortalMember  
          */
         function TweakDesignReview(status, id, designId, reviewerId, design, reviewer) {
             this.status = status;
@@ -30,7 +30,7 @@
          * Private properties
          */
         var parameters = ['status', 'id', 'designId', 'reviewerId', 'design', 'reviewer'];
-        var parametersType = ['string', 'number', 'number', 'number', 'object', 'object'];
+        var parametersType = ['string', 'number', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**

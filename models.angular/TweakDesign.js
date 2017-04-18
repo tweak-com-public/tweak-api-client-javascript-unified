@@ -24,14 +24,14 @@
          * @param templateId  {number}                  format: double  
          * @param portalId    {number}                  format: double  
          * @param requesterId {number}                  format: double  
-         * @param tags        {array}                   items: type: object    
-         * @param customer    {object}                  
-         * @param template    {object}                  
-         * @param portal      {object}                  
-         * @param requester   {object}                  
-         * @param commenters  {array}                   items: type: object    
-         * @param assignees   {array}                   items: type: object    
-         * @param reviewers   {array}                   items: type: object    
+         * @param tags        {array}                   items: $ref: #/definitions/Tag    
+         * @param customer    {string}                  $ref: #/definitions/Customer  
+         * @param template    {string}                  $ref: #/definitions/Template  
+         * @param portal      {string}                  $ref: #/definitions/Portal  
+         * @param requester   {string}                  $ref: #/definitions/PortalMember  
+         * @param commenters  {array}                   items: $ref: #/definitions/PortalMember    
+         * @param assignees   {array}                   items: $ref: #/definitions/PortalMember    
+         * @param reviewers   {array}                   items: $ref: #/definitions/PortalMember    
          */
         function TweakDesign(colors, image, name, object, thumbnail, expired, description, purpose, created, modified, id, customerId, templateId, portalId, requesterId, tags, customer, template, portal, requester, commenters, assignees, reviewers) {
             this.colors = colors;
@@ -64,7 +64,7 @@
          * Private properties
          */
         var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'expired', 'description', 'purpose', 'created', 'modified', 'id', 'customerId', 'templateId', 'portalId', 'requesterId', 'tags', 'customer', 'template', 'portal', 'requester', 'commenters', 'assignees', 'reviewers'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'array', 'object', 'object', 'object', 'object', 'array', 'array', 'array'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'array', 'string', 'string', 'string', 'string', 'array', 'array', 'array'];
         var requiredParameters = ['name', 'object'];
 
         /**

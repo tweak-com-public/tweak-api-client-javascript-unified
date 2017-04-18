@@ -17,11 +17,11 @@
          * @param modified   {string}                  format: date-time  
          * @param id         {number}                  format: double  
          * @param teamId     {string}                  
-         * @param templates  {array}                   items: type: object    
-         * @param members    {array}                   items: type: object    
-         * @param team       {object}                  
-         * @param permission {object}                  
-         * @param designs    {array}                   items: type: object    
+         * @param templates  {array}                   items: $ref: #/definitions/Template    
+         * @param members    {array}                   items: $ref: #/definitions/TeamMember    
+         * @param team       {string}                  $ref: #/definitions/Team  
+         * @param permission {string}                  $ref: #/definitions/PortalPermissionSet  
+         * @param designs    {array}                   items: $ref: #/definitions/Design    
          */
         function TweakPortal(name, logo, status, language, created, modified, id, teamId, templates, members, team, permission, designs) {
             this.name = name;
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'templates', 'members', 'team', 'permission', 'designs'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'array', 'array', 'object', 'object', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'array', 'array', 'string', 'string', 'array'];
         var requiredParameters = ['name'];
 
         /**

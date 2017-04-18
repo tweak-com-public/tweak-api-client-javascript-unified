@@ -14,12 +14,12 @@
          * @param id               {number}    format: double  
          * @param portalId         {number}    format: double  
          * @param memberId         {number}    format: double  
-         * @param portal           {object}    
-         * @param member           {object}    
-         * @param requesterDesigns {array}     items: type: object    
-         * @param assignedDesigns  {array}     items: type: object    
-         * @param commentedDesigns {array}     items: type: object    
-         * @param reviewedDesigns  {array}     items: type: object    
+         * @param portal           {string}    $ref: #/definitions/Portal  
+         * @param member           {string}    $ref: #/definitions/TeamMember  
+         * @param requesterDesigns {array}     items: $ref: #/definitions/Design    
+         * @param assignedDesigns  {array}     items: $ref: #/definitions/Design    
+         * @param commentedDesigns {array}     items: $ref: #/definitions/Design    
+         * @param reviewedDesigns  {array}     items: $ref: #/definitions/Design    
          */
         function TweakPortalMember(created, modified, id, portalId, memberId, portal, member, requesterDesigns, assignedDesigns, commentedDesigns, reviewedDesigns) {
             this.created = created;
@@ -40,7 +40,7 @@
          * Private properties
          */
         var parameters = ['created', 'modified', 'id', 'portalId', 'memberId', 'portal', 'member', 'requesterDesigns', 'assignedDesigns', 'commentedDesigns', 'reviewedDesigns'];
-        var parametersType = ['string', 'string', 'number', 'number', 'number', 'object', 'object', 'array', 'array', 'array', 'array'];
+        var parametersType = ['string', 'string', 'number', 'number', 'number', 'string', 'string', 'array', 'array', 'array', 'array'];
         var requiredParameters = [];
 
         /**

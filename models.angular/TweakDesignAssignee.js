@@ -12,8 +12,8 @@
          * @param id         {number}    format: double  
          * @param designId   {number}    format: double  
          * @param assigneeId {number}    format: double  
-         * @param design     {object}    
-         * @param assignee   {object}    
+         * @param design     {string}    $ref: #/definitions/Design  
+         * @param assignee   {string}    $ref: #/definitions/PortalMember  
          */
         function TweakDesignAssignee(id, designId, assigneeId, design, assignee) {
             this.id = id;
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'designId', 'assigneeId', 'design', 'assignee'];
-        var parametersType = ['number', 'number', 'number', 'object', 'object'];
+        var parametersType = ['number', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**

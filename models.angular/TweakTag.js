@@ -13,8 +13,8 @@
          * @param created   {string}                  format: date-time  
          * @param modified  {string}                  format: date-time  
          * @param id        {number}                  format: double  
-         * @param templates {array}                   items: type: object    
-         * @param designs   {array}                   items: type: object    
+         * @param templates {array}                   items: $ref: #/definitions/Template    
+         * @param designs   {array}                   items: $ref: #/definitions/Design    
          */
         function TweakTag(name, created, modified, id, templates, designs) {
             this.name = name;

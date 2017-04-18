@@ -12,8 +12,8 @@
          * @param id         {number}    format: double  
          * @param portalId   {number}    format: double  
          * @param templateId {number}    format: double  
-         * @param portal     {object}    
-         * @param template   {object}    
+         * @param portal     {string}    $ref: #/definitions/Portal  
+         * @param template   {string}    $ref: #/definitions/Template  
          */
         function TweakPortalTemplate(id, portalId, templateId, portal, template) {
             this.id = id;
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'portalId', 'templateId', 'portal', 'template'];
-        var parametersType = ['number', 'number', 'number', 'object', 'object'];
+        var parametersType = ['number', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**
