@@ -3747,19 +3747,19 @@ export default class TweakApi {
         });
     }
 
-    postCustomersByIdTeamsByFkChangeURL(parameters: {
+    postCustomersByIdTeamsByTeamIdChangeURL(parameters: {
         'id': string,
-        'fk': string,
+        'teamId': string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/{id}/teams/{fk}/change';
+        let path = '/Customers/{id}/teams/{teamId}/change';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
-        path = path.replace('{fk}', `${parameters['fk']}`);
+        path = path.replace('{teamId}', `${parameters['teamId']}`);
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -3774,20 +3774,20 @@ export default class TweakApi {
     }
 
     /**
-     * Change from a Team to another
+     * Move authentication to a Team
      * @method
-     * @name TweakApi#postCustomersByIdTeamsByFkChange
+     * @name TweakApi#postCustomersByIdTeamsByTeamIdChange
      * @param {string} id - Customer id
-     * @param {string} fk - Team id
+     * @param {string} teamId - Team id
      */
-    postCustomersByIdTeamsByFkChange(parameters: {
+    postCustomersByIdTeamsByTeamIdChange(parameters: {
         'id': string,
-        'fk': string,
+        'teamId': string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/{id}/teams/{fk}/change';
+        let path = '/Customers/{id}/teams/{teamId}/change';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -3802,10 +3802,10 @@ export default class TweakApi {
                 return;
             }
 
-            path = path.replace('{fk}', `${parameters['fk']}`);
+            path = path.replace('{teamId}', `${parameters['teamId']}`);
 
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
+            if (parameters['teamId'] === undefined) {
+                reject(new Error('Missing required  parameter: teamId'));
                 return;
             }
 
@@ -3819,6 +3819,151 @@ export default class TweakApi {
             queryParameters = {};
 
             this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postCustomersByIdTeamsByTeamIdPortalsByPortalIdChangeURL(parameters: {
+        'id': string,
+        'teamId': string,
+        'portalId': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/teams/{teamId}/portals/{portalId}/change';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{teamId}', `${parameters['teamId']}`);
+
+        path = path.replace('{portalId}', `${parameters['portalId']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Move authentication to a Portal
+     * @method
+     * @name TweakApi#postCustomersByIdTeamsByTeamIdPortalsByPortalIdChange
+     * @param {string} id - Customer id
+     * @param {string} teamId - Team id
+     * @param {string} portalId - Portal id
+     */
+    postCustomersByIdTeamsByTeamIdPortalsByPortalIdChange(parameters: {
+        'id': string,
+        'teamId': string,
+        'portalId': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/teams/{teamId}/portals/{portalId}/change';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{teamId}', `${parameters['teamId']}`);
+
+            if (parameters['teamId'] === undefined) {
+                reject(new Error('Missing required  parameter: teamId'));
+                return;
+            }
+
+            path = path.replace('{portalId}', `${parameters['portalId']}`);
+
+            if (parameters['portalId'] === undefined) {
+                reject(new Error('Missing required  parameter: portalId'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getCustomersByIdTokenURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/token';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get token info
+     * @method
+     * @name TweakApi#getCustomersByIdToken
+     * @param {string} id - Customer id
+     */
+    getCustomersByIdToken(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/token';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -13627,1159 +13772,6 @@ export default class TweakApi {
         });
     }
 
-    getTeamBrandsByIdTeamURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}/team';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation team.
-    * @method
-    * @name TweakApi#getTeamBrandsByIdTeam
-         * @param {string} id - TeamBrand id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getTeamBrandsByIdTeam(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}/team';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postTeamBrandsURL(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postTeamBrands
-     * @param {} data - Model instance data
-     */
-    postTeamBrands(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchTeamBrandsURL(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchTeamBrands
-     * @param {} data - Model instance data
-     */
-    patchTeamBrands(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putTeamBrandsURL(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putTeamBrands
-     * @param {} data - Model instance data
-     */
-    putTeamBrands(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getTeamBrandsURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getTeamBrands
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getTeamBrands(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postTeamBrandsReplaceOrCreateURL(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/replaceOrCreate';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postTeamBrandsReplaceOrCreate
-     * @param {} data - Model instance data
-     */
-    postTeamBrandsReplaceOrCreate(parameters: {
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/replaceOrCreate';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postTeamBrandsUpsertWithWhereURL(parameters: {
-        'where' ? : string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/upsertWithWhere';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postTeamBrandsUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postTeamBrandsUpsertWithWhere(parameters: {
-        'where' ? : string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/upsertWithWhere';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getTeamBrandsByIdExistsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}/exists';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getTeamBrandsByIdExists
-     * @param {string} id - Model id
-     */
-    getTeamBrandsByIdExists(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}/exists';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headTeamBrandsByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headTeamBrandsById
-     * @param {string} id - Model id
-     */
-    headTeamBrandsById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getTeamBrandsByIdURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getTeamBrandsById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     */
-    getTeamBrandsById(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putTeamBrandsByIdURL(parameters: {
-        'id': string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putTeamBrandsById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    putTeamBrandsById(parameters: {
-        'id': string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteTeamBrandsByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deleteTeamBrandsById
-     * @param {string} id - Model id
-     */
-    deleteTeamBrandsById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchTeamBrandsByIdURL(parameters: {
-        'id': string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchTeamBrandsById
-     * @param {string} id - TeamBrand id
-     * @param {} data - An object of model property name/value pairs
-     */
-    patchTeamBrandsById(parameters: {
-        'id': string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postTeamBrandsByIdReplaceURL(parameters: {
-        'id': string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}/replace';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postTeamBrandsByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    postTeamBrandsByIdReplace(parameters: {
-        'id': string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/{id}/replace';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getTeamBrandsFindOneURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/findOne';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getTeamBrandsFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getTeamBrandsFindOne(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/findOne';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postTeamBrandsUpdateURL(parameters: {
-        'where' ? : string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/update';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postTeamBrandsUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postTeamBrandsUpdate(parameters: {
-        'where' ? : string,
-        'data' ? : TeamBrand,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/update';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getTeamBrandsCountURL(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/count';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getTeamBrandsCount
-     * @param {string} where - Criteria to match model instances
-     */
-    getTeamBrandsCount(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postTeamBrandsChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/change-stream';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#postTeamBrandsChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postTeamBrandsChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                form['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getTeamBrandsChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/change-stream';
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#getTeamBrandsChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getTeamBrandsChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamBrands/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                queryParameters['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
     getTeamMembersByIdCustomerURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
@@ -18671,6 +17663,75 @@ export default class TweakApi {
             queryParameters = {};
 
             this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdPortalsAvailableURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/portals/available';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Find all available Portals
+    * @method
+    * @name TweakApi#getTeamMembersByIdPortalsAvailable
+         * @param {string} id - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+         * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+    */
+    getTeamMembersByIdPortalsAvailable(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/portals/available';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
