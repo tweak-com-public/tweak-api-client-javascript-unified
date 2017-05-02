@@ -15,14 +15,13 @@ type TeamMemberAccessToken = any;
 type Customer = any;
 type Template = any;
 type Portal = any;
-type PortalMember = any;
 type DesignComment = any;
-type DesignAssignee = any;
-type DesignReview = any;
 type Tag = any;
 type DesignTag = any;
+type DesignExport = any;
 type TemplateTag = any;
 type TeamBrand = any;
+type PortalMember = any;
 type TemplateMember = any;
 type TemplatePermissionSet = any;
 type PortalTemplate = any;
@@ -4167,6 +4166,213 @@ export default class TweakApi {
         });
     }
 
+    getDesignsByIdRequesterURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/requester';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation requester.
+    * @method
+    * @name TweakApi#getDesignsByIdRequester
+         * @param {string} id - Design id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignsByIdRequester(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/requester';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignsByIdAssigneeURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/assignee';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation assignee.
+    * @method
+    * @name TweakApi#getDesignsByIdAssignee
+         * @param {string} id - Design id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignsByIdAssignee(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/assignee';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignsByIdReviewerURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/reviewer';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation reviewer.
+    * @method
+    * @name TweakApi#getDesignsByIdReviewer
+         * @param {string} id - Design id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignsByIdReviewer(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/reviewer';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getDesignsByIdTemplateURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
@@ -4305,20 +4511,19 @@ export default class TweakApi {
         });
     }
 
-    getDesignsByIdRequesterURL(parameters: {
+    getDesignsByIdCommentsByFkURL(parameters: {
         'id': string,
-        'refresh' ? : boolean,
+        'fk': string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/requester';
+        let path = '/Designs/{id}/comments/{fk}';
 
         path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -4331,21 +4536,20 @@ export default class TweakApi {
     }
 
     /**
-    * Fetches belongsTo relation requester.
-    * @method
-    * @name TweakApi#getDesignsByIdRequester
-         * @param {string} id - Design id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignsByIdRequester(parameters: {
+     * Find a related item by id for comments.
+     * @method
+     * @name TweakApi#getDesignsByIdCommentsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for comments
+     */
+    getDesignsByIdCommentsByFk(parameters: {
         'id': string,
-        'refresh' ? : boolean,
+        'fk': string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/requester';
+        let path = '/Designs/{id}/comments/{fk}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -4360,8 +4564,11 @@ export default class TweakApi {
                 return;
             }
 
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
             }
 
             if (parameters.$queryParameters) {
@@ -4371,6 +4578,154 @@ export default class TweakApi {
             }
 
             this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteDesignsByIdCommentsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for comments.
+     * @method
+     * @name TweakApi#deleteDesignsByIdCommentsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for comments
+     */
+    deleteDesignsByIdCommentsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putDesignsByIdCommentsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for comments.
+    * @method
+    * @name TweakApi#putDesignsByIdCommentsByFk
+         * @param {string} id - Design id
+         * @param {string} fk - Foreign key for comments
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putDesignsByIdCommentsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -4517,7 +4872,7 @@ export default class TweakApi {
     putDesignsByIdCommentersByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : PortalMember,
+        'data' ? : TeamMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -4551,7 +4906,7 @@ export default class TweakApi {
     putDesignsByIdCommentersByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : PortalMember,
+        'data' ? : TeamMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -4779,878 +5134,6 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Designs/{id}/commenters/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignsByIdAssigneesByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a related item by id for assignees.
-     * @method
-     * @name TweakApi#getDesignsByIdAssigneesByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     */
-    getDesignsByIdAssigneesByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignsByIdAssigneesByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a related item by id for assignees.
-     * @method
-     * @name TweakApi#deleteDesignsByIdAssigneesByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     */
-    deleteDesignsByIdAssigneesByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignsByIdAssigneesByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Update a related item by id for assignees.
-    * @method
-    * @name TweakApi#putDesignsByIdAssigneesByFk
-         * @param {string} id - Design id
-         * @param {string} fk - Foreign key for assignees
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putDesignsByIdAssigneesByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignsByIdAssigneesRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Add a related item by id for assignees.
-    * @method
-    * @name TweakApi#putDesignsByIdAssigneesRelByFk
-         * @param {string} id - Design id
-         * @param {string} fk - Foreign key for assignees
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putDesignsByIdAssigneesRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignsByIdAssigneesRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Remove the assignees relation to an item by id.
-     * @method
-     * @name TweakApi#deleteDesignsByIdAssigneesRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     */
-    deleteDesignsByIdAssigneesRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headDesignsByIdAssigneesRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check the existence of assignees relation to an item by id.
-     * @method
-     * @name TweakApi#headDesignsByIdAssigneesRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     */
-    headDesignsByIdAssigneesRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignsByIdReviewersByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a related item by id for reviewers.
-     * @method
-     * @name TweakApi#getDesignsByIdReviewersByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     */
-    getDesignsByIdReviewersByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignsByIdReviewersByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a related item by id for reviewers.
-     * @method
-     * @name TweakApi#deleteDesignsByIdReviewersByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     */
-    deleteDesignsByIdReviewersByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignsByIdReviewersByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Update a related item by id for reviewers.
-    * @method
-    * @name TweakApi#putDesignsByIdReviewersByFk
-         * @param {string} id - Design id
-         * @param {string} fk - Foreign key for reviewers
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putDesignsByIdReviewersByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignsByIdReviewersRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Add a related item by id for reviewers.
-    * @method
-    * @name TweakApi#putDesignsByIdReviewersRelByFk
-         * @param {string} id - Design id
-         * @param {string} fk - Foreign key for reviewers
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putDesignsByIdReviewersRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignsByIdReviewersRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Remove the reviewers relation to an item by id.
-     * @method
-     * @name TweakApi#deleteDesignsByIdReviewersRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     */
-    deleteDesignsByIdReviewersRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headDesignsByIdReviewersRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check the existence of reviewers relation to an item by id.
-     * @method
-     * @name TweakApi#headDesignsByIdReviewersRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     */
-    headDesignsByIdReviewersRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/rel/{fk}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -6118,6 +5601,490 @@ export default class TweakApi {
         });
     }
 
+    getDesignsByIdExportsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for exports.
+     * @method
+     * @name TweakApi#getDesignsByIdExportsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for exports
+     */
+    getDesignsByIdExportsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteDesignsByIdExportsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for exports.
+     * @method
+     * @name TweakApi#deleteDesignsByIdExportsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for exports
+     */
+    deleteDesignsByIdExportsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putDesignsByIdExportsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for exports.
+    * @method
+    * @name TweakApi#putDesignsByIdExportsByFk
+         * @param {string} id - Design id
+         * @param {string} fk - Foreign key for exports
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putDesignsByIdExportsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignsByIdCommentsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries comments of Design.
+    * @method
+    * @name TweakApi#getDesignsByIdComments
+         * @param {string} id - Design id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignsByIdComments(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignsByIdCommentsURL(parameters: {
+        'id': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in comments of this model.
+    * @method
+    * @name TweakApi#postDesignsByIdComments
+         * @param {string} id - Design id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postDesignsByIdComments(parameters: {
+        'id': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteDesignsByIdCommentsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all comments of this model.
+     * @method
+     * @name TweakApi#deleteDesignsByIdComments
+     * @param {string} id - Design id
+     */
+    deleteDesignsByIdComments(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignsByIdCommentsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts comments of Design.
+     * @method
+     * @name TweakApi#getDesignsByIdCommentsCount
+     * @param {string} id - Design id
+     * @param {string} where - Criteria to match model instances
+     */
+    getDesignsByIdCommentsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/comments/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getDesignsByIdCommentersURL(parameters: {
         'id': string,
         'filter' ? : string,
@@ -6189,7 +6156,7 @@ export default class TweakApi {
 
     postDesignsByIdCommentersURL(parameters: {
         'id': string,
-        'data' ? : PortalMember,
+        'data' ? : TeamMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -6221,7 +6188,7 @@ export default class TweakApi {
     */
     postDesignsByIdCommenters(parameters: {
         'id': string,
-        'data' ? : PortalMember,
+        'data' ? : TeamMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -6356,538 +6323,6 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Designs/{id}/commenters/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignsByIdAssigneesURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Queries assignees of Design.
-    * @method
-    * @name TweakApi#getDesignsByIdAssignees
-         * @param {string} id - Design id
-         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignsByIdAssignees(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignsByIdAssigneesURL(parameters: {
-        'id': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Creates a new instance in assignees of this model.
-    * @method
-    * @name TweakApi#postDesignsByIdAssignees
-         * @param {string} id - Design id
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postDesignsByIdAssignees(parameters: {
-        'id': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignsByIdAssigneesURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Deletes all assignees of this model.
-     * @method
-     * @name TweakApi#deleteDesignsByIdAssignees
-     * @param {string} id - Design id
-     */
-    deleteDesignsByIdAssignees(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignsByIdAssigneesCountURL(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/count';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Counts assignees of Design.
-     * @method
-     * @name TweakApi#getDesignsByIdAssigneesCount
-     * @param {string} id - Design id
-     * @param {string} where - Criteria to match model instances
-     */
-    getDesignsByIdAssigneesCount(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/assignees/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignsByIdReviewersURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Queries reviewers of Design.
-    * @method
-    * @name TweakApi#getDesignsByIdReviewers
-         * @param {string} id - Design id
-         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignsByIdReviewers(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignsByIdReviewersURL(parameters: {
-        'id': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Creates a new instance in reviewers of this model.
-    * @method
-    * @name TweakApi#postDesignsByIdReviewers
-         * @param {string} id - Design id
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postDesignsByIdReviewers(parameters: {
-        'id': string,
-        'data' ? : PortalMember,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignsByIdReviewersURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Deletes all reviewers of this model.
-     * @method
-     * @name TweakApi#deleteDesignsByIdReviewers
-     * @param {string} id - Design id
-     */
-    deleteDesignsByIdReviewers(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignsByIdReviewersCountURL(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/count';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Counts reviewers of Design.
-     * @method
-     * @name TweakApi#getDesignsByIdReviewersCount
-     * @param {string} id - Design id
-     * @param {string} where - Criteria to match model instances
-     */
-    getDesignsByIdReviewersCount(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Designs/{id}/reviewers/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -7154,6 +6589,272 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Designs/{id}/tags/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignsByIdExportsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries exports of Design.
+    * @method
+    * @name TweakApi#getDesignsByIdExports
+         * @param {string} id - Design id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignsByIdExports(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignsByIdExportsURL(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in exports of this model.
+    * @method
+    * @name TweakApi#postDesignsByIdExports
+         * @param {string} id - Design id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postDesignsByIdExports(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteDesignsByIdExportsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all exports of this model.
+     * @method
+     * @name TweakApi#deleteDesignsByIdExports
+     * @param {string} id - Design id
+     */
+    deleteDesignsByIdExports(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignsByIdExportsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts exports of Design.
+     * @method
+     * @name TweakApi#getDesignsByIdExportsCount
+     * @param {string} id - Design id
+     * @param {string} where - Criteria to match model instances
+     */
+    getDesignsByIdExportsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/exports/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -13910,6 +13611,660 @@ export default class TweakApi {
         });
     }
 
+    getTeamMembersByIdRequestedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for requestedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesigns
+     */
+    getTeamMembersByIdRequestedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdRequestedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for requestedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesigns
+     */
+    deleteTeamMembersByIdRequestedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdRequestedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for requestedDesigns.
+    * @method
+    * @name TweakApi#putTeamMembersByIdRequestedDesignsByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for requestedDesigns
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdRequestedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdAssignedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for assignedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdAssignedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for assignedDesigns
+     */
+    getTeamMembersByIdAssignedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdAssignedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for assignedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdAssignedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for assignedDesigns
+     */
+    deleteTeamMembersByIdAssignedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdAssignedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for assignedDesigns.
+    * @method
+    * @name TweakApi#putTeamMembersByIdAssignedDesignsByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for assignedDesigns
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdAssignedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdReviewedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for reviewedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdReviewedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for reviewedDesigns
+     */
+    getTeamMembersByIdReviewedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdReviewedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for reviewedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdReviewedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for reviewedDesigns
+     */
+    deleteTeamMembersByIdReviewedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdReviewedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for reviewedDesigns.
+    * @method
+    * @name TweakApi#putTeamMembersByIdReviewedDesignsByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for reviewedDesigns
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdReviewedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamMembersByIdUploadedTemplatesByFkURL(parameters: {
         'id': string,
         'fk': string,
@@ -14782,6 +15137,660 @@ export default class TweakApi {
         });
     }
 
+    getTeamMembersByIdCommentedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for commentedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdCommentedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     */
+    getTeamMembersByIdCommentedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdCommentedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for commentedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdCommentedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     */
+    deleteTeamMembersByIdCommentedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdCommentedDesignsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for commentedDesigns.
+    * @method
+    * @name TweakApi#putTeamMembersByIdCommentedDesignsByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for commentedDesigns
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdCommentedDesignsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdCommentedDesignsRelByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Add a related item by id for commentedDesigns.
+    * @method
+    * @name TweakApi#putTeamMembersByIdCommentedDesignsRelByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for commentedDesigns
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdCommentedDesignsRelByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdCommentedDesignsRelByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Remove the commentedDesigns relation to an item by id.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdCommentedDesignsRelByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     */
+    deleteTeamMembersByIdCommentedDesignsRelByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    headTeamMembersByIdCommentedDesignsRelByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check the existence of commentedDesigns relation to an item by id.
+     * @method
+     * @name TweakApi#headTeamMembersByIdCommentedDesignsRelByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     */
+    headTeamMembersByIdCommentedDesignsRelByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdDesignCommentsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for designComments.
+     * @method
+     * @name TweakApi#getTeamMembersByIdDesignCommentsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for designComments
+     */
+    getTeamMembersByIdDesignCommentsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdDesignCommentsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for designComments.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdDesignCommentsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for designComments
+     */
+    deleteTeamMembersByIdDesignCommentsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdDesignCommentsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for designComments.
+    * @method
+    * @name TweakApi#putTeamMembersByIdDesignCommentsByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for designComments
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdDesignCommentsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamMembersByIdTemplatesByFkURL(parameters: {
         'id': string,
         'fk': string,
@@ -15215,6 +16224,1022 @@ export default class TweakApi {
             }
 
             this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdRequestedDesignExportsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for requestedDesignExports.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignExportsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesignExports
+     */
+    getTeamMembersByIdRequestedDesignExportsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdRequestedDesignExportsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for requestedDesignExports.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesignExportsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesignExports
+     */
+    deleteTeamMembersByIdRequestedDesignExportsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdRequestedDesignExportsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for requestedDesignExports.
+    * @method
+    * @name TweakApi#putTeamMembersByIdRequestedDesignExportsByFk
+         * @param {string} id - TeamMember id
+         * @param {string} fk - Foreign key for requestedDesignExports
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamMembersByIdRequestedDesignExportsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdRequestedDesignsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries requestedDesigns of TeamMember.
+    * @method
+    * @name TweakApi#getTeamMembersByIdRequestedDesigns
+         * @param {string} id - TeamMember id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdRequestedDesigns(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamMembersByIdRequestedDesignsURL(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in requestedDesigns of this model.
+    * @method
+    * @name TweakApi#postTeamMembersByIdRequestedDesigns
+         * @param {string} id - TeamMember id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamMembersByIdRequestedDesigns(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdRequestedDesignsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all requestedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesigns
+     * @param {string} id - TeamMember id
+     */
+    deleteTeamMembersByIdRequestedDesigns(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdRequestedDesignsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts requestedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamMembersByIdRequestedDesignsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesigns/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdAssignedDesignsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries assignedDesigns of TeamMember.
+    * @method
+    * @name TweakApi#getTeamMembersByIdAssignedDesigns
+         * @param {string} id - TeamMember id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdAssignedDesigns(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamMembersByIdAssignedDesignsURL(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in assignedDesigns of this model.
+    * @method
+    * @name TweakApi#postTeamMembersByIdAssignedDesigns
+         * @param {string} id - TeamMember id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamMembersByIdAssignedDesigns(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdAssignedDesignsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all assignedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdAssignedDesigns
+     * @param {string} id - TeamMember id
+     */
+    deleteTeamMembersByIdAssignedDesigns(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdAssignedDesignsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts assignedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdAssignedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamMembersByIdAssignedDesignsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/assignedDesigns/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdReviewedDesignsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries reviewedDesigns of TeamMember.
+    * @method
+    * @name TweakApi#getTeamMembersByIdReviewedDesigns
+         * @param {string} id - TeamMember id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdReviewedDesigns(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamMembersByIdReviewedDesignsURL(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in reviewedDesigns of this model.
+    * @method
+    * @name TweakApi#postTeamMembersByIdReviewedDesigns
+         * @param {string} id - TeamMember id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamMembersByIdReviewedDesigns(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdReviewedDesignsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all reviewedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdReviewedDesigns
+     * @param {string} id - TeamMember id
+     */
+    deleteTeamMembersByIdReviewedDesigns(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdReviewedDesignsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts reviewedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdReviewedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamMembersByIdReviewedDesignsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/reviewedDesigns/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -16016,6 +18041,538 @@ export default class TweakApi {
         });
     }
 
+    getTeamMembersByIdCommentedDesignsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries commentedDesigns of TeamMember.
+    * @method
+    * @name TweakApi#getTeamMembersByIdCommentedDesigns
+         * @param {string} id - TeamMember id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdCommentedDesigns(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamMembersByIdCommentedDesignsURL(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in commentedDesigns of this model.
+    * @method
+    * @name TweakApi#postTeamMembersByIdCommentedDesigns
+         * @param {string} id - TeamMember id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamMembersByIdCommentedDesigns(parameters: {
+        'id': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdCommentedDesignsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all commentedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdCommentedDesigns
+     * @param {string} id - TeamMember id
+     */
+    deleteTeamMembersByIdCommentedDesigns(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdCommentedDesignsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts commentedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdCommentedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamMembersByIdCommentedDesignsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/commentedDesigns/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdDesignCommentsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries designComments of TeamMember.
+    * @method
+    * @name TweakApi#getTeamMembersByIdDesignComments
+         * @param {string} id - TeamMember id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdDesignComments(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamMembersByIdDesignCommentsURL(parameters: {
+        'id': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in designComments of this model.
+    * @method
+    * @name TweakApi#postTeamMembersByIdDesignComments
+         * @param {string} id - TeamMember id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamMembersByIdDesignComments(parameters: {
+        'id': string,
+        'data' ? : DesignComment,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdDesignCommentsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all designComments of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdDesignComments
+     * @param {string} id - TeamMember id
+     */
+    deleteTeamMembersByIdDesignComments(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdDesignCommentsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts designComments of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdDesignCommentsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamMembersByIdDesignCommentsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/designComments/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamMembersByIdTemplatesURL(parameters: {
         'id': string,
         'filter' ? : string,
@@ -16254,6 +18811,272 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/TeamMembers/{id}/templates/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdRequestedDesignExportsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries requestedDesignExports of TeamMember.
+    * @method
+    * @name TweakApi#getTeamMembersByIdRequestedDesignExports
+         * @param {string} id - TeamMember id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdRequestedDesignExports(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamMembersByIdRequestedDesignExportsURL(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in requestedDesignExports of this model.
+    * @method
+    * @name TweakApi#postTeamMembersByIdRequestedDesignExports
+         * @param {string} id - TeamMember id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamMembersByIdRequestedDesignExports(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamMembersByIdRequestedDesignExportsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all requestedDesignExports of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesignExports
+     * @param {string} id - TeamMember id
+     */
+    deleteTeamMembersByIdRequestedDesignExports(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdRequestedDesignExportsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts requestedDesignExports of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignExportsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamMembersByIdRequestedDesignExportsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/requestedDesignExports/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -21739,6 +24562,78 @@ export default class TweakApi {
             }
 
             this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTemplatesByIdDesignsGenerateURL(parameters: {
+        'id': string,
+        'data' ? : Template,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/designs/generate';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Generate design from template
+    * @method
+    * @name TweakApi#postTemplatesByIdDesignsGenerate
+         * @param {string} id - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTemplatesByIdDesignsGenerate(parameters: {
+        'id': string,
+        'data' ? : Template,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/designs/generate';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -27479,2596 +30374,6 @@ export default class TweakApi {
 
             if (parameters['refresh'] !== undefined) {
                 queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdRequesterDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a related item by id for requesterDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdRequesterDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for requesterDesigns
-     */
-    getPortalMembersByIdRequesterDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdRequesterDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a related item by id for requesterDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdRequesterDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for requesterDesigns
-     */
-    deletePortalMembersByIdRequesterDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdRequesterDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Update a related item by id for requesterDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdRequesterDesignsByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for requesterDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdRequesterDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdCommentedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a related item by id for commentedDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdCommentedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     */
-    getPortalMembersByIdCommentedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdCommentedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a related item by id for commentedDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdCommentedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     */
-    deletePortalMembersByIdCommentedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdCommentedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Update a related item by id for commentedDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdCommentedDesignsByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for commentedDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdCommentedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdCommentedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignComment,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Add a related item by id for commentedDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdCommentedDesignsRelByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for commentedDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdCommentedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignComment,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdCommentedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Remove the commentedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdCommentedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     */
-    deletePortalMembersByIdCommentedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headPortalMembersByIdCommentedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check the existence of commentedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#headPortalMembersByIdCommentedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     */
-    headPortalMembersByIdCommentedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdAssignedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a related item by id for assignedDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdAssignedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     */
-    getPortalMembersByIdAssignedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdAssignedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a related item by id for assignedDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdAssignedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     */
-    deletePortalMembersByIdAssignedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdAssignedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Update a related item by id for assignedDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdAssignedDesignsByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for assignedDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdAssignedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdAssignedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Add a related item by id for assignedDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdAssignedDesignsRelByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for assignedDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdAssignedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdAssignedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Remove the assignedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdAssignedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     */
-    deletePortalMembersByIdAssignedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headPortalMembersByIdAssignedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check the existence of assignedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#headPortalMembersByIdAssignedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     */
-    headPortalMembersByIdAssignedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdReviewedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a related item by id for reviewedDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdReviewedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     */
-    getPortalMembersByIdReviewedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdReviewedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a related item by id for reviewedDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdReviewedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     */
-    deletePortalMembersByIdReviewedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdReviewedDesignsByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Update a related item by id for reviewedDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdReviewedDesignsByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for reviewedDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdReviewedDesignsByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalMembersByIdReviewedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Add a related item by id for reviewedDesigns.
-    * @method
-    * @name TweakApi#putPortalMembersByIdReviewedDesignsRelByFk
-         * @param {string} id - PortalMember id
-         * @param {string} fk - Foreign key for reviewedDesigns
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    putPortalMembersByIdReviewedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdReviewedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Remove the reviewedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdReviewedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     */
-    deletePortalMembersByIdReviewedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headPortalMembersByIdReviewedDesignsRelByFkURL(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{fk}', `${parameters['fk']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check the existence of reviewedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#headPortalMembersByIdReviewedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     */
-    headPortalMembersByIdReviewedDesignsRelByFk(parameters: {
-        'id': string,
-        'fk': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{fk}', `${parameters['fk']}`);
-
-            if (parameters['fk'] === undefined) {
-                reject(new Error('Missing required  parameter: fk'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdRequesterDesignsURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Queries requesterDesigns of PortalMember.
-    * @method
-    * @name TweakApi#getPortalMembersByIdRequesterDesigns
-         * @param {string} id - PortalMember id
-         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalMembersByIdRequesterDesigns(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalMembersByIdRequesterDesignsURL(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Creates a new instance in requesterDesigns of this model.
-    * @method
-    * @name TweakApi#postPortalMembersByIdRequesterDesigns
-         * @param {string} id - PortalMember id
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postPortalMembersByIdRequesterDesigns(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdRequesterDesignsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Deletes all requesterDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdRequesterDesigns
-     * @param {string} id - PortalMember id
-     */
-    deletePortalMembersByIdRequesterDesigns(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdRequesterDesignsCountURL(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/count';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Counts requesterDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdRequesterDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     */
-    getPortalMembersByIdRequesterDesignsCount(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/requesterDesigns/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdCommentedDesignsURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Queries commentedDesigns of PortalMember.
-    * @method
-    * @name TweakApi#getPortalMembersByIdCommentedDesigns
-         * @param {string} id - PortalMember id
-         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalMembersByIdCommentedDesigns(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalMembersByIdCommentedDesignsURL(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Creates a new instance in commentedDesigns of this model.
-    * @method
-    * @name TweakApi#postPortalMembersByIdCommentedDesigns
-         * @param {string} id - PortalMember id
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postPortalMembersByIdCommentedDesigns(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdCommentedDesignsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Deletes all commentedDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdCommentedDesigns
-     * @param {string} id - PortalMember id
-     */
-    deletePortalMembersByIdCommentedDesigns(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdCommentedDesignsCountURL(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/count';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Counts commentedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdCommentedDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     */
-    getPortalMembersByIdCommentedDesignsCount(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/commentedDesigns/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdAssignedDesignsURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Queries assignedDesigns of PortalMember.
-    * @method
-    * @name TweakApi#getPortalMembersByIdAssignedDesigns
-         * @param {string} id - PortalMember id
-         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalMembersByIdAssignedDesigns(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalMembersByIdAssignedDesignsURL(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Creates a new instance in assignedDesigns of this model.
-    * @method
-    * @name TweakApi#postPortalMembersByIdAssignedDesigns
-         * @param {string} id - PortalMember id
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postPortalMembersByIdAssignedDesigns(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdAssignedDesignsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Deletes all assignedDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdAssignedDesigns
-     * @param {string} id - PortalMember id
-     */
-    deletePortalMembersByIdAssignedDesigns(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdAssignedDesignsCountURL(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/count';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Counts assignedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdAssignedDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     */
-    getPortalMembersByIdAssignedDesignsCount(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/assignedDesigns/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdReviewedDesignsURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Queries reviewedDesigns of PortalMember.
-    * @method
-    * @name TweakApi#getPortalMembersByIdReviewedDesigns
-         * @param {string} id - PortalMember id
-         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalMembersByIdReviewedDesigns(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalMembersByIdReviewedDesignsURL(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Creates a new instance in reviewedDesigns of this model.
-    * @method
-    * @name TweakApi#postPortalMembersByIdReviewedDesigns
-         * @param {string} id - PortalMember id
-         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postPortalMembersByIdReviewedDesigns(parameters: {
-        'id': string,
-        'data' ? : Design,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalMembersByIdReviewedDesignsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Deletes all reviewedDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdReviewedDesigns
-     * @param {string} id - PortalMember id
-     */
-    deletePortalMembersByIdReviewedDesigns(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalMembersByIdReviewedDesignsCountURL(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/count';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Counts reviewedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdReviewedDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     */
-    getPortalMembersByIdReviewedDesignsCount(parameters: {
-        'id': string,
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalMembers/{id}/reviewedDesigns/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
             }
 
             if (parameters.$queryParameters) {
@@ -37690,2450 +37995,6 @@ export default class TweakApi {
         });
     }
 
-    getDesignAssigneesByIdDesignURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/design';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation design.
-    * @method
-    * @name TweakApi#getDesignAssigneesByIdDesign
-         * @param {string} id - DesignAssignee id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignAssigneesByIdDesign(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/design';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesByIdAssigneeURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/assignee';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation assignee.
-    * @method
-    * @name TweakApi#getDesignAssigneesByIdAssignee
-         * @param {string} id - DesignAssignee id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignAssigneesByIdAssignee(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/assignee';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignAssigneesURL(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignAssignees
-     * @param {} data - Model instance data
-     */
-    postDesignAssignees(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchDesignAssigneesURL(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchDesignAssignees
-     * @param {} data - Model instance data
-     */
-    patchDesignAssignees(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignAssigneesURL(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putDesignAssignees
-     * @param {} data - Model instance data
-     */
-    putDesignAssignees(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignAssignees
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getDesignAssignees(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignAssigneesReplaceOrCreateURL(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/replaceOrCreate';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postDesignAssigneesReplaceOrCreate
-     * @param {} data - Model instance data
-     */
-    postDesignAssigneesReplaceOrCreate(parameters: {
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/replaceOrCreate';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignAssigneesUpsertWithWhereURL(parameters: {
-        'where' ? : string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/upsertWithWhere';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postDesignAssigneesUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postDesignAssigneesUpsertWithWhere(parameters: {
-        'where' ? : string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/upsertWithWhere';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesByIdExistsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/exists';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesByIdExists
-     * @param {string} id - Model id
-     */
-    getDesignAssigneesByIdExists(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/exists';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headDesignAssigneesByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headDesignAssigneesById
-     * @param {string} id - Model id
-     */
-    headDesignAssigneesById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesByIdURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     */
-    getDesignAssigneesById(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignAssigneesByIdURL(parameters: {
-        'id': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putDesignAssigneesById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    putDesignAssigneesById(parameters: {
-        'id': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignAssigneesByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deleteDesignAssigneesById
-     * @param {string} id - Model id
-     */
-    deleteDesignAssigneesById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchDesignAssigneesByIdURL(parameters: {
-        'id': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchDesignAssigneesById
-     * @param {string} id - DesignAssignee id
-     * @param {} data - An object of model property name/value pairs
-     */
-    patchDesignAssigneesById(parameters: {
-        'id': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignAssigneesByIdReplaceURL(parameters: {
-        'id': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/replace';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignAssigneesByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    postDesignAssigneesByIdReplace(parameters: {
-        'id': string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/{id}/replace';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesFindOneURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/findOne';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getDesignAssigneesFindOne(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/findOne';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignAssigneesUpdateURL(parameters: {
-        'where' ? : string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/update';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postDesignAssigneesUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postDesignAssigneesUpdate(parameters: {
-        'where' ? : string,
-        'data' ? : DesignAssignee,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/update';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesCountURL(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/count';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesCount
-     * @param {string} where - Criteria to match model instances
-     */
-    getDesignAssigneesCount(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignAssigneesChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/change-stream';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#postDesignAssigneesChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postDesignAssigneesChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                form['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignAssigneesChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/change-stream';
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#getDesignAssigneesChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignAssigneesChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignAssignees/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                queryParameters['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsByIdDesignURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/design';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation design.
-    * @method
-    * @name TweakApi#getDesignReviewsByIdDesign
-         * @param {string} id - DesignReview id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignReviewsByIdDesign(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/design';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsByIdReviewerURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/reviewer';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation reviewer.
-    * @method
-    * @name TweakApi#getDesignReviewsByIdReviewer
-         * @param {string} id - DesignReview id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignReviewsByIdReviewer(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/reviewer';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignReviewsURL(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignReviews
-     * @param {} data - Model instance data
-     */
-    postDesignReviews(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchDesignReviewsURL(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchDesignReviews
-     * @param {} data - Model instance data
-     */
-    patchDesignReviews(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignReviewsURL(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putDesignReviews
-     * @param {} data - Model instance data
-     */
-    putDesignReviews(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignReviews
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getDesignReviews(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignReviewsReplaceOrCreateURL(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/replaceOrCreate';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postDesignReviewsReplaceOrCreate
-     * @param {} data - Model instance data
-     */
-    postDesignReviewsReplaceOrCreate(parameters: {
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/replaceOrCreate';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignReviewsUpsertWithWhereURL(parameters: {
-        'where' ? : string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/upsertWithWhere';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postDesignReviewsUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postDesignReviewsUpsertWithWhere(parameters: {
-        'where' ? : string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/upsertWithWhere';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsByIdExistsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/exists';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsByIdExists
-     * @param {string} id - Model id
-     */
-    getDesignReviewsByIdExists(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/exists';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headDesignReviewsByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headDesignReviewsById
-     * @param {string} id - Model id
-     */
-    headDesignReviewsById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsByIdURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     */
-    getDesignReviewsById(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putDesignReviewsByIdURL(parameters: {
-        'id': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putDesignReviewsById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    putDesignReviewsById(parameters: {
-        'id': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deleteDesignReviewsByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deleteDesignReviewsById
-     * @param {string} id - Model id
-     */
-    deleteDesignReviewsById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchDesignReviewsByIdURL(parameters: {
-        'id': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchDesignReviewsById
-     * @param {string} id - DesignReview id
-     * @param {} data - An object of model property name/value pairs
-     */
-    patchDesignReviewsById(parameters: {
-        'id': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignReviewsByIdReplaceURL(parameters: {
-        'id': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/replace';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignReviewsByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    postDesignReviewsByIdReplace(parameters: {
-        'id': string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/{id}/replace';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsFindOneURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/findOne';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getDesignReviewsFindOne(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/findOne';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignReviewsUpdateURL(parameters: {
-        'where' ? : string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/update';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postDesignReviewsUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postDesignReviewsUpdate(parameters: {
-        'where' ? : string,
-        'data' ? : DesignReview,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/update';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsCountURL(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/count';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsCount
-     * @param {string} where - Criteria to match model instances
-     */
-    getDesignReviewsCount(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postDesignReviewsChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/change-stream';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#postDesignReviewsChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postDesignReviewsChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                form['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getDesignReviewsChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/change-stream';
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#getDesignReviewsChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getDesignReviewsChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/DesignReviews/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                queryParameters['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
     getTemplateTagsByIdTagURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
@@ -42557,6 +40418,1228 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/DesignTags/change-stream';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['options'] !== undefined) {
+                queryParameters['options'] = parameters['options'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsByIdDesignsURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/designs';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation designs.
+    * @method
+    * @name TweakApi#getDesignExportsByIdDesigns
+         * @param {string} id - DesignExport id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignExportsByIdDesigns(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/designs';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsByIdRequesterURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/requester';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation requester.
+    * @method
+    * @name TweakApi#getDesignExportsByIdRequester
+         * @param {string} id - DesignExport id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignExportsByIdRequester(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/requester';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignExportsURL(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Create a new instance of the model and persist it into the data source.
+     * @method
+     * @name TweakApi#postDesignExports
+     * @param {} data - Model instance data
+     */
+    postDesignExports(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    patchDesignExportsURL(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Patch an existing model instance or insert a new one into the data source.
+     * @method
+     * @name TweakApi#patchDesignExports
+     * @param {} data - Model instance data
+     */
+    patchDesignExports(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putDesignExportsURL(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Replace an existing model instance or insert a new one into the data source.
+     * @method
+     * @name TweakApi#putDesignExports
+     * @param {} data - Model instance data
+     */
+    putDesignExports(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsURL(parameters: {
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find all instances of the model matched by filter from the data source.
+     * @method
+     * @name TweakApi#getDesignExports
+     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+     */
+    getDesignExports(parameters: {
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignExportsReplaceOrCreateURL(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/replaceOrCreate';
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Replace an existing model instance or insert a new one into the data source.
+     * @method
+     * @name TweakApi#postDesignExportsReplaceOrCreate
+     * @param {} data - Model instance data
+     */
+    postDesignExportsReplaceOrCreate(parameters: {
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/replaceOrCreate';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignExportsUpsertWithWhereURL(parameters: {
+        'where' ? : string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/upsertWithWhere';
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @method
+     * @name TweakApi#postDesignExportsUpsertWithWhere
+     * @param {string} where - Criteria to match model instances
+     * @param {} data - An object of model property name/value pairs
+     */
+    postDesignExportsUpsertWithWhere(parameters: {
+        'where' ? : string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/upsertWithWhere';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsByIdExistsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/exists';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check whether a model instance exists in the data source.
+     * @method
+     * @name TweakApi#getDesignExportsByIdExists
+     * @param {string} id - Model id
+     */
+    getDesignExportsByIdExists(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/exists';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    headDesignExportsByIdURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check whether a model instance exists in the data source.
+     * @method
+     * @name TweakApi#headDesignExportsById
+     * @param {string} id - Model id
+     */
+    headDesignExportsById(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsByIdURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a model instance by {{id}} from the data source.
+     * @method
+     * @name TweakApi#getDesignExportsById
+     * @param {string} id - Model id
+     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+     */
+    getDesignExportsById(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putDesignExportsByIdURL(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Replace attributes for a model instance and persist it into the data source.
+     * @method
+     * @name TweakApi#putDesignExportsById
+     * @param {string} id - Model id
+     * @param {} data - Model instance data
+     */
+    putDesignExportsById(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteDesignExportsByIdURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a model instance by {{id}} from the data source.
+     * @method
+     * @name TweakApi#deleteDesignExportsById
+     * @param {string} id - Model id
+     */
+    deleteDesignExportsById(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    patchDesignExportsByIdURL(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Patch attributes for a model instance and persist it into the data source.
+     * @method
+     * @name TweakApi#patchDesignExportsById
+     * @param {string} id - DesignExport id
+     * @param {} data - An object of model property name/value pairs
+     */
+    patchDesignExportsById(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignExportsByIdReplaceURL(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/replace';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Replace attributes for a model instance and persist it into the data source.
+     * @method
+     * @name TweakApi#postDesignExportsByIdReplace
+     * @param {string} id - Model id
+     * @param {} data - Model instance data
+     */
+    postDesignExportsByIdReplace(parameters: {
+        'id': string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/{id}/replace';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsFindOneURL(parameters: {
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/findOne';
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find first instance of the model matched by filter from the data source.
+     * @method
+     * @name TweakApi#getDesignExportsFindOne
+     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+     */
+    getDesignExportsFindOne(parameters: {
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/findOne';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignExportsUpdateURL(parameters: {
+        'where' ? : string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/update';
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Update instances of the model matched by {{where}} from the data source.
+     * @method
+     * @name TweakApi#postDesignExportsUpdate
+     * @param {string} where - Criteria to match model instances
+     * @param {} data - An object of model property name/value pairs
+     */
+    postDesignExportsUpdate(parameters: {
+        'where' ? : string,
+        'data' ? : DesignExport,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/update';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsCountURL(parameters: {
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/count';
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Count instances of the model matched by where from the data source.
+     * @method
+     * @name TweakApi#getDesignExportsCount
+     * @param {string} where - Criteria to match model instances
+     */
+    getDesignExportsCount(parameters: {
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postDesignExportsChangeStreamURL(parameters: {
+        'options' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/change-stream';
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Create a change stream.
+    * @method
+    * @name TweakApi#postDesignExportsChangeStream
+         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postDesignExportsChangeStream(parameters: {
+        'options' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/change-stream';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['options'] !== undefined) {
+                form['options'] = parameters['options'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getDesignExportsChangeStreamURL(parameters: {
+        'options' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/change-stream';
+        if (parameters['options'] !== undefined) {
+            queryParameters['options'] = parameters['options'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Create a change stream.
+    * @method
+    * @name TweakApi#getDesignExportsChangeStream
+         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignExportsChangeStream(parameters: {
+        'options' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/DesignExports/change-stream';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};

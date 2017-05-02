@@ -3420,6 +3420,174 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Fetches belongsTo relation requester.
+     * @method
+     * @name TweakApi#getDesignsByIdRequester
+     * @param {string} id - Design id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdRequester = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/requester';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation assignee.
+     * @method
+     * @name TweakApi#getDesignsByIdAssignee
+     * @param {string} id - Design id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdAssignee = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/assignee';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation reviewer.
+     * @method
+     * @name TweakApi#getDesignsByIdReviewer
+     * @param {string} id - Design id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdReviewer = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/reviewer';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Fetches belongsTo relation template.
      * @method
      * @name TweakApi#getDesignsByIdTemplate
@@ -3532,22 +3700,21 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
-     * Fetches belongsTo relation requester.
+     * Find a related item by id for comments.
      * @method
-     * @name TweakApi#getDesignsByIdRequester
+     * @name TweakApi#getDesignsByIdCommentsByFk
      * @param {string} id - Design id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * @param {string} fk - Foreign key for comments
      * 
      */
-    TweakApi.prototype.getDesignsByIdRequester = function(parameters) {
+    TweakApi.prototype.getDesignsByIdCommentsByFk = function(parameters) {
         if (parameters === undefined) {
             parameters = {};
         }
         var deferred = Q.defer();
 
         var domain = this.domain;
-        var path = '/Designs/{id}/requester';
+        var path = '/Designs/{id}/comments/{fk}';
 
         var body;
         var queryParameters = {};
@@ -3571,8 +3738,11 @@ var TweakApi = (function() {
             return deferred.promise;
         }
 
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
         }
 
         if (parameters.$queryParameters) {
@@ -3584,6 +3754,128 @@ var TweakApi = (function() {
         }
 
         this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for comments.
+     * @method
+     * @name TweakApi#deleteDesignsByIdCommentsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for comments
+     * 
+     */
+    TweakApi.prototype.deleteDesignsByIdCommentsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/comments/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for comments.
+     * @method
+     * @name TweakApi#putDesignsByIdCommentsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for comments
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putDesignsByIdCommentsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/comments/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
         return deferred.promise;
     };
@@ -3905,726 +4197,6 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/Designs/{id}/commenters/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a related item by id for assignees.
-     * @method
-     * @name TweakApi#getDesignsByIdAssigneesByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     * 
-     */
-    TweakApi.prototype.getDesignsByIdAssigneesByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a related item by id for assignees.
-     * @method
-     * @name TweakApi#deleteDesignsByIdAssigneesByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     * 
-     */
-    TweakApi.prototype.deleteDesignsByIdAssigneesByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update a related item by id for assignees.
-     * @method
-     * @name TweakApi#putDesignsByIdAssigneesByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putDesignsByIdAssigneesByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Add a related item by id for assignees.
-     * @method
-     * @name TweakApi#putDesignsByIdAssigneesRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putDesignsByIdAssigneesRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Remove the assignees relation to an item by id.
-     * @method
-     * @name TweakApi#deleteDesignsByIdAssigneesRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     * 
-     */
-    TweakApi.prototype.deleteDesignsByIdAssigneesRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check the existence of assignees relation to an item by id.
-     * @method
-     * @name TweakApi#headDesignsByIdAssigneesRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for assignees
-     * 
-     */
-    TweakApi.prototype.headDesignsByIdAssigneesRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a related item by id for reviewers.
-     * @method
-     * @name TweakApi#getDesignsByIdReviewersByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     * 
-     */
-    TweakApi.prototype.getDesignsByIdReviewersByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a related item by id for reviewers.
-     * @method
-     * @name TweakApi#deleteDesignsByIdReviewersByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     * 
-     */
-    TweakApi.prototype.deleteDesignsByIdReviewersByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update a related item by id for reviewers.
-     * @method
-     * @name TweakApi#putDesignsByIdReviewersByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putDesignsByIdReviewersByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Add a related item by id for reviewers.
-     * @method
-     * @name TweakApi#putDesignsByIdReviewersRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putDesignsByIdReviewersRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Remove the reviewers relation to an item by id.
-     * @method
-     * @name TweakApi#deleteDesignsByIdReviewersRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     * 
-     */
-    TweakApi.prototype.deleteDesignsByIdReviewersRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check the existence of reviewers relation to an item by id.
-     * @method
-     * @name TweakApi#headDesignsByIdReviewersRelByFk
-     * @param {string} id - Design id
-     * @param {string} fk - Foreign key for reviewers
-     * 
-     */
-    TweakApi.prototype.headDesignsByIdReviewersRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/rel/{fk}';
 
         var body;
         var queryParameters = {};
@@ -5028,6 +4600,403 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Find a related item by id for exports.
+     * @method
+     * @name TweakApi#getDesignsByIdExportsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for exports
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdExportsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for exports.
+     * @method
+     * @name TweakApi#deleteDesignsByIdExportsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for exports
+     * 
+     */
+    TweakApi.prototype.deleteDesignsByIdExportsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for exports.
+     * @method
+     * @name TweakApi#putDesignsByIdExportsByFk
+     * @param {string} id - Design id
+     * @param {string} fk - Foreign key for exports
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putDesignsByIdExportsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries comments of Design.
+     * @method
+     * @name TweakApi#getDesignsByIdComments
+     * @param {string} id - Design id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdComments = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/comments';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in comments of this model.
+     * @method
+     * @name TweakApi#postDesignsByIdComments
+     * @param {string} id - Design id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postDesignsByIdComments = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/comments';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all comments of this model.
+     * @method
+     * @name TweakApi#deleteDesignsByIdComments
+     * @param {string} id - Design id
+     * 
+     */
+    TweakApi.prototype.deleteDesignsByIdComments = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/comments';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts comments of Design.
+     * @method
+     * @name TweakApi#getDesignsByIdCommentsCount
+     * @param {string} id - Design id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdCommentsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/comments/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Queries commenters of Design.
      * @method
      * @name TweakApi#getDesignsByIdCommenters
@@ -5245,440 +5214,6 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
-     * Queries assignees of Design.
-     * @method
-     * @name TweakApi#getDesignsByIdAssignees
-     * @param {string} id - Design id
-     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignsByIdAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Creates a new instance in assignees of this model.
-     * @method
-     * @name TweakApi#postDesignsByIdAssignees
-     * @param {string} id - Design id
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postDesignsByIdAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Deletes all assignees of this model.
-     * @method
-     * @name TweakApi#deleteDesignsByIdAssignees
-     * @param {string} id - Design id
-     * 
-     */
-    TweakApi.prototype.deleteDesignsByIdAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Counts assignees of Design.
-     * @method
-     * @name TweakApi#getDesignsByIdAssigneesCount
-     * @param {string} id - Design id
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getDesignsByIdAssigneesCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/assignees/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Queries reviewers of Design.
-     * @method
-     * @name TweakApi#getDesignsByIdReviewers
-     * @param {string} id - Design id
-     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignsByIdReviewers = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Creates a new instance in reviewers of this model.
-     * @method
-     * @name TweakApi#postDesignsByIdReviewers
-     * @param {string} id - Design id
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postDesignsByIdReviewers = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Deletes all reviewers of this model.
-     * @method
-     * @name TweakApi#deleteDesignsByIdReviewers
-     * @param {string} id - Design id
-     * 
-     */
-    TweakApi.prototype.deleteDesignsByIdReviewers = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Counts reviewers of Design.
-     * @method
-     * @name TweakApi#getDesignsByIdReviewersCount
-     * @param {string} id - Design id
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getDesignsByIdReviewersCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/Designs/{id}/reviewers/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
      * Queries tags of Design.
      * @method
      * @name TweakApi#getDesignsByIdTags
@@ -5856,6 +5391,223 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/Designs/{id}/tags/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries exports of Design.
+     * @method
+     * @name TweakApi#getDesignsByIdExports
+     * @param {string} id - Design id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in exports of this model.
+     * @method
+     * @name TweakApi#postDesignsByIdExports
+     * @param {string} id - Design id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postDesignsByIdExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all exports of this model.
+     * @method
+     * @name TweakApi#deleteDesignsByIdExports
+     * @param {string} id - Design id
+     * 
+     */
+    TweakApi.prototype.deleteDesignsByIdExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts exports of Design.
+     * @method
+     * @name TweakApi#getDesignsByIdExportsCount
+     * @param {string} id - Design id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getDesignsByIdExportsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Designs/{id}/exports/count';
 
         var body;
         var queryParameters = {};
@@ -11448,6 +11200,546 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Find a related item by id for requestedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesigns
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdRequestedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for requestedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesigns
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdRequestedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for requestedDesigns.
+     * @method
+     * @name TweakApi#putTeamMembersByIdRequestedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesigns
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdRequestedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find a related item by id for assignedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdAssignedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for assignedDesigns
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdAssignedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for assignedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdAssignedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for assignedDesigns
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdAssignedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for assignedDesigns.
+     * @method
+     * @name TweakApi#putTeamMembersByIdAssignedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for assignedDesigns
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdAssignedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find a related item by id for reviewedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdReviewedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for reviewedDesigns
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdReviewedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for reviewedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdReviewedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for reviewedDesigns
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdReviewedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for reviewedDesigns.
+     * @method
+     * @name TweakApi#putTeamMembersByIdReviewedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for reviewedDesigns
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdReviewedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Find a related item by id for uploadedTemplates.
      * @method
      * @name TweakApi#getTeamMembersByIdUploadedTemplatesByFk
@@ -12168,6 +12460,546 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Find a related item by id for commentedDesigns.
+     * @method
+     * @name TweakApi#getTeamMembersByIdCommentedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdCommentedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for commentedDesigns.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdCommentedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdCommentedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for commentedDesigns.
+     * @method
+     * @name TweakApi#putTeamMembersByIdCommentedDesignsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdCommentedDesignsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Add a related item by id for commentedDesigns.
+     * @method
+     * @name TweakApi#putTeamMembersByIdCommentedDesignsRelByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdCommentedDesignsRelByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Remove the commentedDesigns relation to an item by id.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdCommentedDesignsRelByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdCommentedDesignsRelByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Check the existence of commentedDesigns relation to an item by id.
+     * @method
+     * @name TweakApi#headTeamMembersByIdCommentedDesignsRelByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for commentedDesigns
+     * 
+     */
+    TweakApi.prototype.headTeamMembersByIdCommentedDesignsRelByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/rel/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find a related item by id for designComments.
+     * @method
+     * @name TweakApi#getTeamMembersByIdDesignCommentsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for designComments
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdDesignCommentsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for designComments.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdDesignCommentsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for designComments
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdDesignCommentsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for designComments.
+     * @method
+     * @name TweakApi#putTeamMembersByIdDesignCommentsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for designComments
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdDesignCommentsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Find a related item by id for templates.
      * @method
      * @name TweakApi#getTeamMembersByIdTemplatesByFk
@@ -12524,6 +13356,837 @@ var TweakApi = (function() {
         }
 
         this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find a related item by id for requestedDesignExports.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignExportsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesignExports
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdRequestedDesignExportsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for requestedDesignExports.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesignExportsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesignExports
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdRequestedDesignExportsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for requestedDesignExports.
+     * @method
+     * @name TweakApi#putTeamMembersByIdRequestedDesignExportsByFk
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Foreign key for requestedDesignExports
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamMembersByIdRequestedDesignExportsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries requestedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesigns
+     * @param {string} id - TeamMember id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdRequestedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in requestedDesigns of this model.
+     * @method
+     * @name TweakApi#postTeamMembersByIdRequestedDesigns
+     * @param {string} id - TeamMember id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamMembersByIdRequestedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all requestedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesigns
+     * @param {string} id - TeamMember id
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdRequestedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts requestedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdRequestedDesignsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesigns/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries assignedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdAssignedDesigns
+     * @param {string} id - TeamMember id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdAssignedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in assignedDesigns of this model.
+     * @method
+     * @name TweakApi#postTeamMembersByIdAssignedDesigns
+     * @param {string} id - TeamMember id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamMembersByIdAssignedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all assignedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdAssignedDesigns
+     * @param {string} id - TeamMember id
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdAssignedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts assignedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdAssignedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdAssignedDesignsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/assignedDesigns/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries reviewedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdReviewedDesigns
+     * @param {string} id - TeamMember id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdReviewedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in reviewedDesigns of this model.
+     * @method
+     * @name TweakApi#postTeamMembersByIdReviewedDesigns
+     * @param {string} id - TeamMember id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamMembersByIdReviewedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all reviewedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdReviewedDesigns
+     * @param {string} id - TeamMember id
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdReviewedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts reviewedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdReviewedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdReviewedDesignsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/reviewedDesigns/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
         return deferred.promise;
     };
@@ -13179,6 +14842,440 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Queries commentedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdCommentedDesigns
+     * @param {string} id - TeamMember id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdCommentedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in commentedDesigns of this model.
+     * @method
+     * @name TweakApi#postTeamMembersByIdCommentedDesigns
+     * @param {string} id - TeamMember id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamMembersByIdCommentedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all commentedDesigns of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdCommentedDesigns
+     * @param {string} id - TeamMember id
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdCommentedDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts commentedDesigns of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdCommentedDesignsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdCommentedDesignsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/commentedDesigns/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries designComments of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdDesignComments
+     * @param {string} id - TeamMember id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdDesignComments = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in designComments of this model.
+     * @method
+     * @name TweakApi#postTeamMembersByIdDesignComments
+     * @param {string} id - TeamMember id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamMembersByIdDesignComments = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all designComments of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdDesignComments
+     * @param {string} id - TeamMember id
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdDesignComments = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts designComments of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdDesignCommentsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdDesignCommentsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/designComments/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Queries templates of TeamMember.
      * @method
      * @name TweakApi#getTeamMembersByIdTemplates
@@ -13356,6 +15453,223 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/TeamMembers/{id}/templates/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries requestedDesignExports of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignExports
+     * @param {string} id - TeamMember id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdRequestedDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in requestedDesignExports of this model.
+     * @method
+     * @name TweakApi#postTeamMembersByIdRequestedDesignExports
+     * @param {string} id - TeamMember id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamMembersByIdRequestedDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all requestedDesignExports of this model.
+     * @method
+     * @name TweakApi#deleteTeamMembersByIdRequestedDesignExports
+     * @param {string} id - TeamMember id
+     * 
+     */
+    TweakApi.prototype.deleteTeamMembersByIdRequestedDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts requestedDesignExports of TeamMember.
+     * @method
+     * @name TweakApi#getTeamMembersByIdRequestedDesignExportsCount
+     * @param {string} id - TeamMember id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdRequestedDesignExportsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/requestedDesignExports/count';
 
         var body;
         var queryParameters = {};
@@ -17873,6 +20187,63 @@ var TweakApi = (function() {
         }
 
         this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Generate design from template
+     * @method
+     * @name TweakApi#postTemplatesByIdDesignsGenerate
+     * @param {string} id - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTemplatesByIdDesignsGenerate = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Templates/{id}/designs/generate';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
         return deferred.promise;
     };
@@ -22608,2134 +24979,6 @@ var TweakApi = (function() {
 
         if (parameters['refresh'] !== undefined) {
             queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a related item by id for requesterDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdRequesterDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for requesterDesigns
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdRequesterDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a related item by id for requesterDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdRequesterDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for requesterDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdRequesterDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update a related item by id for requesterDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdRequesterDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for requesterDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdRequesterDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a related item by id for commentedDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdCommentedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdCommentedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a related item by id for commentedDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdCommentedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdCommentedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update a related item by id for commentedDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdCommentedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdCommentedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Add a related item by id for commentedDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdCommentedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdCommentedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Remove the commentedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdCommentedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdCommentedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check the existence of commentedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#headPortalMembersByIdCommentedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for commentedDesigns
-     * 
-     */
-    TweakApi.prototype.headPortalMembersByIdCommentedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a related item by id for assignedDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdAssignedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdAssignedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a related item by id for assignedDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdAssignedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdAssignedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update a related item by id for assignedDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdAssignedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdAssignedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Add a related item by id for assignedDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdAssignedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdAssignedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Remove the assignedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdAssignedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdAssignedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check the existence of assignedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#headPortalMembersByIdAssignedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for assignedDesigns
-     * 
-     */
-    TweakApi.prototype.headPortalMembersByIdAssignedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a related item by id for reviewedDesigns.
-     * @method
-     * @name TweakApi#getPortalMembersByIdReviewedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdReviewedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a related item by id for reviewedDesigns.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdReviewedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdReviewedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update a related item by id for reviewedDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdReviewedDesignsByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdReviewedDesignsByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Add a related item by id for reviewedDesigns.
-     * @method
-     * @name TweakApi#putPortalMembersByIdReviewedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.putPortalMembersByIdReviewedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Remove the reviewedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdReviewedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdReviewedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check the existence of reviewedDesigns relation to an item by id.
-     * @method
-     * @name TweakApi#headPortalMembersByIdReviewedDesignsRelByFk
-     * @param {string} id - PortalMember id
-     * @param {string} fk - Foreign key for reviewedDesigns
-     * 
-     */
-    TweakApi.prototype.headPortalMembersByIdReviewedDesignsRelByFk = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/rel/{fk}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        path = path.replace('{fk}', parameters['fk']);
-
-        if (parameters['fk'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: fk'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Queries requesterDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdRequesterDesigns
-     * @param {string} id - PortalMember id
-     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdRequesterDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Creates a new instance in requesterDesigns of this model.
-     * @method
-     * @name TweakApi#postPortalMembersByIdRequesterDesigns
-     * @param {string} id - PortalMember id
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postPortalMembersByIdRequesterDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Deletes all requesterDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdRequesterDesigns
-     * @param {string} id - PortalMember id
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdRequesterDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Counts requesterDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdRequesterDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdRequesterDesignsCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/requesterDesigns/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Queries commentedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdCommentedDesigns
-     * @param {string} id - PortalMember id
-     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdCommentedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Creates a new instance in commentedDesigns of this model.
-     * @method
-     * @name TweakApi#postPortalMembersByIdCommentedDesigns
-     * @param {string} id - PortalMember id
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postPortalMembersByIdCommentedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Deletes all commentedDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdCommentedDesigns
-     * @param {string} id - PortalMember id
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdCommentedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Counts commentedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdCommentedDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdCommentedDesignsCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/commentedDesigns/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Queries assignedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdAssignedDesigns
-     * @param {string} id - PortalMember id
-     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdAssignedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Creates a new instance in assignedDesigns of this model.
-     * @method
-     * @name TweakApi#postPortalMembersByIdAssignedDesigns
-     * @param {string} id - PortalMember id
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postPortalMembersByIdAssignedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Deletes all assignedDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdAssignedDesigns
-     * @param {string} id - PortalMember id
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdAssignedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Counts assignedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdAssignedDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdAssignedDesignsCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/assignedDesigns/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Queries reviewedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdReviewedDesigns
-     * @param {string} id - PortalMember id
-     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdReviewedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Creates a new instance in reviewedDesigns of this model.
-     * @method
-     * @name TweakApi#postPortalMembersByIdReviewedDesigns
-     * @param {string} id - PortalMember id
-     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postPortalMembersByIdReviewedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Deletes all reviewedDesigns of this model.
-     * @method
-     * @name TweakApi#deletePortalMembersByIdReviewedDesigns
-     * @param {string} id - PortalMember id
-     * 
-     */
-    TweakApi.prototype.deletePortalMembersByIdReviewedDesigns = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Counts reviewedDesigns of PortalMember.
-     * @method
-     * @name TweakApi#getPortalMembersByIdReviewedDesignsCount
-     * @param {string} id - PortalMember id
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getPortalMembersByIdReviewedDesignsCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalMembers/{id}/reviewedDesigns/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
         }
 
         if (parameters.$queryParameters) {
@@ -31046,2028 +31289,6 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
-     * Fetches belongsTo relation design.
-     * @method
-     * @name TweakApi#getDesignAssigneesByIdDesign
-     * @param {string} id - DesignAssignee id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesByIdDesign = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}/design';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Fetches belongsTo relation assignee.
-     * @method
-     * @name TweakApi#getDesignAssigneesByIdAssignee
-     * @param {string} id - DesignAssignee id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesByIdAssignee = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}/assignee';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignAssignees
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postDesignAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchDesignAssignees
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.patchDesignAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putDesignAssignees
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.putDesignAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignAssignees
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getDesignAssignees = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postDesignAssigneesReplaceOrCreate
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postDesignAssigneesReplaceOrCreate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/replaceOrCreate';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postDesignAssigneesUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.postDesignAssigneesUpsertWithWhere = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/upsertWithWhere';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesByIdExists
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesByIdExists = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}/exists';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headDesignAssigneesById
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.headDesignAssigneesById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putDesignAssigneesById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.putDesignAssigneesById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deleteDesignAssigneesById
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.deleteDesignAssigneesById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchDesignAssigneesById
-     * @param {string} id - DesignAssignee id
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.patchDesignAssigneesById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignAssigneesByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postDesignAssigneesByIdReplace = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/{id}/replace';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesFindOne = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/findOne';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postDesignAssigneesUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.postDesignAssigneesUpdate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/update';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getDesignAssigneesCount
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a change stream.
-     * @method
-     * @name TweakApi#postDesignAssigneesChangeStream
-     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postDesignAssigneesChangeStream = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/change-stream';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['options'] !== undefined) {
-            form['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a change stream.
-     * @method
-     * @name TweakApi#getDesignAssigneesChangeStream
-     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignAssigneesChangeStream = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignAssignees/change-stream';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Fetches belongsTo relation design.
-     * @method
-     * @name TweakApi#getDesignReviewsByIdDesign
-     * @param {string} id - DesignReview id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsByIdDesign = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}/design';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Fetches belongsTo relation reviewer.
-     * @method
-     * @name TweakApi#getDesignReviewsByIdReviewer
-     * @param {string} id - DesignReview id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsByIdReviewer = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}/reviewer';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignReviews
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postDesignReviews = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchDesignReviews
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.patchDesignReviews = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putDesignReviews
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.putDesignReviews = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignReviews
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getDesignReviews = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postDesignReviewsReplaceOrCreate
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postDesignReviewsReplaceOrCreate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/replaceOrCreate';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postDesignReviewsUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.postDesignReviewsUpsertWithWhere = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/upsertWithWhere';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsByIdExists
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsByIdExists = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}/exists';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headDesignReviewsById
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.headDesignReviewsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putDesignReviewsById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.putDesignReviewsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deleteDesignReviewsById
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.deleteDesignReviewsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchDesignReviewsById
-     * @param {string} id - DesignReview id
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.patchDesignReviewsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postDesignReviewsByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postDesignReviewsByIdReplace = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/{id}/replace';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsFindOne = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/findOne';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postDesignReviewsUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.postDesignReviewsUpdate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/update';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getDesignReviewsCount
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a change stream.
-     * @method
-     * @name TweakApi#postDesignReviewsChangeStream
-     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postDesignReviewsChangeStream = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/change-stream';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['options'] !== undefined) {
-            form['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a change stream.
-     * @method
-     * @name TweakApi#getDesignReviewsChangeStream
-     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getDesignReviewsChangeStream = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/DesignReviews/change-stream';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
      * Fetches belongsTo relation tag.
      * @method
      * @name TweakApi#getTemplateTagsByIdTag
@@ -35089,13 +33310,1024 @@ var TweakApi = (function() {
 
         return deferred.promise;
     };
+    /**
+     * Fetches belongsTo relation designs.
+     * @method
+     * @name TweakApi#getDesignExportsByIdDesigns
+     * @param {string} id - DesignExport id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignExportsByIdDesigns = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}/designs';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation requester.
+     * @method
+     * @name TweakApi#getDesignExportsByIdRequester
+     * @param {string} id - DesignExport id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignExportsByIdRequester = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}/requester';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Create a new instance of the model and persist it into the data source.
+     * @method
+     * @name TweakApi#postDesignExports
+     * @param {} data - Model instance data
+     * 
+     */
+    TweakApi.prototype.postDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Patch an existing model instance or insert a new one into the data source.
+     * @method
+     * @name TweakApi#patchDesignExports
+     * @param {} data - Model instance data
+     * 
+     */
+    TweakApi.prototype.patchDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Replace an existing model instance or insert a new one into the data source.
+     * @method
+     * @name TweakApi#putDesignExports
+     * @param {} data - Model instance data
+     * 
+     */
+    TweakApi.prototype.putDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find all instances of the model matched by filter from the data source.
+     * @method
+     * @name TweakApi#getDesignExports
+     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+     * 
+     */
+    TweakApi.prototype.getDesignExports = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Replace an existing model instance or insert a new one into the data source.
+     * @method
+     * @name TweakApi#postDesignExportsReplaceOrCreate
+     * @param {} data - Model instance data
+     * 
+     */
+    TweakApi.prototype.postDesignExportsReplaceOrCreate = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/replaceOrCreate';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update an existing model instance or insert a new one into the data source based on the where criteria.
+     * @method
+     * @name TweakApi#postDesignExportsUpsertWithWhere
+     * @param {string} where - Criteria to match model instances
+     * @param {} data - An object of model property name/value pairs
+     * 
+     */
+    TweakApi.prototype.postDesignExportsUpsertWithWhere = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/upsertWithWhere';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Check whether a model instance exists in the data source.
+     * @method
+     * @name TweakApi#getDesignExportsByIdExists
+     * @param {string} id - Model id
+     * 
+     */
+    TweakApi.prototype.getDesignExportsByIdExists = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}/exists';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Check whether a model instance exists in the data source.
+     * @method
+     * @name TweakApi#headDesignExportsById
+     * @param {string} id - Model id
+     * 
+     */
+    TweakApi.prototype.headDesignExportsById = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find a model instance by {{id}} from the data source.
+     * @method
+     * @name TweakApi#getDesignExportsById
+     * @param {string} id - Model id
+     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+     * 
+     */
+    TweakApi.prototype.getDesignExportsById = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Replace attributes for a model instance and persist it into the data source.
+     * @method
+     * @name TweakApi#putDesignExportsById
+     * @param {string} id - Model id
+     * @param {} data - Model instance data
+     * 
+     */
+    TweakApi.prototype.putDesignExportsById = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a model instance by {{id}} from the data source.
+     * @method
+     * @name TweakApi#deleteDesignExportsById
+     * @param {string} id - Model id
+     * 
+     */
+    TweakApi.prototype.deleteDesignExportsById = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Patch attributes for a model instance and persist it into the data source.
+     * @method
+     * @name TweakApi#patchDesignExportsById
+     * @param {string} id - DesignExport id
+     * @param {} data - An object of model property name/value pairs
+     * 
+     */
+    TweakApi.prototype.patchDesignExportsById = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Replace attributes for a model instance and persist it into the data source.
+     * @method
+     * @name TweakApi#postDesignExportsByIdReplace
+     * @param {string} id - Model id
+     * @param {} data - Model instance data
+     * 
+     */
+    TweakApi.prototype.postDesignExportsByIdReplace = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/{id}/replace';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Find first instance of the model matched by filter from the data source.
+     * @method
+     * @name TweakApi#getDesignExportsFindOne
+     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+     * 
+     */
+    TweakApi.prototype.getDesignExportsFindOne = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/findOne';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update instances of the model matched by {{where}} from the data source.
+     * @method
+     * @name TweakApi#postDesignExportsUpdate
+     * @param {string} where - Criteria to match model instances
+     * @param {} data - An object of model property name/value pairs
+     * 
+     */
+    TweakApi.prototype.postDesignExportsUpdate = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/update';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Count instances of the model matched by where from the data source.
+     * @method
+     * @name TweakApi#getDesignExportsCount
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getDesignExportsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Create a change stream.
+     * @method
+     * @name TweakApi#postDesignExportsChangeStream
+     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postDesignExportsChangeStream = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/change-stream';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['options'] !== undefined) {
+            form['options'] = parameters['options'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Create a change stream.
+     * @method
+     * @name TweakApi#getDesignExportsChangeStream
+     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getDesignExportsChangeStream = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/DesignExports/change-stream';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        if (parameters['options'] !== undefined) {
+            queryParameters['options'] = parameters['options'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
 
     return TweakApi;
 })();
 
 exports.TweakApi = TweakApi;
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"q":241,"request":257}],2:[function(require,module,exports){
+},{"buffer":102,"q":244,"request":260}],2:[function(require,module,exports){
 'use strict';
 
 var compileSchema = require('./compile')
@@ -35517,7 +34749,7 @@ function Ajv(opts) {
   }
 }
 
-},{"./async":3,"./cache":4,"./compile":8,"./compile/formats":7,"./compile/resolve":9,"./compile/rules":10,"./compile/schema_obj":11,"./compile/util":13,"./compile/validation_error":14,"./keyword":39,"./refs/json-schema-draft-04.json":40,"./v5":42,"co":106,"json-stable-stringify":200}],3:[function(require,module,exports){
+},{"./async":3,"./cache":4,"./compile":8,"./compile/formats":7,"./compile/resolve":9,"./compile/rules":10,"./compile/schema_obj":11,"./compile/util":13,"./compile/validation_error":14,"./keyword":39,"./refs/json-schema-draft-04.json":40,"./v5":42,"co":107,"json-stable-stringify":201}],3:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -36400,7 +35632,7 @@ function vars(arr, statement) {
   return code;
 }
 
-},{"../async":3,"../dotjs/validate":38,"./equal":6,"./resolve":9,"./util":13,"./validation_error":14,"co":106,"json-stable-stringify":200}],9:[function(require,module,exports){
+},{"../async":3,"../dotjs/validate":38,"./equal":6,"./resolve":9,"./util":13,"./validation_error":14,"co":107,"json-stable-stringify":201}],9:[function(require,module,exports){
 'use strict';
 
 var url = require('url')
@@ -36669,7 +35901,7 @@ function resolveIds(schema) {
   }
 }
 
-},{"./equal":6,"./schema_obj":11,"./util":13,"url":331}],10:[function(require,module,exports){
+},{"./equal":6,"./schema_obj":11,"./util":13,"url":343}],10:[function(require,module,exports){
 'use strict';
 
 var ruleModules = require('./_rules')
@@ -37003,7 +36235,7 @@ function unescapeJsonPointer(str) {
   return str.replace(/~1/g, '/').replace(/~0/g, '~');
 }
 
-},{"./ucs2length":12,"json-stable-stringify":200}],14:[function(require,module,exports){
+},{"./ucs2length":12,"json-stable-stringify":201}],14:[function(require,module,exports){
 'use strict';
 
 module.exports = ValidationError;
@@ -40980,7 +40212,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":43,"inherits":187,"vm":338}],45:[function(require,module,exports){
+},{"../asn1":43,"inherits":188,"vm":350}],45:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -41098,7 +40330,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":46,"buffer":101,"inherits":187}],46:[function(require,module,exports){
+},{"../base":46,"buffer":102,"inherits":188}],46:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -41742,7 +40974,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":46,"minimalistic-assert":211}],48:[function(require,module,exports){
+},{"../base":46,"minimalistic-assert":212}],48:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -41865,7 +41097,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":187}],49:[function(require,module,exports){
+},{"inherits":188}],49:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -42256,7 +41488,7 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":43,"inherits":187}],52:[function(require,module,exports){
+},{"../../asn1":43,"inherits":188}],52:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
@@ -42313,7 +41545,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":51,"buffer":101,"inherits":187}],54:[function(require,module,exports){
+},{"./der":51,"buffer":102,"inherits":188}],54:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -42610,7 +41842,7 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":43,"buffer":101,"inherits":187}],55:[function(require,module,exports){
+},{"../../asn1":43,"buffer":102,"inherits":188}],55:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
@@ -42639,7 +41871,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":54,"inherits":187}],57:[function(require,module,exports){
+},{"./der":54,"inherits":188}],57:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -42948,7 +42180,7 @@ Reader.prototype._readTag = function(tag) {
 module.exports = Reader;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":57,"./types":60,"assert":64,"buffer":101}],60:[function(require,module,exports){
+},{"./errors":57,"./types":60,"assert":64,"buffer":102}],60:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -43306,7 +42538,7 @@ Writer.prototype._ensure = function(len) {
 module.exports = Writer;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":57,"./types":60,"assert":64,"buffer":101}],62:[function(require,module,exports){
+},{"./errors":57,"./types":60,"assert":64,"buffer":102}],62:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 // If you have no idea what ASN.1 or BER is, see this:
@@ -43538,7 +42770,7 @@ function _setExports(ndebug) {
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
 }).call(this,{"isBuffer":require("../is-buffer/index.js")},require('_process'))
-},{"../is-buffer/index.js":188,"_process":233,"assert":64,"stream":314,"util":336}],64:[function(require,module,exports){
+},{"../is-buffer/index.js":189,"_process":236,"assert":64,"stream":317,"util":348}],64:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -44032,7 +43264,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":336}],65:[function(require,module,exports){
+},{"util/":348}],65:[function(require,module,exports){
 
 /*!
  *  Copyright 2010 LearnBoost <dev@learnboost.com>
@@ -44246,7 +43478,7 @@ function canonicalizeResource (resource) {
 }
 module.exports.canonicalizeResource = canonicalizeResource
 
-},{"crypto":114,"url":331}],66:[function(require,module,exports){
+},{"crypto":115,"url":343}],66:[function(require,module,exports){
 (function (process,Buffer){
 var aws4 = exports,
     url = require('url'),
@@ -44582,7 +43814,7 @@ aws4.sign = function(request, credentials) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./lru":67,"_process":233,"buffer":101,"crypto":114,"querystring":244,"url":331}],67:[function(require,module,exports){
+},{"./lru":67,"_process":236,"buffer":102,"crypto":115,"querystring":247,"url":343}],67:[function(require,module,exports){
 module.exports = function(size) {
   return new LruCache(size)
 }
@@ -45238,7 +44470,7 @@ module.exports = {
       pbkdf: bcrypt_pbkdf
 };
 
-},{"tweetnacl":330}],69:[function(require,module,exports){
+},{"tweetnacl":342}],69:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -48686,6 +47918,17 @@ Rand.prototype.generate = function generate(len) {
   return this._rand(len);
 };
 
+// Emulate crypto API using randy
+Rand.prototype._rand = function _rand(n) {
+  if (this.rand.getBytes)
+    return this.rand.getBytes(n);
+
+  var res = new Uint8Array(n);
+  for (var i = 0; i < res.length; i++)
+    res[i] = this.rand.getByte();
+  return res;
+};
+
 if (typeof self === 'object') {
   if (self.crypto && self.crypto.getRandomValues) {
     // Modern browsers
@@ -48701,7 +47944,9 @@ if (typeof self === 'object') {
       self.msCrypto.getRandomValues(arr);
       return arr;
     };
-  } else {
+
+  // Safari's WebWorkers do not have `crypto`
+  } else if (typeof window === 'object') {
     // Old junk
     Rand.prototype._rand = function() {
       throw new Error('Not implemented yet');
@@ -48711,18 +47956,13 @@ if (typeof self === 'object') {
   // Node.js or Web worker with no crypto support
   try {
     var crypto = require('crypto');
+    if (typeof crypto.randomBytes !== 'function')
+      throw new Error('Not supported');
 
     Rand.prototype._rand = function _rand(n) {
       return crypto.randomBytes(n);
     };
   } catch (e) {
-    // Emulate crypto API using randy
-    Rand.prototype._rand = function _rand(n) {
-      var res = new Uint8Array(n);
-      for (var i = 0; i < res.length; i++)
-        res[i] = this.rand.getByte();
-      return res;
-    };
   }
 }
 
@@ -48909,7 +48149,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],73:[function(require,module,exports){
+},{"buffer":102}],73:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -49010,7 +48250,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":72,"./ghash":77,"buffer":101,"buffer-xor":100,"cipher-base":105,"inherits":187}],74:[function(require,module,exports){
+},{"./aes":72,"./ghash":77,"buffer":102,"buffer-xor":101,"cipher-base":106,"inherits":188}],74:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -49164,7 +48404,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":72,"./authCipher":73,"./modes":78,"./modes/cbc":79,"./modes/cfb":80,"./modes/cfb1":81,"./modes/cfb8":82,"./modes/ctr":83,"./modes/ecb":84,"./modes/ofb":85,"./streamCipher":86,"buffer":101,"cipher-base":105,"evp_bytestokey":147,"inherits":187}],76:[function(require,module,exports){
+},{"./aes":72,"./authCipher":73,"./modes":78,"./modes/cbc":79,"./modes/cfb":80,"./modes/cfb1":81,"./modes/cfb8":82,"./modes/ctr":83,"./modes/ecb":84,"./modes/ofb":85,"./streamCipher":86,"buffer":102,"cipher-base":106,"evp_bytestokey":147,"inherits":188}],76:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -49290,7 +48530,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":72,"./authCipher":73,"./modes":78,"./modes/cbc":79,"./modes/cfb":80,"./modes/cfb1":81,"./modes/cfb8":82,"./modes/ctr":83,"./modes/ecb":84,"./modes/ofb":85,"./streamCipher":86,"buffer":101,"cipher-base":105,"evp_bytestokey":147,"inherits":187}],77:[function(require,module,exports){
+},{"./aes":72,"./authCipher":73,"./modes":78,"./modes/cbc":79,"./modes/cfb":80,"./modes/cfb1":81,"./modes/cfb8":82,"./modes/ctr":83,"./modes/ecb":84,"./modes/ofb":85,"./streamCipher":86,"buffer":102,"cipher-base":106,"evp_bytestokey":147,"inherits":188}],77:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -49392,7 +48632,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],78:[function(require,module,exports){
+},{"buffer":102}],78:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -49584,7 +48824,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":100}],80:[function(require,module,exports){
+},{"buffer-xor":101}],80:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -49619,7 +48859,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"buffer-xor":100}],81:[function(require,module,exports){
+},{"buffer":102,"buffer-xor":101}],81:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -49657,7 +48897,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],82:[function(require,module,exports){
+},{"buffer":102}],82:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -49676,7 +48916,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],83:[function(require,module,exports){
+},{"buffer":102}],83:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -49711,7 +48951,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"buffer-xor":100}],84:[function(require,module,exports){
+},{"buffer":102,"buffer-xor":101}],84:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -49739,7 +48979,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"buffer-xor":100}],86:[function(require,module,exports){
+},{"buffer":102,"buffer-xor":101}],86:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -49768,7 +49008,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":72,"buffer":101,"cipher-base":105,"inherits":187}],87:[function(require,module,exports){
+},{"./aes":72,"buffer":102,"cipher-base":106,"inherits":188}],87:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -49890,7 +49130,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"cipher-base":105,"des.js":116,"inherits":187}],89:[function(require,module,exports){
+},{"buffer":102,"cipher-base":106,"des.js":117,"inherits":188}],89:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -49960,103 +49200,192 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":69,"buffer":101,"randombytes":245}],91:[function(require,module,exports){
-(function (Buffer){
-'use strict'
-exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
-  sign: 'rsa',
-  hash: 'sha224',
-  id: new Buffer('302d300d06096086480165030402040500041c', 'hex')
-}
-exports['RSA-SHA256'] = exports.sha256WithRSAEncryption = {
-  sign: 'rsa',
-  hash: 'sha256',
-  id: new Buffer('3031300d060960864801650304020105000420', 'hex')
-}
-exports['RSA-SHA384'] = exports.sha384WithRSAEncryption = {
-  sign: 'rsa',
-  hash: 'sha384',
-  id: new Buffer('3041300d060960864801650304020205000430', 'hex')
-}
-exports['RSA-SHA512'] = exports.sha512WithRSAEncryption = {
-  sign: 'rsa',
-  hash: 'sha512',
-  id: new Buffer('3051300d060960864801650304020305000440', 'hex')
-}
-exports['RSA-SHA1'] = {
-  sign: 'rsa',
-  hash: 'sha1',
-  id: new Buffer('3021300906052b0e03021a05000414', 'hex')
-}
-exports['ecdsa-with-SHA1'] = {
-  sign: 'ecdsa',
-  hash: 'sha1',
-  id: new Buffer('', 'hex')
+},{"bn.js":69,"buffer":102,"randombytes":248}],91:[function(require,module,exports){
+module.exports = require('./browser/algorithms.json')
+
+},{"./browser/algorithms.json":92}],92:[function(require,module,exports){
+module.exports={
+  "sha224WithRSAEncryption": {
+    "sign": "rsa",
+    "hash": "sha224",
+    "id": "302d300d06096086480165030402040500041c"
+  },
+  "RSA-SHA224": {
+    "sign": "ecdsa/rsa",
+    "hash": "sha224",
+    "id": "302d300d06096086480165030402040500041c"
+  },
+  "sha256WithRSAEncryption": {
+    "sign": "rsa",
+    "hash": "sha256",
+    "id": "3031300d060960864801650304020105000420"
+  },
+  "RSA-SHA256": {
+    "sign": "ecdsa/rsa",
+    "hash": "sha256",
+    "id": "3031300d060960864801650304020105000420"
+  },
+  "sha384WithRSAEncryption": {
+    "sign": "rsa",
+    "hash": "sha384",
+    "id": "3041300d060960864801650304020205000430"
+  },
+  "RSA-SHA384": {
+    "sign": "ecdsa/rsa",
+    "hash": "sha384",
+    "id": "3041300d060960864801650304020205000430"
+  },
+  "sha512WithRSAEncryption": {
+    "sign": "rsa",
+    "hash": "sha512",
+    "id": "3051300d060960864801650304020305000440"
+  },
+  "RSA-SHA512": {
+    "sign": "ecdsa/rsa",
+    "hash": "sha512",
+    "id": "3051300d060960864801650304020305000440"
+  },
+  "RSA-SHA1": {
+    "sign": "rsa",
+    "hash": "sha1",
+    "id": "3021300906052b0e03021a05000414"
+  },
+  "ecdsa-with-SHA1": {
+    "sign": "ecdsa",
+    "hash": "sha1",
+    "id": ""
+  },
+  "sha256": {
+    "sign": "ecdsa",
+    "hash": "sha256",
+    "id": ""
+  },
+  "sha224": {
+    "sign": "ecdsa",
+    "hash": "sha224",
+    "id": ""
+  },
+  "sha384": {
+    "sign": "ecdsa",
+    "hash": "sha384",
+    "id": ""
+  },
+  "sha512": {
+    "sign": "ecdsa",
+    "hash": "sha512",
+    "id": ""
+  },
+  "DSA-SHA": {
+    "sign": "dsa",
+    "hash": "sha1",
+    "id": ""
+  },
+  "DSA-SHA1": {
+    "sign": "dsa",
+    "hash": "sha1",
+    "id": ""
+  },
+  "DSA": {
+    "sign": "dsa",
+    "hash": "sha1",
+    "id": ""
+  },
+  "DSA-WITH-SHA224": {
+    "sign": "dsa",
+    "hash": "sha224",
+    "id": ""
+  },
+  "DSA-SHA224": {
+    "sign": "dsa",
+    "hash": "sha224",
+    "id": ""
+  },
+  "DSA-WITH-SHA256": {
+    "sign": "dsa",
+    "hash": "sha256",
+    "id": ""
+  },
+  "DSA-SHA256": {
+    "sign": "dsa",
+    "hash": "sha256",
+    "id": ""
+  },
+  "DSA-WITH-SHA384": {
+    "sign": "dsa",
+    "hash": "sha384",
+    "id": ""
+  },
+  "DSA-SHA384": {
+    "sign": "dsa",
+    "hash": "sha384",
+    "id": ""
+  },
+  "DSA-WITH-SHA512": {
+    "sign": "dsa",
+    "hash": "sha512",
+    "id": ""
+  },
+  "DSA-SHA512": {
+    "sign": "dsa",
+    "hash": "sha512",
+    "id": ""
+  },
+  "DSA-RIPEMD160": {
+    "sign": "dsa",
+    "hash": "rmd160",
+    "id": ""
+  },
+  "ripemd160WithRSA": {
+    "sign": "rsa",
+    "hash": "rmd160",
+    "id": "3021300906052b2403020105000414"
+  },
+  "RSA-RIPEMD160": {
+    "sign": "rsa",
+    "hash": "rmd160",
+    "id": "3021300906052b2403020105000414"
+  },
+  "md5WithRSAEncryption": {
+    "sign": "rsa",
+    "hash": "md5",
+    "id": "3020300c06082a864886f70d020505000410"
+  },
+  "RSA-MD5": {
+    "sign": "rsa",
+    "hash": "md5",
+    "id": "3020300c06082a864886f70d020505000410"
+  }
 }
 
-exports.DSA = exports['DSA-SHA1'] = exports['DSA-SHA'] = {
-  sign: 'dsa',
-  hash: 'sha1',
-  id: new Buffer('', 'hex')
-}
-exports['DSA-SHA224'] = exports['DSA-WITH-SHA224'] = {
-  sign: 'dsa',
-  hash: 'sha224',
-  id: new Buffer('', 'hex')
-}
-exports['DSA-SHA256'] = exports['DSA-WITH-SHA256'] = {
-  sign: 'dsa',
-  hash: 'sha256',
-  id: new Buffer('', 'hex')
-}
-exports['DSA-SHA384'] = exports['DSA-WITH-SHA384'] = {
-  sign: 'dsa',
-  hash: 'sha384',
-  id: new Buffer('', 'hex')
-}
-exports['DSA-SHA512'] = exports['DSA-WITH-SHA512'] = {
-  sign: 'dsa',
-  hash: 'sha512',
-  id: new Buffer('', 'hex')
-}
-exports['DSA-RIPEMD160'] = {
-  sign: 'dsa',
-  hash: 'rmd160',
-  id: new Buffer('', 'hex')
-}
-exports['RSA-RIPEMD160'] = exports.ripemd160WithRSA = {
-  sign: 'rsa',
-  hash: 'rmd160',
-  id: new Buffer('3021300906052b2403020105000414', 'hex')
-}
-exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
-  sign: 'rsa',
-  hash: 'md5',
-  id: new Buffer('3020300c06082a864886f70d020505000410', 'hex')
+},{}],93:[function(require,module,exports){
+module.exports={
+  "1.3.132.0.10": "secp256k1",
+  "1.3.132.0.33": "p224",
+  "1.2.840.10045.3.1.1": "p192",
+  "1.2.840.10045.3.1.7": "p256",
+  "1.3.132.0.34": "p384",
+  "1.3.132.0.35": "p521"
 }
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":101}],92:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 (function (Buffer){
-var _algos = require('./algos')
 var createHash = require('create-hash')
+var stream = require('stream')
 var inherits = require('inherits')
 var sign = require('./sign')
-var stream = require('stream')
 var verify = require('./verify')
 
-var algos = {}
-Object.keys(_algos).forEach(function (key) {
-  algos[key] = algos[key.toLowerCase()] = _algos[key]
+var algorithms = require('./algorithms.json')
+Object.keys(algorithms).forEach(function (key) {
+  algorithms[key].id = new Buffer(algorithms[key].id, 'hex')
+  algorithms[key.toLowerCase()] = algorithms[key]
 })
 
 function Sign (algorithm) {
   stream.Writable.call(this)
 
-  var data = algos[algorithm]
-  if (!data) {
-    throw new Error('Unknown message digest')
-  }
+  var data = algorithms[algorithm]
+  if (!data) throw new Error('Unknown message digest')
 
   this._hashType = data.hash
   this._hash = createHash(data.hash)
@@ -50071,9 +49400,7 @@ Sign.prototype._write = function _write (data, _, done) {
 }
 
 Sign.prototype.update = function update (data, enc) {
-  if (typeof data === 'string') {
-    data = new Buffer(data, enc)
-  }
+  if (typeof data === 'string') data = new Buffer(data, enc)
 
   this._hash.update(data)
   return this
@@ -50082,7 +49409,7 @@ Sign.prototype.update = function update (data, enc) {
 Sign.prototype.sign = function signMethod (key, enc) {
   this.end()
   var hash = this._hash.digest()
-  var sig = sign(Buffer.concat([this._tag, hash]), key, this._hashType, this._signType)
+  var sig = sign(hash, key, this._hashType, this._signType, this._tag)
 
   return enc ? sig.toString(enc) : sig
 }
@@ -50090,10 +49417,8 @@ Sign.prototype.sign = function signMethod (key, enc) {
 function Verify (algorithm) {
   stream.Writable.call(this)
 
-  var data = algos[algorithm]
-  if (!data) {
-    throw new Error('Unknown message digest')
-  }
+  var data = algorithms[algorithm]
+  if (!data) throw new Error('Unknown message digest')
 
   this._hash = createHash(data.hash)
   this._tag = data.id
@@ -50103,28 +49428,22 @@ inherits(Verify, stream.Writable)
 
 Verify.prototype._write = function _write (data, _, done) {
   this._hash.update(data)
-
   done()
 }
 
 Verify.prototype.update = function update (data, enc) {
-  if (typeof data === 'string') {
-    data = new Buffer(data, enc)
-  }
+  if (typeof data === 'string') data = new Buffer(data, enc)
 
   this._hash.update(data)
   return this
 }
 
 Verify.prototype.verify = function verifyMethod (key, sig, enc) {
-  if (typeof sig === 'string') {
-    sig = new Buffer(sig, enc)
-  }
+  if (typeof sig === 'string') sig = new Buffer(sig, enc)
 
   this.end()
   var hash = this._hash.digest()
-
-  return verify(sig, Buffer.concat([this._tag, hash]), key, this._signType)
+  return verify(sig, hash, key, this._signType, this._tag)
 }
 
 function createSign (algorithm) {
@@ -50143,57 +49462,35 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":91,"./sign":94,"./verify":95,"buffer":101,"create-hash":110,"inherits":187,"stream":314}],93:[function(require,module,exports){
-'use strict'
-exports['1.3.132.0.10'] = 'secp256k1'
-
-exports['1.3.132.0.33'] = 'p224'
-
-exports['1.2.840.10045.3.1.1'] = 'p192'
-
-exports['1.2.840.10045.3.1.7'] = 'p256'
-
-exports['1.3.132.0.34'] = 'p384'
-
-exports['1.3.132.0.35'] = 'p521'
-
-},{}],94:[function(require,module,exports){
+},{"./algorithms.json":92,"./sign":95,"./verify":96,"buffer":102,"create-hash":111,"inherits":188,"stream":317}],95:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
 var crt = require('browserify-rsa')
-var curves = require('./curves')
-var elliptic = require('elliptic')
-var parseKeys = require('parse-asn1')
-
+var EC = require('elliptic').ec
 var BN = require('bn.js')
-var EC = elliptic.ec
+var parseKeys = require('parse-asn1')
+var curves = require('./curves.json')
 
-function sign (hash, key, hashType, signType) {
+function sign (hash, key, hashType, signType, tag) {
   var priv = parseKeys(key)
   if (priv.curve) {
-    if (signType !== 'ecdsa') throw new Error('wrong private key type')
-
+    // rsa keys can be interpreted as ecdsa ones in openssl
+    if (signType !== 'ecdsa' && signType !== 'ecdsa/rsa') throw new Error('wrong private key type')
     return ecSign(hash, priv)
   } else if (priv.type === 'dsa') {
-    if (signType !== 'dsa') {
-      throw new Error('wrong private key type')
-    }
+    if (signType !== 'dsa') throw new Error('wrong private key type')
     return dsaSign(hash, priv, hashType)
   } else {
-    if (signType !== 'rsa') throw new Error('wrong private key type')
+    if (signType !== 'rsa' && signType !== 'ecdsa/rsa') throw new Error('wrong private key type')
   }
-
+  hash = Buffer.concat([tag, hash])
   var len = priv.modulus.byteLength()
   var pad = [ 0, 1 ]
-  while (hash.length + pad.length + 1 < len) {
-    pad.push(0xff)
-  }
+  while (hash.length + pad.length + 1 < len) pad.push(0xff)
   pad.push(0x00)
   var i = -1
-  while (++i < hash.length) {
-    pad.push(hash[i])
-  }
+  while (++i < hash.length) pad.push(hash[i])
 
   var out = crt(pad, priv)
   return out
@@ -50204,9 +49501,7 @@ function ecSign (hash, priv) {
   if (!curveId) throw new Error('unknown curve ' + priv.curve.join('.'))
 
   var curve = new EC(curveId)
-  var key = curve.genKeyPair()
-
-  key._importPrivate(priv.privateKey)
+  var key = curve.keyFromPrivate(priv.privateKey)
   var out = key.sign(hash)
 
   return new Buffer(out.toDER())
@@ -50226,7 +49521,7 @@ function dsaSign (hash, priv, algo) {
     k = makeKey(q, kv, algo)
     r = makeR(g, k, p, q)
     s = k.invm(q).imul(H.add(x.mul(r))).mod(q)
-    if (!s.cmpn(0)) {
+    if (s.cmpn(0) === 0) {
       s = false
       r = new BN(0)
     }
@@ -50239,13 +49534,8 @@ function toDER (r, s) {
   s = s.toArray()
 
   // Pad values
-  if (r[0] & 0x80) {
-    r = [ 0 ].concat(r)
-  }
-  // Pad values
-  if (s[0] & 0x80) {
-    s = [0].concat(s)
-  }
+  if (r[0] & 0x80) r = [ 0 ].concat(r)
+  if (s[0] & 0x80) s = [ 0 ].concat(s)
 
   var total = r.length + s.length + 4
   var res = [ 0x30, total, 0x02, r.length ]
@@ -50258,7 +49548,7 @@ function getKey (x, q, hash, algo) {
   if (x.length < q.byteLength()) {
     var zeros = new Buffer(q.byteLength() - x.length)
     zeros.fill(0)
-    x = Buffer.concat([zeros, x])
+    x = Buffer.concat([ zeros, x ])
   }
   var hlen = hash.length
   var hbits = bits2octets(hash, q)
@@ -50266,36 +49556,17 @@ function getKey (x, q, hash, algo) {
   v.fill(1)
   var k = new Buffer(hlen)
   k.fill(0)
-  k = createHmac(algo, k)
-    .update(v)
-    .update(new Buffer([0]))
-    .update(x)
-    .update(hbits)
-    .digest()
-  v = createHmac(algo, k)
-    .update(v)
-    .digest()
-  k = createHmac(algo, k)
-    .update(v)
-    .update(new Buffer([1]))
-    .update(x)
-    .update(hbits)
-    .digest()
-  v = createHmac(algo, k)
-    .update(v)
-    .digest()
-  return {
-    k: k,
-    v: v
-  }
+  k = createHmac(algo, k).update(v).update(new Buffer([ 0 ])).update(x).update(hbits).digest()
+  v = createHmac(algo, k).update(v).digest()
+  k = createHmac(algo, k).update(v).update(new Buffer([ 1 ])).update(x).update(hbits).digest()
+  v = createHmac(algo, k).update(v).digest()
+  return { k: k, v: v }
 }
 
 function bits2int (obits, q) {
   var bits = new BN(obits)
   var shift = (obits.length << 3) - q.bitLength()
-  if (shift > 0) {
-    bits.ishrn(shift)
-  }
+  if (shift > 0) bits.ishrn(shift)
   return bits
 }
 
@@ -50306,32 +49577,26 @@ function bits2octets (bits, q) {
   if (out.length < q.byteLength()) {
     var zeros = new Buffer(q.byteLength() - out.length)
     zeros.fill(0)
-    out = Buffer.concat([zeros, out])
+    out = Buffer.concat([ zeros, out ])
   }
   return out
 }
 
 function makeKey (q, kv, algo) {
-  var t, k
+  var t
+  var k
 
   do {
-    t = new Buffer('')
+    t = new Buffer(0)
 
     while (t.length * 8 < q.bitLength()) {
-      kv.v = createHmac(algo, kv.k)
-        .update(kv.v)
-        .digest()
-      t = Buffer.concat([t, kv.v])
+      kv.v = createHmac(algo, kv.k).update(kv.v).digest()
+      t = Buffer.concat([ t, kv.v ])
     }
 
     k = bits2int(t, q)
-    kv.k = createHmac(algo, kv.k)
-      .update(kv.v)
-      .update(new Buffer([0]))
-      .digest()
-    kv.v = createHmac(algo, kv.k)
-      .update(kv.v)
-      .digest()
+    kv.k = createHmac(algo, kv.k).update(kv.v).update(new Buffer([ 0 ])).digest()
+    kv.v = createHmac(algo, kv.k).update(kv.v).digest()
   } while (k.cmp(q) !== -1)
 
   return k
@@ -50346,33 +49611,27 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":93,"bn.js":69,"browserify-rsa":90,"buffer":101,"create-hmac":113,"elliptic":129,"parse-asn1":227}],95:[function(require,module,exports){
+},{"./curves.json":93,"bn.js":69,"browserify-rsa":90,"buffer":102,"create-hmac":114,"elliptic":130,"parse-asn1":230}],96:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var curves = require('./curves')
-var elliptic = require('elliptic')
-var parseKeys = require('parse-asn1')
-
 var BN = require('bn.js')
-var EC = elliptic.ec
+var EC = require('elliptic').ec
+var parseKeys = require('parse-asn1')
+var curves = require('./curves.json')
 
-function verify (sig, hash, key, signType) {
+function verify (sig, hash, key, signType, tag) {
   var pub = parseKeys(key)
   if (pub.type === 'ec') {
-    if (signType !== 'ecdsa') {
-      throw new Error('wrong public key type')
-    }
+    // rsa keys can be interpreted as ecdsa ones in openssl
+    if (signType !== 'ecdsa' && signType !== 'ecdsa/rsa') throw new Error('wrong public key type')
     return ecVerify(sig, hash, pub)
   } else if (pub.type === 'dsa') {
-    if (signType !== 'dsa') {
-      throw new Error('wrong public key type')
-    }
+    if (signType !== 'dsa') throw new Error('wrong public key type')
     return dsaVerify(sig, hash, pub)
   } else {
-    if (signType !== 'rsa') {
-      throw new Error('wrong public key type')
-    }
+    if (signType !== 'rsa' && signType !== 'ecdsa/rsa') throw new Error('wrong public key type')
   }
+  hash = Buffer.concat([tag, hash])
   var len = pub.modulus.byteLength()
   var pad = [ 1 ]
   var padNum = 0
@@ -50390,21 +49649,13 @@ function verify (sig, hash, key, signType) {
   sig = new BN(sig).toRed(red)
 
   sig = sig.redPow(new BN(pub.publicExponent))
-
   sig = new Buffer(sig.fromRed().toArray())
-  var out = 0
-  if (padNum < 8) {
-    out = 1
-  }
+  var out = padNum < 8 ? 1 : 0
   len = Math.min(sig.length, pad.length)
-  if (sig.length !== pad.length) {
-    out = 1
-  }
+  if (sig.length !== pad.length) out = 1
 
   i = -1
-  while (++i < len) {
-    out |= (sig[i] ^ pad[i])
-  }
+  while (++i < len) out |= sig[i] ^ pad[i]
   return out === 0
 }
 
@@ -50433,27 +49684,21 @@ function dsaVerify (sig, hash, pub) {
   var v = g.toRed(montp)
     .redPow(new BN(hash).mul(w).mod(q))
     .fromRed()
-    .mul(
-      y.toRed(montp)
-        .redPow(r.mul(w).mod(q))
-        .fromRed()
-  ).mod(p).mod(q)
-  return !v.cmp(r)
+    .mul(y.toRed(montp).redPow(r.mul(w).mod(q)).fromRed())
+    .mod(p)
+    .mod(q)
+  return v.cmp(r) === 0
 }
 
 function checkValue (b, q) {
-  if (b.cmpn(0) <= 0) {
-    throw new Error('invalid sig')
-  }
-  if (b.cmp(q) >= q) {
-    throw new Error('invalid sig')
-  }
+  if (b.cmpn(0) <= 0) throw new Error('invalid sig')
+  if (b.cmp(q) >= q) throw new Error('invalid sig')
 }
 
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":93,"bn.js":69,"buffer":101,"elliptic":129,"parse-asn1":227}],96:[function(require,module,exports){
+},{"./curves.json":93,"bn.js":69,"buffer":102,"elliptic":130,"parse-asn1":230}],97:[function(require,module,exports){
 (function (process,Buffer){
 var msg = require('pako/lib/zlib/messages');
 var zstream = require('pako/lib/zlib/zstream');
@@ -50693,7 +49938,7 @@ Zlib.prototype._error = function(status) {
 exports.Zlib = Zlib;
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"_process":233,"buffer":101,"pako/lib/zlib/constants":215,"pako/lib/zlib/deflate.js":217,"pako/lib/zlib/inflate.js":219,"pako/lib/zlib/messages":221,"pako/lib/zlib/zstream":223}],97:[function(require,module,exports){
+},{"_process":236,"buffer":102,"pako/lib/zlib/constants":217,"pako/lib/zlib/deflate.js":219,"pako/lib/zlib/inflate.js":221,"pako/lib/zlib/messages":223,"pako/lib/zlib/zstream":225}],98:[function(require,module,exports){
 (function (process,Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -51307,9 +50552,9 @@ util.inherits(InflateRaw, Zlib);
 util.inherits(Unzip, Zlib);
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./binding":96,"_process":233,"_stream_transform":255,"assert":64,"buffer":101,"util":336}],98:[function(require,module,exports){
+},{"./binding":97,"_process":236,"_stream_transform":258,"assert":64,"buffer":102,"util":348}],99:[function(require,module,exports){
 arguments[4][71][0].apply(exports,arguments)
-},{"dup":71}],99:[function(require,module,exports){
+},{"dup":71}],100:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -51421,7 +50666,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":101}],100:[function(require,module,exports){
+},{"buffer":102}],101:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -51435,8 +50680,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],101:[function(require,module,exports){
-(function (global){
+},{"buffer":102}],102:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -51449,80 +50693,57 @@ module.exports = function xor (a, b) {
 
 var base64 = require('base64-js')
 var ieee754 = require('ieee754')
-var isArray = require('isarray')
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
 exports.INSPECT_MAX_BYTES = 50
 
+var K_MAX_LENGTH = 0x7fffffff
+exports.kMaxLength = K_MAX_LENGTH
+
 /**
  * If `Buffer.TYPED_ARRAY_SUPPORT`:
  *   === true    Use Uint8Array implementation (fastest)
- *   === false   Use Object implementation (most compatible, even IE6)
+ *   === false   Print warning and recommend using `buffer` v4.x which has an Object
+ *               implementation (most compatible, even IE6)
  *
  * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
  * Opera 11.6+, iOS 4.2+.
  *
- * Due to various browser bugs, sometimes the Object implementation will be used even
- * when the browser supports typed arrays.
- *
- * Note:
- *
- *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,
- *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
- *
- *   - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.
- *
- *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
- *     incorrect length in some situations.
-
- * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
- * get the Object implementation, which is slower but behaves correctly.
+ * We report that the browser does not support typed arrays if the are not subclassable
+ * using __proto__. Firefox 4-29 lacks support for adding new properties to `Uint8Array`
+ * (See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438). IE 10 lacks support
+ * for __proto__ and has a buggy typed array implementation.
  */
-Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined
-  ? global.TYPED_ARRAY_SUPPORT
-  : typedArraySupport()
+Buffer.TYPED_ARRAY_SUPPORT = typedArraySupport()
 
-/*
- * Export kMaxLength after typed array support is determined.
- */
-exports.kMaxLength = kMaxLength()
+if (!Buffer.TYPED_ARRAY_SUPPORT && typeof console !== 'undefined' &&
+    typeof console.error === 'function') {
+  console.error(
+    'This browser lacks typed array (Uint8Array) support which is required by ' +
+    '`buffer` v5.x. Use `buffer` v4.x if you require old browser support.'
+  )
+}
 
 function typedArraySupport () {
+  // Can typed array instances can be augmented?
   try {
     var arr = new Uint8Array(1)
     arr.__proto__ = {__proto__: Uint8Array.prototype, foo: function () { return 42 }}
-    return arr.foo() === 42 && // typed array instances can be augmented
-        typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
-        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
+    return arr.foo() === 42
   } catch (e) {
     return false
   }
 }
 
-function kMaxLength () {
-  return Buffer.TYPED_ARRAY_SUPPORT
-    ? 0x7fffffff
-    : 0x3fffffff
-}
-
-function createBuffer (that, length) {
-  if (kMaxLength() < length) {
+function createBuffer (length) {
+  if (length > K_MAX_LENGTH) {
     throw new RangeError('Invalid typed array length')
   }
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    // Return an augmented `Uint8Array` instance, for best performance
-    that = new Uint8Array(length)
-    that.__proto__ = Buffer.prototype
-  } else {
-    // Fallback: Return an object instance of the Buffer class
-    if (that === null) {
-      that = new Buffer(length)
-    }
-    that.length = length
-  }
-
-  return that
+  // Return an augmented `Uint8Array` instance
+  var buf = new Uint8Array(length)
+  buf.__proto__ = Buffer.prototype
+  return buf
 }
 
 /**
@@ -51536,10 +50757,6 @@ function createBuffer (that, length) {
  */
 
 function Buffer (arg, encodingOrOffset, length) {
-  if (!Buffer.TYPED_ARRAY_SUPPORT && !(this instanceof Buffer)) {
-    return new Buffer(arg, encodingOrOffset, length)
-  }
-
   // Common case.
   if (typeof arg === 'number') {
     if (typeof encodingOrOffset === 'string') {
@@ -51547,33 +50764,38 @@ function Buffer (arg, encodingOrOffset, length) {
         'If encoding is specified then the first argument must be a string'
       )
     }
-    return allocUnsafe(this, arg)
+    return allocUnsafe(arg)
   }
-  return from(this, arg, encodingOrOffset, length)
+  return from(arg, encodingOrOffset, length)
+}
+
+// Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
+if (typeof Symbol !== 'undefined' && Symbol.species &&
+    Buffer[Symbol.species] === Buffer) {
+  Object.defineProperty(Buffer, Symbol.species, {
+    value: null,
+    configurable: true,
+    enumerable: false,
+    writable: false
+  })
 }
 
 Buffer.poolSize = 8192 // not used by this implementation
 
-// TODO: Legacy, not needed anymore. Remove in next major version.
-Buffer._augment = function (arr) {
-  arr.__proto__ = Buffer.prototype
-  return arr
-}
-
-function from (that, value, encodingOrOffset, length) {
+function from (value, encodingOrOffset, length) {
   if (typeof value === 'number') {
     throw new TypeError('"value" argument must not be a number')
   }
 
-  if (typeof ArrayBuffer !== 'undefined' && value instanceof ArrayBuffer) {
-    return fromArrayBuffer(that, value, encodingOrOffset, length)
+  if (value instanceof ArrayBuffer) {
+    return fromArrayBuffer(value, encodingOrOffset, length)
   }
 
   if (typeof value === 'string') {
-    return fromString(that, value, encodingOrOffset)
+    return fromString(value, encodingOrOffset)
   }
 
-  return fromObject(that, value)
+  return fromObject(value)
 }
 
 /**
@@ -51585,21 +50807,13 @@ function from (that, value, encodingOrOffset, length) {
  * Buffer.from(arrayBuffer[, byteOffset[, length]])
  **/
 Buffer.from = function (value, encodingOrOffset, length) {
-  return from(null, value, encodingOrOffset, length)
+  return from(value, encodingOrOffset, length)
 }
 
-if (Buffer.TYPED_ARRAY_SUPPORT) {
-  Buffer.prototype.__proto__ = Uint8Array.prototype
-  Buffer.__proto__ = Uint8Array
-  if (typeof Symbol !== 'undefined' && Symbol.species &&
-      Buffer[Symbol.species] === Buffer) {
-    // Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
-    Object.defineProperty(Buffer, Symbol.species, {
-      value: null,
-      configurable: true
-    })
-  }
-}
+// Note: Change prototype *after* Buffer.from is defined to workaround Chrome bug:
+// https://github.com/feross/buffer/pull/148
+Buffer.prototype.__proto__ = Uint8Array.prototype
+Buffer.__proto__ = Uint8Array
 
 function assertSize (size) {
   if (typeof size !== 'number') {
@@ -51609,20 +50823,20 @@ function assertSize (size) {
   }
 }
 
-function alloc (that, size, fill, encoding) {
+function alloc (size, fill, encoding) {
   assertSize(size)
   if (size <= 0) {
-    return createBuffer(that, size)
+    return createBuffer(size)
   }
   if (fill !== undefined) {
     // Only pay attention to encoding if it's a string. This
     // prevents accidentally sending in a number that would
     // be interpretted as a start offset.
     return typeof encoding === 'string'
-      ? createBuffer(that, size).fill(fill, encoding)
-      : createBuffer(that, size).fill(fill)
+      ? createBuffer(size).fill(fill, encoding)
+      : createBuffer(size).fill(fill)
   }
-  return createBuffer(that, size)
+  return createBuffer(size)
 }
 
 /**
@@ -51630,34 +50844,28 @@ function alloc (that, size, fill, encoding) {
  * alloc(size[, fill[, encoding]])
  **/
 Buffer.alloc = function (size, fill, encoding) {
-  return alloc(null, size, fill, encoding)
+  return alloc(size, fill, encoding)
 }
 
-function allocUnsafe (that, size) {
+function allocUnsafe (size) {
   assertSize(size)
-  that = createBuffer(that, size < 0 ? 0 : checked(size) | 0)
-  if (!Buffer.TYPED_ARRAY_SUPPORT) {
-    for (var i = 0; i < size; ++i) {
-      that[i] = 0
-    }
-  }
-  return that
+  return createBuffer(size < 0 ? 0 : checked(size) | 0)
 }
 
 /**
  * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
  * */
 Buffer.allocUnsafe = function (size) {
-  return allocUnsafe(null, size)
+  return allocUnsafe(size)
 }
 /**
  * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
  */
 Buffer.allocUnsafeSlow = function (size) {
-  return allocUnsafe(null, size)
+  return allocUnsafe(size)
 }
 
-function fromString (that, string, encoding) {
+function fromString (string, encoding) {
   if (typeof encoding !== 'string' || encoding === '') {
     encoding = 'utf8'
   }
@@ -51667,32 +50875,30 @@ function fromString (that, string, encoding) {
   }
 
   var length = byteLength(string, encoding) | 0
-  that = createBuffer(that, length)
+  var buf = createBuffer(length)
 
-  var actual = that.write(string, encoding)
+  var actual = buf.write(string, encoding)
 
   if (actual !== length) {
     // Writing a hex string, for example, that contains invalid characters will
     // cause everything after the first invalid character to be ignored. (e.g.
     // 'abxxcd' will be treated as 'ab')
-    that = that.slice(0, actual)
+    buf = buf.slice(0, actual)
   }
 
-  return that
+  return buf
 }
 
-function fromArrayLike (that, array) {
+function fromArrayLike (array) {
   var length = array.length < 0 ? 0 : checked(array.length) | 0
-  that = createBuffer(that, length)
+  var buf = createBuffer(length)
   for (var i = 0; i < length; i += 1) {
-    that[i] = array[i] & 255
+    buf[i] = array[i] & 255
   }
-  return that
+  return buf
 }
 
-function fromArrayBuffer (that, array, byteOffset, length) {
-  array.byteLength // this throws if `array` is not a valid ArrayBuffer
-
+function fromArrayBuffer (array, byteOffset, length) {
   if (byteOffset < 0 || array.byteLength < byteOffset) {
     throw new RangeError('\'offset\' is out of bounds')
   }
@@ -51701,49 +50907,43 @@ function fromArrayBuffer (that, array, byteOffset, length) {
     throw new RangeError('\'length\' is out of bounds')
   }
 
+  var buf
   if (byteOffset === undefined && length === undefined) {
-    array = new Uint8Array(array)
+    buf = new Uint8Array(array)
   } else if (length === undefined) {
-    array = new Uint8Array(array, byteOffset)
+    buf = new Uint8Array(array, byteOffset)
   } else {
-    array = new Uint8Array(array, byteOffset, length)
+    buf = new Uint8Array(array, byteOffset, length)
   }
 
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    // Return an augmented `Uint8Array` instance, for best performance
-    that = array
-    that.__proto__ = Buffer.prototype
-  } else {
-    // Fallback: Return an object instance of the Buffer class
-    that = fromArrayLike(that, array)
-  }
-  return that
+  // Return an augmented `Uint8Array` instance
+  buf.__proto__ = Buffer.prototype
+  return buf
 }
 
-function fromObject (that, obj) {
+function fromObject (obj) {
   if (Buffer.isBuffer(obj)) {
     var len = checked(obj.length) | 0
-    that = createBuffer(that, len)
+    var buf = createBuffer(len)
 
-    if (that.length === 0) {
-      return that
+    if (buf.length === 0) {
+      return buf
     }
 
-    obj.copy(that, 0, 0, len)
-    return that
+    obj.copy(buf, 0, 0, len)
+    return buf
   }
 
   if (obj) {
-    if ((typeof ArrayBuffer !== 'undefined' &&
-        obj.buffer instanceof ArrayBuffer) || 'length' in obj) {
-      if (typeof obj.length !== 'number' || isnan(obj.length)) {
-        return createBuffer(that, 0)
+    if (isArrayBufferView(obj) || 'length' in obj) {
+      if (typeof obj.length !== 'number' || numberIsNaN(obj.length)) {
+        return createBuffer(0)
       }
-      return fromArrayLike(that, obj)
+      return fromArrayLike(obj)
     }
 
-    if (obj.type === 'Buffer' && isArray(obj.data)) {
-      return fromArrayLike(that, obj.data)
+    if (obj.type === 'Buffer' && Array.isArray(obj.data)) {
+      return fromArrayLike(obj.data)
     }
   }
 
@@ -51751,11 +50951,11 @@ function fromObject (that, obj) {
 }
 
 function checked (length) {
-  // Note: cannot use `length < kMaxLength()` here because that fails when
+  // Note: cannot use `length < K_MAX_LENGTH` here because that fails when
   // length is NaN (which is otherwise coerced to zero.)
-  if (length >= kMaxLength()) {
+  if (length >= K_MAX_LENGTH) {
     throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
-                         'size: 0x' + kMaxLength().toString(16) + ' bytes')
+                         'size: 0x' + K_MAX_LENGTH.toString(16) + ' bytes')
   }
   return length | 0
 }
@@ -51768,7 +50968,7 @@ function SlowBuffer (length) {
 }
 
 Buffer.isBuffer = function isBuffer (b) {
-  return !!(b != null && b._isBuffer)
+  return b != null && b._isBuffer === true
 }
 
 Buffer.compare = function compare (a, b) {
@@ -51814,7 +51014,7 @@ Buffer.isEncoding = function isEncoding (encoding) {
 }
 
 Buffer.concat = function concat (list, length) {
-  if (!isArray(list)) {
+  if (!Array.isArray(list)) {
     throw new TypeError('"list" argument must be an Array of Buffers')
   }
 
@@ -51847,8 +51047,7 @@ function byteLength (string, encoding) {
   if (Buffer.isBuffer(string)) {
     return string.length
   }
-  if (typeof ArrayBuffer !== 'undefined' && typeof ArrayBuffer.isView === 'function' &&
-      (ArrayBuffer.isView(string) || string instanceof ArrayBuffer)) {
+  if (isArrayBufferView(string) || string instanceof ArrayBuffer) {
     return string.byteLength
   }
   if (typeof string !== 'string') {
@@ -51958,8 +51157,12 @@ function slowToString (encoding, start, end) {
   }
 }
 
-// The property is used by `Buffer.isBuffer` and `is-buffer` (in Safari 5-7) to detect
-// Buffer instances.
+// This property is used by `Buffer.isBuffer` (and the `is-buffer` npm package)
+// to detect a Buffer instance. It's not possible to use `instanceof Buffer`
+// reliably in a browserify context because there could be multiple different
+// copies of the 'buffer' package in use. This method works even for Buffer
+// instances that were created from another copy of the `buffer` package.
+// See: https://github.com/feross/buffer/issues/154
 Buffer.prototype._isBuffer = true
 
 function swap (b, n, m) {
@@ -52006,7 +51209,7 @@ Buffer.prototype.swap64 = function swap64 () {
 }
 
 Buffer.prototype.toString = function toString () {
-  var length = this.length | 0
+  var length = this.length
   if (length === 0) return ''
   if (arguments.length === 0) return utf8Slice(this, 0, length)
   return slowToString.apply(this, arguments)
@@ -52110,7 +51313,7 @@ function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
     byteOffset = -0x80000000
   }
   byteOffset = +byteOffset  // Coerce to Number.
-  if (isNaN(byteOffset)) {
+  if (numberIsNaN(byteOffset)) {
     // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
     byteOffset = dir ? 0 : (buffer.length - 1)
   }
@@ -52139,8 +51342,7 @@ function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
     return arrayIndexOf(buffer, val, byteOffset, encoding, dir)
   } else if (typeof val === 'number') {
     val = val & 0xFF // Search for a byte value [0-255]
-    if (Buffer.TYPED_ARRAY_SUPPORT &&
-        typeof Uint8Array.prototype.indexOf === 'function') {
+    if (typeof Uint8Array.prototype.indexOf === 'function') {
       if (dir) {
         return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset)
       } else {
@@ -52242,7 +51444,7 @@ function hexWrite (buf, string, offset, length) {
   }
   for (var i = 0; i < length; ++i) {
     var parsed = parseInt(string.substr(i * 2, 2), 16)
-    if (isNaN(parsed)) return i
+    if (numberIsNaN(parsed)) return i
     buf[offset + i] = parsed
   }
   return i
@@ -52281,15 +51483,14 @@ Buffer.prototype.write = function write (string, offset, length, encoding) {
     offset = 0
   // Buffer#write(string, offset[, length][, encoding])
   } else if (isFinite(offset)) {
-    offset = offset | 0
+    offset = offset >>> 0
     if (isFinite(length)) {
-      length = length | 0
+      length = length >>> 0
       if (encoding === undefined) encoding = 'utf8'
     } else {
       encoding = length
       length = undefined
     }
-  // legacy write(string, encoding, offset, length) - remove in v0.13
   } else {
     throw new Error(
       'Buffer.write(string, encoding, offset[, length]) is no longer supported'
@@ -52488,7 +51689,7 @@ function utf16leSlice (buf, start, end) {
   var bytes = buf.slice(start, end)
   var res = ''
   for (var i = 0; i < bytes.length; i += 2) {
-    res += String.fromCharCode(bytes[i] + bytes[i + 1] * 256)
+    res += String.fromCharCode(bytes[i] + (bytes[i + 1] * 256))
   }
   return res
 }
@@ -52514,18 +51715,9 @@ Buffer.prototype.slice = function slice (start, end) {
 
   if (end < start) end = start
 
-  var newBuf
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    newBuf = this.subarray(start, end)
-    newBuf.__proto__ = Buffer.prototype
-  } else {
-    var sliceLen = end - start
-    newBuf = new Buffer(sliceLen, undefined)
-    for (var i = 0; i < sliceLen; ++i) {
-      newBuf[i] = this[i + start]
-    }
-  }
-
+  var newBuf = this.subarray(start, end)
+  // Return an augmented `Uint8Array` instance
+  newBuf.__proto__ = Buffer.prototype
   return newBuf
 }
 
@@ -52538,8 +51730,8 @@ function checkOffset (offset, ext, length) {
 }
 
 Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {
-  offset = offset | 0
-  byteLength = byteLength | 0
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
   if (!noAssert) checkOffset(offset, byteLength, this.length)
 
   var val = this[offset]
@@ -52553,8 +51745,8 @@ Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert)
 }
 
 Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {
-  offset = offset | 0
-  byteLength = byteLength | 0
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
   if (!noAssert) {
     checkOffset(offset, byteLength, this.length)
   }
@@ -52569,21 +51761,25 @@ Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert)
 }
 
 Buffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 1, this.length)
   return this[offset]
 }
 
 Buffer.prototype.readUInt16LE = function readUInt16LE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 2, this.length)
   return this[offset] | (this[offset + 1] << 8)
 }
 
 Buffer.prototype.readUInt16BE = function readUInt16BE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 2, this.length)
   return (this[offset] << 8) | this[offset + 1]
 }
 
 Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 4, this.length)
 
   return ((this[offset]) |
@@ -52593,6 +51789,7 @@ Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
 }
 
 Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 4, this.length)
 
   return (this[offset] * 0x1000000) +
@@ -52602,8 +51799,8 @@ Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
 }
 
 Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
-  offset = offset | 0
-  byteLength = byteLength | 0
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
   if (!noAssert) checkOffset(offset, byteLength, this.length)
 
   var val = this[offset]
@@ -52620,8 +51817,8 @@ Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
 }
 
 Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
-  offset = offset | 0
-  byteLength = byteLength | 0
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
   if (!noAssert) checkOffset(offset, byteLength, this.length)
 
   var i = byteLength
@@ -52638,24 +51835,28 @@ Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
 }
 
 Buffer.prototype.readInt8 = function readInt8 (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 1, this.length)
   if (!(this[offset] & 0x80)) return (this[offset])
   return ((0xff - this[offset] + 1) * -1)
 }
 
 Buffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 2, this.length)
   var val = this[offset] | (this[offset + 1] << 8)
   return (val & 0x8000) ? val | 0xFFFF0000 : val
 }
 
 Buffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 2, this.length)
   var val = this[offset + 1] | (this[offset] << 8)
   return (val & 0x8000) ? val | 0xFFFF0000 : val
 }
 
 Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 4, this.length)
 
   return (this[offset]) |
@@ -52665,6 +51866,7 @@ Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {
 }
 
 Buffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 4, this.length)
 
   return (this[offset] << 24) |
@@ -52674,21 +51876,25 @@ Buffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {
 }
 
 Buffer.prototype.readFloatLE = function readFloatLE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 4, this.length)
   return ieee754.read(this, offset, true, 23, 4)
 }
 
 Buffer.prototype.readFloatBE = function readFloatBE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 4, this.length)
   return ieee754.read(this, offset, false, 23, 4)
 }
 
 Buffer.prototype.readDoubleLE = function readDoubleLE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 8, this.length)
   return ieee754.read(this, offset, true, 52, 8)
 }
 
 Buffer.prototype.readDoubleBE = function readDoubleBE (offset, noAssert) {
+  offset = offset >>> 0
   if (!noAssert) checkOffset(offset, 8, this.length)
   return ieee754.read(this, offset, false, 52, 8)
 }
@@ -52701,8 +51907,8 @@ function checkInt (buf, value, offset, ext, max, min) {
 
 Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset | 0
-  byteLength = byteLength | 0
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
   if (!noAssert) {
     var maxBytes = Math.pow(2, 8 * byteLength) - 1
     checkInt(this, value, offset, byteLength, maxBytes, 0)
@@ -52720,8 +51926,8 @@ Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, 
 
 Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset | 0
-  byteLength = byteLength | 0
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
   if (!noAssert) {
     var maxBytes = Math.pow(2, 8 * byteLength) - 1
     checkInt(this, value, offset, byteLength, maxBytes, 0)
@@ -52739,89 +51945,57 @@ Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, 
 
 Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
-  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
   this[offset] = (value & 0xff)
   return offset + 1
 }
 
-function objectWriteUInt16 (buf, value, offset, littleEndian) {
-  if (value < 0) value = 0xffff + value + 1
-  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {
-    buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>
-      (littleEndian ? i : 1 - i) * 8
-  }
-}
-
 Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value & 0xff)
-    this[offset + 1] = (value >>> 8)
-  } else {
-    objectWriteUInt16(this, value, offset, true)
-  }
+  this[offset] = (value & 0xff)
+  this[offset + 1] = (value >>> 8)
   return offset + 2
 }
 
 Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value >>> 8)
-    this[offset + 1] = (value & 0xff)
-  } else {
-    objectWriteUInt16(this, value, offset, false)
-  }
+  this[offset] = (value >>> 8)
+  this[offset + 1] = (value & 0xff)
   return offset + 2
-}
-
-function objectWriteUInt32 (buf, value, offset, littleEndian) {
-  if (value < 0) value = 0xffffffff + value + 1
-  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {
-    buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff
-  }
 }
 
 Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset + 3] = (value >>> 24)
-    this[offset + 2] = (value >>> 16)
-    this[offset + 1] = (value >>> 8)
-    this[offset] = (value & 0xff)
-  } else {
-    objectWriteUInt32(this, value, offset, true)
-  }
+  this[offset + 3] = (value >>> 24)
+  this[offset + 2] = (value >>> 16)
+  this[offset + 1] = (value >>> 8)
+  this[offset] = (value & 0xff)
   return offset + 4
 }
 
 Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value >>> 24)
-    this[offset + 1] = (value >>> 16)
-    this[offset + 2] = (value >>> 8)
-    this[offset + 3] = (value & 0xff)
-  } else {
-    objectWriteUInt32(this, value, offset, false)
-  }
+  this[offset] = (value >>> 24)
+  this[offset + 1] = (value >>> 16)
+  this[offset + 2] = (value >>> 8)
+  this[offset + 3] = (value & 0xff)
   return offset + 4
 }
 
 Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) {
-    var limit = Math.pow(2, 8 * byteLength - 1)
+    var limit = Math.pow(2, (8 * byteLength) - 1)
 
     checkInt(this, value, offset, byteLength, limit - 1, -limit)
   }
@@ -52842,9 +52016,9 @@ Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, no
 
 Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) {
-    var limit = Math.pow(2, 8 * byteLength - 1)
+    var limit = Math.pow(2, (8 * byteLength) - 1)
 
     checkInt(this, value, offset, byteLength, limit - 1, -limit)
   }
@@ -52865,9 +52039,8 @@ Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, no
 
 Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
-  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
   if (value < 0) value = 0xff + value + 1
   this[offset] = (value & 0xff)
   return offset + 1
@@ -52875,58 +52048,42 @@ Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
 
 Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value & 0xff)
-    this[offset + 1] = (value >>> 8)
-  } else {
-    objectWriteUInt16(this, value, offset, true)
-  }
+  this[offset] = (value & 0xff)
+  this[offset + 1] = (value >>> 8)
   return offset + 2
 }
 
 Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value >>> 8)
-    this[offset + 1] = (value & 0xff)
-  } else {
-    objectWriteUInt16(this, value, offset, false)
-  }
+  this[offset] = (value >>> 8)
+  this[offset + 1] = (value & 0xff)
   return offset + 2
 }
 
 Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value & 0xff)
-    this[offset + 1] = (value >>> 8)
-    this[offset + 2] = (value >>> 16)
-    this[offset + 3] = (value >>> 24)
-  } else {
-    objectWriteUInt32(this, value, offset, true)
-  }
+  this[offset] = (value & 0xff)
+  this[offset + 1] = (value >>> 8)
+  this[offset + 2] = (value >>> 16)
+  this[offset + 3] = (value >>> 24)
   return offset + 4
 }
 
 Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {
   value = +value
-  offset = offset | 0
+  offset = offset >>> 0
   if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
   if (value < 0) value = 0xffffffff + value + 1
-  if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = (value >>> 24)
-    this[offset + 1] = (value >>> 16)
-    this[offset + 2] = (value >>> 8)
-    this[offset + 3] = (value & 0xff)
-  } else {
-    objectWriteUInt32(this, value, offset, false)
-  }
+  this[offset] = (value >>> 24)
+  this[offset + 1] = (value >>> 16)
+  this[offset + 2] = (value >>> 8)
+  this[offset + 3] = (value & 0xff)
   return offset + 4
 }
 
@@ -52936,6 +52093,8 @@ function checkIEEE754 (buf, value, offset, ext, max, min) {
 }
 
 function writeFloat (buf, value, offset, littleEndian, noAssert) {
+  value = +value
+  offset = offset >>> 0
   if (!noAssert) {
     checkIEEE754(buf, value, offset, 4, 3.4028234663852886e+38, -3.4028234663852886e+38)
   }
@@ -52952,6 +52111,8 @@ Buffer.prototype.writeFloatBE = function writeFloatBE (value, offset, noAssert) 
 }
 
 function writeDouble (buf, value, offset, littleEndian, noAssert) {
+  value = +value
+  offset = offset >>> 0
   if (!noAssert) {
     checkIEEE754(buf, value, offset, 8, 1.7976931348623157E+308, -1.7976931348623157E+308)
   }
@@ -53000,7 +52161,7 @@ Buffer.prototype.copy = function copy (target, targetStart, start, end) {
     for (i = len - 1; i >= 0; --i) {
       target[i + targetStart] = this[i + start]
     }
-  } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
+  } else if (len < 1000) {
     // ascending copy from start
     for (i = 0; i < len; ++i) {
       target[i + targetStart] = this[i + start]
@@ -53069,7 +52230,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
   } else {
     var bytes = Buffer.isBuffer(val)
       ? val
-      : utf8ToBytes(new Buffer(val, encoding).toString())
+      : new Buffer(val, encoding)
     var len = bytes.length
     for (i = 0; i < end - start; ++i) {
       this[i + start] = bytes[i % len]
@@ -53082,11 +52243,11 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
 // HELPER FUNCTIONS
 // ================
 
-var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g
+var INVALID_BASE64_RE = /[^+/0-9A-Za-z-_]/g
 
 function base64clean (str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = stringtrim(str).replace(INVALID_BASE64_RE, '')
+  str = str.trim().replace(INVALID_BASE64_RE, '')
   // Node converts strings with length < 2 to ''
   if (str.length < 2) return ''
   // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
@@ -53094,11 +52255,6 @@ function base64clean (str) {
     str = str + '='
   }
   return str
-}
-
-function stringtrim (str) {
-  if (str.trim) return str.trim()
-  return str.replace(/^\s+|\s+$/g, '')
 }
 
 function toHex (n) {
@@ -53223,12 +52379,16 @@ function blitBuffer (src, dst, offset, length) {
   return i
 }
 
-function isnan (val) {
-  return val !== val // eslint-disable-line no-self-compare
+// Node 0.10 supports `ArrayBuffer` but lacks `ArrayBuffer.isView`
+function isArrayBufferView (obj) {
+  return (typeof ArrayBuffer.isView === 'function') && ArrayBuffer.isView(obj)
 }
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":102,"ieee754":185,"isarray":190}],102:[function(require,module,exports){
+function numberIsNaN (obj) {
+  return obj !== obj // eslint-disable-line no-self-compare
+}
+
+},{"base64-js":103,"ieee754":186}],103:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -53344,7 +52504,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = {
   "100": "Continue",
   "101": "Switching Protocols",
@@ -53410,7 +52570,7 @@ module.exports = {
   "511": "Network Authentication Required"
 }
 
-},{}],104:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 function Caseless (dict) {
   this.dict = dict || {}
 }
@@ -53479,7 +52639,7 @@ module.exports.httpify = function (resp, headers) {
   return c
 }
 
-},{}],105:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -53573,7 +52733,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"inherits":187,"stream":314,"string_decoder":319}],106:[function(require,module,exports){
+},{"buffer":102,"inherits":188,"stream":317,"string_decoder":331}],107:[function(require,module,exports){
 
 /**
  * slice() reference.
@@ -53812,7 +52972,7 @@ function isObject(val) {
   return Object == val.constructor;
 }
 
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 (function (Buffer){
 var util = require('util');
 var Stream = require('stream').Stream;
@@ -54004,7 +53164,7 @@ CombinedStream.prototype._emitError = function(err) {
 };
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":188,"delayed-stream":115,"stream":314,"util":336}],108:[function(require,module,exports){
+},{"../../is-buffer/index.js":189,"delayed-stream":116,"stream":317,"util":348}],109:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -54115,7 +53275,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":188}],109:[function(require,module,exports){
+},{"../../is-buffer/index.js":189}],110:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -54241,7 +53401,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":69,"buffer":101,"elliptic":129}],110:[function(require,module,exports){
+},{"bn.js":69,"buffer":102,"elliptic":130}],111:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -54297,7 +53457,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":112,"buffer":101,"cipher-base":105,"inherits":187,"ripemd160":280,"sha.js":283}],111:[function(require,module,exports){
+},{"./md5":113,"buffer":102,"cipher-base":106,"inherits":188,"ripemd160":283,"sha.js":286}],112:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -54334,7 +53494,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],112:[function(require,module,exports){
+},{"buffer":102}],113:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -54491,7 +53651,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":111}],113:[function(require,module,exports){
+},{"./helpers":112}],114:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -54563,7 +53723,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"create-hash/browser":110,"inherits":187,"stream":314}],114:[function(require,module,exports){
+},{"buffer":102,"create-hash/browser":111,"inherits":188,"stream":317}],115:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -54642,7 +53802,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":87,"browserify-sign":92,"browserify-sign/algos":91,"create-ecdh":109,"create-hash":110,"create-hmac":113,"diffie-hellman":122,"pbkdf2":229,"public-encrypt":234,"randombytes":245}],115:[function(require,module,exports){
+},{"browserify-cipher":87,"browserify-sign":94,"browserify-sign/algos":91,"create-ecdh":110,"create-hash":111,"create-hmac":114,"diffie-hellman":123,"pbkdf2":232,"public-encrypt":237,"randombytes":248}],116:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -54751,7 +53911,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
   this.emit('error', new Error(message));
 };
 
-},{"stream":314,"util":336}],116:[function(require,module,exports){
+},{"stream":317,"util":348}],117:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -54760,7 +53920,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":117,"./des/cipher":118,"./des/des":119,"./des/ede":120,"./des/utils":121}],117:[function(require,module,exports){
+},{"./des/cbc":118,"./des/cipher":119,"./des/des":120,"./des/ede":121,"./des/utils":122}],118:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -54827,7 +53987,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":187,"minimalistic-assert":211}],118:[function(require,module,exports){
+},{"inherits":188,"minimalistic-assert":212}],119:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -54970,7 +54130,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":211}],119:[function(require,module,exports){
+},{"minimalistic-assert":212}],120:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -55115,7 +54275,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":116,"inherits":187,"minimalistic-assert":211}],120:[function(require,module,exports){
+},{"../des":117,"inherits":188,"minimalistic-assert":212}],121:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -55172,7 +54332,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":116,"inherits":187,"minimalistic-assert":211}],121:[function(require,module,exports){
+},{"../des":117,"inherits":188,"minimalistic-assert":212}],122:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -55430,7 +54590,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -55476,7 +54636,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":123,"./lib/generatePrime":124,"./lib/primes.json":125,"buffer":101}],123:[function(require,module,exports){
+},{"./lib/dh":124,"./lib/generatePrime":125,"./lib/primes.json":126,"buffer":102}],124:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -55644,7 +54804,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":124,"bn.js":69,"buffer":101,"miller-rabin":207,"randombytes":245}],124:[function(require,module,exports){
+},{"./generatePrime":125,"bn.js":69,"buffer":102,"miller-rabin":208,"randombytes":248}],125:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -55751,7 +54911,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":69,"miller-rabin":207,"randombytes":245}],125:[function(require,module,exports){
+},{"bn.js":69,"miller-rabin":208,"randombytes":248}],126:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -55786,7 +54946,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],126:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 (function (Buffer){
 var crypto = require("crypto");
 var BigInteger = require("jsbn").BigInteger;
@@ -55847,7 +55007,7 @@ exports.ECKey = function(curve, key, isPublic)
 
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/ec.js":127,"./lib/sec.js":128,"buffer":101,"crypto":114,"jsbn":198}],127:[function(require,module,exports){
+},{"./lib/ec.js":128,"./lib/sec.js":129,"buffer":102,"crypto":115,"jsbn":199}],128:[function(require,module,exports){
 // Basic Javascript Elliptic Curve implementation
 // Ported loosely from BouncyCastle's Java EC code
 // Only Fp curves implemented for now
@@ -56410,7 +55570,7 @@ var exports = {
 
 module.exports = exports
 
-},{"jsbn":198}],128:[function(require,module,exports){
+},{"jsbn":199}],129:[function(require,module,exports){
 // Named EC curves
 
 // Requires ec.js, jsbn.js, and jsbn2.js
@@ -56582,7 +55742,7 @@ module.exports = {
   "secp256r1":secp256r1
 }
 
-},{"./ec.js":127,"jsbn":198}],129:[function(require,module,exports){
+},{"./ec.js":128,"jsbn":199}],130:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -56590,7 +55750,6 @@ var elliptic = exports;
 elliptic.version = require('../package.json').version;
 elliptic.utils = require('./elliptic/utils');
 elliptic.rand = require('brorand');
-elliptic.hmacDRBG = require('./elliptic/hmac-drbg');
 elliptic.curve = require('./elliptic/curve');
 elliptic.curves = require('./elliptic/curves');
 
@@ -56598,7 +55757,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":145,"./elliptic/curve":132,"./elliptic/curves":135,"./elliptic/ec":136,"./elliptic/eddsa":139,"./elliptic/hmac-drbg":142,"./elliptic/utils":144,"brorand":70}],130:[function(require,module,exports){
+},{"../package.json":145,"./elliptic/curve":133,"./elliptic/curves":136,"./elliptic/ec":137,"./elliptic/eddsa":140,"./elliptic/utils":144,"brorand":70}],131:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -56975,7 +56134,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":129,"bn.js":69}],131:[function(require,module,exports){
+},{"../../elliptic":130,"bn.js":69}],132:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -57410,7 +56569,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":129,"../curve":132,"bn.js":69,"inherits":187}],132:[function(require,module,exports){
+},{"../../elliptic":130,"../curve":133,"bn.js":69,"inherits":188}],133:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -57420,7 +56579,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":130,"./edwards":131,"./mont":133,"./short":134}],133:[function(require,module,exports){
+},{"./base":131,"./edwards":132,"./mont":134,"./short":135}],134:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -57602,7 +56761,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":129,"../curve":132,"bn.js":69,"inherits":187}],134:[function(require,module,exports){
+},{"../../elliptic":130,"../curve":133,"bn.js":69,"inherits":188}],135:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -58542,7 +57701,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":129,"../curve":132,"bn.js":69,"inherits":187}],135:[function(require,module,exports){
+},{"../../elliptic":130,"../curve":133,"bn.js":69,"inherits":188}],136:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -58749,10 +57908,11 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":129,"./precomputed/secp256k1":143,"hash.js":172}],136:[function(require,module,exports){
+},{"../elliptic":130,"./precomputed/secp256k1":143,"hash.js":172}],137:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
+var HmacDRBG = require('hmac-drbg');
 var elliptic = require('../../elliptic');
 var utils = elliptic.utils;
 var assert = utils.assert;
@@ -58806,10 +57966,12 @@ EC.prototype.genKeyPair = function genKeyPair(options) {
     options = {};
 
   // Instantiate Hmac_DRBG
-  var drbg = new elliptic.hmacDRBG({
+  var drbg = new HmacDRBG({
     hash: this.hash,
     pers: options.pers,
+    persEnc: options.persEnc || 'utf8',
     entropy: options.entropy || elliptic.rand(this.hash.hmacStrength),
+    entropyEnc: options.entropy && options.entropyEnc || 'utf8',
     nonce: this.n.toArray()
   });
 
@@ -58854,12 +58016,12 @@ EC.prototype.sign = function sign(msg, key, enc, options) {
   var nonce = msg.toArray('be', bytes);
 
   // Instantiate Hmac_DRBG
-  var drbg = new elliptic.hmacDRBG({
+  var drbg = new HmacDRBG({
     hash: this.hash,
     entropy: bkey,
     nonce: nonce,
     pers: options.pers,
-    persEnc: options.persEnc
+    persEnc: options.persEnc || 'utf8'
   });
 
   // Number of bytes to generate
@@ -58988,7 +58150,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":129,"./key":137,"./signature":138,"bn.js":69}],137:[function(require,module,exports){
+},{"../../elliptic":130,"./key":138,"./signature":139,"bn.js":69,"hmac-drbg":179}],138:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -59109,7 +58271,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":129,"bn.js":69}],138:[function(require,module,exports){
+},{"../../elliptic":130,"bn.js":69}],139:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -59246,7 +58408,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":129,"bn.js":69}],139:[function(require,module,exports){
+},{"../../elliptic":130,"bn.js":69}],140:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -59366,7 +58528,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":129,"./key":140,"./signature":141,"hash.js":172}],140:[function(require,module,exports){
+},{"../../elliptic":130,"./key":141,"./signature":142,"hash.js":172}],141:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -59464,7 +58626,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":129}],141:[function(require,module,exports){
+},{"../../elliptic":130}],142:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -59532,123 +58694,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":129,"bn.js":69}],142:[function(require,module,exports){
-'use strict';
-
-var hash = require('hash.js');
-var elliptic = require('../elliptic');
-var utils = elliptic.utils;
-var assert = utils.assert;
-
-function HmacDRBG(options) {
-  if (!(this instanceof HmacDRBG))
-    return new HmacDRBG(options);
-  this.hash = options.hash;
-  this.predResist = !!options.predResist;
-
-  this.outLen = this.hash.outSize;
-  this.minEntropy = options.minEntropy || this.hash.hmacStrength;
-
-  this.reseed = null;
-  this.reseedInterval = null;
-  this.K = null;
-  this.V = null;
-
-  var entropy = utils.toArray(options.entropy, options.entropyEnc);
-  var nonce = utils.toArray(options.nonce, options.nonceEnc);
-  var pers = utils.toArray(options.pers, options.persEnc);
-  assert(entropy.length >= (this.minEntropy / 8),
-         'Not enough entropy. Minimum is: ' + this.minEntropy + ' bits');
-  this._init(entropy, nonce, pers);
-}
-module.exports = HmacDRBG;
-
-HmacDRBG.prototype._init = function init(entropy, nonce, pers) {
-  var seed = entropy.concat(nonce).concat(pers);
-
-  this.K = new Array(this.outLen / 8);
-  this.V = new Array(this.outLen / 8);
-  for (var i = 0; i < this.V.length; i++) {
-    this.K[i] = 0x00;
-    this.V[i] = 0x01;
-  }
-
-  this._update(seed);
-  this.reseed = 1;
-  this.reseedInterval = 0x1000000000000;  // 2^48
-};
-
-HmacDRBG.prototype._hmac = function hmac() {
-  return new hash.hmac(this.hash, this.K);
-};
-
-HmacDRBG.prototype._update = function update(seed) {
-  var kmac = this._hmac()
-                 .update(this.V)
-                 .update([ 0x00 ]);
-  if (seed)
-    kmac = kmac.update(seed);
-  this.K = kmac.digest();
-  this.V = this._hmac().update(this.V).digest();
-  if (!seed)
-    return;
-
-  this.K = this._hmac()
-               .update(this.V)
-               .update([ 0x01 ])
-               .update(seed)
-               .digest();
-  this.V = this._hmac().update(this.V).digest();
-};
-
-HmacDRBG.prototype.reseed = function reseed(entropy, entropyEnc, add, addEnc) {
-  // Optional entropy enc
-  if (typeof entropyEnc !== 'string') {
-    addEnc = add;
-    add = entropyEnc;
-    entropyEnc = null;
-  }
-
-  entropy = utils.toBuffer(entropy, entropyEnc);
-  add = utils.toBuffer(add, addEnc);
-
-  assert(entropy.length >= (this.minEntropy / 8),
-         'Not enough entropy. Minimum is: ' + this.minEntropy + ' bits');
-
-  this._update(entropy.concat(add || []));
-  this.reseed = 1;
-};
-
-HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
-  if (this.reseed > this.reseedInterval)
-    throw new Error('Reseed is required');
-
-  // Optional encoding
-  if (typeof enc !== 'string') {
-    addEnc = add;
-    add = enc;
-    enc = null;
-  }
-
-  // Optional additional data
-  if (add) {
-    add = utils.toArray(add, addEnc);
-    this._update(add);
-  }
-
-  var temp = [];
-  while (temp.length < len) {
-    this.V = this._hmac().update(this.V).digest();
-    temp = temp.concat(this.V);
-  }
-
-  var res = temp.slice(0, len);
-  this._update(add);
-  this.reseed++;
-  return utils.encode(res, enc);
-};
-
-},{"../elliptic":129,"hash.js":172}],143:[function(require,module,exports){
+},{"../../elliptic":130,"bn.js":69}],143:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -60435,66 +59481,14 @@ module.exports = {
 
 var utils = exports;
 var BN = require('bn.js');
+var minAssert = require('minimalistic-assert');
+var minUtils = require('minimalistic-crypto-utils');
 
-utils.assert = function assert(val, msg) {
-  if (!val)
-    throw new Error(msg || 'Assertion failed');
-};
-
-function toArray(msg, enc) {
-  if (Array.isArray(msg))
-    return msg.slice();
-  if (!msg)
-    return [];
-  var res = [];
-  if (typeof msg !== 'string') {
-    for (var i = 0; i < msg.length; i++)
-      res[i] = msg[i] | 0;
-    return res;
-  }
-  if (!enc) {
-    for (var i = 0; i < msg.length; i++) {
-      var c = msg.charCodeAt(i);
-      var hi = c >> 8;
-      var lo = c & 0xff;
-      if (hi)
-        res.push(hi, lo);
-      else
-        res.push(lo);
-    }
-  } else if (enc === 'hex') {
-    msg = msg.replace(/[^a-z0-9]+/ig, '');
-    if (msg.length % 2 !== 0)
-      msg = '0' + msg;
-    for (var i = 0; i < msg.length; i += 2)
-      res.push(parseInt(msg[i] + msg[i + 1], 16));
-  }
-  return res;
-}
-utils.toArray = toArray;
-
-function zero2(word) {
-  if (word.length === 1)
-    return '0' + word;
-  else
-    return word;
-}
-utils.zero2 = zero2;
-
-function toHex(msg) {
-  var res = '';
-  for (var i = 0; i < msg.length; i++)
-    res += zero2(msg[i].toString(16));
-  return res;
-}
-utils.toHex = toHex;
-
-utils.encode = function encode(arr, enc) {
-  if (enc === 'hex')
-    return toHex(arr);
-  else
-    return arr;
-};
+utils.assert = minAssert;
+utils.toArray = minUtils.toArray;
+utils.zero2 = minUtils.zero2;
+utils.toHex = minUtils.toHex;
+utils.encode = minUtils.encode;
 
 // Represent num in a w-NAF form
 function getNAF(num, w) {
@@ -60604,7 +59598,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":69}],145:[function(require,module,exports){
+},{"bn.js":69,"minimalistic-assert":212,"minimalistic-crypto-utils":213}],145:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -60621,13 +59615,13 @@ module.exports={
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
-  "_id": "elliptic@6.3.3",
+  "_id": "elliptic@6.4.0",
   "_inCache": true,
   "_location": "/elliptic",
   "_nodeVersion": "7.0.0",
   "_npmOperationalInternal": {
     "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/elliptic-6.3.3.tgz_1486422837740_0.10658654430881143"
+    "tmp": "tmp/elliptic-6.4.0.tgz_1487798866428_0.30510620190761983"
   },
   "_npmUser": {
     "name": "indutny",
@@ -60648,8 +59642,8 @@ module.exports={
     "/browserify-sign",
     "/create-ecdh"
   ],
-  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.3.tgz",
-  "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+  "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
   "_where": "/Users/Matteo/Developer/projects/Tweak/code/tweak-api/node_modules/browserify-sign",
@@ -60664,7 +59658,10 @@ module.exports={
     "bn.js": "^4.4.0",
     "brorand": "^1.0.1",
     "hash.js": "^1.0.0",
-    "inherits": "^2.0.1"
+    "hmac-drbg": "^1.0.0",
+    "inherits": "^2.0.1",
+    "minimalistic-assert": "^1.0.0",
+    "minimalistic-crypto-utils": "^1.0.0"
   },
   "description": "EC cryptography",
   "devDependencies": {
@@ -60685,13 +59682,13 @@ module.exports={
   },
   "directories": {},
   "dist": {
-    "shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
-    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.3.tgz"
+    "shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz"
   },
   "files": [
     "lib"
   ],
-  "gitHead": "63aee8d697e9b7fac37ece24222029117a890a7e",
+  "gitHead": "6b0d2b76caae91471649c8e21f0b1d3ba0f96090",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -60722,7 +59719,7 @@ module.exports={
     "unit": "istanbul test _mocha --reporter=spec test/index.js",
     "version": "grunt dist && git add dist/"
   },
-  "version": "6.3.3"
+  "version": "6.4.0"
 }
 
 },{}],146:[function(require,module,exports){
@@ -61101,7 +60098,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"create-hash/md5":112}],148:[function(require,module,exports){
+},{"buffer":102,"create-hash/md5":113}],148:[function(require,module,exports){
 'use strict';
 
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -61357,7 +60354,7 @@ function dumpException(ex)
 	return (ret);
 }
 
-},{"assert":64,"util":336}],150:[function(require,module,exports){
+},{"assert":64,"util":348}],150:[function(require,module,exports){
 module.exports = ForeverAgent
 ForeverAgent.SSL = ForeverAgentSSL
 
@@ -61497,7 +60494,7 @@ function createConnectionSSL (port, host, options) {
   return tls.connect(options);
 }
 
-},{"http":315,"https":184,"net":98,"tls":98,"util":336}],151:[function(require,module,exports){
+},{"http":318,"https":185,"net":99,"tls":99,"util":348}],151:[function(require,module,exports){
 module.exports={
   "id": "afterRequest.json#",
   "type": "object",
@@ -63400,7 +62397,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":187}],178:[function(require,module,exports){
+},{"inherits":188}],178:[function(require,module,exports){
 /*
     HTTP Hawk Authentication Scheme
     Copyright (c) 2012-2014, Eran Hammer <eran@hammer.io>
@@ -64040,6 +63037,121 @@ if (typeof module !== 'undefined' && module.exports) {
 // $lab:coverage:on$
 
 },{}],179:[function(require,module,exports){
+'use strict';
+
+var hash = require('hash.js');
+var utils = require('minimalistic-crypto-utils');
+var assert = require('minimalistic-assert');
+
+function HmacDRBG(options) {
+  if (!(this instanceof HmacDRBG))
+    return new HmacDRBG(options);
+  this.hash = options.hash;
+  this.predResist = !!options.predResist;
+
+  this.outLen = this.hash.outSize;
+  this.minEntropy = options.minEntropy || this.hash.hmacStrength;
+
+  this._reseed = null;
+  this.reseedInterval = null;
+  this.K = null;
+  this.V = null;
+
+  var entropy = utils.toArray(options.entropy, options.entropyEnc || 'hex');
+  var nonce = utils.toArray(options.nonce, options.nonceEnc || 'hex');
+  var pers = utils.toArray(options.pers, options.persEnc || 'hex');
+  assert(entropy.length >= (this.minEntropy / 8),
+         'Not enough entropy. Minimum is: ' + this.minEntropy + ' bits');
+  this._init(entropy, nonce, pers);
+}
+module.exports = HmacDRBG;
+
+HmacDRBG.prototype._init = function init(entropy, nonce, pers) {
+  var seed = entropy.concat(nonce).concat(pers);
+
+  this.K = new Array(this.outLen / 8);
+  this.V = new Array(this.outLen / 8);
+  for (var i = 0; i < this.V.length; i++) {
+    this.K[i] = 0x00;
+    this.V[i] = 0x01;
+  }
+
+  this._update(seed);
+  this._reseed = 1;
+  this.reseedInterval = 0x1000000000000;  // 2^48
+};
+
+HmacDRBG.prototype._hmac = function hmac() {
+  return new hash.hmac(this.hash, this.K);
+};
+
+HmacDRBG.prototype._update = function update(seed) {
+  var kmac = this._hmac()
+                 .update(this.V)
+                 .update([ 0x00 ]);
+  if (seed)
+    kmac = kmac.update(seed);
+  this.K = kmac.digest();
+  this.V = this._hmac().update(this.V).digest();
+  if (!seed)
+    return;
+
+  this.K = this._hmac()
+               .update(this.V)
+               .update([ 0x01 ])
+               .update(seed)
+               .digest();
+  this.V = this._hmac().update(this.V).digest();
+};
+
+HmacDRBG.prototype.reseed = function reseed(entropy, entropyEnc, add, addEnc) {
+  // Optional entropy enc
+  if (typeof entropyEnc !== 'string') {
+    addEnc = add;
+    add = entropyEnc;
+    entropyEnc = null;
+  }
+
+  entropy = utils.toArray(entropy, entropyEnc);
+  add = utils.toArray(add, addEnc);
+
+  assert(entropy.length >= (this.minEntropy / 8),
+         'Not enough entropy. Minimum is: ' + this.minEntropy + ' bits');
+
+  this._update(entropy.concat(add || []));
+  this._reseed = 1;
+};
+
+HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
+  if (this._reseed > this.reseedInterval)
+    throw new Error('Reseed is required');
+
+  // Optional encoding
+  if (typeof enc !== 'string') {
+    addEnc = add;
+    add = enc;
+    enc = null;
+  }
+
+  // Optional additional data
+  if (add) {
+    add = utils.toArray(add, addEnc || 'hex');
+    this._update(add);
+  }
+
+  var temp = [];
+  while (temp.length < len) {
+    this.V = this._hmac().update(this.V).digest();
+    temp = temp.concat(this.V);
+  }
+
+  var res = temp.slice(0, len);
+  this._update(add);
+  this._reseed++;
+  return utils.encode(res, enc);
+};
+
+},{"hash.js":172,"minimalistic-assert":212,"minimalistic-crypto-utils":213}],180:[function(require,module,exports){
 // Copyright 2015 Joyent, Inc.
 
 var parser = require('./parser');
@@ -64070,7 +63182,7 @@ module.exports = {
   verifyHMAC: verify.verifyHMAC
 };
 
-},{"./parser":180,"./signer":181,"./utils":182,"./verify":183}],180:[function(require,module,exports){
+},{"./parser":181,"./signer":182,"./utils":183,"./verify":184}],181:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -64390,7 +63502,7 @@ module.exports = {
 
 };
 
-},{"./utils":182,"assert-plus":63,"util":336}],181:[function(require,module,exports){
+},{"./utils":183,"assert-plus":63,"util":348}],182:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
@@ -64793,7 +63905,7 @@ module.exports = {
 };
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":188,"./utils":182,"assert-plus":63,"crypto":114,"http":315,"jsprim":205,"sshpk":307,"util":336}],182:[function(require,module,exports){
+},{"../../is-buffer/index.js":189,"./utils":183,"assert-plus":63,"crypto":115,"http":318,"jsprim":206,"sshpk":310,"util":348}],183:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -64907,7 +64019,7 @@ module.exports = {
   }
 };
 
-},{"assert-plus":63,"sshpk":307,"util":336}],183:[function(require,module,exports){
+},{"assert-plus":63,"sshpk":310,"util":348}],184:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -64999,23 +64111,40 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./utils":182,"assert-plus":63,"buffer":101,"crypto":114,"sshpk":307}],184:[function(require,module,exports){
-var http = require('http');
+},{"./utils":183,"assert-plus":63,"buffer":102,"crypto":115,"sshpk":310}],185:[function(require,module,exports){
+var http = require('http')
+var url = require('url')
 
-var https = module.exports;
+var https = module.exports
 
 for (var key in http) {
-    if (http.hasOwnProperty(key)) https[key] = http[key];
-};
-
-https.request = function (params, cb) {
-    if (!params) params = {};
-    params.scheme = 'https';
-    params.protocol = 'https:';
-    return http.request.call(this, params, cb);
+  if (http.hasOwnProperty(key)) https[key] = http[key]
 }
 
-},{"http":315}],185:[function(require,module,exports){
+https.request = function (params, cb) {
+  params = validateParams(params)
+  return http.request.call(this, params, cb)
+}
+
+https.get = function (params, cb) {
+  params = validateParams(params)
+  return http.get.call(this, params, cb)
+}
+
+function validateParams (params) {
+  if (typeof params === 'string') {
+    params = url.parse(params)
+  }
+  if (!params.protocol) {
+    params.protocol = 'https:'
+  }
+  if (params.protocol !== 'https:') {
+    throw new Error('Protocol "' + params.protocol + '" not supported. Expected "https:"')
+  }
+  return params
+}
+
+},{"http":318,"url":343}],186:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -65101,7 +64230,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],186:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -65112,7 +64241,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],187:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -65137,7 +64266,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -65160,7 +64289,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],189:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -65203,14 +64332,14 @@ function isLooseTypedArray(arr) {
   return names[toString.call(arr)]
 }
 
-},{}],190:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],191:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 var stream = require('stream')
 
 
@@ -65239,7 +64368,7 @@ module.exports.isReadable = isReadable
 module.exports.isWritable = isWritable
 module.exports.isDuplex   = isDuplex
 
-},{"stream":314}],192:[function(require,module,exports){
+},{"stream":317}],193:[function(require,module,exports){
 "use strict";
 
 /*
@@ -65276,7 +64405,7 @@ var utils = require('./lib/utils');
 
 module.exports = ns;
 
-},{"./lib/curve255":194,"./lib/dh":195,"./lib/eddsa":196,"./lib/utils":197}],193:[function(require,module,exports){
+},{"./lib/curve255":195,"./lib/dh":196,"./lib/eddsa":197,"./lib/utils":198}],194:[function(require,module,exports){
 "use strict";
 /**
  * @fileOverview
@@ -65759,7 +64888,7 @@ var crypto = require('crypto');
 
 module.exports = ns;
 
-},{"crypto":114}],194:[function(require,module,exports){
+},{"crypto":115}],195:[function(require,module,exports){
 "use strict";
 /**
  * @fileOverview
@@ -65982,7 +65111,7 @@ var utils = require('./utils');
 
 module.exports = ns;
 
-},{"./core":193,"./utils":197}],195:[function(require,module,exports){
+},{"./core":194,"./utils":198}],196:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 /**
@@ -66097,7 +65226,7 @@ var curve255 = require('./curve255');
 module.exports = ns;
 
 }).call(this,require("buffer").Buffer)
-},{"./core":193,"./curve255":194,"./utils":197,"buffer":101}],196:[function(require,module,exports){
+},{"./core":194,"./curve255":195,"./utils":198,"buffer":102}],197:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 /**
@@ -66674,7 +65803,7 @@ var crypto = require('crypto');
 module.exports = ns;
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":188,"./core":193,"./curve255":194,"./utils":197,"crypto":114,"jsbn":198}],197:[function(require,module,exports){
+},{"../../is-buffer/index.js":189,"./core":194,"./curve255":195,"./utils":198,"crypto":115,"jsbn":199}],198:[function(require,module,exports){
 "use strict";
 /**
  * @fileOverview
@@ -66874,7 +66003,7 @@ var core = require('./core');
 
 module.exports = ns;
 
-},{"./core":193}],198:[function(require,module,exports){
+},{"./core":194}],199:[function(require,module,exports){
 (function(){
 
     // Copyright (c) 2005  Tom Wu
@@ -68233,7 +67362,7 @@ module.exports = ns;
 
 }).call(this);
 
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /**
  * JSONSchema Validator - Validates JavaScript objects using JSON Schemas
  *	(http://www.json.com/json-schema-proposal/)
@@ -68508,7 +67637,7 @@ exports.mustBeValid = function(result){
 return exports;
 }));
 
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 var json = typeof JSON !== 'undefined' ? JSON : require('jsonify');
 
 module.exports = function (obj, opts) {
@@ -68594,7 +67723,7 @@ var objectKeys = Object.keys || function (obj) {
     return keys;
 };
 
-},{"jsonify":202}],201:[function(require,module,exports){
+},{"jsonify":203}],202:[function(require,module,exports){
 exports = module.exports = stringify
 exports.getSerialize = serializer
 
@@ -68623,11 +67752,11 @@ function serializer(replacer, cycleReplacer) {
   }
 }
 
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 exports.parse = require('./lib/parse');
 exports.stringify = require('./lib/stringify');
 
-},{"./lib/parse":203,"./lib/stringify":204}],203:[function(require,module,exports){
+},{"./lib/parse":204,"./lib/stringify":205}],204:[function(require,module,exports){
 var at, // The index of the current character
     ch, // The current character
     escapee = {
@@ -68902,7 +68031,7 @@ module.exports = function (source, reviver) {
     }({'': result}, '')) : result;
 };
 
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
     escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
     gap,
@@ -69058,7 +68187,7 @@ module.exports = function (value, replacer, space) {
     return str('', {'': value});
 };
 
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 /*
  * lib/jsprim.js: utilities for primitive JavaScript types
  */
@@ -69795,7 +68924,7 @@ function mergeObjects(provided, overrides, defaults)
 	return (rv);
 }
 
-},{"assert-plus":206,"extsprintf":149,"json-schema":199,"util":336,"verror":337}],206:[function(require,module,exports){
+},{"assert-plus":207,"extsprintf":149,"json-schema":200,"util":348,"verror":349}],207:[function(require,module,exports){
 (function (Buffer,process){
 // Copyright (c) 2012, Mark Cavage. All rights reserved.
 // Copyright 2015 Joyent, Inc.
@@ -70010,7 +69139,7 @@ function _setExports(ndebug) {
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
 }).call(this,{"isBuffer":require("../../../is-buffer/index.js")},require('_process'))
-},{"../../../is-buffer/index.js":188,"_process":233,"assert":64,"stream":314,"util":336}],207:[function(require,module,exports){
+},{"../../../is-buffer/index.js":189,"_process":236,"assert":64,"stream":317,"util":348}],208:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -70125,7 +69254,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":69,"brorand":70}],208:[function(require,module,exports){
+},{"bn.js":69,"brorand":70}],209:[function(require,module,exports){
 module.exports={
   "application/1d-interleaved-parityfec": {
     "source": "iana"
@@ -76878,7 +76007,7 @@ module.exports={
   }
 }
 
-},{}],209:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 /*!
  * mime-db
  * Copyright(c) 2014 Jonathan Ong
@@ -76891,7 +76020,7 @@ module.exports={
 
 module.exports = require('./db.json')
 
-},{"./db.json":208}],210:[function(require,module,exports){
+},{"./db.json":209}],211:[function(require,module,exports){
 /*!
  * mime-types
  * Copyright(c) 2014 Jonathan Ong
@@ -77081,7 +76210,7 @@ function populateMaps (extensions, types) {
   })
 }
 
-},{"mime-db":209,"path":228}],211:[function(require,module,exports){
+},{"mime-db":210,"path":231}],212:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -77094,7 +76223,67 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
+'use strict';
+
+var utils = exports;
+
+function toArray(msg, enc) {
+  if (Array.isArray(msg))
+    return msg.slice();
+  if (!msg)
+    return [];
+  var res = [];
+  if (typeof msg !== 'string') {
+    for (var i = 0; i < msg.length; i++)
+      res[i] = msg[i] | 0;
+    return res;
+  }
+  if (enc === 'hex') {
+    msg = msg.replace(/[^a-z0-9]+/ig, '');
+    if (msg.length % 2 !== 0)
+      msg = '0' + msg;
+    for (var i = 0; i < msg.length; i += 2)
+      res.push(parseInt(msg[i] + msg[i + 1], 16));
+  } else {
+    for (var i = 0; i < msg.length; i++) {
+      var c = msg.charCodeAt(i);
+      var hi = c >> 8;
+      var lo = c & 0xff;
+      if (hi)
+        res.push(hi, lo);
+      else
+        res.push(lo);
+    }
+  }
+  return res;
+}
+utils.toArray = toArray;
+
+function zero2(word) {
+  if (word.length === 1)
+    return '0' + word;
+  else
+    return word;
+}
+utils.zero2 = zero2;
+
+function toHex(msg) {
+  var res = '';
+  for (var i = 0; i < msg.length; i++)
+    res += zero2(msg[i].toString(16));
+  return res;
+}
+utils.toHex = toHex;
+
+utils.encode = function encode(arr, enc) {
+  if (enc === 'hex')
+    return toHex(arr);
+  else
+    return arr;
+};
+
+},{}],214:[function(require,module,exports){
 var crypto = require('crypto')
   , qs = require('querystring')
   ;
@@ -77232,7 +76421,7 @@ exports.rfc3986 = rfc3986
 exports.generateBase = generateBase
 
 
-},{"crypto":114,"querystring":244}],213:[function(require,module,exports){
+},{"crypto":115,"querystring":247}],215:[function(require,module,exports){
 'use strict';
 
 
@@ -77336,7 +76525,7 @@ exports.setTyped = function (on) {
 
 exports.setTyped(TYPED_OK);
 
-},{}],214:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 'use strict';
 
 // Note: adler32 takes 12% for level 0 and 2% for level 6.
@@ -77370,7 +76559,7 @@ function adler32(adler, buf, len, pos) {
 
 module.exports = adler32;
 
-},{}],215:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 'use strict';
 
 
@@ -77422,7 +76611,7 @@ module.exports = {
   //Z_NULL:                 null // Use -1 or null inline, depending on var type
 };
 
-},{}],216:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 'use strict';
 
 // Note: we can't get significant speed boost here.
@@ -77465,7 +76654,7 @@ function crc32(crc, buf, len, pos) {
 
 module.exports = crc32;
 
-},{}],217:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 'use strict';
 
 var utils   = require('../utils/common');
@@ -79322,7 +78511,7 @@ exports.deflatePrime = deflatePrime;
 exports.deflateTune = deflateTune;
 */
 
-},{"../utils/common":213,"./adler32":214,"./crc32":216,"./messages":221,"./trees":222}],218:[function(require,module,exports){
+},{"../utils/common":215,"./adler32":216,"./crc32":218,"./messages":223,"./trees":224}],220:[function(require,module,exports){
 'use strict';
 
 // See state defs from inflate.js
@@ -79650,7 +78839,7 @@ module.exports = function inflate_fast(strm, start) {
   return;
 };
 
-},{}],219:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 'use strict';
 
 
@@ -81190,7 +80379,7 @@ exports.inflateSyncPoint = inflateSyncPoint;
 exports.inflateUndermine = inflateUndermine;
 */
 
-},{"../utils/common":213,"./adler32":214,"./crc32":216,"./inffast":218,"./inftrees":220}],220:[function(require,module,exports){
+},{"../utils/common":215,"./adler32":216,"./crc32":218,"./inffast":220,"./inftrees":222}],222:[function(require,module,exports){
 'use strict';
 
 
@@ -81519,7 +80708,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   return 0;
 };
 
-},{"../utils/common":213}],221:[function(require,module,exports){
+},{"../utils/common":215}],223:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -81534,7 +80723,7 @@ module.exports = {
   '-6':   'incompatible version' /* Z_VERSION_ERROR (-6) */
 };
 
-},{}],222:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 'use strict';
 
 
@@ -82738,7 +81927,7 @@ exports._tr_flush_block  = _tr_flush_block;
 exports._tr_tally = _tr_tally;
 exports._tr_align = _tr_align;
 
-},{"../utils/common":213}],223:[function(require,module,exports){
+},{"../utils/common":215}],225:[function(require,module,exports){
 'use strict';
 
 
@@ -82769,7 +81958,7 @@ function ZStream() {
 
 module.exports = ZStream;
 
-},{}],224:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -82783,11 +81972,14 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],225:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
+'use strict'
 
 var asn1 = require('asn1.js')
+
+exports.certificate = require('./certificate')
 
 var RSAPrivateKey = asn1.define('RSAPrivateKey', function () {
   this.seq().obj(
@@ -82880,6 +82072,7 @@ exports.DSAPrivateKey = DSAPrivateKey
 exports.DSAparam = asn1.define('DSAparam', function () {
   this.int()
 })
+
 var ECPrivateKey = asn1.define('ECPrivateKey', function () {
   this.seq().obj(
     this.key('version').int(),
@@ -82889,6 +82082,7 @@ var ECPrivateKey = asn1.define('ECPrivateKey', function () {
   )
 })
 exports.ECPrivateKey = ECPrivateKey
+
 var ECParameters = asn1.define('ECParameters', function () {
   this.choice({
     namedCurve: this.objid()
@@ -82902,12 +82096,102 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":43}],226:[function(require,module,exports){
+},{"./certificate":228,"asn1.js":43}],228:[function(require,module,exports){
+// from https://github.com/Rantanen/node-dtls/blob/25a7dc861bda38cfeac93a723500eea4f0ac2e86/Certificate.js
+// thanks to @Rantanen
+
+'use strict'
+
+var asn = require('asn1.js')
+
+var Time = asn.define('Time', function () {
+  this.choice({
+    utcTime: this.utctime(),
+    generalTime: this.gentime()
+  })
+})
+
+var AttributeTypeValue = asn.define('AttributeTypeValue', function () {
+  this.seq().obj(
+    this.key('type').objid(),
+    this.key('value').any()
+  )
+})
+
+var AlgorithmIdentifier = asn.define('AlgorithmIdentifier', function () {
+  this.seq().obj(
+    this.key('algorithm').objid(),
+    this.key('parameters').optional()
+  )
+})
+
+var SubjectPublicKeyInfo = asn.define('SubjectPublicKeyInfo', function () {
+  this.seq().obj(
+    this.key('algorithm').use(AlgorithmIdentifier),
+    this.key('subjectPublicKey').bitstr()
+  )
+})
+
+var RelativeDistinguishedName = asn.define('RelativeDistinguishedName', function () {
+  this.setof(AttributeTypeValue)
+})
+
+var RDNSequence = asn.define('RDNSequence', function () {
+  this.seqof(RelativeDistinguishedName)
+})
+
+var Name = asn.define('Name', function () {
+  this.choice({
+    rdnSequence: this.use(RDNSequence)
+  })
+})
+
+var Validity = asn.define('Validity', function () {
+  this.seq().obj(
+    this.key('notBefore').use(Time),
+    this.key('notAfter').use(Time)
+  )
+})
+
+var Extension = asn.define('Extension', function () {
+  this.seq().obj(
+    this.key('extnID').objid(),
+    this.key('critical').bool().def(false),
+    this.key('extnValue').octstr()
+  )
+})
+
+var TBSCertificate = asn.define('TBSCertificate', function () {
+  this.seq().obj(
+    this.key('version').explicit(0).int(),
+    this.key('serialNumber').int(),
+    this.key('signature').use(AlgorithmIdentifier),
+    this.key('issuer').use(Name),
+    this.key('validity').use(Validity),
+    this.key('subject').use(Name),
+    this.key('subjectPublicKeyInfo').use(SubjectPublicKeyInfo),
+    this.key('issuerUniqueID').implicit(1).bitstr().optional(),
+    this.key('subjectUniqueID').implicit(2).bitstr().optional(),
+    this.key('extensions').explicit(3).seqof(Extension).optional()
+  )
+})
+
+var X509Certificate = asn.define('X509Certificate', function () {
+  this.seq().obj(
+    this.key('tbsCertificate').use(TBSCertificate),
+    this.key('signatureAlgorithm').use(AlgorithmIdentifier),
+    this.key('signatureValue').bitstr()
+  )
+})
+
+module.exports = X509Certificate
+
+},{"asn1.js":43}],229:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
-var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
-var startRegex = /^-----BEGIN (.*) KEY-----\r?\n/m
-var fullRegex = /^-----BEGIN (.*) KEY-----\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n-----END \1 KEY-----$/m
+var findProc = /Proc-Type: 4,ENCRYPTED\n\r?DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\n\r?\n\r?([0-9A-z\n\r\+\/\=]+)\n\r?/m
+var startRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----\n/m
+var fullRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----\n\r?([0-9A-z\n\r\+\/\=]+)\n\r?-----END \1-----$/m
 var evp = require('evp_bytestokey')
 var ciphers = require('browserify-aes')
 module.exports = function (okey, password) {
@@ -82928,7 +82212,7 @@ module.exports = function (okey, password) {
     out.push(cipher.final())
     decrypted = Buffer.concat(out)
   }
-  var tag = key.match(startRegex)[1] + ' KEY'
+  var tag = key.match(startRegex)[1]
   return {
     tag: tag,
     data: decrypted
@@ -82936,7 +82220,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":74,"buffer":101,"evp_bytestokey":147}],227:[function(require,module,exports){
+},{"browserify-aes":74,"buffer":102,"evp_bytestokey":147}],230:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -82961,8 +82245,13 @@ function parseKeys (buffer) {
   var data = stripped.data
   var subtype, ndata
   switch (type) {
+    case 'CERTIFICATE':
+      ndata = asn1.certificate.decode(data, 'der').tbsCertificate.subjectPublicKeyInfo
+      // falls through
     case 'PUBLIC KEY':
-      ndata = asn1.PublicKey.decode(data, 'der')
+      if (!ndata) {
+        ndata = asn1.PublicKey.decode(data, 'der')
+      }
       subtype = ndata.algorithm.algorithm.join('.')
       switch (subtype) {
         case '1.2.840.113549.1.1.1':
@@ -83041,7 +82330,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":224,"./asn1":225,"./fixProc":226,"browserify-aes":74,"buffer":101,"pbkdf2":229}],228:[function(require,module,exports){
+},{"./aesid.json":226,"./asn1":227,"./fixProc":229,"browserify-aes":74,"buffer":102,"pbkdf2":232}],231:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -83269,7 +82558,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":233}],229:[function(require,module,exports){
+},{"_process":236}],232:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -83341,7 +82630,7 @@ exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./precondition":230,"_process":233,"buffer":101,"create-hmac":113}],230:[function(require,module,exports){
+},{"./precondition":233,"_process":236,"buffer":102,"create-hmac":114}],233:[function(require,module,exports){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 module.exports = function (iterations, keylen) {
   if (typeof iterations !== 'number') {
@@ -83361,7 +82650,7 @@ module.exports = function (iterations, keylen) {
   }
 }
 
-},{}],231:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 (function (process){
 // Generated by CoffeeScript 1.7.1
 (function() {
@@ -83397,7 +82686,7 @@ module.exports = function (iterations, keylen) {
 }).call(this);
 
 }).call(this,require('_process'))
-},{"_process":233}],232:[function(require,module,exports){
+},{"_process":236}],235:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -83444,7 +82733,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":233}],233:[function(require,module,exports){
+},{"_process":236}],236:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -83626,7 +82915,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],234:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -83637,7 +82926,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":236,"./publicEncrypt":237}],235:[function(require,module,exports){
+},{"./privateDecrypt":239,"./publicEncrypt":240}],238:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -83656,7 +82945,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"create-hash":110}],236:[function(require,module,exports){
+},{"buffer":102,"create-hash":111}],239:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -83767,7 +83056,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":235,"./withPublic":238,"./xor":239,"bn.js":69,"browserify-rsa":90,"buffer":101,"create-hash":110,"parse-asn1":227}],237:[function(require,module,exports){
+},{"./mgf":238,"./withPublic":241,"./xor":242,"bn.js":69,"browserify-rsa":90,"buffer":102,"create-hash":111,"parse-asn1":230}],240:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -83865,7 +83154,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":235,"./withPublic":238,"./xor":239,"bn.js":69,"browserify-rsa":90,"buffer":101,"create-hash":110,"parse-asn1":227,"randombytes":245}],238:[function(require,module,exports){
+},{"./mgf":238,"./withPublic":241,"./xor":242,"bn.js":69,"browserify-rsa":90,"buffer":102,"create-hash":111,"parse-asn1":230,"randombytes":248}],241:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -83878,7 +83167,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":69,"buffer":101}],239:[function(require,module,exports){
+},{"bn.js":69,"buffer":102}],242:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -83887,7 +83176,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],240:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -84424,7 +83713,7 @@ module.exports = function xor(a, b) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],241:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 (function (process){
 // vim:ts=4:sts=4:sw=4:
 /*!
@@ -86476,7 +85765,7 @@ return Q;
 });
 
 }).call(this,require('_process'))
-},{"_process":233}],242:[function(require,module,exports){
+},{"_process":236}],245:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -86562,7 +85851,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],243:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -86649,13 +85938,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],244:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":242,"./encode":243}],245:[function(require,module,exports){
+},{"./decode":245,"./encode":246}],248:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -86695,10 +85984,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":233,"buffer":101}],246:[function(require,module,exports){
+},{"_process":236,"buffer":102}],249:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":247}],247:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":250}],250:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -86774,7 +86063,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":249,"./_stream_writable":251,"core-util-is":108,"inherits":187,"process-nextick-args":232}],248:[function(require,module,exports){
+},{"./_stream_readable":252,"./_stream_writable":254,"core-util-is":109,"inherits":188,"process-nextick-args":235}],251:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -86801,7 +86090,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":250,"core-util-is":108,"inherits":187}],249:[function(require,module,exports){
+},{"./_stream_transform":253,"core-util-is":109,"inherits":188}],252:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -87745,7 +87034,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":247,"./internal/streams/BufferList":252,"_process":233,"buffer":101,"buffer-shims":99,"core-util-is":108,"events":146,"inherits":187,"isarray":190,"process-nextick-args":232,"string_decoder/":319,"util":71}],250:[function(require,module,exports){
+},{"./_stream_duplex":250,"./internal/streams/BufferList":255,"_process":236,"buffer":102,"buffer-shims":100,"core-util-is":109,"events":146,"inherits":188,"isarray":191,"process-nextick-args":235,"string_decoder/":331,"util":71}],253:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -87928,7 +87217,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":247,"core-util-is":108,"inherits":187}],251:[function(require,module,exports){
+},{"./_stream_duplex":250,"core-util-is":109,"inherits":188}],254:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -88485,7 +87774,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":247,"_process":233,"buffer":101,"buffer-shims":99,"core-util-is":108,"events":146,"inherits":187,"process-nextick-args":232,"util-deprecate":333}],252:[function(require,module,exports){
+},{"./_stream_duplex":250,"_process":236,"buffer":102,"buffer-shims":100,"core-util-is":109,"events":146,"inherits":188,"process-nextick-args":235,"util-deprecate":345}],255:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('buffer').Buffer;
@@ -88550,10 +87839,10 @@ BufferList.prototype.concat = function (n) {
   }
   return ret;
 };
-},{"buffer":101,"buffer-shims":99}],253:[function(require,module,exports){
+},{"buffer":102,"buffer-shims":100}],256:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":248}],254:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":251}],257:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -88573,13 +87862,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":247,"./lib/_stream_passthrough.js":248,"./lib/_stream_readable.js":249,"./lib/_stream_transform.js":250,"./lib/_stream_writable.js":251,"_process":233}],255:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":250,"./lib/_stream_passthrough.js":251,"./lib/_stream_readable.js":252,"./lib/_stream_transform.js":253,"./lib/_stream_writable.js":254,"_process":236}],258:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":250}],256:[function(require,module,exports){
+},{"./lib/_stream_transform.js":253}],259:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":251}],257:[function(require,module,exports){
+},{"./lib/_stream_writable.js":254}],260:[function(require,module,exports){
 // Copyright 2010-2012 Mikeal Rogers
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -88737,7 +88026,7 @@ Object.defineProperty(request, 'debug', {
   }
 })
 
-},{"./lib/cookies":259,"./lib/helpers":262,"./request":279,"extend":148}],258:[function(require,module,exports){
+},{"./lib/cookies":262,"./lib/helpers":265,"./request":282,"extend":148}],261:[function(require,module,exports){
 'use strict'
 
 var caseless = require('caseless')
@@ -88907,7 +88196,7 @@ Auth.prototype.onResponse = function (response) {
 
 exports.Auth = Auth
 
-},{"./helpers":262,"caseless":104,"uuid":274}],259:[function(require,module,exports){
+},{"./helpers":265,"caseless":105,"uuid":277}],262:[function(require,module,exports){
 'use strict'
 
 var tough = require('tough-cookie')
@@ -88948,7 +88237,7 @@ exports.jar = function(store) {
   return new RequestJar(store)
 }
 
-},{"tough-cookie":322}],260:[function(require,module,exports){
+},{"tough-cookie":334}],263:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -89031,7 +88320,7 @@ function getProxyFromURI(uri) {
 module.exports = getProxyFromURI
 
 }).call(this,require('_process'))
-},{"_process":233}],261:[function(require,module,exports){
+},{"_process":236}],264:[function(require,module,exports){
 'use strict'
 
 var fs = require('fs')
@@ -89248,7 +88537,7 @@ Har.prototype.options = function (options) {
 
 exports.Har = Har
 
-},{"extend":148,"fs":98,"har-validator":171,"querystring":244}],262:[function(require,module,exports){
+},{"extend":148,"fs":99,"har-validator":171,"querystring":247}],265:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -89318,7 +88607,7 @@ exports.version               = version
 exports.defer                 = defer
 
 }).call(this,require('_process'))
-},{"_process":233,"crypto":114,"json-stringify-safe":201,"safe-buffer":281}],263:[function(require,module,exports){
+},{"_process":236,"crypto":115,"json-stringify-safe":202,"safe-buffer":284}],266:[function(require,module,exports){
 'use strict'
 
 var uuid = require('uuid')
@@ -89433,7 +88722,7 @@ Multipart.prototype.onRequest = function (options) {
 
 exports.Multipart = Multipart
 
-},{"combined-stream":107,"isstream":191,"safe-buffer":281,"uuid":274}],264:[function(require,module,exports){
+},{"combined-stream":108,"isstream":192,"safe-buffer":284,"uuid":277}],267:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -89583,7 +88872,7 @@ OAuth.prototype.onRequest = function (_oauth) {
 
 exports.OAuth = OAuth
 
-},{"caseless":104,"crypto":114,"oauth-sign":212,"qs":270,"safe-buffer":281,"url":331,"uuid":274}],265:[function(require,module,exports){
+},{"caseless":105,"crypto":115,"oauth-sign":214,"qs":273,"safe-buffer":284,"url":343,"uuid":277}],268:[function(require,module,exports){
 'use strict'
 
 var qs = require('qs')
@@ -89636,7 +88925,7 @@ Querystring.prototype.unescape = querystring.unescape
 
 exports.Querystring = Querystring
 
-},{"qs":270,"querystring":244}],266:[function(require,module,exports){
+},{"qs":273,"querystring":247}],269:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -89795,7 +89084,7 @@ Redirect.prototype.onResponse = function (response) {
 
 exports.Redirect = Redirect
 
-},{"url":331}],267:[function(require,module,exports){
+},{"url":343}],270:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -89973,11 +89262,11 @@ Tunnel.defaultProxyHeaderWhiteList = defaultProxyHeaderWhiteList
 Tunnel.defaultProxyHeaderExclusiveList = defaultProxyHeaderExclusiveList
 exports.Tunnel = Tunnel
 
-},{"tunnel-agent":329,"url":331}],268:[function(require,module,exports){
+},{"tunnel-agent":341,"url":343}],271:[function(require,module,exports){
 /* eslint-env browser */
 module.exports = typeof self == 'object' ? self.FormData : window.FormData;
 
-},{}],269:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 'use strict';
 
 var replace = String.prototype.replace;
@@ -89997,7 +89286,7 @@ module.exports = {
     RFC3986: 'RFC3986'
 };
 
-},{}],270:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 'use strict';
 
 var stringify = require('./stringify');
@@ -90010,7 +89299,7 @@ module.exports = {
     stringify: stringify
 };
 
-},{"./formats":269,"./parse":271,"./stringify":272}],271:[function(require,module,exports){
+},{"./formats":272,"./parse":274,"./stringify":275}],274:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -90179,7 +89468,7 @@ module.exports = function (str, opts) {
     return utils.compact(obj);
 };
 
-},{"./utils":273}],272:[function(require,module,exports){
+},{"./utils":276}],275:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -90388,7 +89677,7 @@ module.exports = function (object, opts) {
     return keys.join(delimiter);
 };
 
-},{"./formats":269,"./utils":273}],273:[function(require,module,exports){
+},{"./formats":272,"./utils":276}],276:[function(require,module,exports){
 'use strict';
 
 var has = Object.prototype.hasOwnProperty;
@@ -90572,7 +89861,7 @@ exports.isBuffer = function (obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
-},{}],274:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 var v1 = require('./v1');
 var v4 = require('./v4');
 
@@ -90582,7 +89871,7 @@ uuid.v4 = v4;
 
 module.exports = uuid;
 
-},{"./v1":277,"./v4":278}],275:[function(require,module,exports){
+},{"./v1":280,"./v4":281}],278:[function(require,module,exports){
 /**
  * Convert array of 16 byte values to UUID string format of the form:
  * XXXXXXXX-XXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -90607,7 +89896,7 @@ function bytesToUuid(buf, offset) {
 
 module.exports = bytesToUuid;
 
-},{}],276:[function(require,module,exports){
+},{}],279:[function(require,module,exports){
 (function (global){
 // Unique ID creation requires a high quality random # generator.  In the
 // browser this is a little complicated due to unknown quality of Math.random()
@@ -90644,7 +89933,7 @@ if (!rng) {
 module.exports = rng;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],277:[function(require,module,exports){
+},{}],280:[function(require,module,exports){
 // Unique ID creation requires a high quality random # generator.  We feature
 // detect to determine the best RNG source, normalizing to a function that
 // returns 128-bits of randomness, since that's what's usually required
@@ -90749,7 +90038,7 @@ function v1(options, buf, offset) {
 
 module.exports = v1;
 
-},{"./lib/bytesToUuid":275,"./lib/rng":276}],278:[function(require,module,exports){
+},{"./lib/bytesToUuid":278,"./lib/rng":279}],281:[function(require,module,exports){
 var rng = require('./lib/rng');
 var bytesToUuid = require('./lib/bytesToUuid');
 
@@ -90780,7 +90069,7 @@ function v4(options, buf, offset) {
 
 module.exports = v4;
 
-},{"./lib/bytesToUuid":275,"./lib/rng":276}],279:[function(require,module,exports){
+},{"./lib/bytesToUuid":278,"./lib/rng":279}],282:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -92349,7 +91638,7 @@ Request.prototype.toJSON = requestToJSON
 module.exports = Request
 
 }).call(this,require('_process'))
-},{"./lib/auth":258,"./lib/cookies":259,"./lib/getProxyFromURI":260,"./lib/har":261,"./lib/helpers":262,"./lib/multipart":263,"./lib/oauth":264,"./lib/querystring":265,"./lib/redirect":266,"./lib/tunnel":267,"_process":233,"aws-sign2":65,"aws4":66,"caseless":104,"extend":148,"forever-agent":150,"form-data":268,"hawk":178,"http":315,"http-signature":179,"https":184,"is-typedarray":189,"isstream":191,"mime-types":210,"performance-now":231,"safe-buffer":281,"stream":314,"stringstream":320,"url":331,"util":336,"zlib":97}],280:[function(require,module,exports){
+},{"./lib/auth":261,"./lib/cookies":262,"./lib/getProxyFromURI":263,"./lib/har":264,"./lib/helpers":265,"./lib/multipart":266,"./lib/oauth":267,"./lib/querystring":268,"./lib/redirect":269,"./lib/tunnel":270,"_process":236,"aws-sign2":65,"aws4":66,"caseless":105,"extend":148,"forever-agent":150,"form-data":271,"hawk":178,"http":318,"http-signature":180,"https":185,"is-typedarray":190,"isstream":192,"mime-types":211,"performance-now":234,"safe-buffer":284,"stream":317,"stringstream":332,"url":343,"util":348,"zlib":98}],283:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -92563,10 +91852,10 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],281:[function(require,module,exports){
+},{"buffer":102}],284:[function(require,module,exports){
 module.exports = require('buffer')
 
-},{"buffer":101}],282:[function(require,module,exports){
+},{"buffer":102}],285:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -92639,7 +91928,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],283:[function(require,module,exports){
+},{"buffer":102}],286:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -92656,7 +91945,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":284,"./sha1":285,"./sha224":286,"./sha256":287,"./sha384":288,"./sha512":289}],284:[function(require,module,exports){
+},{"./sha":287,"./sha1":288,"./sha224":289,"./sha256":290,"./sha384":291,"./sha512":292}],287:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -92753,7 +92042,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":282,"buffer":101,"inherits":187}],285:[function(require,module,exports){
+},{"./hash":285,"buffer":102,"inherits":188}],288:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -92855,7 +92144,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":282,"buffer":101,"inherits":187}],286:[function(require,module,exports){
+},{"./hash":285,"buffer":102,"inherits":188}],289:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -92911,7 +92200,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":282,"./sha256":287,"buffer":101,"inherits":187}],287:[function(require,module,exports){
+},{"./hash":285,"./sha256":290,"buffer":102,"inherits":188}],290:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -93049,7 +92338,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":282,"buffer":101,"inherits":187}],288:[function(require,module,exports){
+},{"./hash":285,"buffer":102,"inherits":188}],291:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -93109,7 +92398,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":282,"./sha512":289,"buffer":101,"inherits":187}],289:[function(require,module,exports){
+},{"./hash":285,"./sha512":292,"buffer":102,"inherits":188}],292:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -93372,7 +92661,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":282,"buffer":101,"inherits":187}],290:[function(require,module,exports){
+},{"./hash":285,"buffer":102,"inherits":188}],293:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -93544,7 +92833,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101}],291:[function(require,module,exports){
+},{"buffer":102}],294:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2016 Joyent, Inc.
 
@@ -93925,7 +93214,7 @@ Certificate._oldVersionDetect = function (obj) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":290,"./errors":294,"./fingerprint":295,"./formats/openssh-cert":297,"./formats/x509":305,"./formats/x509-pem":304,"./identity":306,"./key":308,"./private-key":309,"./signature":310,"./utils":312,"assert-plus":313,"buffer":101,"crypto":114,"util":336}],292:[function(require,module,exports){
+},{"./algs":293,"./errors":297,"./fingerprint":298,"./formats/openssh-cert":300,"./formats/x509":308,"./formats/x509-pem":307,"./identity":309,"./key":311,"./private-key":312,"./signature":313,"./utils":315,"assert-plus":316,"buffer":102,"crypto":115,"util":348}],295:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -94240,7 +93529,7 @@ ECPrivate.prototype.deriveSharedSecret = function (pubKey) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":290,"./key":308,"./private-key":309,"./utils":312,"assert-plus":313,"buffer":101,"crypto":114,"ecc-jsbn":126,"ecc-jsbn/lib/ec":127,"jodid25519":192,"jsbn":198}],293:[function(require,module,exports){
+},{"./algs":293,"./key":311,"./private-key":312,"./utils":315,"assert-plus":316,"buffer":102,"crypto":115,"ecc-jsbn":127,"ecc-jsbn/lib/ec":128,"jodid25519":193,"jsbn":199}],296:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -94340,7 +93629,7 @@ Signer.prototype.sign = function () {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./signature":310,"assert-plus":313,"buffer":101,"stream":314,"tweetnacl":330,"util":336}],294:[function(require,module,exports){
+},{"./signature":313,"assert-plus":316,"buffer":102,"stream":317,"tweetnacl":342,"util":348}],297:[function(require,module,exports){
 // Copyright 2015 Joyent, Inc.
 
 var assert = require('assert-plus');
@@ -94426,7 +93715,7 @@ module.exports = {
 	CertificateParseError: CertificateParseError
 };
 
-},{"assert-plus":313,"util":336}],295:[function(require,module,exports){
+},{"assert-plus":316,"util":348}],298:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -94591,7 +93880,7 @@ Fingerprint._oldVersionDetect = function (obj) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":290,"./certificate":291,"./errors":294,"./key":308,"./utils":312,"assert-plus":313,"buffer":101,"crypto":114}],296:[function(require,module,exports){
+},{"./algs":293,"./certificate":294,"./errors":297,"./key":311,"./utils":315,"assert-plus":316,"buffer":102,"crypto":115}],299:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -94668,7 +93957,7 @@ function write(key, options) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../key":308,"../private-key":309,"../utils":312,"./pem":298,"./rfc4253":301,"./ssh":303,"assert-plus":313,"buffer":101}],297:[function(require,module,exports){
+},{"../key":311,"../private-key":312,"../utils":315,"./pem":301,"./rfc4253":304,"./ssh":306,"assert-plus":316,"buffer":102}],300:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2016 Joyent, Inc.
 
@@ -94961,7 +94250,7 @@ function getCertType(key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../certificate":291,"../identity":306,"../key":308,"../private-key":309,"../signature":310,"../ssh-buffer":311,"../utils":312,"./rfc4253":301,"assert-plus":313,"buffer":101,"crypto":114}],298:[function(require,module,exports){
+},{"../algs":293,"../certificate":294,"../identity":309,"../key":311,"../private-key":312,"../signature":313,"../ssh-buffer":314,"../utils":315,"./rfc4253":304,"assert-plus":316,"buffer":102,"crypto":115}],301:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -95151,7 +94440,7 @@ function write(key, options, type) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../errors":294,"../key":308,"../private-key":309,"../utils":312,"./pkcs1":299,"./pkcs8":300,"./rfc4253":301,"./ssh-private":302,"asn1":62,"assert-plus":313,"buffer":101,"crypto":114}],299:[function(require,module,exports){
+},{"../algs":293,"../errors":297,"../key":311,"../private-key":312,"../utils":315,"./pkcs1":302,"./pkcs8":303,"./rfc4253":304,"./ssh-private":305,"asn1":62,"assert-plus":316,"buffer":102,"crypto":115}],302:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -95475,7 +94764,7 @@ function writePkcs1ECDSAPrivate(der, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../key":308,"../private-key":309,"../utils":312,"./pem":298,"./pkcs8":300,"asn1":62,"assert-plus":313,"buffer":101}],300:[function(require,module,exports){
+},{"../algs":293,"../key":311,"../private-key":312,"../utils":315,"./pem":301,"./pkcs8":303,"asn1":62,"assert-plus":316,"buffer":102}],303:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -95984,7 +95273,7 @@ function writePkcs8ECDSAPrivate(key, der) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../key":308,"../private-key":309,"../utils":312,"./pem":298,"asn1":62,"assert-plus":313,"buffer":101}],301:[function(require,module,exports){
+},{"../algs":293,"../key":311,"../private-key":312,"../utils":315,"./pem":301,"asn1":62,"assert-plus":316,"buffer":102}],304:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -96134,7 +95423,7 @@ function write(key, options) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../key":308,"../private-key":309,"../ssh-buffer":311,"../utils":312,"assert-plus":313,"buffer":101}],302:[function(require,module,exports){
+},{"../algs":293,"../key":311,"../private-key":312,"../ssh-buffer":314,"../utils":315,"assert-plus":316,"buffer":102}],305:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -96399,7 +95688,7 @@ function write(key, options) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../errors":294,"../key":308,"../private-key":309,"../ssh-buffer":311,"../utils":312,"./pem":298,"./rfc4253":301,"asn1":62,"assert-plus":313,"bcrypt-pbkdf":68,"buffer":101,"crypto":114}],303:[function(require,module,exports){
+},{"../algs":293,"../errors":297,"../key":311,"../private-key":312,"../ssh-buffer":314,"../utils":315,"./pem":301,"./rfc4253":304,"asn1":62,"assert-plus":316,"bcrypt-pbkdf":68,"buffer":102,"crypto":115}],306:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -96517,7 +95806,7 @@ function write(key, options) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../key":308,"../private-key":309,"../utils":312,"./rfc4253":301,"./ssh-private":302,"assert-plus":313,"buffer":101}],304:[function(require,module,exports){
+},{"../key":311,"../private-key":312,"../utils":315,"./rfc4253":304,"./ssh-private":305,"assert-plus":316,"buffer":102}],307:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2016 Joyent, Inc.
 
@@ -96598,7 +95887,7 @@ function write(cert, options) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../certificate":291,"../identity":306,"../key":308,"../private-key":309,"../signature":310,"../utils":312,"./pem":298,"./x509":305,"asn1":62,"assert-plus":313,"buffer":101}],305:[function(require,module,exports){
+},{"../algs":293,"../certificate":294,"../identity":309,"../key":311,"../private-key":312,"../signature":313,"../utils":315,"./pem":301,"./x509":308,"asn1":62,"assert-plus":316,"buffer":102}],308:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2016 Joyent, Inc.
 
@@ -97301,7 +96590,7 @@ function writeBitField(setBits, bitIndex) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../algs":290,"../certificate":291,"../identity":306,"../key":308,"../private-key":309,"../signature":310,"../utils":312,"./pem":298,"./pkcs8":300,"asn1":62,"assert-plus":313,"buffer":101}],306:[function(require,module,exports){
+},{"../algs":293,"../certificate":294,"../identity":309,"../key":311,"../private-key":312,"../signature":313,"../utils":315,"./pem":301,"./pkcs8":303,"asn1":62,"assert-plus":316,"buffer":102}],309:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2016 Joyent, Inc.
 
@@ -97582,7 +96871,7 @@ Identity._oldVersionDetect = function (obj) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":290,"./errors":294,"./fingerprint":295,"./signature":310,"./utils":312,"asn1":62,"assert-plus":313,"buffer":101,"crypto":114,"util":336}],307:[function(require,module,exports){
+},{"./algs":293,"./errors":297,"./fingerprint":298,"./signature":313,"./utils":315,"asn1":62,"assert-plus":316,"buffer":102,"crypto":115,"util":348}],310:[function(require,module,exports){
 // Copyright 2015 Joyent, Inc.
 
 var Key = require('./key');
@@ -97622,7 +96911,7 @@ module.exports = {
 	CertificateParseError: errs.CertificateParseError
 };
 
-},{"./certificate":291,"./errors":294,"./fingerprint":295,"./identity":306,"./key":308,"./private-key":309,"./signature":310}],308:[function(require,module,exports){
+},{"./certificate":294,"./errors":297,"./fingerprint":298,"./identity":309,"./key":311,"./private-key":312,"./signature":313}],311:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -97896,7 +97185,7 @@ Key._oldVersionDetect = function (obj) {
 };
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":188,"./algs":290,"./dhe":292,"./ed-compat":293,"./errors":294,"./fingerprint":295,"./formats/auto":296,"./formats/pem":298,"./formats/pkcs1":299,"./formats/pkcs8":300,"./formats/rfc4253":301,"./formats/ssh":303,"./formats/ssh-private":302,"./private-key":309,"./signature":310,"./utils":312,"assert-plus":313,"crypto":114}],309:[function(require,module,exports){
+},{"../../is-buffer/index.js":189,"./algs":293,"./dhe":295,"./ed-compat":296,"./errors":297,"./fingerprint":298,"./formats/auto":299,"./formats/pem":301,"./formats/pkcs1":302,"./formats/pkcs8":303,"./formats/rfc4253":304,"./formats/ssh":306,"./formats/ssh-private":305,"./private-key":312,"./signature":313,"./utils":315,"assert-plus":316,"crypto":115}],312:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -98131,7 +97420,7 @@ PrivateKey._oldVersionDetect = function (obj) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":290,"./ed-compat":293,"./errors":294,"./fingerprint":295,"./formats/auto":296,"./formats/pem":298,"./formats/pkcs1":299,"./formats/pkcs8":300,"./formats/rfc4253":301,"./formats/ssh-private":302,"./key":308,"./signature":310,"./utils":312,"assert-plus":313,"buffer":101,"crypto":114,"jodid25519":192,"util":336}],310:[function(require,module,exports){
+},{"./algs":293,"./ed-compat":296,"./errors":297,"./fingerprint":298,"./formats/auto":299,"./formats/pem":301,"./formats/pkcs1":302,"./formats/pkcs8":303,"./formats/rfc4253":304,"./formats/ssh-private":305,"./key":311,"./signature":313,"./utils":315,"assert-plus":316,"buffer":102,"crypto":115,"jodid25519":193,"util":348}],313:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -98380,7 +97669,7 @@ Signature._oldVersionDetect = function (obj) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":290,"./errors":294,"./ssh-buffer":311,"./utils":312,"asn1":62,"assert-plus":313,"buffer":101,"crypto":114}],311:[function(require,module,exports){
+},{"./algs":293,"./errors":297,"./ssh-buffer":314,"./utils":315,"asn1":62,"assert-plus":316,"buffer":102,"crypto":115}],314:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -98532,7 +97821,7 @@ SSHBuffer.prototype.write = function (buf) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"assert-plus":313,"buffer":101}],312:[function(require,module,exports){
+},{"assert-plus":316,"buffer":102}],315:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -98824,9 +98113,9 @@ function opensshCipherInfo(cipher) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./private-key":309,"assert-plus":313,"buffer":101,"crypto":114,"jsbn":198}],313:[function(require,module,exports){
-arguments[4][206][0].apply(exports,arguments)
-},{"../../../is-buffer/index.js":188,"_process":233,"assert":64,"dup":206,"stream":314,"util":336}],314:[function(require,module,exports){
+},{"./private-key":312,"assert-plus":316,"buffer":102,"crypto":115,"jsbn":199}],316:[function(require,module,exports){
+arguments[4][207][0].apply(exports,arguments)
+},{"../../../is-buffer/index.js":189,"_process":236,"assert":64,"dup":207,"stream":317,"util":348}],317:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -98955,7 +98244,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":146,"inherits":187,"readable-stream/duplex.js":246,"readable-stream/passthrough.js":253,"readable-stream/readable.js":254,"readable-stream/transform.js":255,"readable-stream/writable.js":256}],315:[function(require,module,exports){
+},{"events":146,"inherits":188,"readable-stream/duplex.js":249,"readable-stream/passthrough.js":256,"readable-stream/readable.js":257,"readable-stream/transform.js":258,"readable-stream/writable.js":259}],318:[function(require,module,exports){
 (function (global){
 var ClientRequest = require('./lib/request')
 var extend = require('xtend')
@@ -99037,7 +98326,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":317,"builtin-status-codes":103,"url":331,"xtend":339}],316:[function(require,module,exports){
+},{"./lib/request":320,"builtin-status-codes":104,"url":343,"xtend":351}],319:[function(require,module,exports){
 (function (global){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -99110,7 +98399,7 @@ function isFunction (value) {
 xhr = null // Help gc
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],317:[function(require,module,exports){
+},{}],320:[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -99213,7 +98502,7 @@ ClientRequest.prototype._onFinish = function () {
 
 	var headersObj = self._headers
 	var body = null
-	if (opts.method === 'POST' || opts.method === 'PUT' || opts.method === 'PATCH' || opts.method === 'MERGE') {
+	if (opts.method !== 'GET' && opts.method !== 'HEAD') {
 		if (capability.blobConstructor) {
 			body = new global.Blob(self._body.map(function (buffer) {
 				return toArrayBuffer(buffer)
@@ -99226,14 +98515,24 @@ ClientRequest.prototype._onFinish = function () {
 		}
 	}
 
-	if (self._mode === 'fetch') {
-		var headers = Object.keys(headersObj).map(function (name) {
-			return [headersObj[name].name, headersObj[name].value]
-		})
+	// create flattened list of headers
+	var headersList = []
+	Object.keys(headersObj).forEach(function (keyName) {
+		var name = headersObj[keyName].name
+		var value = headersObj[keyName].value
+		if (Array.isArray(value)) {
+			value.forEach(function (v) {
+				headersList.push([name, v])
+			})
+		} else {
+			headersList.push([name, value])
+		}
+	})
 
+	if (self._mode === 'fetch') {
 		global.fetch(self._opts.url, {
 			method: self._opts.method,
-			headers: headers,
+			headers: headersList,
 			body: body || undefined,
 			mode: 'cors',
 			credentials: opts.withCredentials ? 'include' : 'same-origin'
@@ -99271,8 +98570,8 @@ ClientRequest.prototype._onFinish = function () {
 			}
 		}
 
-		Object.keys(headersObj).forEach(function (name) {
-			xhr.setRequestHeader(headersObj[name].name, headersObj[name].value)
+		headersList.forEach(function (header) {
+			xhr.setRequestHeader(header[0], header[1])
 		})
 
 		self._response = null
@@ -99408,7 +98707,7 @@ var unsafeHeaders = [
 ]
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"./capability":316,"./response":318,"_process":233,"buffer":101,"inherits":187,"readable-stream":254,"to-arraybuffer":321}],318:[function(require,module,exports){
+},{"./capability":319,"./response":321,"_process":236,"buffer":102,"inherits":188,"readable-stream":329,"to-arraybuffer":333}],321:[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -99594,7 +98893,1786 @@ IncomingMessage.prototype._onXHRProgress = function () {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"./capability":316,"_process":233,"buffer":101,"inherits":187,"readable-stream":254}],319:[function(require,module,exports){
+},{"./capability":319,"_process":236,"buffer":102,"inherits":188,"readable-stream":329}],322:[function(require,module,exports){
+arguments[4][250][0].apply(exports,arguments)
+},{"./_stream_readable":324,"./_stream_writable":326,"core-util-is":109,"dup":250,"inherits":188,"process-nextick-args":235}],323:[function(require,module,exports){
+arguments[4][251][0].apply(exports,arguments)
+},{"./_stream_transform":325,"core-util-is":109,"dup":251,"inherits":188}],324:[function(require,module,exports){
+(function (process){
+'use strict';
+
+module.exports = Readable;
+
+/*<replacement>*/
+var processNextTick = require('process-nextick-args');
+/*</replacement>*/
+
+/*<replacement>*/
+var isArray = require('isarray');
+/*</replacement>*/
+
+/*<replacement>*/
+var Duplex;
+/*</replacement>*/
+
+Readable.ReadableState = ReadableState;
+
+/*<replacement>*/
+var EE = require('events').EventEmitter;
+
+var EElistenerCount = function (emitter, type) {
+  return emitter.listeners(type).length;
+};
+/*</replacement>*/
+
+/*<replacement>*/
+var Stream = require('./internal/streams/stream');
+/*</replacement>*/
+
+var Buffer = require('buffer').Buffer;
+/*<replacement>*/
+var bufferShim = require('buffer-shims');
+/*</replacement>*/
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+/*<replacement>*/
+var debugUtil = require('util');
+var debug = void 0;
+if (debugUtil && debugUtil.debuglog) {
+  debug = debugUtil.debuglog('stream');
+} else {
+  debug = function () {};
+}
+/*</replacement>*/
+
+var BufferList = require('./internal/streams/BufferList');
+var StringDecoder;
+
+util.inherits(Readable, Stream);
+
+var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
+
+function prependListener(emitter, event, fn) {
+  // Sadly this is not cacheable as some libraries bundle their own
+  // event emitter implementation with them.
+  if (typeof emitter.prependListener === 'function') {
+    return emitter.prependListener(event, fn);
+  } else {
+    // This is a hack to make sure that our error handler is attached before any
+    // userland ones.  NEVER DO THIS. This is here only because this code needs
+    // to continue to work with older versions of Node.js that do not include
+    // the prependListener() method. The goal is to eventually remove this hack.
+    if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
+  }
+}
+
+function ReadableState(options, stream) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  options = options || {};
+
+  // object stream flag. Used to make read(n) ignore n and to
+  // make all the buffer merging and length checks go away
+  this.objectMode = !!options.objectMode;
+
+  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
+
+  // the point at which it stops calling _read() to fill the buffer
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
+  var hwm = options.highWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = ~~this.highWaterMark;
+
+  // A linked list is used to store data chunks instead of an array because the
+  // linked list can remove elements from the beginning faster than
+  // array.shift()
+  this.buffer = new BufferList();
+  this.length = 0;
+  this.pipes = null;
+  this.pipesCount = 0;
+  this.flowing = null;
+  this.ended = false;
+  this.endEmitted = false;
+  this.reading = false;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // whenever we return null, then we set a flag to say
+  // that we're awaiting a 'readable' event emission.
+  this.needReadable = false;
+  this.emittedReadable = false;
+  this.readableListening = false;
+  this.resumeScheduled = false;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // when piping, we only care about 'readable' events that happen
+  // after read()ing all the bytes and not getting any pushback.
+  this.ranOut = false;
+
+  // the number of writers that are awaiting a drain event in .pipe()s
+  this.awaitDrain = 0;
+
+  // if true, a maybeReadMore has been scheduled
+  this.readingMore = false;
+
+  this.decoder = null;
+  this.encoding = null;
+  if (options.encoding) {
+    if (!StringDecoder) StringDecoder = require('string_decoder/').StringDecoder;
+    this.decoder = new StringDecoder(options.encoding);
+    this.encoding = options.encoding;
+  }
+}
+
+function Readable(options) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  if (!(this instanceof Readable)) return new Readable(options);
+
+  this._readableState = new ReadableState(options, this);
+
+  // legacy
+  this.readable = true;
+
+  if (options && typeof options.read === 'function') this._read = options.read;
+
+  Stream.call(this);
+}
+
+// Manually shove something into the read() buffer.
+// This returns true if the highWaterMark has not been hit yet,
+// similar to how Writable.write() returns true if you should
+// write() some more.
+Readable.prototype.push = function (chunk, encoding) {
+  var state = this._readableState;
+
+  if (!state.objectMode && typeof chunk === 'string') {
+    encoding = encoding || state.defaultEncoding;
+    if (encoding !== state.encoding) {
+      chunk = bufferShim.from(chunk, encoding);
+      encoding = '';
+    }
+  }
+
+  return readableAddChunk(this, state, chunk, encoding, false);
+};
+
+// Unshift should *always* be something directly out of read()
+Readable.prototype.unshift = function (chunk) {
+  var state = this._readableState;
+  return readableAddChunk(this, state, chunk, '', true);
+};
+
+Readable.prototype.isPaused = function () {
+  return this._readableState.flowing === false;
+};
+
+function readableAddChunk(stream, state, chunk, encoding, addToFront) {
+  var er = chunkInvalid(state, chunk);
+  if (er) {
+    stream.emit('error', er);
+  } else if (chunk === null) {
+    state.reading = false;
+    onEofChunk(stream, state);
+  } else if (state.objectMode || chunk && chunk.length > 0) {
+    if (state.ended && !addToFront) {
+      var e = new Error('stream.push() after EOF');
+      stream.emit('error', e);
+    } else if (state.endEmitted && addToFront) {
+      var _e = new Error('stream.unshift() after end event');
+      stream.emit('error', _e);
+    } else {
+      var skipAdd;
+      if (state.decoder && !addToFront && !encoding) {
+        chunk = state.decoder.write(chunk);
+        skipAdd = !state.objectMode && chunk.length === 0;
+      }
+
+      if (!addToFront) state.reading = false;
+
+      // Don't add to the buffer if we've decoded to an empty string chunk and
+      // we're not in object mode
+      if (!skipAdd) {
+        // if we want the data now, just emit it.
+        if (state.flowing && state.length === 0 && !state.sync) {
+          stream.emit('data', chunk);
+          stream.read(0);
+        } else {
+          // update the buffer info.
+          state.length += state.objectMode ? 1 : chunk.length;
+          if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
+
+          if (state.needReadable) emitReadable(stream);
+        }
+      }
+
+      maybeReadMore(stream, state);
+    }
+  } else if (!addToFront) {
+    state.reading = false;
+  }
+
+  return needMoreData(state);
+}
+
+// if it's past the high water mark, we can push in some more.
+// Also, if we have no data yet, we can stand some
+// more bytes.  This is to work around cases where hwm=0,
+// such as the repl.  Also, if the push() triggered a
+// readable event, and the user called read(largeNumber) such that
+// needReadable was set, then we ought to push more, so that another
+// 'readable' event will be triggered.
+function needMoreData(state) {
+  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
+}
+
+// backwards compatibility.
+Readable.prototype.setEncoding = function (enc) {
+  if (!StringDecoder) StringDecoder = require('string_decoder/').StringDecoder;
+  this._readableState.decoder = new StringDecoder(enc);
+  this._readableState.encoding = enc;
+  return this;
+};
+
+// Don't raise the hwm > 8MB
+var MAX_HWM = 0x800000;
+function computeNewHighWaterMark(n) {
+  if (n >= MAX_HWM) {
+    n = MAX_HWM;
+  } else {
+    // Get the next highest power of 2 to prevent increasing hwm excessively in
+    // tiny amounts
+    n--;
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
+    n++;
+  }
+  return n;
+}
+
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function howMuchToRead(n, state) {
+  if (n <= 0 || state.length === 0 && state.ended) return 0;
+  if (state.objectMode) return 1;
+  if (n !== n) {
+    // Only flow one buffer at a time
+    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
+  }
+  // If we're asking for more than the current hwm, then raise the hwm.
+  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
+  if (n <= state.length) return n;
+  // Don't have enough
+  if (!state.ended) {
+    state.needReadable = true;
+    return 0;
+  }
+  return state.length;
+}
+
+// you can override either this method, or the async _read(n) below.
+Readable.prototype.read = function (n) {
+  debug('read', n);
+  n = parseInt(n, 10);
+  var state = this._readableState;
+  var nOrig = n;
+
+  if (n !== 0) state.emittedReadable = false;
+
+  // if we're doing read(0) to trigger a readable event, but we
+  // already have a bunch of data in the buffer, then just trigger
+  // the 'readable' event and move on.
+  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
+    debug('read: emitReadable', state.length, state.ended);
+    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
+    return null;
+  }
+
+  n = howMuchToRead(n, state);
+
+  // if we've ended, and we're now clear, then finish it up.
+  if (n === 0 && state.ended) {
+    if (state.length === 0) endReadable(this);
+    return null;
+  }
+
+  // All the actual chunk generation logic needs to be
+  // *below* the call to _read.  The reason is that in certain
+  // synthetic stream cases, such as passthrough streams, _read
+  // may be a completely synchronous operation which may change
+  // the state of the read buffer, providing enough data when
+  // before there was *not* enough.
+  //
+  // So, the steps are:
+  // 1. Figure out what the state of things will be after we do
+  // a read from the buffer.
+  //
+  // 2. If that resulting state will trigger a _read, then call _read.
+  // Note that this may be asynchronous, or synchronous.  Yes, it is
+  // deeply ugly to write APIs this way, but that still doesn't mean
+  // that the Readable class should behave improperly, as streams are
+  // designed to be sync/async agnostic.
+  // Take note if the _read call is sync or async (ie, if the read call
+  // has returned yet), so that we know whether or not it's safe to emit
+  // 'readable' etc.
+  //
+  // 3. Actually pull the requested chunks out of the buffer and return.
+
+  // if we need a readable event, then we need to do some reading.
+  var doRead = state.needReadable;
+  debug('need readable', doRead);
+
+  // if we currently have less than the highWaterMark, then also read some
+  if (state.length === 0 || state.length - n < state.highWaterMark) {
+    doRead = true;
+    debug('length less than watermark', doRead);
+  }
+
+  // however, if we've ended, then there's no point, and if we're already
+  // reading, then it's unnecessary.
+  if (state.ended || state.reading) {
+    doRead = false;
+    debug('reading or ended', doRead);
+  } else if (doRead) {
+    debug('do read');
+    state.reading = true;
+    state.sync = true;
+    // if the length is currently zero, then we *need* a readable event.
+    if (state.length === 0) state.needReadable = true;
+    // call internal read method
+    this._read(state.highWaterMark);
+    state.sync = false;
+    // If _read pushed data synchronously, then `reading` will be false,
+    // and we need to re-evaluate how much data we can return to the user.
+    if (!state.reading) n = howMuchToRead(nOrig, state);
+  }
+
+  var ret;
+  if (n > 0) ret = fromList(n, state);else ret = null;
+
+  if (ret === null) {
+    state.needReadable = true;
+    n = 0;
+  } else {
+    state.length -= n;
+  }
+
+  if (state.length === 0) {
+    // If we have nothing in the buffer, then we want to know
+    // as soon as we *do* get something into the buffer.
+    if (!state.ended) state.needReadable = true;
+
+    // If we tried to read() past the EOF, then emit end on the next tick.
+    if (nOrig !== n && state.ended) endReadable(this);
+  }
+
+  if (ret !== null) this.emit('data', ret);
+
+  return ret;
+};
+
+function chunkInvalid(state, chunk) {
+  var er = null;
+  if (!Buffer.isBuffer(chunk) && typeof chunk !== 'string' && chunk !== null && chunk !== undefined && !state.objectMode) {
+    er = new TypeError('Invalid non-string/buffer chunk');
+  }
+  return er;
+}
+
+function onEofChunk(stream, state) {
+  if (state.ended) return;
+  if (state.decoder) {
+    var chunk = state.decoder.end();
+    if (chunk && chunk.length) {
+      state.buffer.push(chunk);
+      state.length += state.objectMode ? 1 : chunk.length;
+    }
+  }
+  state.ended = true;
+
+  // emit 'readable' now to make sure it gets picked up.
+  emitReadable(stream);
+}
+
+// Don't emit readable right away in sync mode, because this can trigger
+// another read() call => stack overflow.  This way, it might trigger
+// a nextTick recursion warning, but that's not so bad.
+function emitReadable(stream) {
+  var state = stream._readableState;
+  state.needReadable = false;
+  if (!state.emittedReadable) {
+    debug('emitReadable', state.flowing);
+    state.emittedReadable = true;
+    if (state.sync) processNextTick(emitReadable_, stream);else emitReadable_(stream);
+  }
+}
+
+function emitReadable_(stream) {
+  debug('emit readable');
+  stream.emit('readable');
+  flow(stream);
+}
+
+// at this point, the user has presumably seen the 'readable' event,
+// and called read() to consume some data.  that may have triggered
+// in turn another _read(n) call, in which case reading = true if
+// it's in progress.
+// However, if we're not ended, or reading, and the length < hwm,
+// then go ahead and try to read some more preemptively.
+function maybeReadMore(stream, state) {
+  if (!state.readingMore) {
+    state.readingMore = true;
+    processNextTick(maybeReadMore_, stream, state);
+  }
+}
+
+function maybeReadMore_(stream, state) {
+  var len = state.length;
+  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
+    debug('maybeReadMore read 0');
+    stream.read(0);
+    if (len === state.length)
+      // didn't get any data, stop spinning.
+      break;else len = state.length;
+  }
+  state.readingMore = false;
+}
+
+// abstract method.  to be overridden in specific implementation classes.
+// call cb(er, data) where data is <= n in length.
+// for virtual (non-string, non-buffer) streams, "length" is somewhat
+// arbitrary, and perhaps not very meaningful.
+Readable.prototype._read = function (n) {
+  this.emit('error', new Error('_read() is not implemented'));
+};
+
+Readable.prototype.pipe = function (dest, pipeOpts) {
+  var src = this;
+  var state = this._readableState;
+
+  switch (state.pipesCount) {
+    case 0:
+      state.pipes = dest;
+      break;
+    case 1:
+      state.pipes = [state.pipes, dest];
+      break;
+    default:
+      state.pipes.push(dest);
+      break;
+  }
+  state.pipesCount += 1;
+  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
+
+  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
+
+  var endFn = doEnd ? onend : cleanup;
+  if (state.endEmitted) processNextTick(endFn);else src.once('end', endFn);
+
+  dest.on('unpipe', onunpipe);
+  function onunpipe(readable) {
+    debug('onunpipe');
+    if (readable === src) {
+      cleanup();
+    }
+  }
+
+  function onend() {
+    debug('onend');
+    dest.end();
+  }
+
+  // when the dest drains, it reduces the awaitDrain counter
+  // on the source.  This would be more elegant with a .once()
+  // handler in flow(), but adding and removing repeatedly is
+  // too slow.
+  var ondrain = pipeOnDrain(src);
+  dest.on('drain', ondrain);
+
+  var cleanedUp = false;
+  function cleanup() {
+    debug('cleanup');
+    // cleanup event handlers once the pipe is broken
+    dest.removeListener('close', onclose);
+    dest.removeListener('finish', onfinish);
+    dest.removeListener('drain', ondrain);
+    dest.removeListener('error', onerror);
+    dest.removeListener('unpipe', onunpipe);
+    src.removeListener('end', onend);
+    src.removeListener('end', cleanup);
+    src.removeListener('data', ondata);
+
+    cleanedUp = true;
+
+    // if the reader is waiting for a drain event from this
+    // specific writer, then it would cause it to never start
+    // flowing again.
+    // So, if this is awaiting a drain, then we just call it now.
+    // If we don't know, then assume that we are waiting for one.
+    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
+  }
+
+  // If the user pushes more data while we're writing to dest then we'll end up
+  // in ondata again. However, we only want to increase awaitDrain once because
+  // dest will only emit one 'drain' event for the multiple writes.
+  // => Introduce a guard on increasing awaitDrain.
+  var increasedAwaitDrain = false;
+  src.on('data', ondata);
+  function ondata(chunk) {
+    debug('ondata');
+    increasedAwaitDrain = false;
+    var ret = dest.write(chunk);
+    if (false === ret && !increasedAwaitDrain) {
+      // If the user unpiped during `dest.write()`, it is possible
+      // to get stuck in a permanently paused state if that write
+      // also returned false.
+      // => Check whether `dest` is still a piping destination.
+      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
+        debug('false write response, pause', src._readableState.awaitDrain);
+        src._readableState.awaitDrain++;
+        increasedAwaitDrain = true;
+      }
+      src.pause();
+    }
+  }
+
+  // if the dest has an error, then stop piping into it.
+  // however, don't suppress the throwing behavior for this.
+  function onerror(er) {
+    debug('onerror', er);
+    unpipe();
+    dest.removeListener('error', onerror);
+    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
+  }
+
+  // Make sure our error handler is attached before userland ones.
+  prependListener(dest, 'error', onerror);
+
+  // Both close and finish should trigger unpipe, but only once.
+  function onclose() {
+    dest.removeListener('finish', onfinish);
+    unpipe();
+  }
+  dest.once('close', onclose);
+  function onfinish() {
+    debug('onfinish');
+    dest.removeListener('close', onclose);
+    unpipe();
+  }
+  dest.once('finish', onfinish);
+
+  function unpipe() {
+    debug('unpipe');
+    src.unpipe(dest);
+  }
+
+  // tell the dest that it's being piped to
+  dest.emit('pipe', src);
+
+  // start the flow if it hasn't been started already.
+  if (!state.flowing) {
+    debug('pipe resume');
+    src.resume();
+  }
+
+  return dest;
+};
+
+function pipeOnDrain(src) {
+  return function () {
+    var state = src._readableState;
+    debug('pipeOnDrain', state.awaitDrain);
+    if (state.awaitDrain) state.awaitDrain--;
+    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
+      state.flowing = true;
+      flow(src);
+    }
+  };
+}
+
+Readable.prototype.unpipe = function (dest) {
+  var state = this._readableState;
+
+  // if we're not piping anywhere, then do nothing.
+  if (state.pipesCount === 0) return this;
+
+  // just one destination.  most common case.
+  if (state.pipesCount === 1) {
+    // passed in one, but it's not the right one.
+    if (dest && dest !== state.pipes) return this;
+
+    if (!dest) dest = state.pipes;
+
+    // got a match.
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+    if (dest) dest.emit('unpipe', this);
+    return this;
+  }
+
+  // slow case. multiple pipe destinations.
+
+  if (!dest) {
+    // remove all.
+    var dests = state.pipes;
+    var len = state.pipesCount;
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+
+    for (var i = 0; i < len; i++) {
+      dests[i].emit('unpipe', this);
+    }return this;
+  }
+
+  // try to find the right one.
+  var index = indexOf(state.pipes, dest);
+  if (index === -1) return this;
+
+  state.pipes.splice(index, 1);
+  state.pipesCount -= 1;
+  if (state.pipesCount === 1) state.pipes = state.pipes[0];
+
+  dest.emit('unpipe', this);
+
+  return this;
+};
+
+// set up data events if they are asked for
+// Ensure readable listeners eventually get something
+Readable.prototype.on = function (ev, fn) {
+  var res = Stream.prototype.on.call(this, ev, fn);
+
+  if (ev === 'data') {
+    // Start flowing on next tick if stream isn't explicitly paused
+    if (this._readableState.flowing !== false) this.resume();
+  } else if (ev === 'readable') {
+    var state = this._readableState;
+    if (!state.endEmitted && !state.readableListening) {
+      state.readableListening = state.needReadable = true;
+      state.emittedReadable = false;
+      if (!state.reading) {
+        processNextTick(nReadingNextTick, this);
+      } else if (state.length) {
+        emitReadable(this, state);
+      }
+    }
+  }
+
+  return res;
+};
+Readable.prototype.addListener = Readable.prototype.on;
+
+function nReadingNextTick(self) {
+  debug('readable nexttick read 0');
+  self.read(0);
+}
+
+// pause() and resume() are remnants of the legacy readable stream API
+// If the user uses them, then switch into old mode.
+Readable.prototype.resume = function () {
+  var state = this._readableState;
+  if (!state.flowing) {
+    debug('resume');
+    state.flowing = true;
+    resume(this, state);
+  }
+  return this;
+};
+
+function resume(stream, state) {
+  if (!state.resumeScheduled) {
+    state.resumeScheduled = true;
+    processNextTick(resume_, stream, state);
+  }
+}
+
+function resume_(stream, state) {
+  if (!state.reading) {
+    debug('resume read 0');
+    stream.read(0);
+  }
+
+  state.resumeScheduled = false;
+  state.awaitDrain = 0;
+  stream.emit('resume');
+  flow(stream);
+  if (state.flowing && !state.reading) stream.read(0);
+}
+
+Readable.prototype.pause = function () {
+  debug('call pause flowing=%j', this._readableState.flowing);
+  if (false !== this._readableState.flowing) {
+    debug('pause');
+    this._readableState.flowing = false;
+    this.emit('pause');
+  }
+  return this;
+};
+
+function flow(stream) {
+  var state = stream._readableState;
+  debug('flow', state.flowing);
+  while (state.flowing && stream.read() !== null) {}
+}
+
+// wrap an old-style stream as the async data source.
+// This is *not* part of the readable stream interface.
+// It is an ugly unfortunate mess of history.
+Readable.prototype.wrap = function (stream) {
+  var state = this._readableState;
+  var paused = false;
+
+  var self = this;
+  stream.on('end', function () {
+    debug('wrapped end');
+    if (state.decoder && !state.ended) {
+      var chunk = state.decoder.end();
+      if (chunk && chunk.length) self.push(chunk);
+    }
+
+    self.push(null);
+  });
+
+  stream.on('data', function (chunk) {
+    debug('wrapped data');
+    if (state.decoder) chunk = state.decoder.write(chunk);
+
+    // don't skip over falsy values in objectMode
+    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
+
+    var ret = self.push(chunk);
+    if (!ret) {
+      paused = true;
+      stream.pause();
+    }
+  });
+
+  // proxy all the other methods.
+  // important when wrapping filters and duplexes.
+  for (var i in stream) {
+    if (this[i] === undefined && typeof stream[i] === 'function') {
+      this[i] = function (method) {
+        return function () {
+          return stream[method].apply(stream, arguments);
+        };
+      }(i);
+    }
+  }
+
+  // proxy certain important events.
+  for (var n = 0; n < kProxyEvents.length; n++) {
+    stream.on(kProxyEvents[n], self.emit.bind(self, kProxyEvents[n]));
+  }
+
+  // when we try to consume some more bytes, simply unpause the
+  // underlying stream.
+  self._read = function (n) {
+    debug('wrapped _read', n);
+    if (paused) {
+      paused = false;
+      stream.resume();
+    }
+  };
+
+  return self;
+};
+
+// exposed for testing purposes only.
+Readable._fromList = fromList;
+
+// Pluck off n bytes from an array of buffers.
+// Length is the combined lengths of all the buffers in the list.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function fromList(n, state) {
+  // nothing buffered
+  if (state.length === 0) return null;
+
+  var ret;
+  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
+    // read it all, truncate the list
+    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
+    state.buffer.clear();
+  } else {
+    // read part of list
+    ret = fromListPartial(n, state.buffer, state.decoder);
+  }
+
+  return ret;
+}
+
+// Extracts only enough buffered data to satisfy the amount requested.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function fromListPartial(n, list, hasStrings) {
+  var ret;
+  if (n < list.head.data.length) {
+    // slice is the same for buffers and strings
+    ret = list.head.data.slice(0, n);
+    list.head.data = list.head.data.slice(n);
+  } else if (n === list.head.data.length) {
+    // first chunk is a perfect match
+    ret = list.shift();
+  } else {
+    // result spans more than one buffer
+    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
+  }
+  return ret;
+}
+
+// Copies a specified amount of characters from the list of buffered data
+// chunks.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function copyFromBufferString(n, list) {
+  var p = list.head;
+  var c = 1;
+  var ret = p.data;
+  n -= ret.length;
+  while (p = p.next) {
+    var str = p.data;
+    var nb = n > str.length ? str.length : n;
+    if (nb === str.length) ret += str;else ret += str.slice(0, n);
+    n -= nb;
+    if (n === 0) {
+      if (nb === str.length) {
+        ++c;
+        if (p.next) list.head = p.next;else list.head = list.tail = null;
+      } else {
+        list.head = p;
+        p.data = str.slice(nb);
+      }
+      break;
+    }
+    ++c;
+  }
+  list.length -= c;
+  return ret;
+}
+
+// Copies a specified amount of bytes from the list of buffered data chunks.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function copyFromBuffer(n, list) {
+  var ret = bufferShim.allocUnsafe(n);
+  var p = list.head;
+  var c = 1;
+  p.data.copy(ret);
+  n -= p.data.length;
+  while (p = p.next) {
+    var buf = p.data;
+    var nb = n > buf.length ? buf.length : n;
+    buf.copy(ret, ret.length - n, 0, nb);
+    n -= nb;
+    if (n === 0) {
+      if (nb === buf.length) {
+        ++c;
+        if (p.next) list.head = p.next;else list.head = list.tail = null;
+      } else {
+        list.head = p;
+        p.data = buf.slice(nb);
+      }
+      break;
+    }
+    ++c;
+  }
+  list.length -= c;
+  return ret;
+}
+
+function endReadable(stream) {
+  var state = stream._readableState;
+
+  // If we get here before consuming all the bytes, then that is a
+  // bug in node.  Should never happen.
+  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
+
+  if (!state.endEmitted) {
+    state.ended = true;
+    processNextTick(endReadableNT, state, stream);
+  }
+}
+
+function endReadableNT(state, stream) {
+  // Check that we didn't get one last unshift.
+  if (!state.endEmitted && state.length === 0) {
+    state.endEmitted = true;
+    stream.readable = false;
+    stream.emit('end');
+  }
+}
+
+function forEach(xs, f) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    f(xs[i], i);
+  }
+}
+
+function indexOf(xs, x) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    if (xs[i] === x) return i;
+  }
+  return -1;
+}
+}).call(this,require('_process'))
+},{"./_stream_duplex":322,"./internal/streams/BufferList":327,"./internal/streams/stream":328,"_process":236,"buffer":102,"buffer-shims":100,"core-util-is":109,"events":146,"inherits":188,"isarray":191,"process-nextick-args":235,"string_decoder/":330,"util":71}],325:[function(require,module,exports){
+arguments[4][253][0].apply(exports,arguments)
+},{"./_stream_duplex":322,"core-util-is":109,"dup":253,"inherits":188}],326:[function(require,module,exports){
+(function (process){
+// A bit simpler than readable streams.
+// Implement an async ._write(chunk, encoding, cb), and it'll handle all
+// the drain event emission and buffering.
+
+'use strict';
+
+module.exports = Writable;
+
+/*<replacement>*/
+var processNextTick = require('process-nextick-args');
+/*</replacement>*/
+
+/*<replacement>*/
+var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : processNextTick;
+/*</replacement>*/
+
+/*<replacement>*/
+var Duplex;
+/*</replacement>*/
+
+Writable.WritableState = WritableState;
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+/*<replacement>*/
+var internalUtil = {
+  deprecate: require('util-deprecate')
+};
+/*</replacement>*/
+
+/*<replacement>*/
+var Stream = require('./internal/streams/stream');
+/*</replacement>*/
+
+var Buffer = require('buffer').Buffer;
+/*<replacement>*/
+var bufferShim = require('buffer-shims');
+/*</replacement>*/
+
+util.inherits(Writable, Stream);
+
+function nop() {}
+
+function WriteReq(chunk, encoding, cb) {
+  this.chunk = chunk;
+  this.encoding = encoding;
+  this.callback = cb;
+  this.next = null;
+}
+
+function WritableState(options, stream) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  options = options || {};
+
+  // object stream flag to indicate whether or not this stream
+  // contains buffers or objects.
+  this.objectMode = !!options.objectMode;
+
+  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
+
+  // the point at which write() starts returning false
+  // Note: 0 is a valid value, means that we always return false if
+  // the entire buffer is not flushed immediately on write()
+  var hwm = options.highWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = ~~this.highWaterMark;
+
+  // drain event flag.
+  this.needDrain = false;
+  // at the start of calling end()
+  this.ending = false;
+  // when end() has been called, and returned
+  this.ended = false;
+  // when 'finish' is emitted
+  this.finished = false;
+
+  // should we decode strings into buffers before passing to _write?
+  // this is here so that some node-core streams can optimize string
+  // handling at a lower level.
+  var noDecode = options.decodeStrings === false;
+  this.decodeStrings = !noDecode;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // not an actual buffer we keep track of, but a measurement
+  // of how much we're waiting to get pushed to some underlying
+  // socket or file.
+  this.length = 0;
+
+  // a flag to see when we're in the middle of a write.
+  this.writing = false;
+
+  // when true all writes will be buffered until .uncork() call
+  this.corked = 0;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // a flag to know if we're processing previously buffered items, which
+  // may call the _write() callback in the same tick, so that we don't
+  // end up in an overlapped onwrite situation.
+  this.bufferProcessing = false;
+
+  // the callback that's passed to _write(chunk,cb)
+  this.onwrite = function (er) {
+    onwrite(stream, er);
+  };
+
+  // the callback that the user supplies to write(chunk,encoding,cb)
+  this.writecb = null;
+
+  // the amount that is being written when _write is called.
+  this.writelen = 0;
+
+  this.bufferedRequest = null;
+  this.lastBufferedRequest = null;
+
+  // number of pending user-supplied write callbacks
+  // this must be 0 before 'finish' can be emitted
+  this.pendingcb = 0;
+
+  // emit prefinish if the only thing we're waiting for is _write cbs
+  // This is relevant for synchronous Transform streams
+  this.prefinished = false;
+
+  // True if the error was already emitted and should not be thrown again
+  this.errorEmitted = false;
+
+  // count buffered requests
+  this.bufferedRequestCount = 0;
+
+  // allocate the first CorkedRequest, there is always
+  // one allocated and free to use, and we maintain at most two
+  this.corkedRequestsFree = new CorkedRequest(this);
+}
+
+WritableState.prototype.getBuffer = function getBuffer() {
+  var current = this.bufferedRequest;
+  var out = [];
+  while (current) {
+    out.push(current);
+    current = current.next;
+  }
+  return out;
+};
+
+(function () {
+  try {
+    Object.defineProperty(WritableState.prototype, 'buffer', {
+      get: internalUtil.deprecate(function () {
+        return this.getBuffer();
+      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.')
+    });
+  } catch (_) {}
+})();
+
+// Test _writableState for inheritance to account for Duplex streams,
+// whose prototype chain only points to Readable.
+var realHasInstance;
+if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
+  realHasInstance = Function.prototype[Symbol.hasInstance];
+  Object.defineProperty(Writable, Symbol.hasInstance, {
+    value: function (object) {
+      if (realHasInstance.call(this, object)) return true;
+
+      return object && object._writableState instanceof WritableState;
+    }
+  });
+} else {
+  realHasInstance = function (object) {
+    return object instanceof this;
+  };
+}
+
+function Writable(options) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  // Writable ctor is applied to Duplexes, too.
+  // `realHasInstance` is necessary because using plain `instanceof`
+  // would return false, as no `_writableState` property is attached.
+
+  // Trying to use the custom `instanceof` for Writable here will also break the
+  // Node.js LazyTransform implementation, which has a non-trivial getter for
+  // `_writableState` that would lead to infinite recursion.
+  if (!realHasInstance.call(Writable, this) && !(this instanceof Duplex)) {
+    return new Writable(options);
+  }
+
+  this._writableState = new WritableState(options, this);
+
+  // legacy.
+  this.writable = true;
+
+  if (options) {
+    if (typeof options.write === 'function') this._write = options.write;
+
+    if (typeof options.writev === 'function') this._writev = options.writev;
+  }
+
+  Stream.call(this);
+}
+
+// Otherwise people can pipe Writable streams, which is just wrong.
+Writable.prototype.pipe = function () {
+  this.emit('error', new Error('Cannot pipe, not readable'));
+};
+
+function writeAfterEnd(stream, cb) {
+  var er = new Error('write after end');
+  // TODO: defer error events consistently everywhere, not just the cb
+  stream.emit('error', er);
+  processNextTick(cb, er);
+}
+
+// Checks that a user-supplied chunk is valid, especially for the particular
+// mode the stream is in. Currently this means that `null` is never accepted
+// and undefined/non-string values are only allowed in object mode.
+function validChunk(stream, state, chunk, cb) {
+  var valid = true;
+  var er = false;
+
+  if (chunk === null) {
+    er = new TypeError('May not write null values to stream');
+  } else if (typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
+    er = new TypeError('Invalid non-string/buffer chunk');
+  }
+  if (er) {
+    stream.emit('error', er);
+    processNextTick(cb, er);
+    valid = false;
+  }
+  return valid;
+}
+
+Writable.prototype.write = function (chunk, encoding, cb) {
+  var state = this._writableState;
+  var ret = false;
+  var isBuf = Buffer.isBuffer(chunk);
+
+  if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
+
+  if (typeof cb !== 'function') cb = nop;
+
+  if (state.ended) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
+    state.pendingcb++;
+    ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
+  }
+
+  return ret;
+};
+
+Writable.prototype.cork = function () {
+  var state = this._writableState;
+
+  state.corked++;
+};
+
+Writable.prototype.uncork = function () {
+  var state = this._writableState;
+
+  if (state.corked) {
+    state.corked--;
+
+    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
+  }
+};
+
+Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
+  // node::ParseEncoding() requires lower case.
+  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
+  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
+  this._writableState.defaultEncoding = encoding;
+  return this;
+};
+
+function decodeChunk(state, chunk, encoding) {
+  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
+    chunk = bufferShim.from(chunk, encoding);
+  }
+  return chunk;
+}
+
+// if we're already writing something, then just put this
+// in the queue, and wait our turn.  Otherwise, call _write
+// If we return false, then we need a drain event, so set that flag.
+function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
+  if (!isBuf) {
+    chunk = decodeChunk(state, chunk, encoding);
+    if (Buffer.isBuffer(chunk)) encoding = 'buffer';
+  }
+  var len = state.objectMode ? 1 : chunk.length;
+
+  state.length += len;
+
+  var ret = state.length < state.highWaterMark;
+  // we must ensure that previous needDrain will not be reset to false.
+  if (!ret) state.needDrain = true;
+
+  if (state.writing || state.corked) {
+    var last = state.lastBufferedRequest;
+    state.lastBufferedRequest = new WriteReq(chunk, encoding, cb);
+    if (last) {
+      last.next = state.lastBufferedRequest;
+    } else {
+      state.bufferedRequest = state.lastBufferedRequest;
+    }
+    state.bufferedRequestCount += 1;
+  } else {
+    doWrite(stream, state, false, len, chunk, encoding, cb);
+  }
+
+  return ret;
+}
+
+function doWrite(stream, state, writev, len, chunk, encoding, cb) {
+  state.writelen = len;
+  state.writecb = cb;
+  state.writing = true;
+  state.sync = true;
+  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
+  state.sync = false;
+}
+
+function onwriteError(stream, state, sync, er, cb) {
+  --state.pendingcb;
+  if (sync) processNextTick(cb, er);else cb(er);
+
+  stream._writableState.errorEmitted = true;
+  stream.emit('error', er);
+}
+
+function onwriteStateUpdate(state) {
+  state.writing = false;
+  state.writecb = null;
+  state.length -= state.writelen;
+  state.writelen = 0;
+}
+
+function onwrite(stream, er) {
+  var state = stream._writableState;
+  var sync = state.sync;
+  var cb = state.writecb;
+
+  onwriteStateUpdate(state);
+
+  if (er) onwriteError(stream, state, sync, er, cb);else {
+    // Check if we're actually ready to finish, but don't emit yet
+    var finished = needFinish(state);
+
+    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
+      clearBuffer(stream, state);
+    }
+
+    if (sync) {
+      /*<replacement>*/
+      asyncWrite(afterWrite, stream, state, finished, cb);
+      /*</replacement>*/
+    } else {
+      afterWrite(stream, state, finished, cb);
+    }
+  }
+}
+
+function afterWrite(stream, state, finished, cb) {
+  if (!finished) onwriteDrain(stream, state);
+  state.pendingcb--;
+  cb();
+  finishMaybe(stream, state);
+}
+
+// Must force callback to be called on nextTick, so that we don't
+// emit 'drain' before the write() consumer gets the 'false' return
+// value, and has a chance to attach a 'drain' listener.
+function onwriteDrain(stream, state) {
+  if (state.length === 0 && state.needDrain) {
+    state.needDrain = false;
+    stream.emit('drain');
+  }
+}
+
+// if there's something in the buffer waiting, then process it
+function clearBuffer(stream, state) {
+  state.bufferProcessing = true;
+  var entry = state.bufferedRequest;
+
+  if (stream._writev && entry && entry.next) {
+    // Fast case, write everything using _writev()
+    var l = state.bufferedRequestCount;
+    var buffer = new Array(l);
+    var holder = state.corkedRequestsFree;
+    holder.entry = entry;
+
+    var count = 0;
+    while (entry) {
+      buffer[count] = entry;
+      entry = entry.next;
+      count += 1;
+    }
+
+    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
+
+    // doWrite is almost always async, defer these to save a bit of time
+    // as the hot path ends with doWrite
+    state.pendingcb++;
+    state.lastBufferedRequest = null;
+    if (holder.next) {
+      state.corkedRequestsFree = holder.next;
+      holder.next = null;
+    } else {
+      state.corkedRequestsFree = new CorkedRequest(state);
+    }
+  } else {
+    // Slow case, write chunks one-by-one
+    while (entry) {
+      var chunk = entry.chunk;
+      var encoding = entry.encoding;
+      var cb = entry.callback;
+      var len = state.objectMode ? 1 : chunk.length;
+
+      doWrite(stream, state, false, len, chunk, encoding, cb);
+      entry = entry.next;
+      // if we didn't call the onwrite immediately, then
+      // it means that we need to wait until it does.
+      // also, that means that the chunk and cb are currently
+      // being processed, so move the buffer counter past them.
+      if (state.writing) {
+        break;
+      }
+    }
+
+    if (entry === null) state.lastBufferedRequest = null;
+  }
+
+  state.bufferedRequestCount = 0;
+  state.bufferedRequest = entry;
+  state.bufferProcessing = false;
+}
+
+Writable.prototype._write = function (chunk, encoding, cb) {
+  cb(new Error('_write() is not implemented'));
+};
+
+Writable.prototype._writev = null;
+
+Writable.prototype.end = function (chunk, encoding, cb) {
+  var state = this._writableState;
+
+  if (typeof chunk === 'function') {
+    cb = chunk;
+    chunk = null;
+    encoding = null;
+  } else if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
+
+  // .end() fully uncorks
+  if (state.corked) {
+    state.corked = 1;
+    this.uncork();
+  }
+
+  // ignore unnecessary end() calls.
+  if (!state.ending && !state.finished) endWritable(this, state, cb);
+};
+
+function needFinish(state) {
+  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
+}
+
+function prefinish(stream, state) {
+  if (!state.prefinished) {
+    state.prefinished = true;
+    stream.emit('prefinish');
+  }
+}
+
+function finishMaybe(stream, state) {
+  var need = needFinish(state);
+  if (need) {
+    if (state.pendingcb === 0) {
+      prefinish(stream, state);
+      state.finished = true;
+      stream.emit('finish');
+    } else {
+      prefinish(stream, state);
+    }
+  }
+  return need;
+}
+
+function endWritable(stream, state, cb) {
+  state.ending = true;
+  finishMaybe(stream, state);
+  if (cb) {
+    if (state.finished) processNextTick(cb);else stream.once('finish', cb);
+  }
+  state.ended = true;
+  stream.writable = false;
+}
+
+// It seems a linked list but it is not
+// there will be only 2 of these for each stream
+function CorkedRequest(state) {
+  var _this = this;
+
+  this.next = null;
+  this.entry = null;
+  this.finish = function (err) {
+    var entry = _this.entry;
+    _this.entry = null;
+    while (entry) {
+      var cb = entry.callback;
+      state.pendingcb--;
+      cb(err);
+      entry = entry.next;
+    }
+    if (state.corkedRequestsFree) {
+      state.corkedRequestsFree.next = _this;
+    } else {
+      state.corkedRequestsFree = _this;
+    }
+  };
+}
+}).call(this,require('_process'))
+},{"./_stream_duplex":322,"./internal/streams/stream":328,"_process":236,"buffer":102,"buffer-shims":100,"core-util-is":109,"inherits":188,"process-nextick-args":235,"util-deprecate":345}],327:[function(require,module,exports){
+arguments[4][255][0].apply(exports,arguments)
+},{"buffer":102,"buffer-shims":100,"dup":255}],328:[function(require,module,exports){
+module.exports = require('events').EventEmitter;
+
+},{"events":146}],329:[function(require,module,exports){
+exports = module.exports = require('./lib/_stream_readable.js');
+exports.Stream = exports;
+exports.Readable = exports;
+exports.Writable = require('./lib/_stream_writable.js');
+exports.Duplex = require('./lib/_stream_duplex.js');
+exports.Transform = require('./lib/_stream_transform.js');
+exports.PassThrough = require('./lib/_stream_passthrough.js');
+
+},{"./lib/_stream_duplex.js":322,"./lib/_stream_passthrough.js":323,"./lib/_stream_readable.js":324,"./lib/_stream_transform.js":325,"./lib/_stream_writable.js":326}],330:[function(require,module,exports){
+'use strict';
+
+var Buffer = require('buffer').Buffer;
+var bufferShim = require('buffer-shims');
+
+var isEncoding = Buffer.isEncoding || function (encoding) {
+  encoding = '' + encoding;
+  switch (encoding && encoding.toLowerCase()) {
+    case 'hex':case 'utf8':case 'utf-8':case 'ascii':case 'binary':case 'base64':case 'ucs2':case 'ucs-2':case 'utf16le':case 'utf-16le':case 'raw':
+      return true;
+    default:
+      return false;
+  }
+};
+
+function _normalizeEncoding(enc) {
+  if (!enc) return 'utf8';
+  var retried;
+  while (true) {
+    switch (enc) {
+      case 'utf8':
+      case 'utf-8':
+        return 'utf8';
+      case 'ucs2':
+      case 'ucs-2':
+      case 'utf16le':
+      case 'utf-16le':
+        return 'utf16le';
+      case 'latin1':
+      case 'binary':
+        return 'latin1';
+      case 'base64':
+      case 'ascii':
+      case 'hex':
+        return enc;
+      default:
+        if (retried) return; // undefined
+        enc = ('' + enc).toLowerCase();
+        retried = true;
+    }
+  }
+};
+
+// Do not cache `Buffer.isEncoding` when checking encoding names as some
+// modules monkey-patch it to support additional encodings
+function normalizeEncoding(enc) {
+  var nenc = _normalizeEncoding(enc);
+  if (typeof nenc !== 'string' && (Buffer.isEncoding === isEncoding || !isEncoding(enc))) throw new Error('Unknown encoding: ' + enc);
+  return nenc || enc;
+}
+
+// StringDecoder provides an interface for efficiently splitting a series of
+// buffers into a series of JS strings without breaking apart multi-byte
+// characters.
+exports.StringDecoder = StringDecoder;
+function StringDecoder(encoding) {
+  this.encoding = normalizeEncoding(encoding);
+  var nb;
+  switch (this.encoding) {
+    case 'utf16le':
+      this.text = utf16Text;
+      this.end = utf16End;
+      nb = 4;
+      break;
+    case 'utf8':
+      this.fillLast = utf8FillLast;
+      nb = 4;
+      break;
+    case 'base64':
+      this.text = base64Text;
+      this.end = base64End;
+      nb = 3;
+      break;
+    default:
+      this.write = simpleWrite;
+      this.end = simpleEnd;
+      return;
+  }
+  this.lastNeed = 0;
+  this.lastTotal = 0;
+  this.lastChar = bufferShim.allocUnsafe(nb);
+}
+
+StringDecoder.prototype.write = function (buf) {
+  if (buf.length === 0) return '';
+  var r;
+  var i;
+  if (this.lastNeed) {
+    r = this.fillLast(buf);
+    if (r === undefined) return '';
+    i = this.lastNeed;
+    this.lastNeed = 0;
+  } else {
+    i = 0;
+  }
+  if (i < buf.length) return r ? r + this.text(buf, i) : this.text(buf, i);
+  return r || '';
+};
+
+StringDecoder.prototype.end = utf8End;
+
+// Returns only complete characters in a Buffer
+StringDecoder.prototype.text = utf8Text;
+
+// Attempts to complete a partial non-UTF-8 character using bytes from a Buffer
+StringDecoder.prototype.fillLast = function (buf) {
+  if (this.lastNeed <= buf.length) {
+    buf.copy(this.lastChar, this.lastTotal - this.lastNeed, 0, this.lastNeed);
+    return this.lastChar.toString(this.encoding, 0, this.lastTotal);
+  }
+  buf.copy(this.lastChar, this.lastTotal - this.lastNeed, 0, buf.length);
+  this.lastNeed -= buf.length;
+};
+
+// Checks the type of a UTF-8 byte, whether it's ASCII, a leading byte, or a
+// continuation byte.
+function utf8CheckByte(byte) {
+  if (byte <= 0x7F) return 0;else if (byte >> 5 === 0x06) return 2;else if (byte >> 4 === 0x0E) return 3;else if (byte >> 3 === 0x1E) return 4;
+  return -1;
+}
+
+// Checks at most 3 bytes at the end of a Buffer in order to detect an
+// incomplete multi-byte UTF-8 character. The total number of bytes (2, 3, or 4)
+// needed to complete the UTF-8 character (if applicable) are returned.
+function utf8CheckIncomplete(self, buf, i) {
+  var j = buf.length - 1;
+  if (j < i) return 0;
+  var nb = utf8CheckByte(buf[j]);
+  if (nb >= 0) {
+    if (nb > 0) self.lastNeed = nb - 1;
+    return nb;
+  }
+  if (--j < i) return 0;
+  nb = utf8CheckByte(buf[j]);
+  if (nb >= 0) {
+    if (nb > 0) self.lastNeed = nb - 2;
+    return nb;
+  }
+  if (--j < i) return 0;
+  nb = utf8CheckByte(buf[j]);
+  if (nb >= 0) {
+    if (nb > 0) {
+      if (nb === 2) nb = 0;else self.lastNeed = nb - 3;
+    }
+    return nb;
+  }
+  return 0;
+}
+
+// Validates as many continuation bytes for a multi-byte UTF-8 character as
+// needed or are available. If we see a non-continuation byte where we expect
+// one, we "replace" the validated continuation bytes we've seen so far with
+// UTF-8 replacement characters ('\ufffd'), to match v8's UTF-8 decoding
+// behavior. The continuation byte check is included three times in the case
+// where all of the continuation bytes for a character exist in the same buffer.
+// It is also done this way as a slight performance increase instead of using a
+// loop.
+function utf8CheckExtraBytes(self, buf, p) {
+  if ((buf[0] & 0xC0) !== 0x80) {
+    self.lastNeed = 0;
+    return '\ufffd'.repeat(p);
+  }
+  if (self.lastNeed > 1 && buf.length > 1) {
+    if ((buf[1] & 0xC0) !== 0x80) {
+      self.lastNeed = 1;
+      return '\ufffd'.repeat(p + 1);
+    }
+    if (self.lastNeed > 2 && buf.length > 2) {
+      if ((buf[2] & 0xC0) !== 0x80) {
+        self.lastNeed = 2;
+        return '\ufffd'.repeat(p + 2);
+      }
+    }
+  }
+}
+
+// Attempts to complete a multi-byte UTF-8 character using bytes from a Buffer.
+function utf8FillLast(buf) {
+  var p = this.lastTotal - this.lastNeed;
+  var r = utf8CheckExtraBytes(this, buf, p);
+  if (r !== undefined) return r;
+  if (this.lastNeed <= buf.length) {
+    buf.copy(this.lastChar, p, 0, this.lastNeed);
+    return this.lastChar.toString(this.encoding, 0, this.lastTotal);
+  }
+  buf.copy(this.lastChar, p, 0, buf.length);
+  this.lastNeed -= buf.length;
+}
+
+// Returns all complete UTF-8 characters in a Buffer. If the Buffer ended on a
+// partial character, the character's bytes are buffered until the required
+// number of bytes are available.
+function utf8Text(buf, i) {
+  var total = utf8CheckIncomplete(this, buf, i);
+  if (!this.lastNeed) return buf.toString('utf8', i);
+  this.lastTotal = total;
+  var end = buf.length - (total - this.lastNeed);
+  buf.copy(this.lastChar, 0, end);
+  return buf.toString('utf8', i, end);
+}
+
+// For UTF-8, a replacement character for each buffered byte of a (partial)
+// character needs to be added to the output.
+function utf8End(buf) {
+  var r = buf && buf.length ? this.write(buf) : '';
+  if (this.lastNeed) return r + '\ufffd'.repeat(this.lastTotal - this.lastNeed);
+  return r;
+}
+
+// UTF-16LE typically needs two bytes per character, but even if we have an even
+// number of bytes available, we need to check if we end on a leading/high
+// surrogate. In that case, we need to wait for the next two bytes in order to
+// decode the last character properly.
+function utf16Text(buf, i) {
+  if ((buf.length - i) % 2 === 0) {
+    var r = buf.toString('utf16le', i);
+    if (r) {
+      var c = r.charCodeAt(r.length - 1);
+      if (c >= 0xD800 && c <= 0xDBFF) {
+        this.lastNeed = 2;
+        this.lastTotal = 4;
+        this.lastChar[0] = buf[buf.length - 2];
+        this.lastChar[1] = buf[buf.length - 1];
+        return r.slice(0, -1);
+      }
+    }
+    return r;
+  }
+  this.lastNeed = 1;
+  this.lastTotal = 2;
+  this.lastChar[0] = buf[buf.length - 1];
+  return buf.toString('utf16le', i, buf.length - 1);
+}
+
+// For UTF-16LE we do not explicitly append special replacement characters if we
+// end on a partial character, we simply let v8 handle that.
+function utf16End(buf) {
+  var r = buf && buf.length ? this.write(buf) : '';
+  if (this.lastNeed) {
+    var end = this.lastTotal - this.lastNeed;
+    return r + this.lastChar.toString('utf16le', 0, end);
+  }
+  return r;
+}
+
+function base64Text(buf, i) {
+  var n = (buf.length - i) % 3;
+  if (n === 0) return buf.toString('base64', i);
+  this.lastNeed = 3 - n;
+  this.lastTotal = 3;
+  if (n === 1) {
+    this.lastChar[0] = buf[buf.length - 1];
+  } else {
+    this.lastChar[0] = buf[buf.length - 2];
+    this.lastChar[1] = buf[buf.length - 1];
+  }
+  return buf.toString('base64', i, buf.length - n);
+}
+
+function base64End(buf) {
+  var r = buf && buf.length ? this.write(buf) : '';
+  if (this.lastNeed) return r + this.lastChar.toString('base64', 0, 3 - this.lastNeed);
+  return r;
+}
+
+// Pass bytes on through for single-byte encodings (e.g. ascii, latin1, hex)
+function simpleWrite(buf) {
+  return buf.toString(this.encoding);
+}
+
+function simpleEnd(buf) {
+  return buf && buf.length ? this.write(buf) : '';
+}
+},{"buffer":102,"buffer-shims":100}],331:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -99817,7 +100895,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":101}],320:[function(require,module,exports){
+},{"buffer":102}],332:[function(require,module,exports){
 (function (Buffer){
 var util = require('util')
 var Stream = require('stream')
@@ -99923,7 +101001,7 @@ function alignedWrite(buffer) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":101,"stream":314,"string_decoder":319,"util":336}],321:[function(require,module,exports){
+},{"buffer":102,"stream":317,"string_decoder":331,"util":348}],333:[function(require,module,exports){
 var Buffer = require('buffer').Buffer
 
 module.exports = function (buf) {
@@ -99952,7 +101030,7 @@ module.exports = function (buf) {
 	}
 }
 
-},{"buffer":101}],322:[function(require,module,exports){
+},{"buffer":102}],334:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -101290,7 +102368,7 @@ module.exports = {
   canonicalDomain: canonicalDomain
 };
 
-},{"../package.json":328,"./memstore":323,"./pathMatch":324,"./permuteDomain":325,"./pubsuffix":326,"./store":327,"net":98,"punycode":240,"url":331}],323:[function(require,module,exports){
+},{"../package.json":340,"./memstore":335,"./pathMatch":336,"./permuteDomain":337,"./pubsuffix":338,"./store":339,"net":99,"punycode":243,"url":343}],335:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -101462,7 +102540,7 @@ MemoryCookieStore.prototype.getAllCookies = function(cb) {
   cb(null, cookies);
 };
 
-},{"./pathMatch":324,"./permuteDomain":325,"./store":327,"util":336}],324:[function(require,module,exports){
+},{"./pathMatch":336,"./permuteDomain":337,"./store":339,"util":348}],336:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -101525,7 +102603,7 @@ function pathMatch (reqPath, cookiePath) {
 
 exports.pathMatch = pathMatch;
 
-},{}],325:[function(require,module,exports){
+},{}],337:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -101583,7 +102661,7 @@ function permuteDomain (domain) {
 
 exports.permuteDomain = permuteDomain;
 
-},{"./pubsuffix":326}],326:[function(require,module,exports){
+},{"./pubsuffix":338}],338:[function(require,module,exports){
 /****************************************************
  * AUTOMATICALLY GENERATED by generate-pubsuffix.js *
  *                  DO NOT EDIT!                    *
@@ -101683,7 +102761,7 @@ var index = module.exports.index = Object.freeze(
 
 // END of automatically generated file
 
-},{"punycode":240}],327:[function(require,module,exports){
+},{"punycode":243}],339:[function(require,module,exports){
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
  * All rights reserved.
@@ -101756,7 +102834,7 @@ Store.prototype.getAllCookies = function(cb) {
   throw new Error('getAllCookies is not implemented (therefore jar cannot be serialized)');
 };
 
-},{}],328:[function(require,module,exports){
+},{}],340:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -101893,7 +102971,7 @@ module.exports={
   "version": "2.3.2"
 }
 
-},{}],329:[function(require,module,exports){
+},{}],341:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -102141,7 +103219,7 @@ if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
 exports.debug = debug // for test
 
 }).call(this,require('_process'))
-},{"_process":233,"assert":64,"events":146,"http":315,"https":184,"net":98,"safe-buffer":281,"tls":98,"util":336}],330:[function(require,module,exports){
+},{"_process":236,"assert":64,"events":146,"http":318,"https":185,"net":99,"safe-buffer":284,"tls":99,"util":348}],342:[function(require,module,exports){
 (function(nacl) {
 'use strict';
 
@@ -104531,7 +105609,7 @@ nacl.setPRNG = function(fn) {
 
 })(typeof module !== 'undefined' && module.exports ? module.exports : (self.nacl = self.nacl || {}));
 
-},{"crypto":71}],331:[function(require,module,exports){
+},{"crypto":71}],343:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -105265,7 +106343,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":332,"punycode":240,"querystring":244}],332:[function(require,module,exports){
+},{"./util":344,"punycode":243,"querystring":247}],344:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -105283,7 +106361,7 @@ module.exports = {
   }
 };
 
-},{}],333:[function(require,module,exports){
+},{}],345:[function(require,module,exports){
 (function (global){
 
 /**
@@ -105354,16 +106432,16 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],334:[function(require,module,exports){
-arguments[4][187][0].apply(exports,arguments)
-},{"dup":187}],335:[function(require,module,exports){
+},{}],346:[function(require,module,exports){
+arguments[4][188][0].apply(exports,arguments)
+},{"dup":188}],347:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],336:[function(require,module,exports){
+},{}],348:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -105953,7 +107031,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":335,"_process":233,"inherits":334}],337:[function(require,module,exports){
+},{"./support/isBuffer":347,"_process":236,"inherits":346}],349:[function(require,module,exports){
 /*
  * verror.js: richer JavaScript errors
  */
@@ -106112,7 +107190,7 @@ WError.prototype.cause = function we_cause(c)
 	return (this.we_cause);
 };
 
-},{"assert":64,"extsprintf":149,"util":336}],338:[function(require,module,exports){
+},{"assert":64,"extsprintf":149,"util":348}],350:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -106252,7 +107330,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":186}],339:[function(require,module,exports){
+},{"indexof":187}],351:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
