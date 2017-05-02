@@ -11,6 +11,7 @@
          * Constructor, with class name
          * @param name          {string}    [REQUIRED]    
          * @param logo          {string}                  
+         * @param subdomain     {string}                  
          * @param created       {string}                  format: date-time  
          * @param modified      {string}                  format: date-time  
          * @param id            {string}    [REQUIRED]    
@@ -26,9 +27,10 @@
          * @param templates     {array}                   items: $ref: #/definitions/Template    
          * @param brand         {string}                  $ref: #/definitions/TeamBrand  
          */
-        function TweakTeam(name, logo, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand) {
+        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand) {
             this.name = name;
             this.logo = logo;
+            this.subdomain = subdomain;
             this.created = created;
             this.modified = modified;
             this.id = id;
@@ -49,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string'];
+        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string'];
         var requiredParameters = ['name', 'id'];
 
         /**
@@ -78,6 +80,7 @@
             return new TweakTeam(
                 data.name,
                 data.logo,
+                data.subdomain,
                 data.created,
                 data.modified,
                 data.id,

@@ -12,6 +12,7 @@ type Team = any;
 type TeamMember = any;
 type InvitationTicket = any;
 type TeamMemberAccessToken = any;
+type CustomerPermissionSet = any;
 type Customer = any;
 type Template = any;
 type Portal = any;
@@ -1179,6 +1180,270 @@ export default class TweakApi {
             }
 
             this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getCustomersByIdPermissionURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches hasOne relation permission.
+    * @method
+    * @name TweakApi#getCustomersByIdPermission
+         * @param {string} id - Customer id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getCustomersByIdPermission(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postCustomersByIdPermissionURL(parameters: {
+        'id': string,
+        'data' ? : CustomerPermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in permission of this model.
+    * @method
+    * @name TweakApi#postCustomersByIdPermission
+         * @param {string} id - Customer id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postCustomersByIdPermission(parameters: {
+        'id': string,
+        'data' ? : CustomerPermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putCustomersByIdPermissionURL(parameters: {
+        'id': string,
+        'data' ? : CustomerPermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update permission of this model.
+    * @method
+    * @name TweakApi#putCustomersByIdPermission
+         * @param {string} id - Customer id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putCustomersByIdPermission(parameters: {
+        'id': string,
+        'data' ? : CustomerPermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteCustomersByIdPermissionURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes permission of this model.
+     * @method
+     * @name TweakApi#deleteCustomersByIdPermission
+     * @param {string} id - Customer id
+     */
+    deleteCustomersByIdPermission(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 

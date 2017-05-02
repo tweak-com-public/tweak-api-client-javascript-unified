@@ -25,8 +25,9 @@
          * @param teams             {array}                   items: $ref: #/definitions/Team    
          * @param invitationTickets {array}                   items: $ref: #/definitions/InvitationTicket    
          * @param accessTokens      {array}                   items: $ref: #/definitions/TeamMemberAccessToken    
+         * @param permission        {string}                  $ref: #/definitions/CustomerPermissionSet  
          */
-        function TweakCustomer(profilePicture, firstName, lastName, initials, status, created, modified, realm, username, email, emailVerified, id, designs, teams, invitationTickets, accessTokens) {
+        function TweakCustomer(profilePicture, firstName, lastName, initials, status, created, modified, realm, username, email, emailVerified, id, designs, teams, invitationTickets, accessTokens, permission) {
             this.profilePicture = profilePicture;
             this.firstName = firstName;
             this.lastName = lastName;
@@ -43,14 +44,15 @@
             this.teams = teams;
             this.invitationTickets = invitationTickets;
             this.accessTokens = accessTokens;
+            this.permission = permission;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['profilePicture', 'firstName', 'lastName', 'initials', 'status', 'created', 'modified', 'realm', 'username', 'email', 'emailVerified', 'id', 'designs', 'teams', 'invitationTickets', 'accessTokens'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'number', 'array', 'array', 'array', 'array'];
+        var parameters = ['profilePicture', 'firstName', 'lastName', 'initials', 'status', 'created', 'modified', 'realm', 'username', 'email', 'emailVerified', 'id', 'designs', 'teams', 'invitationTickets', 'accessTokens', 'permission'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'number', 'array', 'array', 'array', 'array', 'string'];
         var requiredParameters = ['firstName', 'lastName', 'initials', 'email'];
 
         /**
@@ -91,7 +93,8 @@
                 data.designs,
                 data.teams,
                 data.invitationTickets,
-                data.accessTokens
+                data.accessTokens,
+                data.permission
             );
         };
 
