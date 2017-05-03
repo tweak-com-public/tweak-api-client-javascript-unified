@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param name   {string}    
-         * @param id     {number}    format: double  
+         * @param id     {string}    
          * @param teamId {string}    
          * @param team   {string}    $ref: #/definitions/Team  
          */
@@ -26,7 +26,7 @@
          * Private properties
          */
         var parameters = ['name', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'number', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string'];
         var requiredParameters = [];
 
         /**

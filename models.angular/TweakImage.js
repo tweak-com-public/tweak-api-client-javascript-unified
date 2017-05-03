@@ -14,7 +14,7 @@
          * @param link     {string}                  
          * @param created  {string}                  format: date-time  
          * @param modified {string}                  format: date-time  
-         * @param id       {number}                  format: double  
+         * @param id       {string}                  
          */
         function TweakImage(name, fileName, link, created, modified, id) {
             this.name = name;
@@ -30,7 +30,7 @@
          * Private properties
          */
         var parameters = ['name', 'fileName', 'link', 'created', 'modified', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'number'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = ['name'];
 
         /**

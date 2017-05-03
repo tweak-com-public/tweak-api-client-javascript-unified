@@ -18,7 +18,7 @@
          * @param status       {string}                  default: pending  enum: pending, accepted
          * @param created      {string}                  format: date-time  
          * @param modified     {string}                  format: date-time  
-         * @param id           {number}                  format: double  
+         * @param id           {string}                  
          * @param inviteeId    {number}                  format: double  
          * @param inviterId    {number}                  format: double  
          * @param invitee      {string}                  $ref: #/definitions/Customer  
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['message', 'token', 'inviteeEmail', 'targetModel', 'targetId', 'targetAttrs', 'status', 'created', 'modified', 'id', 'inviteeId', 'inviterId', 'invitee', 'inviter'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'number', 'number', 'number', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'number', 'number', 'string', 'string'];
         var requiredParameters = ['targetModel', 'targetId'];
 
         /**

@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param tweakEmail {boolean}   default: true  
-         * @param id         {number}    format: double  
+         * @param id         {string}    
          * @param customerId {number}    format: double  
          * @param customer   {string}    $ref: #/definitions/Customer  
          */
@@ -26,7 +26,7 @@
          * Private properties
          */
         var parameters = ['tweakEmail', 'id', 'customerId', 'customer'];
-        var parametersType = ['boolean', 'number', 'number', 'string'];
+        var parametersType = ['boolean', 'string', 'number', 'string'];
         var requiredParameters = [];
 
         /**

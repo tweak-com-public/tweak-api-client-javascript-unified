@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param uploader   {boolean}   
          * @param viewOnly   {boolean}   
-         * @param id         {number}    format: double  
+         * @param id         {string}    
          * @param templateId {number}    format: double  
          * @param memberId   {number}    format: double  
          * @param template   {string}    $ref: #/definitions/Template  
@@ -32,7 +32,7 @@
          * Private properties
          */
         var parameters = ['uploader', 'viewOnly', 'id', 'templateId', 'memberId', 'template', 'member'];
-        var parametersType = ['boolean', 'boolean', 'number', 'number', 'number', 'string', 'string'];
+        var parametersType = ['boolean', 'boolean', 'string', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**

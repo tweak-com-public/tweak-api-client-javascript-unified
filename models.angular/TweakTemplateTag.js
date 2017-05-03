@@ -9,7 +9,7 @@
 
         /**
          * Constructor, with class name
-         * @param id         {number}    format: double  
+         * @param id         {string}    
          * @param tagId      {number}    format: double  
          * @param templateId {number}    format: double  
          * @param tag        {string}    $ref: #/definitions/Tag  
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'tagId', 'templateId', 'tag', 'template'];
-        var parametersType = ['number', 'number', 'number', 'string', 'string'];
+        var parametersType = ['string', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**

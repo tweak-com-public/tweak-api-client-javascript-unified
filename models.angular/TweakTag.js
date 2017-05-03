@@ -12,7 +12,7 @@
          * @param name      {string}    [REQUIRED]    
          * @param created   {string}                  format: date-time  
          * @param modified  {string}                  format: date-time  
-         * @param id        {number}                  format: double  
+         * @param id        {string}                  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          * @param designs   {array}                   items: $ref: #/definitions/Design    
          */
@@ -30,7 +30,7 @@
          * Private properties
          */
         var parameters = ['name', 'created', 'modified', 'id', 'templates', 'designs'];
-        var parametersType = ['string', 'string', 'string', 'number', 'array', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**

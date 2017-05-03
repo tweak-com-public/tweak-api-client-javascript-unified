@@ -9,7 +9,7 @@
 
         /**
          * Constructor, with class name
-         * @param id         {number}    format: double  
+         * @param id         {string}    
          * @param portalId   {number}    format: double  
          * @param templateId {number}    format: double  
          * @param portal     {string}    $ref: #/definitions/Portal  
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'portalId', 'templateId', 'portal', 'template'];
-        var parametersType = ['number', 'number', 'number', 'string', 'string'];
+        var parametersType = ['string', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**

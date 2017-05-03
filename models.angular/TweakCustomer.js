@@ -20,7 +20,7 @@
          * @param username          {string}                  
          * @param email             {string}    [REQUIRED]    
          * @param emailVerified     {boolean}                 
-         * @param id                {number}                  format: double  
+         * @param id                {string}                  
          * @param designs           {array}                   items: $ref: #/definitions/Design    
          * @param teams             {array}                   items: $ref: #/definitions/Team    
          * @param invitationTickets {array}                   items: $ref: #/definitions/InvitationTicket    
@@ -52,7 +52,7 @@
          * Private properties
          */
         var parameters = ['profilePicture', 'firstName', 'lastName', 'initials', 'status', 'created', 'modified', 'realm', 'username', 'email', 'emailVerified', 'id', 'designs', 'teams', 'invitationTickets', 'accessTokens', 'permission'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'number', 'array', 'array', 'array', 'array', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'array', 'array', 'array', 'array', 'string'];
         var requiredParameters = ['firstName', 'lastName', 'initials', 'email'];
 
         /**

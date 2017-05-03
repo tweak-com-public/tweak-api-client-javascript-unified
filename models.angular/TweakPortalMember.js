@@ -12,7 +12,7 @@
          * @param roles    {array}     [REQUIRED]    default: items: type: string    
          * @param created  {string}                  format: date-time  
          * @param modified {string}                  format: date-time  
-         * @param id       {number}                  format: double  
+         * @param id       {string}                  
          * @param portalId {number}                  format: double  
          * @param memberId {number}                  format: double  
          * @param portal   {string}                  $ref: #/definitions/Portal  
@@ -34,7 +34,7 @@
          * Private properties
          */
         var parameters = ['roles', 'created', 'modified', 'id', 'portalId', 'memberId', 'portal', 'member'];
-        var parametersType = ['array', 'string', 'string', 'number', 'number', 'number', 'string', 'string'];
+        var parametersType = ['array', 'string', 'string', 'string', 'number', 'number', 'string', 'string'];
         var requiredParameters = ['roles'];
 
         /**

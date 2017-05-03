@@ -16,7 +16,7 @@
          * @param edited      {string}                  format: date-time  
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
-         * @param id          {number}                  format: double  
+         * @param id          {string}                  
          * @param teamId      {string}                  
          * @param memberId    {number}                  format: double  
          * @param portals     {array}                   items: $ref: #/definitions/Portal    
@@ -50,7 +50,7 @@
          * Private properties
          */
         var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'portals', 'team', 'members', 'permission', 'designs', 'tags'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'number', 'string', 'number', 'array', 'string', 'array', 'string', 'array', 'array'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'array', 'string', 'array', 'array'];
         var requiredParameters = ['name', 'object'];
 
         /**

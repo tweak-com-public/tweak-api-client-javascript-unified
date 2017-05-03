@@ -15,7 +15,7 @@
          * @param status      {string}                  default: unsolved  enum: unsolved, resolved
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
-         * @param id          {number}                  format: double  
+         * @param id          {string}                  
          * @param designId    {number}                  format: double  
          * @param commentId   {number}                  format: double  
          * @param commenterId {number}                  format: double  
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['comment', 'position', 'pageIndex', 'status', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'array', 'string', 'string'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'string', 'array', 'string', 'string'];
         var requiredParameters = ['comment'];
 
         /**

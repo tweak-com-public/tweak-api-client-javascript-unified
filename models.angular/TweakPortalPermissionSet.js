@@ -12,7 +12,7 @@
          * @param highResPdf                  {boolean}   default: true  
          * @param approveOrdersByPortalAdmin  {boolean}   default: true  
          * @param approveDesignsByPortalAdmin {boolean}   default: true  
-         * @param id                          {number}    format: double  
+         * @param id                          {string}    
          * @param portalId                    {number}    format: double  
          * @param portal                      {string}    $ref: #/definitions/Portal  
          */
@@ -30,7 +30,7 @@
          * Private properties
          */
         var parameters = ['highResPdf', 'approveOrdersByPortalAdmin', 'approveDesignsByPortalAdmin', 'id', 'portalId', 'portal'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'number', 'number', 'string'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'string', 'number', 'string'];
         var requiredParameters = [];
 
         /**

@@ -15,7 +15,7 @@
          * @param printPdf      {boolean}   default: false  
          * @param proofPdf      {boolean}   default: false  
          * @param socialSharing {boolean}   default: false  
-         * @param id            {number}    format: double  
+         * @param id            {string}    
          * @param templateId    {number}    format: double  
          * @param template      {string}    $ref: #/definitions/Template  
          */
@@ -36,7 +36,7 @@
          * Private properties
          */
         var parameters = ['canEdit', 'needApproval', 'canBeOrdered', 'printPdf', 'proofPdf', 'socialSharing', 'id', 'templateId', 'template'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'number', 'number', 'string'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'number', 'string'];
         var requiredParameters = [];
 
         /**

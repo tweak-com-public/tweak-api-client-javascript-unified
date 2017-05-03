@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param type        {string}    [REQUIRED]    enum: proof, pdf
          * @param created     {string}                  format: date-time  
-         * @param id          {number}                  format: double  
+         * @param id          {string}                  
          * @param designId    {number}                  format: double  
          * @param requesterId {number}                  format: double  
          * @param designs     {string}                  $ref: #/definitions/Design  
@@ -32,7 +32,7 @@
          * Private properties
          */
         var parameters = ['type', 'created', 'id', 'designId', 'requesterId', 'designs', 'requester'];
-        var parametersType = ['string', 'string', 'number', 'number', 'number', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'number', 'number', 'string', 'string'];
         var requiredParameters = ['type'];
 
         /**

@@ -12,7 +12,7 @@
          * @param roles                  {array}     [REQUIRED]    default: items: type: string    
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
-         * @param id                     {number}                  format: double  
+         * @param id                     {string}                  
          * @param customerId             {number}                  format: double  
          * @param teamId                 {string}                  
          * @param customer               {string}                  $ref: #/definitions/Customer  
@@ -54,7 +54,7 @@
          * Private properties
          */
         var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments'];
-        var parametersType = ['array', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parametersType = ['array', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**

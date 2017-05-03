@@ -21,7 +21,7 @@
          * @param expired     {string}                  format: date-time  
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
-         * @param id          {number}                  format: double  
+         * @param id          {string}                  
          * @param customerId  {number}                  format: double  
          * @param requesterId {number}                  format: double  
          * @param assigneeId  {number}                  format: double  
@@ -76,7 +76,7 @@
          * Private properties
          */
         var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'number', 'array', 'string', 'string', 'string', 'array', 'array', 'string', 'string', 'string', 'array'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'array', 'string', 'string', 'string', 'array', 'array', 'string', 'string', 'string', 'array'];
         var requiredParameters = ['name', 'object'];
 
         /**
