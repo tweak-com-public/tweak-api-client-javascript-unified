@@ -22,12 +22,13 @@
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
-         * @param customerId  {number}                  format: double  
-         * @param requesterId {number}                  format: double  
-         * @param assigneeId  {number}                  format: double  
-         * @param reviewerId  {number}                  format: double  
-         * @param templateId  {number}                  format: double  
-         * @param portalId    {number}                  format: double  
+         * @param customerId  {string}                  
+         * @param requesterId {string}                  
+         * @param assigneeId  {string}                  
+         * @param reviewerId  {string}                  
+         * @param templateId  {string}                  
+         * @param portalId    {string}                  
+         * @param folderId    {string}                  
          * @param tags        {array}                   items: $ref: #/definitions/Tag    
          * @param customer    {string}                  $ref: #/definitions/Customer  
          * @param template    {string}                  $ref: #/definitions/Template  
@@ -38,8 +39,9 @@
          * @param assignee    {string}                  $ref: #/definitions/TeamMember  
          * @param reviewer    {string}                  $ref: #/definitions/TeamMember  
          * @param commenters  {array}                   items: $ref: #/definitions/TeamMember    
+         * @param folder      {string}                  $ref: #/definitions/DesignFolder  
          */
-        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, edited, expired, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters) {
+        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, edited, expired, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
             this.colors = colors;
             this.image = image;
             this.name = name;
@@ -59,6 +61,7 @@
             this.reviewerId = reviewerId;
             this.templateId = templateId;
             this.portalId = portalId;
+            this.folderId = folderId;
             this.tags = tags;
             this.customer = customer;
             this.template = template;
@@ -69,14 +72,15 @@
             this.assignee = assignee;
             this.reviewer = reviewer;
             this.commenters = commenters;
+            this.folder = folder;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'array', 'string', 'string', 'string', 'array', 'array', 'string', 'string', 'string', 'array'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'array', 'array', 'string', 'string', 'string', 'array', 'string'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -121,6 +125,7 @@
                 data.reviewerId,
                 data.templateId,
                 data.portalId,
+                data.folderId,
                 data.tags,
                 data.customer,
                 data.template,
@@ -130,7 +135,8 @@
                 data.requester,
                 data.assignee,
                 data.reviewer,
-                data.commenters
+                data.commenters,
+                data.folder
             );
         };
 

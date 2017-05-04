@@ -19,8 +19,8 @@
          * @param created      {string}                  format: date-time  
          * @param modified     {string}                  format: date-time  
          * @param id           {string}                  
-         * @param inviteeId    {number}                  format: double  
-         * @param inviterId    {number}                  format: double  
+         * @param inviteeId    {string}                  
+         * @param inviterId    {string}                  
          * @param invitee      {string}                  $ref: #/definitions/Customer  
          * @param inviter      {string}                  $ref: #/definitions/TeamMember  
          */
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['message', 'token', 'inviteeEmail', 'targetModel', 'targetId', 'targetAttrs', 'status', 'created', 'modified', 'id', 'inviteeId', 'inviterId', 'invitee', 'inviter'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'number', 'number', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = ['targetModel', 'targetId'];
 
         /**

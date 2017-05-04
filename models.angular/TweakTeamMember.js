@@ -13,7 +13,7 @@
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
          * @param id                     {string}                  
-         * @param customerId             {number}                  format: double  
+         * @param customerId             {string}                  
          * @param teamId                 {string}                  
          * @param customer               {string}                  $ref: #/definitions/Customer  
          * @param team                   {string}                  $ref: #/definitions/Team  
@@ -27,8 +27,9 @@
          * @param reviewedDesigns        {array}                   items: $ref: #/definitions/Design    
          * @param commentedDesigns       {array}                   items: $ref: #/definitions/Design    
          * @param designComments         {array}                   items: $ref: #/definitions/DesignComment    
+         * @param designFolders          {array}                   items: $ref: #/definitions/DesignFolder    
          */
-        function TweakTeamMember(roles, created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets, requestedDesigns, requestedDesignExports, assignedDesigns, reviewedDesigns, commentedDesigns, designComments) {
+        function TweakTeamMember(roles, created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets, requestedDesigns, requestedDesignExports, assignedDesigns, reviewedDesigns, commentedDesigns, designComments, designFolders) {
             this.roles = roles;
             this.created = created;
             this.modified = modified;
@@ -47,14 +48,15 @@
             this.reviewedDesigns = reviewedDesigns;
             this.commentedDesigns = commentedDesigns;
             this.designComments = designComments;
+            this.designFolders = designFolders;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments'];
-        var parametersType = ['array', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**
@@ -97,7 +99,8 @@
                 data.assignedDesigns,
                 data.reviewedDesigns,
                 data.commentedDesigns,
-                data.designComments
+                data.designComments,
+                data.designFolders
             );
         };
 

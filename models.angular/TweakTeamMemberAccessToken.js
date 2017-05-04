@@ -12,11 +12,11 @@
          * @param id             {string}    [REQUIRED]    
          * @param ttl            {number}                  default: 1209600  description: time to live in seconds (2 weeks by default)  format: double  
          * @param created        {string}                  format: date-time  
-         * @param userId         {number}                  format: double  
+         * @param userId         {string}                  
          * @param teamId         {string}                  
-         * @param teamMemberId   {number}                  format: double  
-         * @param portalId       {number}                  format: double  
-         * @param portalMemberId {number}                  format: double  
+         * @param teamMemberId   {string}                  
+         * @param portalId       {string}                  
+         * @param portalMemberId {string}                  
          * @param customer       {string}                  $ref: #/definitions/Customer  
          * @param team           {string}                  $ref: #/definitions/Team  
          * @param teamMember     {string}                  $ref: #/definitions/TeamMember  
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['id', 'ttl', 'created', 'userId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'team', 'teamMember', 'portal', 'portalMember'];
-        var parametersType = ['string', 'number', 'string', 'number', 'string', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = ['id'];
 
         /**

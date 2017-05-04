@@ -12,8 +12,8 @@
          * @param type        {string}    [REQUIRED]    enum: proof, pdf
          * @param created     {string}                  format: date-time  
          * @param id          {string}                  
-         * @param designId    {number}                  format: double  
-         * @param requesterId {number}                  format: double  
+         * @param designId    {string}                  
+         * @param requesterId {string}                  
          * @param designs     {string}                  $ref: #/definitions/Design  
          * @param requester   {string}                  $ref: #/definitions/TeamMember  
          */
@@ -32,7 +32,7 @@
          * Private properties
          */
         var parameters = ['type', 'created', 'id', 'designId', 'requesterId', 'designs', 'requester'];
-        var parametersType = ['string', 'string', 'string', 'number', 'number', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = ['type'];
 
         /**

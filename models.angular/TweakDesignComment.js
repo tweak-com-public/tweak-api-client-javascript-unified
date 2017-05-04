@@ -16,9 +16,9 @@
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
-         * @param designId    {number}                  format: double  
-         * @param commentId   {number}                  format: double  
-         * @param commenterId {number}                  format: double  
+         * @param designId    {string}                  
+         * @param commentId   {string}                  
+         * @param commenterId {string}                  
          * @param design      {string}                  $ref: #/definitions/Design  
          * @param replies     {array}                   items: $ref: #/definitions/DesignComment    
          * @param commenter   {string}                  $ref: #/definitions/TeamMember  
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['comment', 'position', 'pageIndex', 'status', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'string', 'array', 'string', 'string'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string'];
         var requiredParameters = ['comment'];
 
         /**

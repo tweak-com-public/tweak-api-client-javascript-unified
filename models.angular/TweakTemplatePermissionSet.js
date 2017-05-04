@@ -16,7 +16,7 @@
          * @param proofPdf      {boolean}   default: false  
          * @param socialSharing {boolean}   default: false  
          * @param id            {string}    
-         * @param templateId    {number}    format: double  
+         * @param templateId    {string}    
          * @param template      {string}    $ref: #/definitions/Template  
          */
         function TweakTemplatePermissionSet(canEdit, needApproval, canBeOrdered, printPdf, proofPdf, socialSharing, id, templateId, template) {
@@ -36,7 +36,7 @@
          * Private properties
          */
         var parameters = ['canEdit', 'needApproval', 'canBeOrdered', 'printPdf', 'proofPdf', 'socialSharing', 'id', 'templateId', 'template'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'number', 'string'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string'];
         var requiredParameters = [];
 
         /**

@@ -13,8 +13,8 @@
          * @param created  {string}                  format: date-time  
          * @param modified {string}                  format: date-time  
          * @param id       {string}                  
-         * @param portalId {number}                  format: double  
-         * @param memberId {number}                  format: double  
+         * @param portalId {string}                  
+         * @param memberId {string}                  
          * @param portal   {string}                  $ref: #/definitions/Portal  
          * @param member   {string}                  $ref: #/definitions/TeamMember  
          */
@@ -34,7 +34,7 @@
          * Private properties
          */
         var parameters = ['roles', 'created', 'modified', 'id', 'portalId', 'memberId', 'portal', 'member'];
-        var parametersType = ['array', 'string', 'string', 'string', 'number', 'number', 'string', 'string'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = ['roles'];
 
         /**

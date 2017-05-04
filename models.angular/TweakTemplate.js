@@ -9,24 +9,28 @@
 
         /**
          * Constructor, with class name
-         * @param name        {string}    [REQUIRED]    
-         * @param thumbnail   {string}                  
-         * @param object      {object}    [REQUIRED]    
-         * @param description {string}                  default:   
-         * @param edited      {string}                  format: date-time  
-         * @param created     {string}                  format: date-time  
-         * @param modified    {string}                  format: date-time  
-         * @param id          {string}                  
-         * @param teamId      {string}                  
-         * @param memberId    {number}                  format: double  
-         * @param portals     {array}                   items: $ref: #/definitions/Portal    
-         * @param team        {string}                  $ref: #/definitions/Team  
-         * @param members     {array}                   items: $ref: #/definitions/TeamMember    
-         * @param permission  {string}                  $ref: #/definitions/TemplatePermissionSet  
-         * @param designs     {array}                   items: $ref: #/definitions/Design    
-         * @param tags        {array}                   items: $ref: #/definitions/Tag    
+         * @param name           {string}    [REQUIRED]    
+         * @param thumbnail      {string}                  
+         * @param object         {object}    [REQUIRED]    
+         * @param description    {string}                  default:   
+         * @param edited         {string}                  format: date-time  
+         * @param created        {string}                  format: date-time  
+         * @param modified       {string}                  format: date-time  
+         * @param id             {string}                  
+         * @param teamId         {string}                  
+         * @param memberId       {string}                  
+         * @param teamFolderId   {string}                  
+         * @param portalFolderId {string}                  
+         * @param portals        {array}                   items: $ref: #/definitions/Portal    
+         * @param team           {string}                  $ref: #/definitions/Team  
+         * @param members        {array}                   items: $ref: #/definitions/TeamMember    
+         * @param permission     {string}                  $ref: #/definitions/TemplatePermissionSet  
+         * @param designs        {array}                   items: $ref: #/definitions/Design    
+         * @param tags           {array}                   items: $ref: #/definitions/Tag    
+         * @param teamFolder     {string}                  $ref: #/definitions/TeamTemplateFolder  
+         * @param portalFolder   {string}                  $ref: #/definitions/PortalTemplateFolder  
          */
-        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, memberId, portals, team, members, permission, designs, tags) {
+        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, memberId, teamFolderId, portalFolderId, portals, team, members, permission, designs, tags, teamFolder, portalFolder) {
             this.name = name;
             this.thumbnail = thumbnail;
             this.object = object;
@@ -37,20 +41,24 @@
             this.id = id;
             this.teamId = teamId;
             this.memberId = memberId;
+            this.teamFolderId = teamFolderId;
+            this.portalFolderId = portalFolderId;
             this.portals = portals;
             this.team = team;
             this.members = members;
             this.permission = permission;
             this.designs = designs;
             this.tags = tags;
+            this.teamFolder = teamFolder;
+            this.portalFolder = portalFolder;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'portals', 'team', 'members', 'permission', 'designs', 'tags'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'array', 'string', 'array', 'array'];
+        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'teamFolderId', 'portalFolderId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolder'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string', 'array', 'array', 'string', 'string'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -86,12 +94,16 @@
                 data.id,
                 data.teamId,
                 data.memberId,
+                data.teamFolderId,
+                data.portalFolderId,
                 data.portals,
                 data.team,
                 data.members,
                 data.permission,
                 data.designs,
-                data.tags
+                data.tags,
+                data.teamFolder,
+                data.portalFolder
             );
         };
 

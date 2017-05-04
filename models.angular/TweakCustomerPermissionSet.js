@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param tweakEmail {boolean}   default: true  
          * @param id         {string}    
-         * @param customerId {number}    format: double  
+         * @param customerId {string}    
          * @param customer   {string}    $ref: #/definitions/Customer  
          */
         function TweakCustomerPermissionSet(tweakEmail, id, customerId, customer) {
@@ -26,7 +26,7 @@
          * Private properties
          */
         var parameters = ['tweakEmail', 'id', 'customerId', 'customer'];
-        var parametersType = ['boolean', 'string', 'number', 'string'];
+        var parametersType = ['boolean', 'string', 'string', 'string'];
         var requiredParameters = [];
 
         /**
