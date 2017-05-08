@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param comment     {string}    [REQUIRED]    
-         * @param position    {string}                  $ref: #/definitions/GeoPoint  
+         * @param position    {string}                  $ref: #/definitions/Axes  
          * @param pageIndex   {number}                  minimum: 0  default: 0  format: double  
          * @param status      {string}                  default: unsolved  enum: unsolved, resolved
          * @param created     {string}                  format: date-time  

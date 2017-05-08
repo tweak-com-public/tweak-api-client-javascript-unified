@@ -1,29 +1,31 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakGeoPoint', TweakGeoPoint);
+        .factory('TweakAxes', TweakAxes);
 
-    TweakGeoPoint.$inject = ['$log'];
+    TweakAxes.$inject = ['$log'];
 
-    function TweakGeoPoint($log) {
+    function TweakAxes($log) {
 
         /**
          * Constructor, with class name
-         * @param lat {number}    
-         * @param lng {number}    
+         * @param x  {number}    [REQUIRED]    default: 0  format: double  
+         * @param y  {number}    [REQUIRED]    default: 0  format: double  
+         * @param id {string}                  
          */
-        function TweakGeoPoint(lat, lng) {
-            this.lat = lat;
-            this.lng = lng;
+        function TweakAxes(x, y, id) {
+            this.x = x;
+            this.y = y;
+            this.id = id;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['lat', 'lng'];
-        var parametersType = ['number', 'number'];
-        var requiredParameters = [];
+        var parameters = ['x', 'y', 'id'];
+        var parametersType = ['number', 'number', 'string'];
+        var requiredParameters = ['x', 'y'];
 
         /**
          * Private function
@@ -46,23 +48,24 @@
         /**
          * Static method, assigned to class
          */
-        TweakGeoPoint.build = function (data) {
-            return new TweakGeoPoint(
-                data.lat,
-                data.lng
+        TweakAxes.build = function (data) {
+            return new TweakAxes(
+                data.x,
+                data.y,
+                data.id
             );
         };
 
-        TweakGeoPoint.apiResponseTransformer = function (responseData) {
+        TweakAxes.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakGeoPoint.build).filter(Boolean);
+                return responseData.map(TweakAxes.build).filter(Boolean);
             }
-            return TweakGeoPoint.build(responseData);
+            return TweakAxes.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakGeoPoint;
+        return TweakAxes;
     }
 })();

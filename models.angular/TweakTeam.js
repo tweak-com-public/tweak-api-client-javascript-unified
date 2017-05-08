@@ -9,26 +9,26 @@
 
         /**
          * Constructor, with class name
-         * @param name           {string}    [REQUIRED]    
-         * @param logo           {string}                  
-         * @param subdomain      {string}                  
-         * @param created        {string}                  format: date-time  
-         * @param modified       {string}                  format: date-time  
-         * @param id             {string}    [REQUIRED]    
-         * @param icon           {string}                  description: The icon image url  
-         * @param clientKey      {string}                  
-         * @param javaScriptKey  {string}                  
-         * @param restApiKey     {string}                  
-         * @param windowsKey     {string}                  
-         * @param masterKey      {string}                  
-         * @param status         {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
-         * @param members        {array}                   items: $ref: #/definitions/Customer    
-         * @param portals        {array}                   items: $ref: #/definitions/Portal    
-         * @param templates      {array}                   items: $ref: #/definitions/Template    
-         * @param brand          {string}                  $ref: #/definitions/TeamBrand  
-         * @param templateFolder {array}                   items: $ref: #/definitions/TeamTemplateFolder    
+         * @param name            {string}    [REQUIRED]    
+         * @param logo            {string}                  
+         * @param subdomain       {string}                  
+         * @param created         {string}                  format: date-time  
+         * @param modified        {string}                  format: date-time  
+         * @param id              {string}    [REQUIRED]    
+         * @param icon            {string}                  description: The icon image url  
+         * @param clientKey       {string}                  
+         * @param javaScriptKey   {string}                  
+         * @param restApiKey      {string}                  
+         * @param windowsKey      {string}                  
+         * @param masterKey       {string}                  
+         * @param status          {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
+         * @param members         {array}                   items: $ref: #/definitions/Customer    
+         * @param portals         {array}                   items: $ref: #/definitions/Portal    
+         * @param templates       {array}                   items: $ref: #/definitions/Template    
+         * @param brand           {string}                  $ref: #/definitions/TeamBrand  
+         * @param templateFolders {array}                   items: $ref: #/definitions/TeamTemplateFolder    
          */
-        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand, templateFolder) {
+        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand, templateFolders) {
             this.name = name;
             this.logo = logo;
             this.subdomain = subdomain;
@@ -46,14 +46,14 @@
             this.portals = portals;
             this.templates = templates;
             this.brand = brand;
-            this.templateFolder = templateFolder;
+            this.templateFolders = templateFolders;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand', 'templateFolder'];
+        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand', 'templateFolders'];
         var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string', 'array'];
         var requiredParameters = ['name', 'id'];
 
@@ -97,7 +97,7 @@
                 data.portals,
                 data.templates,
                 data.brand,
-                data.templateFolder
+                data.templateFolders
             );
         };
 

@@ -10,6 +10,8 @@
         /**
          * Constructor, with class name
          * @param name     {string}    [REQUIRED]    
+         * @param created  {string}                  format: date-time  
+         * @param modified {string}                  format: date-time  
          * @param id       {string}                  
          * @param memberId {string}                  
          * @param parentId {string}                  
@@ -20,8 +22,10 @@
          * @param designs  {array}                   items: $ref: #/definitions/Design    
          * @param portal   {string}                  $ref: #/definitions/Portal  
          */
-        function TweakDesignFolder(name, id, memberId, parentId, portalId, member, children, parent, designs, portal) {
+        function TweakDesignFolder(name, created, modified, id, memberId, parentId, portalId, member, children, parent, designs, portal) {
             this.name = name;
+            this.created = created;
+            this.modified = modified;
             this.id = id;
             this.memberId = memberId;
             this.parentId = parentId;
@@ -37,8 +41,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string'];
+        var parameters = ['name', 'created', 'modified', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string'];
         var requiredParameters = ['name'];
 
         /**
@@ -65,6 +69,8 @@
         TweakDesignFolder.build = function (data) {
             return new TweakDesignFolder(
                 data.name,
+                data.created,
+                data.modified,
                 data.id,
                 data.memberId,
                 data.parentId,

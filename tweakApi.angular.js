@@ -6843,6 +6843,156 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Submit design for approval
+             * @method
+             * @name TweakApi#postDesignsByIdSubmit
+             * @param {string} id - Customer id
+             * 
+             */
+            TweakApi.prototype.postDesignsByIdSubmit = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/submit';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Approve design
+             * @method
+             * @name TweakApi#postDesignsByIdApprove
+             * @param {string} id - Customer id
+             * 
+             */
+            TweakApi.prototype.postDesignsByIdApprove = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/approve';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Reject design
+             * @method
+             * @name TweakApi#postDesignsByIdReject
+             * @param {string} id - Customer id
+             * 
+             */
+            TweakApi.prototype.postDesignsByIdReject = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/reject';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Find a related item by id for templates.
              * @method
              * @name TweakApi#getTagsByIdTemplatesByFk
@@ -9834,21 +9984,21 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Find a related item by id for templateFolder.
+             * Find a related item by id for templateFolders.
              * @method
-             * @name TweakApi#getTeamsByIdTemplateFolderByFk
+             * @name TweakApi#getTeamsByIdTemplateFoldersByFk
              * @param {string} id - Team id
-             * @param {string} fk - Foreign key for templateFolder
+             * @param {string} fk - Foreign key for templateFolders
              * 
              */
-            TweakApi.prototype.getTeamsByIdTemplateFolderByFk = function(parameters) {
+            TweakApi.prototype.getTeamsByIdTemplateFoldersByFk = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder/{fk}';
+                var path = '/Teams/{id}/templateFolders/{fk}';
 
                 var body;
                 var queryParameters = {};
@@ -9892,21 +10042,21 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Delete a related item by id for templateFolder.
+             * Delete a related item by id for templateFolders.
              * @method
-             * @name TweakApi#deleteTeamsByIdTemplateFolderByFk
+             * @name TweakApi#deleteTeamsByIdTemplateFoldersByFk
              * @param {string} id - Team id
-             * @param {string} fk - Foreign key for templateFolder
+             * @param {string} fk - Foreign key for templateFolders
              * 
              */
-            TweakApi.prototype.deleteTeamsByIdTemplateFolderByFk = function(parameters) {
+            TweakApi.prototype.deleteTeamsByIdTemplateFoldersByFk = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder/{fk}';
+                var path = '/Teams/{id}/templateFolders/{fk}';
 
                 var body;
                 var queryParameters = {};
@@ -9950,23 +10100,23 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Update a related item by id for templateFolder.
+             * Update a related item by id for templateFolders.
              * @method
-             * @name TweakApi#putTeamsByIdTemplateFolderByFk
+             * @name TweakApi#putTeamsByIdTemplateFoldersByFk
              * @param {string} id - Team id
-             * @param {string} fk - Foreign key for templateFolder
+             * @param {string} fk - Foreign key for templateFolders
              * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
                 at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
              * 
              */
-            TweakApi.prototype.putTeamsByIdTemplateFolderByFk = function(parameters) {
+            TweakApi.prototype.putTeamsByIdTemplateFoldersByFk = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder/{fk}';
+                var path = '/Teams/{id}/templateFolders/{fk}';
 
                 var body;
                 var queryParameters = {};
@@ -10665,22 +10815,22 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Queries templateFolder of Team.
+             * Queries templateFolders of Team.
              * @method
-             * @name TweakApi#getTeamsByIdTemplateFolder
+             * @name TweakApi#getTeamsByIdTemplateFolders
              * @param {string} id - Team id
              * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
                 at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
              * 
              */
-            TweakApi.prototype.getTeamsByIdTemplateFolder = function(parameters) {
+            TweakApi.prototype.getTeamsByIdTemplateFolders = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder';
+                var path = '/Teams/{id}/templateFolders';
 
                 var body;
                 var queryParameters = {};
@@ -10721,22 +10871,22 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Creates a new instance in templateFolder of this model.
+             * Creates a new instance in templateFolders of this model.
              * @method
-             * @name TweakApi#postTeamsByIdTemplateFolder
+             * @name TweakApi#postTeamsByIdTemplateFolders
              * @param {string} id - Team id
              * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
                 at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
              * 
              */
-            TweakApi.prototype.postTeamsByIdTemplateFolder = function(parameters) {
+            TweakApi.prototype.postTeamsByIdTemplateFolders = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder';
+                var path = '/Teams/{id}/templateFolders';
 
                 var body;
                 var queryParameters = {};
@@ -10777,20 +10927,20 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Deletes all templateFolder of this model.
+             * Deletes all templateFolders of this model.
              * @method
-             * @name TweakApi#deleteTeamsByIdTemplateFolder
+             * @name TweakApi#deleteTeamsByIdTemplateFolders
              * @param {string} id - Team id
              * 
              */
-            TweakApi.prototype.deleteTeamsByIdTemplateFolder = function(parameters) {
+            TweakApi.prototype.deleteTeamsByIdTemplateFolders = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder';
+                var path = '/Teams/{id}/templateFolders';
 
                 var body;
                 var queryParameters = {};
@@ -10827,21 +10977,21 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Counts templateFolder of Team.
+             * Counts templateFolders of Team.
              * @method
-             * @name TweakApi#getTeamsByIdTemplateFolderCount
+             * @name TweakApi#getTeamsByIdTemplateFoldersCount
              * @param {string} id - Team id
              * @param {string} where - Criteria to match model instances
              * 
              */
-            TweakApi.prototype.getTeamsByIdTemplateFolderCount = function(parameters) {
+            TweakApi.prototype.getTeamsByIdTemplateFoldersCount = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Teams/{id}/templateFolder/count';
+                var path = '/Teams/{id}/templateFolders/count';
 
                 var body;
                 var queryParameters = {};
@@ -17965,6 +18115,1992 @@ angular.module('Tweak', [])
 
                 if (parameters['filter'] !== undefined) {
                     queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches hasOne relation brand.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamBrand
+             * @param {string} id - TeamMember id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamBrand = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/brand';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in brand of this model.
+             * @method
+             * @name TweakApi#postTeamMembersByIdTeamBrand
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamMembersByIdTeamBrand = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/brand';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update brand of this model.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamBrand
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamBrand = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/brand';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes brand of this model.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamBrand
+             * @param {string} id - TeamMember id
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamBrand = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/brand';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for members.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamMembersByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for members
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamMembersByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for members.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamMembersByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for members
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamMembersByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for members.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamMembersByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for members
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamMembersByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Add a related item by id for members.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamMembersRelByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for members
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamMembersRelByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/rel/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Remove the members relation to an item by id.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamMembersRelByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for members
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamMembersRelByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/rel/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check the existence of members relation to an item by id.
+             * @method
+             * @name TweakApi#headTeamMembersByIdTeamMembersRelByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for members
+             * 
+             */
+            TweakApi.prototype.headTeamMembersByIdTeamMembersRelByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/rel/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for templates.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamTemplatesByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for templates
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamTemplatesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for templates.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamTemplatesByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for templates
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamTemplatesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for templates.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamTemplatesByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for templates
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamTemplatesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for portals.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamPortalsByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for portals
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamPortalsByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for portals.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamPortalsByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for portals
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamPortalsByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for portals.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamPortalsByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for portals
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamPortalsByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for templateFolders.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamTemplateFoldersByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for templateFolders
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamTemplateFoldersByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for templateFolders.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamTemplateFoldersByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for templateFolders
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamTemplateFoldersByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for templateFolders.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamTemplateFoldersByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for templateFolders
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamTemplateFoldersByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries members of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamMembers
+             * @param {string} id - TeamMember id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamMembers = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in members of this model.
+             * @method
+             * @name TweakApi#postTeamMembersByIdTeamMembers
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamMembersByIdTeamMembers = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all members of this model.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamMembers
+             * @param {string} id - TeamMember id
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamMembers = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts members of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamMembersCount
+             * @param {string} id - TeamMember id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamMembersCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/members/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries templates of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamTemplates
+             * @param {string} id - TeamMember id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamTemplates = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in templates of this model.
+             * @method
+             * @name TweakApi#postTeamMembersByIdTeamTemplates
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamMembersByIdTeamTemplates = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all templates of this model.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamTemplates
+             * @param {string} id - TeamMember id
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamTemplates = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts templates of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamTemplatesCount
+             * @param {string} id - TeamMember id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamTemplatesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templates/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries portals of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamPortals
+             * @param {string} id - TeamMember id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamPortals = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in portals of this model.
+             * @method
+             * @name TweakApi#postTeamMembersByIdTeamPortals
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamMembersByIdTeamPortals = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all portals of this model.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamPortals
+             * @param {string} id - TeamMember id
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamPortals = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts portals of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamPortalsCount
+             * @param {string} id - TeamMember id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamPortalsCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/portals/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries templateFolders of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamTemplateFolders
+             * @param {string} id - TeamMember id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamTemplateFolders = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in templateFolders of this model.
+             * @method
+             * @name TweakApi#postTeamMembersByIdTeamTemplateFolders
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamMembersByIdTeamTemplateFolders = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all templateFolders of this model.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamTemplateFolders
+             * @param {string} id - TeamMember id
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamTemplateFolders = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts templateFolders of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamTemplateFoldersCount
+             * @param {string} id - TeamMember id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamTemplateFoldersCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/templateFolders/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
                 }
 
                 if (parameters.$queryParameters) {
