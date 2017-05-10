@@ -18,7 +18,7 @@
          * @param modified      {string}                  format: date-time  
          * @param id            {string}                  
          * @param teamId        {string}                  
-         * @param memberId      {string}                  
+         * @param uploaderId    {string}                  
          * @param teamFolderId  {string}                  
          * @param workflowId    {string}                  
          * @param portals       {array}                   items: $ref: #/definitions/Portal    
@@ -30,8 +30,9 @@
          * @param teamFolder    {object}                  $ref: #/definitions/TeamTemplateFolder  
          * @param portalFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
          * @param workflow      {object}                  $ref: #/definitions/Workflow  
+         * @param uploader      {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, memberId, teamFolderId, workflowId, portals, team, members, permission, designs, tags, teamFolder, portalFolders, workflow) {
+        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, uploaderId, teamFolderId, workflowId, portals, team, members, permission, designs, tags, teamFolder, portalFolders, workflow, uploader) {
             this.name = name;
             this.thumbnail = thumbnail;
             this.object = object;
@@ -41,7 +42,7 @@
             this.modified = modified;
             this.id = id;
             this.teamId = teamId;
-            this.memberId = memberId;
+            this.uploaderId = uploaderId;
             this.teamFolderId = teamFolderId;
             this.workflowId = workflowId;
             this.portals = portals;
@@ -53,14 +54,15 @@
             this.teamFolder = teamFolder;
             this.portalFolders = portalFolders;
             this.workflow = workflow;
+            this.uploader = uploader;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'object', 'array', 'array', 'object', 'array', 'object'];
+        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -95,7 +97,7 @@
                 data.modified,
                 data.id,
                 data.teamId,
-                data.memberId,
+                data.uploaderId,
                 data.teamFolderId,
                 data.workflowId,
                 data.portals,
@@ -106,7 +108,8 @@
                 data.tags,
                 data.teamFolder,
                 data.portalFolders,
-                data.workflow
+                data.workflow,
+                data.uploader
             );
         };
 
