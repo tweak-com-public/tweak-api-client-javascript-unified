@@ -19,8 +19,8 @@
          * @param teamId          {string}                  
          * @param templates       {array}                   items: $ref: #/definitions/Template    
          * @param members         {array}                   items: $ref: #/definitions/TeamMember    
-         * @param team            {string}                  $ref: #/definitions/Team  
-         * @param permission      {string}                  $ref: #/definitions/PortalPermissionSet  
+         * @param team            {object}                  $ref: #/definitions/Team  
+         * @param permission      {object}                  $ref: #/definitions/PortalPermissionSet  
          * @param designs         {array}                   items: $ref: #/definitions/Design    
          * @param templateFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
          * @param designFolders   {array}                   items: $ref: #/definitions/DesignFolder    
@@ -48,7 +48,7 @@
          * Private properties
          */
         var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'templates', 'members', 'team', 'permission', 'designs', 'templateFolders', 'designFolders'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'string', 'string', 'array', 'array', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'object', 'array', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**

@@ -12,8 +12,8 @@
          * @param id       {string}    
          * @param designId {string}    
          * @param tagId    {string}    
-         * @param design   {string}    $ref: #/definitions/Design  
-         * @param tag      {string}    $ref: #/definitions/Tag  
+         * @param design   {object}    $ref: #/definitions/Design  
+         * @param tag      {object}    $ref: #/definitions/Tag  
          */
         function TweakDesignTag(id, designId, tagId, design, tag) {
             this.id = id;
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'designId', 'tagId', 'design', 'tag'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**

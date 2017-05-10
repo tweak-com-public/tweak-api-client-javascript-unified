@@ -17,9 +17,9 @@
          * @param id        {string}                  
          * @param teamId    {string}                  
          * @param creatorId {string}                  
-         * @param team      {string}                  $ref: #/definitions/Team  
+         * @param team      {object}                  $ref: #/definitions/Team  
          * @param templates {array}                   items: $ref: #/definitions/Template    
-         * @param creator   {string}                  $ref: #/definitions/TeamMember  
+         * @param creator   {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakWorkflow(name, form, edited, created, modified, id, teamId, creatorId, team, templates, creator) {
             this.name = name;
@@ -40,7 +40,7 @@
          * Private properties
          */
         var parameters = ['name', 'form', 'edited', 'created', 'modified', 'id', 'teamId', 'creatorId', 'team', 'templates', 'creator'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'form'];
 
         /**

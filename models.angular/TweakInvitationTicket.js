@@ -21,8 +21,8 @@
          * @param id           {string}                  
          * @param inviteeId    {string}                  
          * @param inviterId    {string}                  
-         * @param invitee      {string}                  $ref: #/definitions/Customer  
-         * @param inviter      {string}                  $ref: #/definitions/TeamMember  
+         * @param invitee      {object}                  $ref: #/definitions/Customer  
+         * @param inviter      {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakInvitationTicket(message, token, inviteeEmail, targetModel, targetId, targetAttrs, status, created, modified, id, inviteeId, inviterId, invitee, inviter) {
             this.message = message;
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['message', 'token', 'inviteeEmail', 'targetModel', 'targetId', 'targetAttrs', 'status', 'created', 'modified', 'id', 'inviteeId', 'inviterId', 'invitee', 'inviter'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = ['targetModel', 'targetId'];
 
         /**

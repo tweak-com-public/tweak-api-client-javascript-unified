@@ -30,16 +30,16 @@
          * @param portalId    {string}                  
          * @param folderId    {string}                  
          * @param tags        {array}                   items: $ref: #/definitions/Tag    
-         * @param customer    {string}                  $ref: #/definitions/Customer  
-         * @param template    {string}                  $ref: #/definitions/Template  
-         * @param portal      {string}                  $ref: #/definitions/Portal  
+         * @param customer    {object}                  $ref: #/definitions/Customer  
+         * @param template    {object}                  $ref: #/definitions/Template  
+         * @param portal      {object}                  $ref: #/definitions/Portal  
          * @param comments    {array}                   items: $ref: #/definitions/DesignComment    
          * @param exports     {array}                   items: $ref: #/definitions/DesignExport    
-         * @param requester   {string}                  $ref: #/definitions/TeamMember  
-         * @param assignee    {string}                  $ref: #/definitions/TeamMember  
-         * @param reviewer    {string}                  $ref: #/definitions/TeamMember  
+         * @param requester   {object}                  $ref: #/definitions/TeamMember  
+         * @param assignee    {object}                  $ref: #/definitions/TeamMember  
+         * @param reviewer    {object}                  $ref: #/definitions/TeamMember  
          * @param commenters  {array}                   items: $ref: #/definitions/TeamMember    
-         * @param folder      {string}                  $ref: #/definitions/DesignFolder  
+         * @param folder      {object}                  $ref: #/definitions/DesignFolder  
          */
         function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, edited, expired, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
             this.colors = colors;
@@ -80,7 +80,7 @@
          * Private properties
          */
         var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'array', 'array', 'string', 'string', 'string', 'array', 'string'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**

@@ -17,7 +17,7 @@
          * @param socialSharing {boolean}   default: false  
          * @param id            {string}    
          * @param templateId    {string}    
-         * @param template      {string}    $ref: #/definitions/Template  
+         * @param template      {object}    $ref: #/definitions/Template  
          */
         function TweakTemplatePermissionSet(canEdit, needApproval, canBeOrdered, printPdf, proofPdf, socialSharing, id, templateId, template) {
             this.canEdit = canEdit;
@@ -36,7 +36,7 @@
          * Private properties
          */
         var parameters = ['canEdit', 'needApproval', 'canBeOrdered', 'printPdf', 'proofPdf', 'socialSharing', 'id', 'templateId', 'template'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

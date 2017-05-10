@@ -15,8 +15,8 @@
          * @param id       {string}                  
          * @param portalId {string}                  
          * @param memberId {string}                  
-         * @param portal   {string}                  $ref: #/definitions/Portal  
-         * @param member   {string}                  $ref: #/definitions/TeamMember  
+         * @param portal   {object}                  $ref: #/definitions/Portal  
+         * @param member   {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakPortalMember(roles, created, modified, id, portalId, memberId, portal, member) {
             this.roles = roles;
@@ -34,7 +34,7 @@
          * Private properties
          */
         var parameters = ['roles', 'created', 'modified', 'id', 'portalId', 'memberId', 'portal', 'member'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = ['roles'];
 
         /**

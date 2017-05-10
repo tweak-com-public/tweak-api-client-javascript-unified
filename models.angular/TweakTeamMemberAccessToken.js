@@ -17,11 +17,11 @@
          * @param teamMemberId   {string}                  
          * @param portalId       {string}                  
          * @param portalMemberId {string}                  
-         * @param customer       {string}                  $ref: #/definitions/Customer  
-         * @param team           {string}                  $ref: #/definitions/Team  
-         * @param teamMember     {string}                  $ref: #/definitions/TeamMember  
-         * @param portal         {string}                  $ref: #/definitions/Portal  
-         * @param portalMember   {string}                  $ref: #/definitions/PortalMember  
+         * @param customer       {object}                  $ref: #/definitions/Customer  
+         * @param team           {object}                  $ref: #/definitions/Team  
+         * @param teamMember     {object}                  $ref: #/definitions/TeamMember  
+         * @param portal         {object}                  $ref: #/definitions/Portal  
+         * @param portalMember   {object}                  $ref: #/definitions/PortalMember  
          */
         function TweakTeamMemberAccessToken(id, ttl, created, userId, teamId, teamMemberId, portalId, portalMemberId, customer, team, teamMember, portal, portalMember) {
             this.id = id;
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['id', 'ttl', 'created', 'userId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'team', 'teamMember', 'portal', 'portalMember'];
-        var parametersType = ['string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['id'];
 
         /**

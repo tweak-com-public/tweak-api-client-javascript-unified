@@ -22,14 +22,14 @@
          * @param teamFolderId  {string}                  
          * @param workflowId    {string}                  
          * @param portals       {array}                   items: $ref: #/definitions/Portal    
-         * @param team          {string}                  $ref: #/definitions/Team  
+         * @param team          {object}                  $ref: #/definitions/Team  
          * @param members       {array}                   items: $ref: #/definitions/TeamMember    
-         * @param permission    {string}                  $ref: #/definitions/TemplatePermissionSet  
+         * @param permission    {object}                  $ref: #/definitions/TemplatePermissionSet  
          * @param designs       {array}                   items: $ref: #/definitions/Design    
          * @param tags          {array}                   items: $ref: #/definitions/Tag    
-         * @param teamFolder    {string}                  $ref: #/definitions/TeamTemplateFolder  
+         * @param teamFolder    {object}                  $ref: #/definitions/TeamTemplateFolder  
          * @param portalFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
-         * @param workflow      {string}                  $ref: #/definitions/Workflow  
+         * @param workflow      {object}                  $ref: #/definitions/Workflow  
          */
         function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, memberId, teamFolderId, workflowId, portals, team, members, permission, designs, tags, teamFolder, portalFolders, workflow) {
             this.name = name;
@@ -60,7 +60,7 @@
          * Private properties
          */
         var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string', 'array', 'array', 'string', 'array', 'string'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'object', 'array', 'array', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**

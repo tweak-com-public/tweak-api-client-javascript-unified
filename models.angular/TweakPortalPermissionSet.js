@@ -14,7 +14,7 @@
          * @param approveDesignsByPortalAdmin {boolean}   default: true  
          * @param id                          {string}    
          * @param portalId                    {string}    
-         * @param portal                      {string}    $ref: #/definitions/Portal  
+         * @param portal                      {object}    $ref: #/definitions/Portal  
          */
         function TweakPortalPermissionSet(highResPdf, approveOrdersByPortalAdmin, approveDesignsByPortalAdmin, id, portalId, portal) {
             this.highResPdf = highResPdf;
@@ -30,7 +30,7 @@
          * Private properties
          */
         var parameters = ['highResPdf', 'approveOrdersByPortalAdmin', 'approveDesignsByPortalAdmin', 'id', 'portalId', 'portal'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'string', 'string', 'string'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

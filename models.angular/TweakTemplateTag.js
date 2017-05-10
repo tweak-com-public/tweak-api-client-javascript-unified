@@ -12,8 +12,8 @@
          * @param id         {string}    
          * @param tagId      {string}    
          * @param templateId {string}    
-         * @param tag        {string}    $ref: #/definitions/Tag  
-         * @param template   {string}    $ref: #/definitions/Template  
+         * @param tag        {object}    $ref: #/definitions/Tag  
+         * @param template   {object}    $ref: #/definitions/Template  
          */
         function TweakTemplateTag(id, tagId, templateId, tag, template) {
             this.id = id;
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'tagId', 'templateId', 'tag', 'template'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**

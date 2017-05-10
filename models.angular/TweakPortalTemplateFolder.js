@@ -15,9 +15,9 @@
          * @param id        {string}                  
          * @param portalId  {string}                  
          * @param parentId  {string}                  
-         * @param portal    {string}                  $ref: #/definitions/Portal  
+         * @param portal    {object}                  $ref: #/definitions/Portal  
          * @param children  {array}                   items: $ref: #/definitions/PortalTemplateFolder    
-         * @param parent    {string}                  $ref: #/definitions/PortalTemplateFolder  
+         * @param parent    {object}                  $ref: #/definitions/PortalTemplateFolder  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          */
         function TweakPortalTemplateFolder(name, created, modified, id, portalId, parentId, portal, children, parent, templates) {
@@ -38,7 +38,7 @@
          * Private properties
          */
         var parameters = ['name', 'created', 'modified', 'id', 'portalId', 'parentId', 'portal', 'children', 'parent', 'templates'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array'];
         var requiredParameters = ['name'];
 
         /**

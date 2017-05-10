@@ -14,8 +14,8 @@
          * @param id          {string}                  
          * @param designId    {string}                  
          * @param requesterId {string}                  
-         * @param designs     {string}                  $ref: #/definitions/Design  
-         * @param requester   {string}                  $ref: #/definitions/TeamMember  
+         * @param designs     {object}                  $ref: #/definitions/Design  
+         * @param requester   {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakDesignExport(type, created, id, designId, requesterId, designs, requester) {
             this.type = type;
@@ -32,7 +32,7 @@
          * Private properties
          */
         var parameters = ['type', 'created', 'id', 'designId', 'requesterId', 'designs', 'requester'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = ['type'];
 
         /**

@@ -25,7 +25,7 @@
          * @param members         {array}                   items: $ref: #/definitions/Customer    
          * @param portals         {array}                   items: $ref: #/definitions/Portal    
          * @param templates       {array}                   items: $ref: #/definitions/Template    
-         * @param brand           {string}                  $ref: #/definitions/TeamBrand  
+         * @param brand           {object}                  $ref: #/definitions/TeamBrand  
          * @param templateFolders {array}                   items: $ref: #/definitions/TeamTemplateFolder    
          * @param workflows       {array}                   items: $ref: #/definitions/Workflow    
          */
@@ -56,7 +56,7 @@
          * Private properties
          */
         var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand', 'templateFolders', 'workflows'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string', 'array', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'object', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**

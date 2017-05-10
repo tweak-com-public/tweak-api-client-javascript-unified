@@ -12,8 +12,8 @@
          * @param id             {string}    
          * @param portalFolderId {string}    
          * @param templateId     {string}    
-         * @param portalFolder   {string}    $ref: #/definitions/PortalTemplateFolder  
-         * @param template       {string}    $ref: #/definitions/Template  
+         * @param portalFolder   {object}    $ref: #/definitions/PortalTemplateFolder  
+         * @param template       {object}    $ref: #/definitions/Template  
          */
         function TweakPortalTemplateFolderThrough(id, portalFolderId, templateId, portalFolder, template) {
             this.id = id;
@@ -28,7 +28,7 @@
          * Private properties
          */
         var parameters = ['id', 'portalFolderId', 'templateId', 'portalFolder', 'template'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**

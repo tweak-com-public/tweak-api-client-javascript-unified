@@ -12,7 +12,7 @@
          * @param tweakEmail {boolean}   default: true  
          * @param id         {string}    
          * @param customerId {string}    
-         * @param customer   {string}    $ref: #/definitions/Customer  
+         * @param customer   {object}    $ref: #/definitions/Customer  
          */
         function TweakCustomerPermissionSet(tweakEmail, id, customerId, customer) {
             this.tweakEmail = tweakEmail;
@@ -26,7 +26,7 @@
          * Private properties
          */
         var parameters = ['tweakEmail', 'id', 'customerId', 'customer'];
-        var parametersType = ['boolean', 'string', 'string', 'string'];
+        var parametersType = ['boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

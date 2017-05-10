@@ -12,7 +12,7 @@
          * @param name   {string}    
          * @param id     {string}    
          * @param teamId {string}    
-         * @param team   {string}    $ref: #/definitions/Team  
+         * @param team   {object}    $ref: #/definitions/Team  
          */
         function TweakTeamBrand(name, id, teamId, team) {
             this.name = name;
@@ -26,7 +26,7 @@
          * Private properties
          */
         var parameters = ['name', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

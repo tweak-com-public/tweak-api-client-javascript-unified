@@ -15,9 +15,9 @@
          * @param id        {string}                  
          * @param teamId    {string}                  
          * @param parentId  {string}                  
-         * @param team      {string}                  $ref: #/definitions/Team  
+         * @param team      {object}                  $ref: #/definitions/Team  
          * @param children  {array}                   items: $ref: #/definitions/TeamTemplateFolder    
-         * @param parent    {string}                  $ref: #/definitions/TeamTemplateFolder  
+         * @param parent    {object}                  $ref: #/definitions/TeamTemplateFolder  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          */
         function TweakTeamTemplateFolder(name, created, modified, id, teamId, parentId, team, children, parent, templates) {
@@ -38,7 +38,7 @@
          * Private properties
          */
         var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'parentId', 'team', 'children', 'parent', 'templates'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array'];
         var requiredParameters = ['name'];
 
         /**

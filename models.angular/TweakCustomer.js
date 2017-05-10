@@ -25,7 +25,7 @@
          * @param teams             {array}                   items: $ref: #/definitions/Team    
          * @param invitationTickets {array}                   items: $ref: #/definitions/InvitationTicket    
          * @param accessTokens      {array}                   items: $ref: #/definitions/TeamMemberAccessToken    
-         * @param permission        {string}                  $ref: #/definitions/CustomerPermissionSet  
+         * @param permission        {object}                  $ref: #/definitions/CustomerPermissionSet  
          */
         function TweakCustomer(profilePicture, firstName, lastName, initials, status, created, modified, realm, username, email, emailVerified, id, designs, teams, invitationTickets, accessTokens, permission) {
             this.profilePicture = profilePicture;
@@ -52,7 +52,7 @@
          * Private properties
          */
         var parameters = ['profilePicture', 'firstName', 'lastName', 'initials', 'status', 'created', 'modified', 'realm', 'username', 'email', 'emailVerified', 'id', 'designs', 'teams', 'invitationTickets', 'accessTokens', 'permission'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'array', 'array', 'array', 'array', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'array', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['firstName', 'lastName', 'initials', 'email'];
 
         /**

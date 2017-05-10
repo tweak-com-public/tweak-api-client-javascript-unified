@@ -14,8 +14,8 @@
          * @param id         {string}    
          * @param templateId {string}    
          * @param memberId   {string}    
-         * @param template   {string}    $ref: #/definitions/Template  
-         * @param member     {string}    $ref: #/definitions/TeamMember  
+         * @param template   {object}    $ref: #/definitions/Template  
+         * @param member     {object}    $ref: #/definitions/TeamMember  
          */
         function TweakTemplateMember(uploader, viewOnly, id, templateId, memberId, template, member) {
             this.uploader = uploader;
@@ -32,7 +32,7 @@
          * Private properties
          */
         var parameters = ['uploader', 'viewOnly', 'id', 'templateId', 'memberId', 'template', 'member'];
-        var parametersType = ['boolean', 'boolean', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['boolean', 'boolean', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**

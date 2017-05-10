@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param comment     {string}    [REQUIRED]    
-         * @param position    {string}                  $ref: #/definitions/Axes  
+         * @param position    {object}                  $ref: #/definitions/Axes  
          * @param pageIndex   {number}                  minimum: 0  default: 0  format: double  
          * @param status      {string}                  default: unsolved  enum: unsolved, resolved
          * @param created     {string}                  format: date-time  
@@ -19,10 +19,10 @@
          * @param designId    {string}                  
          * @param commentId   {string}                  
          * @param commenterId {string}                  
-         * @param design      {string}                  $ref: #/definitions/Design  
+         * @param design      {object}                  $ref: #/definitions/Design  
          * @param replies     {array}                   items: $ref: #/definitions/DesignComment    
-         * @param commenter   {string}                  $ref: #/definitions/TeamMember  
-         * @param replyOf     {string}                  $ref: #/definitions/DesignComment  
+         * @param commenter   {object}                  $ref: #/definitions/TeamMember  
+         * @param replyOf     {object}                  $ref: #/definitions/DesignComment  
          */
         function TweakDesignComment(comment, position, pageIndex, status, created, modified, id, designId, commentId, commenterId, design, replies, commenter, replyOf) {
             this.comment = comment;
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['comment', 'position', 'pageIndex', 'status', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string'];
+        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['comment'];
 
         /**

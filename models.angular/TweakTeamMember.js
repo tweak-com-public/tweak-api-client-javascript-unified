@@ -15,8 +15,8 @@
          * @param id                     {string}                  
          * @param customerId             {string}                  
          * @param teamId                 {string}                  
-         * @param customer               {string}                  $ref: #/definitions/Customer  
-         * @param team                   {string}                  $ref: #/definitions/Team  
+         * @param customer               {object}                  $ref: #/definitions/Customer  
+         * @param team                   {object}                  $ref: #/definitions/Team  
          * @param portals                {array}                   items: $ref: #/definitions/Portal    
          * @param uploadedTemplates      {array}                   items: $ref: #/definitions/Template    
          * @param templates              {array}                   items: $ref: #/definitions/Template    
@@ -58,7 +58,7 @@
          * Private properties
          */
         var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'workflows'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**

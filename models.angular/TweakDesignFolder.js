@@ -16,11 +16,11 @@
          * @param memberId {string}                  
          * @param parentId {string}                  
          * @param portalId {string}                  
-         * @param member   {string}                  $ref: #/definitions/TeamMember  
+         * @param member   {object}                  $ref: #/definitions/TeamMember  
          * @param children {array}                   items: $ref: #/definitions/DesignFolder    
-         * @param parent   {string}                  $ref: #/definitions/DesignFolder  
+         * @param parent   {object}                  $ref: #/definitions/DesignFolder  
          * @param designs  {array}                   items: $ref: #/definitions/Design    
-         * @param portal   {string}                  $ref: #/definitions/Portal  
+         * @param portal   {object}                  $ref: #/definitions/Portal  
          */
         function TweakDesignFolder(name, created, modified, id, memberId, parentId, portalId, member, children, parent, designs, portal) {
             this.name = name;
@@ -42,7 +42,7 @@
          * Private properties
          */
         var parameters = ['name', 'created', 'modified', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array', 'object'];
         var requiredParameters = ['name'];
 
         /**
