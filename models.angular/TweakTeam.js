@@ -27,8 +27,9 @@
          * @param templates       {array}                   items: $ref: #/definitions/Template    
          * @param brand           {string}                  $ref: #/definitions/TeamBrand  
          * @param templateFolders {array}                   items: $ref: #/definitions/TeamTemplateFolder    
+         * @param workflows       {array}                   items: $ref: #/definitions/Workflow    
          */
-        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand, templateFolders) {
+        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand, templateFolders, workflows) {
             this.name = name;
             this.logo = logo;
             this.subdomain = subdomain;
@@ -47,14 +48,15 @@
             this.templates = templates;
             this.brand = brand;
             this.templateFolders = templateFolders;
+            this.workflows = workflows;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand', 'templateFolders'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string', 'array'];
+        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand', 'templateFolders', 'workflows'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'string', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**
@@ -97,7 +99,8 @@
                 data.portals,
                 data.templates,
                 data.brand,
-                data.templateFolders
+                data.templateFolders,
+                data.workflows
             );
         };
 

@@ -20,6 +20,7 @@
          * @param teamId        {string}                  
          * @param memberId      {string}                  
          * @param teamFolderId  {string}                  
+         * @param workflowId    {string}                  
          * @param portals       {array}                   items: $ref: #/definitions/Portal    
          * @param team          {string}                  $ref: #/definitions/Team  
          * @param members       {array}                   items: $ref: #/definitions/TeamMember    
@@ -28,8 +29,9 @@
          * @param tags          {array}                   items: $ref: #/definitions/Tag    
          * @param teamFolder    {string}                  $ref: #/definitions/TeamTemplateFolder  
          * @param portalFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
+         * @param workflow      {string}                  $ref: #/definitions/Workflow  
          */
-        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, memberId, teamFolderId, portals, team, members, permission, designs, tags, teamFolder, portalFolders) {
+        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, memberId, teamFolderId, workflowId, portals, team, members, permission, designs, tags, teamFolder, portalFolders, workflow) {
             this.name = name;
             this.thumbnail = thumbnail;
             this.object = object;
@@ -41,6 +43,7 @@
             this.teamId = teamId;
             this.memberId = memberId;
             this.teamFolderId = teamFolderId;
+            this.workflowId = workflowId;
             this.portals = portals;
             this.team = team;
             this.members = members;
@@ -49,14 +52,15 @@
             this.tags = tags;
             this.teamFolder = teamFolder;
             this.portalFolders = portalFolders;
+            this.workflow = workflow;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'teamFolderId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string', 'array', 'array', 'string', 'array'];
+        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'memberId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'array', 'string', 'array', 'array', 'string', 'array', 'string'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -93,6 +97,7 @@
                 data.teamId,
                 data.memberId,
                 data.teamFolderId,
+                data.workflowId,
                 data.portals,
                 data.team,
                 data.members,
@@ -100,7 +105,8 @@
                 data.designs,
                 data.tags,
                 data.teamFolder,
-                data.portalFolders
+                data.portalFolders,
+                data.workflow
             );
         };
 

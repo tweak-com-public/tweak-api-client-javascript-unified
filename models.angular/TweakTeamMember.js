@@ -28,8 +28,9 @@
          * @param commentedDesigns       {array}                   items: $ref: #/definitions/Design    
          * @param designComments         {array}                   items: $ref: #/definitions/DesignComment    
          * @param designFolders          {array}                   items: $ref: #/definitions/DesignFolder    
+         * @param workflows              {array}                   items: $ref: #/definitions/Workflow    
          */
-        function TweakTeamMember(roles, created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets, requestedDesigns, requestedDesignExports, assignedDesigns, reviewedDesigns, commentedDesigns, designComments, designFolders) {
+        function TweakTeamMember(roles, created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets, requestedDesigns, requestedDesignExports, assignedDesigns, reviewedDesigns, commentedDesigns, designComments, designFolders, workflows) {
             this.roles = roles;
             this.created = created;
             this.modified = modified;
@@ -49,14 +50,15 @@
             this.commentedDesigns = commentedDesigns;
             this.designComments = designComments;
             this.designFolders = designFolders;
+            this.workflows = workflows;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'workflows'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**
@@ -100,7 +102,8 @@
                 data.reviewedDesigns,
                 data.commentedDesigns,
                 data.designComments,
-                data.designFolders
+                data.designFolders,
+                data.workflows
             );
         };
 
