@@ -24,8 +24,9 @@
          * @param designs         {array}                   items: $ref: #/definitions/Design    
          * @param templateFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
          * @param designFolders   {array}                   items: $ref: #/definitions/DesignFolder    
+         * @param imageFolders    {array}                   items: $ref: #/definitions/Image    
          */
-        function TweakPortal(name, logo, status, language, created, modified, id, teamId, templates, members, team, permission, designs, templateFolders, designFolders) {
+        function TweakPortal(name, logo, status, language, created, modified, id, teamId, templates, members, team, permission, designs, templateFolders, designFolders, imageFolders) {
             this.name = name;
             this.logo = logo;
             this.status = status;
@@ -41,14 +42,15 @@
             this.designs = designs;
             this.templateFolders = templateFolders;
             this.designFolders = designFolders;
+            this.imageFolders = imageFolders;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'templates', 'members', 'team', 'permission', 'designs', 'templateFolders', 'designFolders'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'object', 'array', 'array', 'array'];
+        var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'templates', 'members', 'team', 'permission', 'designs', 'templateFolders', 'designFolders', 'imageFolders'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**
@@ -88,7 +90,8 @@
                 data.permission,
                 data.designs,
                 data.templateFolders,
-                data.designFolders
+                data.designFolders,
+                data.imageFolders
             );
         };
 

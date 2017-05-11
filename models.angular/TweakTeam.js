@@ -23,13 +23,16 @@
          * @param masterKey       {string}                  
          * @param status          {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
          * @param members         {array}                   items: $ref: #/definitions/Customer    
+         * @param teamMembers     {array}                   items: $ref: #/definitions/TeamMember    
          * @param portals         {array}                   items: $ref: #/definitions/Portal    
          * @param templates       {array}                   items: $ref: #/definitions/Template    
          * @param brand           {object}                  $ref: #/definitions/TeamBrand  
          * @param templateFolders {array}                   items: $ref: #/definitions/TeamTemplateFolder    
          * @param workflows       {array}                   items: $ref: #/definitions/Workflow    
+         * @param images          {array}                   items: $ref: #/definitions/Image    
+         * @param imageFolders    {array}                   items: $ref: #/definitions/ImageFolder    
          */
-        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, portals, templates, brand, templateFolders, workflows) {
+        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, teamMembers, portals, templates, brand, templateFolders, workflows, images, imageFolders) {
             this.name = name;
             this.logo = logo;
             this.subdomain = subdomain;
@@ -44,19 +47,22 @@
             this.masterKey = masterKey;
             this.status = status;
             this.members = members;
+            this.teamMembers = teamMembers;
             this.portals = portals;
             this.templates = templates;
             this.brand = brand;
             this.templateFolders = templateFolders;
             this.workflows = workflows;
+            this.images = images;
+            this.imageFolders = imageFolders;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'portals', 'templates', 'brand', 'templateFolders', 'workflows'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'object', 'array', 'array'];
+        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**
@@ -96,11 +102,14 @@
                 data.masterKey,
                 data.status,
                 data.members,
+                data.teamMembers,
                 data.portals,
                 data.templates,
                 data.brand,
                 data.templateFolders,
-                data.workflows
+                data.workflows,
+                data.images,
+                data.imageFolders
             );
         };
 
