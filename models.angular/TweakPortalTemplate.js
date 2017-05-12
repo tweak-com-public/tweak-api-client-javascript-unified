@@ -9,26 +9,36 @@
 
         /**
          * Constructor, with class name
+         * @param path       {string}    default: /  
+         * @param created    {string}    format: date-time  
+         * @param modified   {string}    format: date-time  
          * @param id         {string}    
          * @param portalId   {string}    
          * @param templateId {string}    
+         * @param folderId   {string}    
          * @param portal     {object}    $ref: #/definitions/Portal  
          * @param template   {object}    $ref: #/definitions/Template  
+         * @param folder     {object}    $ref: #/definitions/PortalTemplateFolder  
          */
-        function TweakPortalTemplate(id, portalId, templateId, portal, template) {
+        function TweakPortalTemplate(path, created, modified, id, portalId, templateId, folderId, portal, template, folder) {
+            this.path = path;
+            this.created = created;
+            this.modified = modified;
             this.id = id;
             this.portalId = portalId;
             this.templateId = templateId;
+            this.folderId = folderId;
             this.portal = portal;
             this.template = template;
+            this.folder = folder;
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['id', 'portalId', 'templateId', 'portal', 'template'];
-        var parametersType = ['string', 'string', 'string', 'object', 'object'];
+        var parameters = ['path', 'created', 'modified', 'id', 'portalId', 'templateId', 'folderId', 'portal', 'template', 'folder'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**
@@ -54,11 +64,16 @@
          */
         TweakPortalTemplate.build = function (data) {
             return new TweakPortalTemplate(
+                data.path,
+                data.created,
+                data.modified,
                 data.id,
                 data.portalId,
                 data.templateId,
+                data.folderId,
                 data.portal,
-                data.template
+                data.template,
+                data.folder
             );
         };
 

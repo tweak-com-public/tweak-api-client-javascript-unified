@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param name     {string}    [REQUIRED]    
+         * @param path     {string}                  default: /  
          * @param created  {string}                  format: date-time  
          * @param modified {string}                  format: date-time  
          * @param id       {string}                  
@@ -22,8 +23,9 @@
          * @param designs  {array}                   items: $ref: #/definitions/Design    
          * @param portal   {object}                  $ref: #/definitions/Portal  
          */
-        function TweakDesignFolder(name, created, modified, id, memberId, parentId, portalId, member, children, parent, designs, portal) {
+        function TweakDesignFolder(name, path, created, modified, id, memberId, parentId, portalId, member, children, parent, designs, portal) {
             this.name = name;
+            this.path = path;
             this.created = created;
             this.modified = modified;
             this.id = id;
@@ -41,8 +43,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array', 'object'];
+        var parameters = ['name', 'path', 'created', 'modified', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array', 'object'];
         var requiredParameters = ['name'];
 
         /**
@@ -69,6 +71,7 @@
         TweakDesignFolder.build = function (data) {
             return new TweakDesignFolder(
                 data.name,
+                data.path,
                 data.created,
                 data.modified,
                 data.id,

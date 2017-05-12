@@ -35,7 +35,6 @@ type PortalImageFolder = any;
 type TeamMemberImageFolder = any;
 type TemplateMember = any;
 type TemplatePermissionSet = any;
-type PortalTemplateFolderThrough = any;
 type Axes = any;
 
 type Logger = {
@@ -24262,6 +24261,260 @@ export default class TweakApi {
         });
     }
 
+    getTeamsByIdPortalsByNkTemplateRelsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for templateRels.
+     * @method
+     * @name TweakApi#getTeamsByIdPortalsByNkTemplateRelsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} fk - Foreign key for templateRels
+     */
+    getTeamsByIdPortalsByNkTemplateRelsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdPortalsByNkTemplateRelsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for templateRels.
+     * @method
+     * @name TweakApi#deleteTeamsByIdPortalsByNkTemplateRelsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} fk - Foreign key for templateRels
+     */
+    deleteTeamsByIdPortalsByNkTemplateRelsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdPortalsByNkTemplateRelsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for templateRels.
+    * @method
+    * @name TweakApi#putTeamsByIdPortalsByNkTemplateRelsByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for portals.
+         * @param {string} fk - Foreign key for templateRels
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdPortalsByNkTemplateRelsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamsByIdPortalsByNkTemplateFoldersByFkURL(parameters: {
         'id': string,
         'nk': string,
@@ -26185,6 +26438,320 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Teams/{id}/portals/{nk}/templates/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdPortalsByNkTemplateRelsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries templateRels of Portal.
+    * @method
+    * @name TweakApi#getTeamsByIdPortalsByNkTemplateRels
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for portals.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdPortalsByNkTemplateRels(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdPortalsByNkTemplateRelsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in templateRels of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdPortalsByNkTemplateRels
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for portals.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdPortalsByNkTemplateRels(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdPortalsByNkTemplateRelsURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all templateRels of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdPortalsByNkTemplateRels
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     */
+    deleteTeamsByIdPortalsByNkTemplateRels(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdPortalsByNkTemplateRelsCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts templateRels of Portal.
+     * @method
+     * @name TweakApi#getTeamsByIdPortalsByNkTemplateRelsCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdPortalsByNkTemplateRelsCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/portals/{nk}/templateRels/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -45641,7 +46208,7 @@ export default class TweakApi {
     putTemplatesByIdPortalFoldersRelByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : PortalTemplateFolderThrough,
+        'data' ? : PortalTemplate,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -45675,7 +46242,7 @@ export default class TweakApi {
     putTemplatesByIdPortalFoldersRelByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : PortalTemplateFolderThrough,
+        'data' ? : PortalTemplate,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -48341,6 +48908,7 @@ export default class TweakApi {
 
     postTemplatesByIdDesignsGenerateURL(parameters: {
         'id': string,
+        'id': string,
         'data' ? : Template,
         $queryParameters ? : any,
         $domain ? : string
@@ -48348,6 +48916,8 @@ export default class TweakApi {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Templates/{id}/designs/generate';
+
+        path = path.replace('{id}', `${parameters['id']}`);
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -48367,12 +48937,14 @@ export default class TweakApi {
     * Generate design from template
     * @method
     * @name TweakApi#postTemplatesByIdDesignsGenerate
+         * @param {string} id - Template id
          * @param {string} id - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
     postTemplatesByIdDesignsGenerate(parameters: {
+        'id': string,
         'id': string,
         'data' ? : Template,
         $queryParameters ? : any,
@@ -48386,6 +48958,13 @@ export default class TweakApi {
         let form: any = {};
         return new Promise((resolve, reject) => {
             headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
 
             path = path.replace('{id}', `${parameters['id']}`);
 
@@ -50987,6 +51566,224 @@ export default class TweakApi {
         });
     }
 
+    getPortalsByIdTemplateRelsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for templateRels.
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateRelsByFk
+     * @param {string} id - Portal id
+     * @param {string} fk - Foreign key for templateRels
+     */
+    getPortalsByIdTemplateRelsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deletePortalsByIdTemplateRelsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for templateRels.
+     * @method
+     * @name TweakApi#deletePortalsByIdTemplateRelsByFk
+     * @param {string} id - Portal id
+     * @param {string} fk - Foreign key for templateRels
+     */
+    deletePortalsByIdTemplateRelsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putPortalsByIdTemplateRelsByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for templateRels.
+    * @method
+    * @name TweakApi#putPortalsByIdTemplateRelsByFk
+         * @param {string} id - Portal id
+         * @param {string} fk - Foreign key for templateRels
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putPortalsByIdTemplateRelsByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getPortalsByIdTemplateFoldersByFkURL(parameters: {
         'id': string,
         'fk': string,
@@ -52629,6 +53426,272 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Portals/{id}/templates/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getPortalsByIdTemplateRelsURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries templateRels of Portal.
+    * @method
+    * @name TweakApi#getPortalsByIdTemplateRels
+         * @param {string} id - Portal id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getPortalsByIdTemplateRels(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postPortalsByIdTemplateRelsURL(parameters: {
+        'id': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in templateRels of this model.
+    * @method
+    * @name TweakApi#postPortalsByIdTemplateRels
+         * @param {string} id - Portal id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postPortalsByIdTemplateRels(parameters: {
+        'id': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deletePortalsByIdTemplateRelsURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all templateRels of this model.
+     * @method
+     * @name TweakApi#deletePortalsByIdTemplateRels
+     * @param {string} id - Portal id
+     */
+    deletePortalsByIdTemplateRels(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getPortalsByIdTemplateRelsCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts templateRels of Portal.
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateRelsCount
+     * @param {string} id - Portal id
+     * @param {string} where - Criteria to match model instances
+     */
+    getPortalsByIdTemplateRelsCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateRels/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -54536,6 +55599,274 @@ export default class TweakApi {
             }
 
             this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getPortalsByIdTemplateFoldersRootTemplatesURL(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateFolders/root/templates';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * List templates on root folder
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateFoldersRootTemplates
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} filter - Only include changes that match this filter
+     */
+    getPortalsByIdTemplateFoldersRootTemplates(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateFolders/root/templates';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putPortalsByIdTemplateFoldersByNkTemplatesByFkRelURL(parameters: {
+        'id': string,
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateFolders/{nk}/templates/{fk}/rel';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Link folder with Template and Portal
+     * @method
+     * @name TweakApi#putPortalsByIdTemplateFoldersByNkTemplatesByFkRel
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} nk - PortalTemplateFolder id
+     * @param {string} fk - Template id
+     */
+    putPortalsByIdTemplateFoldersByNkTemplatesByFkRel(parameters: {
+        'id': string,
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateFolders/{nk}/templates/{fk}/rel';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deletePortalsByIdTemplateFoldersByNkTemplatesByFkRelURL(parameters: {
+        'id': string,
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateFolders/{nk}/templates/{fk}/rel';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Unlink folder with Template and Portal
+     * @method
+     * @name TweakApi#deletePortalsByIdTemplateFoldersByNkTemplatesByFkRel
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} nk - PortalTemplateFolder id
+     * @param {string} fk - Template id
+     */
+    deletePortalsByIdTemplateFoldersByNkTemplatesByFkRel(parameters: {
+        'id': string,
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/templateFolders/{nk}/templates/{fk}/rel';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -64618,6 +65949,75 @@ export default class TweakApi {
         });
     }
 
+    getPortalTemplatesByIdFolderURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/PortalTemplates/{id}/folder';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation folder.
+    * @method
+    * @name TweakApi#getPortalTemplatesByIdFolder
+         * @param {string} id - PortalTemplate id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getPortalTemplatesByIdFolder(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/PortalTemplates/{id}/folder';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     postPortalTemplatesURL(parameters: {
         'data' ? : PortalTemplate,
         $queryParameters ? : any,
@@ -73357,7 +74757,7 @@ export default class TweakApi {
     putPortalTemplateFoldersByIdTemplatesRelByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : PortalTemplateFolderThrough,
+        'data' ? : PortalTemplate,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -73391,7 +74791,7 @@ export default class TweakApi {
     putPortalTemplateFoldersByIdTemplatesRelByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : PortalTemplateFolderThrough,
+        'data' ? : PortalTemplate,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -77426,1228 +78826,6 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/DesignFolders/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                queryParameters['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsByIdPortalFolderURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/portalFolder';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation portalFolder.
-    * @method
-    * @name TweakApi#getPortalTemplateFolderThroughsByIdPortalFolder
-         * @param {string} id - PortalTemplateFolderThrough id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalTemplateFolderThroughsByIdPortalFolder(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/portalFolder';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsByIdTemplateURL(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/template';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Fetches belongsTo relation template.
-    * @method
-    * @name TweakApi#getPortalTemplateFolderThroughsByIdTemplate
-         * @param {string} id - PortalTemplateFolderThrough id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalTemplateFolderThroughsByIdTemplate(parameters: {
-        'id': string,
-        'refresh' ? : boolean,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/template';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalTemplateFolderThroughsURL(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughs
-     * @param {} data - Model instance data
-     */
-    postPortalTemplateFolderThroughs(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchPortalTemplateFolderThroughsURL(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchPortalTemplateFolderThroughs
-     * @param {} data - Model instance data
-     */
-    patchPortalTemplateFolderThroughs(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalTemplateFolderThroughsURL(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putPortalTemplateFolderThroughs
-     * @param {} data - Model instance data
-     */
-    putPortalTemplateFolderThroughs(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughs
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getPortalTemplateFolderThroughs(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalTemplateFolderThroughsReplaceOrCreateURL(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/replaceOrCreate';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsReplaceOrCreate
-     * @param {} data - Model instance data
-     */
-    postPortalTemplateFolderThroughsReplaceOrCreate(parameters: {
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/replaceOrCreate';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalTemplateFolderThroughsUpsertWithWhereURL(parameters: {
-        'where' ? : string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/upsertWithWhere';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postPortalTemplateFolderThroughsUpsertWithWhere(parameters: {
-        'where' ? : string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/upsertWithWhere';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsByIdExistsURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/exists';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsByIdExists
-     * @param {string} id - Model id
-     */
-    getPortalTemplateFolderThroughsByIdExists(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/exists';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    headPortalTemplateFolderThroughsByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headPortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     */
-    headPortalTemplateFolderThroughsById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsByIdURL(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     */
-    getPortalTemplateFolderThroughsById(parameters: {
-        'id': string,
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    putPortalTemplateFolderThroughsByIdURL(parameters: {
-        'id': string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putPortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    putPortalTemplateFolderThroughsById(parameters: {
-        'id': string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    deletePortalTemplateFolderThroughsByIdURL(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deletePortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     */
-    deletePortalTemplateFolderThroughsById(parameters: {
-        'id': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    patchPortalTemplateFolderThroughsByIdURL(parameters: {
-        'id': string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchPortalTemplateFolderThroughsById
-     * @param {string} id - PortalTemplateFolderThrough id
-     * @param {} data - An object of model property name/value pairs
-     */
-    patchPortalTemplateFolderThroughsById(parameters: {
-        'id': string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('PATCH', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalTemplateFolderThroughsByIdReplaceURL(parameters: {
-        'id': string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/replace';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     */
-    postPortalTemplateFolderThroughsByIdReplace(parameters: {
-        'id': string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/{id}/replace';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsFindOneURL(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/findOne';
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     */
-    getPortalTemplateFolderThroughsFindOne(parameters: {
-        'filter' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/findOne';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['filter'] !== undefined) {
-                queryParameters['filter'] = parameters['filter'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalTemplateFolderThroughsUpdateURL(parameters: {
-        'where' ? : string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/update';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     */
-    postPortalTemplateFolderThroughsUpdate(parameters: {
-        'where' ? : string,
-        'data' ? : PortalTemplateFolderThrough,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/update';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsCountURL(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/count';
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsCount
-     * @param {string} where - Criteria to match model instances
-     */
-    getPortalTemplateFolderThroughsCount(parameters: {
-        'where' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/count';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['where'] !== undefined) {
-                queryParameters['where'] = parameters['where'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postPortalTemplateFolderThroughsChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/change-stream';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#postPortalTemplateFolderThroughsChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    postPortalTemplateFolderThroughsChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/change-stream';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['options'] !== undefined) {
-                form['options'] = parameters['options'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    getPortalTemplateFolderThroughsChangeStreamURL(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/change-stream';
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-    * Create a change stream.
-    * @method
-    * @name TweakApi#getPortalTemplateFolderThroughsChangeStream
-         * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getPortalTemplateFolderThroughsChangeStream(parameters: {
-        'options' ? : string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/PortalTemplateFolderThroughs/change-stream';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};

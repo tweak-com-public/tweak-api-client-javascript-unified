@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param name      {string}    [REQUIRED]    
+         * @param path      {string}                  default: /  
          * @param created   {string}                  format: date-time  
          * @param modified  {string}                  format: date-time  
          * @param id        {string}                  
@@ -20,8 +21,9 @@
          * @param parent    {object}                  $ref: #/definitions/TeamTemplateFolder  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          */
-        function TweakTeamTemplateFolder(name, created, modified, id, teamId, parentId, team, children, parent, templates) {
+        function TweakTeamTemplateFolder(name, path, created, modified, id, teamId, parentId, team, children, parent, templates) {
             this.name = name;
+            this.path = path;
             this.created = created;
             this.modified = modified;
             this.id = id;
@@ -37,8 +39,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'parentId', 'team', 'children', 'parent', 'templates'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array'];
+        var parameters = ['name', 'path', 'created', 'modified', 'id', 'teamId', 'parentId', 'team', 'children', 'parent', 'templates'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array'];
         var requiredParameters = ['name'];
 
         /**
@@ -65,6 +67,7 @@
         TweakTeamTemplateFolder.build = function (data) {
             return new TweakTeamTemplateFolder(
                 data.name,
+                data.path,
                 data.created,
                 data.modified,
                 data.id,

@@ -19752,6 +19752,210 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Find a related item by id for templateRels.
+     * @method
+     * @name TweakApi#getTeamsByIdPortalsByNkTemplateRelsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} fk - Foreign key for templateRels
+     * 
+     */
+    TweakApi.prototype.getTeamsByIdPortalsByNkTemplateRelsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for templateRels.
+     * @method
+     * @name TweakApi#deleteTeamsByIdPortalsByNkTemplateRelsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} fk - Foreign key for templateRels
+     * 
+     */
+    TweakApi.prototype.deleteTeamsByIdPortalsByNkTemplateRelsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for templateRels.
+     * @method
+     * @name TweakApi#putTeamsByIdPortalsByNkTemplateRelsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} fk - Foreign key for templateRels
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putTeamsByIdPortalsByNkTemplateRelsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Find a related item by id for templateFolders.
      * @method
      * @name TweakApi#getTeamsByIdPortalsByNkTemplateFoldersByFk
@@ -21268,6 +21472,255 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/Teams/{id}/portals/{nk}/templates/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries templateRels of Portal.
+     * @method
+     * @name TweakApi#getTeamsByIdPortalsByNkTemplateRels
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getTeamsByIdPortalsByNkTemplateRels = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in templateRels of this model.
+     * @method
+     * @name TweakApi#postTeamsByIdPortalsByNkTemplateRels
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postTeamsByIdPortalsByNkTemplateRels = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all templateRels of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdPortalsByNkTemplateRels
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * 
+     */
+    TweakApi.prototype.deleteTeamsByIdPortalsByNkTemplateRels = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts templateRels of Portal.
+     * @method
+     * @name TweakApi#getTeamsByIdPortalsByNkTemplateRelsCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for portals.
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getTeamsByIdPortalsByNkTemplateRelsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/{id}/portals/{nk}/templateRels/count';
 
         var body;
         var queryParameters = {};
@@ -39366,6 +39819,7 @@ var TweakApi = (function() {
      * Generate design from template
      * @method
      * @name TweakApi#postTemplatesByIdDesignsGenerate
+     * @param {string} id - Template id
      * @param {string} id - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
      * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
@@ -39395,6 +39849,13 @@ var TweakApi = (function() {
         }
 
         headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
 
         path = path.replace('{id}', parameters['id']);
 
@@ -41549,6 +42010,186 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Find a related item by id for templateRels.
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateRelsByFk
+     * @param {string} id - Portal id
+     * @param {string} fk - Foreign key for templateRels
+     * 
+     */
+    TweakApi.prototype.getPortalsByIdTemplateRelsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Delete a related item by id for templateRels.
+     * @method
+     * @name TweakApi#deletePortalsByIdTemplateRelsByFk
+     * @param {string} id - Portal id
+     * @param {string} fk - Foreign key for templateRels
+     * 
+     */
+    TweakApi.prototype.deletePortalsByIdTemplateRelsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Update a related item by id for templateRels.
+     * @method
+     * @name TweakApi#putPortalsByIdTemplateRelsByFk
+     * @param {string} id - Portal id
+     * @param {string} fk - Foreign key for templateRels
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.putPortalsByIdTemplateRelsByFk = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels/{fk}';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Find a related item by id for templateFolders.
      * @method
      * @name TweakApi#getPortalsByIdTemplateFoldersByFk
@@ -42880,6 +43521,223 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/Portals/{id}/templates/count';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Queries templateRels of Portal.
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateRels
+     * @param {string} id - Portal id
+     * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getPortalsByIdTemplateRels = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Creates a new instance in templateRels of this model.
+     * @method
+     * @name TweakApi#postPortalsByIdTemplateRels
+     * @param {string} id - Portal id
+     * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.postPortalsByIdTemplateRels = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['data'] !== undefined) {
+            body = parameters['data'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Deletes all templateRels of this model.
+     * @method
+     * @name TweakApi#deletePortalsByIdTemplateRels
+     * @param {string} id - Portal id
+     * 
+     */
+    TweakApi.prototype.deletePortalsByIdTemplateRels = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Counts templateRels of Portal.
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateRelsCount
+     * @param {string} id - Portal id
+     * @param {string} where - Criteria to match model instances
+     * 
+     */
+    TweakApi.prototype.getPortalsByIdTemplateRelsCount = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateRels/count';
 
         var body;
         var queryParameters = {};
@@ -44466,6 +45324,217 @@ var TweakApi = (function() {
         }
 
         this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * List templates on root folder
+     * @method
+     * @name TweakApi#getPortalsByIdTemplateFoldersRootTemplates
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} filter - Only include changes that match this filter
+     * 
+     */
+    TweakApi.prototype.getPortalsByIdTemplateFoldersRootTemplates = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateFolders/root/templates';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Link folder with Template and Portal
+     * @method
+     * @name TweakApi#putPortalsByIdTemplateFoldersByNkTemplatesByFkRel
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} nk - PortalTemplateFolder id
+     * @param {string} fk - Template id
+     * 
+     */
+    TweakApi.prototype.putPortalsByIdTemplateFoldersByNkTemplatesByFkRel = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateFolders/{nk}/templates/{fk}/rel';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Unlink folder with Template and Portal
+     * @method
+     * @name TweakApi#deletePortalsByIdTemplateFoldersByNkTemplatesByFkRel
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} nk - PortalTemplateFolder id
+     * @param {string} fk - Template id
+     * 
+     */
+    TweakApi.prototype.deletePortalsByIdTemplateFoldersByNkTemplatesByFkRel = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Portals/{id}/templateFolders/{nk}/templates/{fk}/rel';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{nk}', parameters['nk']);
+
+        if (parameters['nk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: nk'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
         return deferred.promise;
     };
@@ -52662,6 +53731,62 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/PortalTemplates/{id}/template';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation folder.
+     * @method
+     * @name TweakApi#getPortalTemplatesByIdFolder
+     * @param {string} id - PortalTemplate id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getPortalTemplatesByIdFolder = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/PortalTemplates/{id}/folder';
 
         var body;
         var queryParameters = {};
@@ -63263,1017 +64388,6 @@ var TweakApi = (function() {
 
         var domain = this.domain;
         var path = '/DesignFolders/change-stream';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['options'] !== undefined) {
-            queryParameters['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Fetches belongsTo relation portalFolder.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsByIdPortalFolder
-     * @param {string} id - PortalTemplateFolderThrough id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsByIdPortalFolder = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}/portalFolder';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Fetches belongsTo relation template.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsByIdTemplate
-     * @param {string} id - PortalTemplateFolderThrough id
-     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsByIdTemplate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}/template';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a new instance of the model and persist it into the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughs
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postPortalTemplateFolderThroughs = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Patch an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#patchPortalTemplateFolderThroughs
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.patchPortalTemplateFolderThroughs = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#putPortalTemplateFolderThroughs
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.putPortalTemplateFolderThroughs = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find all instances of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughs
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughs = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace an existing model instance or insert a new one into the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsReplaceOrCreate
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postPortalTemplateFolderThroughsReplaceOrCreate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/replaceOrCreate';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update an existing model instance or insert a new one into the data source based on the where criteria.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsUpsertWithWhere
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.postPortalTemplateFolderThroughsUpsertWithWhere = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/upsertWithWhere';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsByIdExists
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsByIdExists = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}/exists';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Check whether a model instance exists in the data source.
-     * @method
-     * @name TweakApi#headPortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.headPortalTemplateFolderThroughsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#putPortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.putPortalTemplateFolderThroughsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Delete a model instance by {{id}} from the data source.
-     * @method
-     * @name TweakApi#deletePortalTemplateFolderThroughsById
-     * @param {string} id - Model id
-     * 
-     */
-    TweakApi.prototype.deletePortalTemplateFolderThroughsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Patch attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#patchPortalTemplateFolderThroughsById
-     * @param {string} id - PortalTemplateFolderThrough id
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.patchPortalTemplateFolderThroughsById = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Replace attributes for a model instance and persist it into the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsByIdReplace
-     * @param {string} id - Model id
-     * @param {} data - Model instance data
-     * 
-     */
-    TweakApi.prototype.postPortalTemplateFolderThroughsByIdReplace = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/{id}/replace';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        path = path.replace('{id}', parameters['id']);
-
-        if (parameters['id'] === undefined) {
-            deferred.reject(new Error('Missing required  parameter: id'));
-            return deferred.promise;
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Find first instance of the model matched by filter from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsFindOne
-     * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsFindOne = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/findOne';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['filter'] !== undefined) {
-            queryParameters['filter'] = parameters['filter'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Update instances of the model matched by {{where}} from the data source.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsUpdate
-     * @param {string} where - Criteria to match model instances
-     * @param {} data - An object of model property name/value pairs
-     * 
-     */
-    TweakApi.prototype.postPortalTemplateFolderThroughsUpdate = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/update';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters['data'] !== undefined) {
-            body = parameters['data'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Count instances of the model matched by where from the data source.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsCount
-     * @param {string} where - Criteria to match model instances
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsCount = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/count';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['where'] !== undefined) {
-            queryParameters['where'] = parameters['where'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a change stream.
-     * @method
-     * @name TweakApi#postPortalTemplateFolderThroughsChangeStream
-     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.postPortalTemplateFolderThroughsChangeStream = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/change-stream';
-
-        var body;
-        var queryParameters = {};
-        var headers = {};
-        var form = {};
-
-        if (this.token.isQuery) {
-            queryParameters[this.token.headerOrQueryName] = this.token.value;
-        } else if (this.token.headerOrQueryName) {
-            headers[this.token.headerOrQueryName] = this.token.value;
-        } else {
-            headers['Authorization'] = 'Bearer ' + this.token.value;
-        }
-
-        headers['Content-Type'] = ['application/json'];
-
-        if (parameters['options'] !== undefined) {
-            form['options'] = parameters['options'];
-        }
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters)
-                .forEach(function(parameterName) {
-                    var parameter = parameters.$queryParameters[parameterName];
-                    queryParameters[parameterName] = parameter;
-                });
-        }
-
-        this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
-
-        return deferred.promise;
-    };
-    /**
-     * Create a change stream.
-     * @method
-     * @name TweakApi#getPortalTemplateFolderThroughsChangeStream
-     * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-     * 
-     */
-    TweakApi.prototype.getPortalTemplateFolderThroughsChangeStream = function(parameters) {
-        if (parameters === undefined) {
-            parameters = {};
-        }
-        var deferred = Q.defer();
-
-        var domain = this.domain;
-        var path = '/PortalTemplateFolderThroughs/change-stream';
 
         var body;
         var queryParameters = {};

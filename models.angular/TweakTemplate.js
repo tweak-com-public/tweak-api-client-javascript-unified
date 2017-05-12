@@ -14,6 +14,7 @@
          * @param object        {object}    [REQUIRED]    
          * @param description   {string}                  default:   
          * @param edited        {string}                  format: date-time  
+         * @param teamPath      {string}                  default: /  
          * @param created       {string}                  format: date-time  
          * @param modified      {string}                  format: date-time  
          * @param id            {string}                  
@@ -32,12 +33,13 @@
          * @param workflow      {object}                  $ref: #/definitions/Workflow  
          * @param uploader      {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakTemplate(name, thumbnail, object, description, edited, created, modified, id, teamId, uploaderId, teamFolderId, workflowId, portals, team, members, permission, designs, tags, teamFolder, portalFolders, workflow, uploader) {
+        function TweakTemplate(name, thumbnail, object, description, edited, teamPath, created, modified, id, teamId, uploaderId, teamFolderId, workflowId, portals, team, members, permission, designs, tags, teamFolder, portalFolders, workflow, uploader) {
             this.name = name;
             this.thumbnail = thumbnail;
             this.object = object;
             this.description = description;
             this.edited = edited;
+            this.teamPath = teamPath;
             this.created = created;
             this.modified = modified;
             this.id = id;
@@ -61,8 +63,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
+        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'teamPath', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -93,6 +95,7 @@
                 data.object,
                 data.description,
                 data.edited,
+                data.teamPath,
                 data.created,
                 data.modified,
                 data.id,

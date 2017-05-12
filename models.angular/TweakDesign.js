@@ -19,6 +19,7 @@
          * @param status      {string}                  default: pendingAction  enum: pendingAction, pendingApproval, approved, rejected
          * @param edited      {string}                  format: date-time  
          * @param expired     {string}                  format: date-time  
+         * @param path        {string}                  default: /  
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
@@ -41,7 +42,7 @@
          * @param commenters  {array}                   items: $ref: #/definitions/TeamMember    
          * @param folder      {object}                  $ref: #/definitions/DesignFolder  
          */
-        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, edited, expired, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
+        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, edited, expired, path, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
             this.colors = colors;
             this.image = image;
             this.name = name;
@@ -52,6 +53,7 @@
             this.status = status;
             this.edited = edited;
             this.expired = expired;
+            this.path = path;
             this.created = created;
             this.modified = modified;
             this.id = id;
@@ -79,8 +81,8 @@
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -116,6 +118,7 @@
                 data.status,
                 data.edited,
                 data.expired,
+                data.path,
                 data.created,
                 data.modified,
                 data.id,
