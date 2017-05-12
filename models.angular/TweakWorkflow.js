@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param name      {string}    [REQUIRED]    
-         * @param form      {object}    [REQUIRED]    
+         * @param form      {array}     [REQUIRED]    items: type: object    
          * @param edited    {string}                  format: date-time  
          * @param created   {string}                  format: date-time  
          * @param modified  {string}                  format: date-time  
@@ -40,7 +40,7 @@
          * Private properties
          */
         var parameters = ['name', 'form', 'edited', 'created', 'modified', 'id', 'teamId', 'creatorId', 'team', 'templates', 'creator'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object'];
+        var parametersType = ['string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'form'];
 
         /**
