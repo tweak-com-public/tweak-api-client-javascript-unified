@@ -14,17 +14,19 @@
          * @param canBeOrdered  {boolean}   default: false  
          * @param printPdf      {boolean}   default: false  
          * @param proofPdf      {boolean}   default: false  
+         * @param jpegs         {boolean}   default: false  
          * @param socialSharing {boolean}   default: false  
          * @param id            {string}    
          * @param templateId    {string}    
          * @param template      {object}    $ref: #/definitions/Template  
          */
-        function TweakTemplatePermissionSet(canEdit, needApproval, canBeOrdered, printPdf, proofPdf, socialSharing, id, templateId, template) {
+        function TweakTemplatePermissionSet(canEdit, needApproval, canBeOrdered, printPdf, proofPdf, jpegs, socialSharing, id, templateId, template) {
             this.canEdit = canEdit;
             this.needApproval = needApproval;
             this.canBeOrdered = canBeOrdered;
             this.printPdf = printPdf;
             this.proofPdf = proofPdf;
+            this.jpegs = jpegs;
             this.socialSharing = socialSharing;
             this.id = id;
             this.templateId = templateId;
@@ -35,8 +37,8 @@
         /**
          * Private properties
          */
-        var parameters = ['canEdit', 'needApproval', 'canBeOrdered', 'printPdf', 'proofPdf', 'socialSharing', 'id', 'templateId', 'template'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
+        var parameters = ['canEdit', 'needApproval', 'canBeOrdered', 'printPdf', 'proofPdf', 'jpegs', 'socialSharing', 'id', 'templateId', 'template'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**
@@ -67,6 +69,7 @@
                 data.canBeOrdered,
                 data.printPdf,
                 data.proofPdf,
+                data.jpegs,
                 data.socialSharing,
                 data.id,
                 data.templateId,
