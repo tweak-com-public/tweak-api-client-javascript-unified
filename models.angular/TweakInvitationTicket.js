@@ -12,7 +12,7 @@
          * @param message      {string}                  default:   
          * @param token        {string}                  
          * @param inviteeEmail {string}                  
-         * @param targetModel  {string}    [REQUIRED]    enum: Team, Portal, Template, Design
+         * @param targetModel  {string}    [REQUIRED]    enum: Team, Portal, Template, ImageFolder, Design
          * @param targetId     {string}    [REQUIRED]    
          * @param targetAttrs  {object}                  default:   
          * @param status       {string}                  default: pending  enum: pending, accepted

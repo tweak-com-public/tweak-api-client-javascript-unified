@@ -32,9 +32,9 @@ type PortalMember = any;
 type PortalTemplate = any;
 type PortalTemplateFolder = any;
 type PortalImageFolder = any;
-type TeamMemberImageFolder = any;
-type TemplateMember = any;
+type ImageFolderMember = any;
 type TemplatePermissionSet = any;
+type TemplateMember = any;
 type Axes = any;
 
 type Logger = {
@@ -3960,227 +3960,8 @@ export default class TweakApi {
         });
     }
 
-    postCustomersRegisterURL(parameters: {
-        'data' ? : Customer,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/register';
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Create customer and assign it to a team
-     * @method
-     * @name TweakApi#postCustomersRegister
-     * @param {} data - Model instance data
-     */
-    postCustomersRegister(parameters: {
-        'data' ? : Customer,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/register';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            if (parameters['data'] !== undefined) {
-                body = parameters['data'];
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postCustomersByIdTeamsByTeamIdChangeURL(parameters: {
-        'id': string,
-        'teamId': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/{id}/teams/{teamId}/change';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{teamId}', `${parameters['teamId']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Move authentication to a Team
-     * @method
-     * @name TweakApi#postCustomersByIdTeamsByTeamIdChange
-     * @param {string} id - Customer id
-     * @param {string} teamId - Team id
-     */
-    postCustomersByIdTeamsByTeamIdChange(parameters: {
-        'id': string,
-        'teamId': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/{id}/teams/{teamId}/change';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{teamId}', `${parameters['teamId']}`);
-
-            if (parameters['teamId'] === undefined) {
-                reject(new Error('Missing required  parameter: teamId'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
-    postCustomersByIdTeamsByTeamIdPortalsByPortalIdChangeURL(parameters: {
-        'id': string,
-        'teamId': string,
-        'portalId': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): string {
-        let queryParameters: any = {};
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/{id}/teams/{teamId}/portals/{portalId}/change';
-
-        path = path.replace('{id}', `${parameters['id']}`);
-
-        path = path.replace('{teamId}', `${parameters['teamId']}`);
-
-        path = path.replace('{portalId}', `${parameters['portalId']}`);
-
-        if (parameters.$queryParameters) {
-            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-            });
-        }
-
-        queryParameters = {};
-
-        let keys = Object.keys(queryParameters);
-        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
-    }
-
-    /**
-     * Move authentication to a Portal
-     * @method
-     * @name TweakApi#postCustomersByIdTeamsByTeamIdPortalsByPortalIdChange
-     * @param {string} id - Customer id
-     * @param {string} teamId - Team id
-     * @param {string} portalId - Portal id
-     */
-    postCustomersByIdTeamsByTeamIdPortalsByPortalIdChange(parameters: {
-        'id': string,
-        'teamId': string,
-        'portalId': string,
-        $queryParameters ? : any,
-        $domain ? : string
-    }): Promise < request.Response > {
-        const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/{id}/teams/{teamId}/portals/{portalId}/change';
-        let body: any;
-        let queryParameters: any = {};
-        let headers: any = {};
-        let form: any = {};
-        return new Promise((resolve, reject) => {
-            headers['Content-Type'] = 'application/json';
-
-            path = path.replace('{id}', `${parameters['id']}`);
-
-            if (parameters['id'] === undefined) {
-                reject(new Error('Missing required  parameter: id'));
-                return;
-            }
-
-            path = path.replace('{teamId}', `${parameters['teamId']}`);
-
-            if (parameters['teamId'] === undefined) {
-                reject(new Error('Missing required  parameter: teamId'));
-                return;
-            }
-
-            path = path.replace('{portalId}', `${parameters['portalId']}`);
-
-            if (parameters['portalId'] === undefined) {
-                reject(new Error('Missing required  parameter: portalId'));
-                return;
-            }
-
-            if (parameters.$queryParameters) {
-                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
-                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
-                });
-            }
-
-            form = queryParameters;
-            queryParameters = {};
-
-            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
-        });
-    }
-
     getCustomersByIdTokenURL(parameters: {
+        'id': string,
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -4188,6 +3969,8 @@ export default class TweakApi {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Customers/{id}/token';
+
+        path = path.replace('{id}', `${parameters['id']}`);
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -4206,8 +3989,10 @@ export default class TweakApi {
      * @method
      * @name TweakApi#getCustomersByIdToken
      * @param {string} id - Customer id
+     * @param {string} id - Customer id
      */
     getCustomersByIdToken(parameters: {
+        'id': string,
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -4220,6 +4005,13 @@ export default class TweakApi {
         let form: any = {};
         return new Promise((resolve, reject) => {
             headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
 
             path = path.replace('{id}', `${parameters['id']}`);
 
@@ -4354,6 +4146,250 @@ export default class TweakApi {
 
             if (parameters['data'] !== undefined) {
                 body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postCustomersRegisterURL(parameters: {
+        'data' ? : Customer,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/register';
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Create customer and assign it to a team
+     * @method
+     * @name TweakApi#postCustomersRegister
+     * @param {} data - Model instance data
+     */
+    postCustomersRegister(parameters: {
+        'data' ? : Customer,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/register';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postCustomersByIdTeamsByTeamIdChangeURL(parameters: {
+        'id': string,
+        'id': string,
+        'teamId': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/teams/{teamId}/change';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{teamId}', `${parameters['teamId']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Move authentication to a Team
+     * @method
+     * @name TweakApi#postCustomersByIdTeamsByTeamIdChange
+     * @param {string} id - Customer id
+     * @param {string} id - Customer id
+     * @param {string} teamId - Team id
+     */
+    postCustomersByIdTeamsByTeamIdChange(parameters: {
+        'id': string,
+        'id': string,
+        'teamId': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/teams/{teamId}/change';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{teamId}', `${parameters['teamId']}`);
+
+            if (parameters['teamId'] === undefined) {
+                reject(new Error('Missing required  parameter: teamId'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postCustomersByIdTeamsByTeamIdPortalsByPortalIdChangeURL(parameters: {
+        'id': string,
+        'id': string,
+        'teamId': string,
+        'portalId': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/teams/{teamId}/portals/{portalId}/change';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{teamId}', `${parameters['teamId']}`);
+
+        path = path.replace('{portalId}', `${parameters['portalId']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Move authentication to a Portal
+     * @method
+     * @name TweakApi#postCustomersByIdTeamsByTeamIdPortalsByPortalIdChange
+     * @param {string} id - Customer id
+     * @param {string} id - Customer id
+     * @param {string} teamId - Team id
+     * @param {string} portalId - Portal id
+     */
+    postCustomersByIdTeamsByTeamIdPortalsByPortalIdChange(parameters: {
+        'id': string,
+        'id': string,
+        'teamId': string,
+        'portalId': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/teams/{teamId}/portals/{portalId}/change';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{teamId}', `${parameters['teamId']}`);
+
+            if (parameters['teamId'] === undefined) {
+                reject(new Error('Missing required  parameter: teamId'));
+                return;
+            }
+
+            path = path.replace('{portalId}', `${parameters['portalId']}`);
+
+            if (parameters['portalId'] === undefined) {
+                reject(new Error('Missing required  parameter: portalId'));
+                return;
             }
 
             if (parameters.$queryParameters) {
@@ -22382,6 +22418,7 @@ export default class TweakApi {
 
     getTeamsByIdInvitationTicketsURL(parameters: {
         'id': string,
+        'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
@@ -22389,6 +22426,8 @@ export default class TweakApi {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Teams/{id}/invitationTickets';
+
+        path = path.replace('{id}', `${parameters['id']}`);
 
         path = path.replace('{id}', `${parameters['id']}`);
         if (parameters['filter'] !== undefined) {
@@ -22410,9 +22449,11 @@ export default class TweakApi {
      * @method
      * @name TweakApi#getTeamsByIdInvitationTickets
      * @param {string} id - Team id
+     * @param {string} id - Team id
      * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
      */
     getTeamsByIdInvitationTickets(parameters: {
+        'id': string,
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -22426,6 +22467,13 @@ export default class TweakApi {
         let form: any = {};
         return new Promise((resolve, reject) => {
             headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
 
             path = path.replace('{id}', `${parameters['id']}`);
 
@@ -22450,6 +22498,7 @@ export default class TweakApi {
 
     getTeamsByIdInvitationTicketsByFkURL(parameters: {
         'id': string,
+        'id': string,
         'fk': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -22458,6 +22507,8 @@ export default class TweakApi {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Teams/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -22481,10 +22532,12 @@ export default class TweakApi {
      * @method
      * @name TweakApi#getTeamsByIdInvitationTicketsByFk
      * @param {string} id - Team id
+     * @param {string} id - Team id
      * @param {string} fk - InvitationTicket id
      * @param {string} filter - Only include changes that match this filter
      */
     getTeamsByIdInvitationTicketsByFk(parameters: {
+        'id': string,
         'id': string,
         'fk': string,
         'filter' ? : string,
@@ -22499,6 +22552,13 @@ export default class TweakApi {
         let form: any = {};
         return new Promise((resolve, reject) => {
             headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
 
             path = path.replace('{id}', `${parameters['id']}`);
 
@@ -22530,6 +22590,7 @@ export default class TweakApi {
 
     deleteTeamsByIdInvitationTicketsByFkURL(parameters: {
         'id': string,
+        'id': string,
         'fk': string,
         $queryParameters ? : any,
         $domain ? : string
@@ -22537,6 +22598,8 @@ export default class TweakApi {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Teams/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -22557,9 +22620,11 @@ export default class TweakApi {
      * @method
      * @name TweakApi#deleteTeamsByIdInvitationTicketsByFk
      * @param {string} id - Team id
+     * @param {string} id - Team id
      * @param {string} fk - InvitationTicket id
      */
     deleteTeamsByIdInvitationTicketsByFk(parameters: {
+        'id': string,
         'id': string,
         'fk': string,
         $queryParameters ? : any,
@@ -22573,6 +22638,13 @@ export default class TweakApi {
         let form: any = {};
         return new Promise((resolve, reject) => {
             headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
 
             path = path.replace('{id}', `${parameters['id']}`);
 
@@ -29895,7 +29967,7 @@ export default class TweakApi {
         'id': string,
         'nk': string,
         'fk': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -29933,7 +30005,7 @@ export default class TweakApi {
         'id': string,
         'nk': string,
         'fk': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -30142,6 +30214,260 @@ export default class TweakApi {
             }
 
             this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdImageFoldersByNkFolderMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for folderMembers.
+     * @method
+     * @name TweakApi#getTeamsByIdImageFoldersByNkFolderMembersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for imageFolders.
+     * @param {string} fk - Foreign key for folderMembers
+     */
+    getTeamsByIdImageFoldersByNkFolderMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdImageFoldersByNkFolderMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for folderMembers.
+     * @method
+     * @name TweakApi#deleteTeamsByIdImageFoldersByNkFolderMembersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for imageFolders.
+     * @param {string} fk - Foreign key for folderMembers
+     */
+    deleteTeamsByIdImageFoldersByNkFolderMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdImageFoldersByNkFolderMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for folderMembers.
+    * @method
+    * @name TweakApi#putTeamsByIdImageFoldersByNkFolderMembersByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for imageFolders.
+         * @param {string} fk - Foreign key for folderMembers
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdImageFoldersByNkFolderMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -31366,6 +31692,5380 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/Teams/{id}/imageFolders/{nk}/members/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdImageFoldersByNkFolderMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries folderMembers of ImageFolder.
+    * @method
+    * @name TweakApi#getTeamsByIdImageFoldersByNkFolderMembers
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for imageFolders.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdImageFoldersByNkFolderMembers(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdImageFoldersByNkFolderMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in folderMembers of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdImageFoldersByNkFolderMembers
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for imageFolders.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdImageFoldersByNkFolderMembers(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdImageFoldersByNkFolderMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all folderMembers of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdImageFoldersByNkFolderMembers
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for imageFolders.
+     */
+    deleteTeamsByIdImageFoldersByNkFolderMembers(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdImageFoldersByNkFolderMembersCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts folderMembers of ImageFolder.
+     * @method
+     * @name TweakApi#getTeamsByIdImageFoldersByNkFolderMembersCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for imageFolders.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdImageFoldersByNkFolderMembersCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/imageFolders/{nk}/folderMembers/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTeamURL(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/team';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation team.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkTeam
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkTeam(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/team';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkDesignsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for designs.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkDesignsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for designs
+     */
+    getTeamsByIdTemplatesByNkDesignsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkDesignsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for designs.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkDesignsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for designs
+     */
+    deleteTeamsByIdTemplatesByNkDesignsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkDesignsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for designs.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkDesignsByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for designs
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkDesignsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkUploaderURL(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/uploader';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation uploader.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkUploader
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkUploader(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/uploader';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPermissionURL(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches hasOne relation permission.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkPermission
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkPermission(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkPermissionURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TemplatePermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in permission of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkPermission
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkPermission(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TemplatePermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkPermissionURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TemplatePermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update permission of this model.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkPermission
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkPermission(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TemplatePermissionSet,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPermissionURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes permission of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPermission
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkPermission(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/permission';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPortalsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for portals.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkPortalsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portals
+     */
+    getTeamsByIdTemplatesByNkPortalsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPortalsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for portals.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPortalsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portals
+     */
+    deleteTeamsByIdTemplatesByNkPortalsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkPortalsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : Portal,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for portals.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkPortalsByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for portals
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkPortalsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : Portal,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkPortalsRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Add a related item by id for portals.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkPortalsRelByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for portals
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkPortalsRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPortalsRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Remove the portals relation to an item by id.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPortalsRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portals
+     */
+    deleteTeamsByIdTemplatesByNkPortalsRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    headTeamsByIdTemplatesByNkPortalsRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check the existence of portals relation to an item by id.
+     * @method
+     * @name TweakApi#headTeamsByIdTemplatesByNkPortalsRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portals
+     */
+    headTeamsByIdTemplatesByNkPortalsRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for members.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkMembersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for members
+     */
+    getTeamsByIdTemplatesByNkMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for members.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkMembersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for members
+     */
+    deleteTeamsByIdTemplatesByNkMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for members.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkMembersByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for members
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkMembersRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Add a related item by id for members.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkMembersRelByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for members
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkMembersRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkMembersRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Remove the members relation to an item by id.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkMembersRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for members
+     */
+    deleteTeamsByIdTemplatesByNkMembersRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    headTeamsByIdTemplatesByNkMembersRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check the existence of members relation to an item by id.
+     * @method
+     * @name TweakApi#headTeamsByIdTemplatesByNkMembersRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for members
+     */
+    headTeamsByIdTemplatesByNkMembersRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTemplateMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for templateMembers.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkTemplateMembersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for templateMembers
+     */
+    getTeamsByIdTemplatesByNkTemplateMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkTemplateMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for templateMembers.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkTemplateMembersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for templateMembers
+     */
+    deleteTeamsByIdTemplatesByNkTemplateMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkTemplateMembersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for templateMembers.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkTemplateMembersByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for templateMembers
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkTemplateMembersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTagsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for tags.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkTagsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for tags
+     */
+    getTeamsByIdTemplatesByNkTagsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkTagsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for tags.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkTagsByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for tags
+     */
+    deleteTeamsByIdTemplatesByNkTagsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkTagsByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : Tag,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for tags.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkTagsByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for tags
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkTagsByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : Tag,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkTagsRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TemplateTag,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Add a related item by id for tags.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkTagsRelByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for tags
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkTagsRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : TemplateTag,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkTagsRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Remove the tags relation to an item by id.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkTagsRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for tags
+     */
+    deleteTeamsByIdTemplatesByNkTagsRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    headTeamsByIdTemplatesByNkTagsRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check the existence of tags relation to an item by id.
+     * @method
+     * @name TweakApi#headTeamsByIdTemplatesByNkTagsRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for tags
+     */
+    headTeamsByIdTemplatesByNkTagsRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTeamFolderURL(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/teamFolder';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation teamFolder.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkTeamFolder
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkTeamFolder(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/teamFolder';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPortalFoldersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for portalFolders.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkPortalFoldersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portalFolders
+     */
+    getTeamsByIdTemplatesByNkPortalFoldersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPortalFoldersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for portalFolders.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPortalFoldersByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portalFolders
+     */
+    deleteTeamsByIdTemplatesByNkPortalFoldersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkPortalFoldersByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplateFolder,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for portalFolders.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkPortalFoldersByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for portalFolders
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkPortalFoldersByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplateFolder,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamsByIdTemplatesByNkPortalFoldersRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Add a related item by id for portalFolders.
+    * @method
+    * @name TweakApi#putTeamsByIdTemplatesByNkPortalFoldersRelByFk
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} fk - Foreign key for portalFolders
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTeamsByIdTemplatesByNkPortalFoldersRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        'data' ? : PortalTemplate,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPortalFoldersRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Remove the portalFolders relation to an item by id.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPortalFoldersRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portalFolders
+     */
+    deleteTeamsByIdTemplatesByNkPortalFoldersRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    headTeamsByIdTemplatesByNkPortalFoldersRelByFkURL(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/rel/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Check the existence of portalFolders relation to an item by id.
+     * @method
+     * @name TweakApi#headTeamsByIdTemplatesByNkPortalFoldersRelByFk
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} fk - Foreign key for portalFolders
+     */
+    headTeamsByIdTemplatesByNkPortalFoldersRelByFk(parameters: {
+        'id': string,
+        'nk': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/rel/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkWorkflowURL(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/workflow';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation workflow.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkWorkflow
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkWorkflow(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/workflow';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkDesignsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries designs of Template.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkDesigns
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkDesigns(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkDesignsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in designs of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkDesigns
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkDesigns(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : Design,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkDesignsURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all designs of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkDesigns
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkDesigns(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkDesignsCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts designs of Template.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkDesignsCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdTemplatesByNkDesignsCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/designs/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPortalsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries portals of Template.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkPortals
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkPortals(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkPortalsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : Portal,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in portals of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkPortals
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkPortals(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : Portal,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPortalsURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all portals of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPortals
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkPortals(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPortalsCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts portals of Template.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkPortalsCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdTemplatesByNkPortalsCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portals/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries members of Template.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkMembers
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkMembers(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in members of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkMembers
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkMembers(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all members of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkMembers
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkMembers(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkMembersCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts members of Template.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkMembersCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdTemplatesByNkMembersCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/members/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTemplateMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries templateMembers of Template.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkTemplateMembers
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkTemplateMembers(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkTemplateMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in templateMembers of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkTemplateMembers
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkTemplateMembers(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkTemplateMembersURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all templateMembers of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkTemplateMembers
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkTemplateMembers(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTemplateMembersCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts templateMembers of Template.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkTemplateMembersCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdTemplatesByNkTemplateMembersCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/templateMembers/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTagsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries tags of Template.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkTags
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkTags(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkTagsURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : Tag,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in tags of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkTags
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkTags(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : Tag,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkTagsURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all tags of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkTags
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkTags(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkTagsCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts tags of Template.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkTagsCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdTemplatesByNkTagsCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/tags/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPortalFoldersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries portalFolders of Template.
+    * @method
+    * @name TweakApi#getTeamsByIdTemplatesByNkPortalFolders
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamsByIdTemplatesByNkPortalFolders(parameters: {
+        'id': string,
+        'nk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTeamsByIdTemplatesByNkPortalFoldersURL(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : PortalTemplateFolder,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in portalFolders of this model.
+    * @method
+    * @name TweakApi#postTeamsByIdTemplatesByNkPortalFolders
+         * @param {string} id - Team id
+         * @param {string} nk - Foreign key for templates.
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTeamsByIdTemplatesByNkPortalFolders(parameters: {
+        'id': string,
+        'nk': string,
+        'data' ? : PortalTemplateFolder,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTeamsByIdTemplatesByNkPortalFoldersURL(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all portalFolders of this model.
+     * @method
+     * @name TweakApi#deleteTeamsByIdTemplatesByNkPortalFolders
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     */
+    deleteTeamsByIdTemplatesByNkPortalFolders(parameters: {
+        'id': string,
+        'nk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsByIdTemplatesByNkPortalFoldersCountURL(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts portalFolders of Template.
+     * @method
+     * @name TweakApi#getTeamsByIdTemplatesByNkPortalFoldersCount
+     * @param {string} id - Team id
+     * @param {string} nk - Foreign key for templates.
+     * @param {string} where - Criteria to match model instances
+     */
+    getTeamsByIdTemplatesByNkPortalFoldersCount(parameters: {
+        'id': string,
+        'nk': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/templates/{nk}/portalFolders/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -34952,7 +40652,7 @@ export default class TweakApi {
     putTeamMembersByIdImageFoldersByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -34986,7 +40686,7 @@ export default class TweakApi {
     putTeamMembersByIdImageFoldersByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -35030,7 +40730,7 @@ export default class TweakApi {
     putTeamMembersByIdImageFoldersRelByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -35064,7 +40764,7 @@ export default class TweakApi {
     putTeamMembersByIdImageFoldersRelByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -38508,7 +44208,7 @@ export default class TweakApi {
 
     postTeamMembersByIdImageFoldersURL(parameters: {
         'id': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -38540,7 +44240,7 @@ export default class TweakApi {
     */
     postTeamMembersByIdImageFolders(parameters: {
         'id': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -46050,6 +51750,224 @@ export default class TweakApi {
         });
     }
 
+    getTemplatesByIdTemplateMembersByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for templateMembers.
+     * @method
+     * @name TweakApi#getTemplatesByIdTemplateMembersByFk
+     * @param {string} id - Template id
+     * @param {string} fk - Foreign key for templateMembers
+     */
+    getTemplatesByIdTemplateMembersByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTemplatesByIdTemplateMembersByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for templateMembers.
+     * @method
+     * @name TweakApi#deleteTemplatesByIdTemplateMembersByFk
+     * @param {string} id - Template id
+     * @param {string} fk - Foreign key for templateMembers
+     */
+    deleteTemplatesByIdTemplateMembersByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTemplatesByIdTemplateMembersByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for templateMembers.
+    * @method
+    * @name TweakApi#putTemplatesByIdTemplateMembersByFk
+         * @param {string} id - Template id
+         * @param {string} fk - Foreign key for templateMembers
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putTemplatesByIdTemplateMembersByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTemplatesByIdTagsByFkURL(parameters: {
         'id': string,
         'fk': string,
@@ -47858,6 +53776,272 @@ export default class TweakApi {
         });
     }
 
+    getTemplatesByIdTemplateMembersURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries templateMembers of Template.
+    * @method
+    * @name TweakApi#getTemplatesByIdTemplateMembers
+         * @param {string} id - Template id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTemplatesByIdTemplateMembers(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postTemplatesByIdTemplateMembersURL(parameters: {
+        'id': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in templateMembers of this model.
+    * @method
+    * @name TweakApi#postTemplatesByIdTemplateMembers
+         * @param {string} id - Template id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postTemplatesByIdTemplateMembers(parameters: {
+        'id': string,
+        'data' ? : TemplateMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTemplatesByIdTemplateMembersURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all templateMembers of this model.
+     * @method
+     * @name TweakApi#deleteTemplatesByIdTemplateMembers
+     * @param {string} id - Template id
+     */
+    deleteTemplatesByIdTemplateMembers(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTemplatesByIdTemplateMembersCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts templateMembers of Template.
+     * @method
+     * @name TweakApi#getTemplatesByIdTemplateMembersCount
+     * @param {string} id - Template id
+     * @param {string} where - Criteria to match model instances
+     */
+    getTemplatesByIdTemplateMembersCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/templateMembers/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTemplatesByIdTagsURL(parameters: {
         'id': string,
         'filter' ? : string,
@@ -49471,6 +55655,260 @@ export default class TweakApi {
             }
 
             this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTemplatesByIdInvitationTicketsURL(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/invitationTickets';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * List InvitationTickets for this Template
+     * @method
+     * @name TweakApi#getTemplatesByIdInvitationTickets
+     * @param {string} id - Template id
+     * @param {string} id - Template id
+     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+     */
+    getTemplatesByIdInvitationTickets(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/invitationTickets';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTemplatesByIdInvitationTicketsByFkURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get InvitationTicket by Id for this Template
+     * @method
+     * @name TweakApi#getTemplatesByIdInvitationTicketsByFk
+     * @param {string} id - Template id
+     * @param {string} id - Template id
+     * @param {string} fk - InvitationTicket id
+     * @param {string} filter - Only include changes that match this filter
+     */
+    getTemplatesByIdInvitationTicketsByFk(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/invitationTickets/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteTemplatesByIdInvitationTicketsByFkURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete InvitationTickets for this Template
+     * @method
+     * @name TweakApi#deleteTemplatesByIdInvitationTicketsByFk
+     * @param {string} id - Template id
+     * @param {string} id - Template id
+     * @param {string} fk - InvitationTicket id
+     */
+    deleteTemplatesByIdInvitationTicketsByFk(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/invitationTickets/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -56651,6 +63089,260 @@ export default class TweakApi {
             }
 
             this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getPortalsByIdInvitationTicketsURL(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/invitationTickets';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * List InvitationTickets for this Portal
+     * @method
+     * @name TweakApi#getPortalsByIdInvitationTickets
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+     */
+    getPortalsByIdInvitationTickets(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/invitationTickets';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getPortalsByIdInvitationTicketsByFkURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get InvitationTicket by Id for this Portal
+     * @method
+     * @name TweakApi#getPortalsByIdInvitationTicketsByFk
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} fk - InvitationTicket id
+     * @param {string} filter - Only include changes that match this filter
+     */
+    getPortalsByIdInvitationTicketsByFk(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/invitationTickets/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deletePortalsByIdInvitationTicketsByFkURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete InvitationTickets for this Portal
+     * @method
+     * @name TweakApi#deletePortalsByIdInvitationTicketsByFk
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {string} fk - InvitationTicket id
+     */
+    deletePortalsByIdInvitationTicketsByFk(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/invitationTickets/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -83036,7 +89728,7 @@ export default class TweakApi {
     putImageFoldersByIdMembersRelByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -83070,7 +89762,7 @@ export default class TweakApi {
     putImageFoldersByIdMembersRelByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -83248,6 +89940,224 @@ export default class TweakApi {
             }
 
             this.request('HEAD', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getImageFoldersByIdFolderMembersByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Find a related item by id for folderMembers.
+     * @method
+     * @name TweakApi#getImageFoldersByIdFolderMembersByFk
+     * @param {string} id - ImageFolder id
+     * @param {string} fk - Foreign key for folderMembers
+     */
+    getImageFoldersByIdFolderMembersByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteImageFoldersByIdFolderMembersByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete a related item by id for folderMembers.
+     * @method
+     * @name TweakApi#deleteImageFoldersByIdFolderMembersByFk
+     * @param {string} id - ImageFolder id
+     * @param {string} fk - Foreign key for folderMembers
+     */
+    deleteImageFoldersByIdFolderMembersByFk(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putImageFoldersByIdFolderMembersByFkURL(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Update a related item by id for folderMembers.
+    * @method
+    * @name TweakApi#putImageFoldersByIdFolderMembersByFk
+         * @param {string} id - ImageFolder id
+         * @param {string} fk - Foreign key for folderMembers
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    putImageFoldersByIdFolderMembersByFk(parameters: {
+        'id': string,
+        'fk': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -84287,6 +91197,272 @@ export default class TweakApi {
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
         let path = '/ImageFolders/{id}/members/count';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['where'] !== undefined) {
+                queryParameters['where'] = parameters['where'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getImageFoldersByIdFolderMembersURL(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Queries folderMembers of ImageFolder.
+    * @method
+    * @name TweakApi#getImageFoldersByIdFolderMembers
+         * @param {string} id - ImageFolder id
+         * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getImageFoldersByIdFolderMembers(parameters: {
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postImageFoldersByIdFolderMembersURL(parameters: {
+        'id': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        queryParameters = {};
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Creates a new instance in folderMembers of this model.
+    * @method
+    * @name TweakApi#postImageFoldersByIdFolderMembers
+         * @param {string} id - ImageFolder id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    postImageFoldersByIdFolderMembers(parameters: {
+        'id': string,
+        'data' ? : ImageFolderMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            form = queryParameters;
+            queryParameters = {};
+
+            this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteImageFoldersByIdFolderMembersURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Deletes all folderMembers of this model.
+     * @method
+     * @name TweakApi#deleteImageFoldersByIdFolderMembers
+     * @param {string} id - ImageFolder id
+     */
+    deleteImageFoldersByIdFolderMembers(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getImageFoldersByIdFolderMembersCountURL(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/count';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['where'] !== undefined) {
+            queryParameters['where'] = parameters['where'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Counts folderMembers of ImageFolder.
+     * @method
+     * @name TweakApi#getImageFoldersByIdFolderMembersCount
+     * @param {string} id - ImageFolder id
+     * @param {string} where - Criteria to match model instances
+     */
+    getImageFoldersByIdFolderMembersCount(parameters: {
+        'id': string,
+        'where' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/folderMembers/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -85396,6 +92572,260 @@ export default class TweakApi {
             }
 
             this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getImageFoldersByIdInvitationTicketsURL(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/invitationTickets';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * List InvitationTickets for this ImageFolder
+     * @method
+     * @name TweakApi#getImageFoldersByIdInvitationTickets
+     * @param {string} id - ImageFolder id
+     * @param {string} id - ImageFolder id
+     * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+     */
+    getImageFoldersByIdInvitationTickets(parameters: {
+        'id': string,
+        'id': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/invitationTickets';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getImageFoldersByIdInvitationTicketsByFkURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+        if (parameters['filter'] !== undefined) {
+            queryParameters['filter'] = parameters['filter'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get InvitationTicket by Id for this ImageFolder
+     * @method
+     * @name TweakApi#getImageFoldersByIdInvitationTicketsByFk
+     * @param {string} id - ImageFolder id
+     * @param {string} id - ImageFolder id
+     * @param {string} fk - InvitationTicket id
+     * @param {string} filter - Only include changes that match this filter
+     */
+    getImageFoldersByIdInvitationTicketsByFk(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'filter' ? : string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/invitationTickets/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['filter'] !== undefined) {
+                queryParameters['filter'] = parameters['filter'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    deleteImageFoldersByIdInvitationTicketsByFkURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/invitationTickets/{fk}';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Delete InvitationTickets for this ImageFolder
+     * @method
+     * @name TweakApi#deleteImageFoldersByIdInvitationTicketsByFk
+     * @param {string} id - ImageFolder id
+     * @param {string} id - ImageFolder id
+     * @param {string} fk - InvitationTicket id
+     */
+    deleteImageFoldersByIdInvitationTicketsByFk(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/ImageFolders/{id}/invitationTickets/{fk}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
@@ -86621,7 +94051,7 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersByIdMemberURL(parameters: {
+    getImageFolderMembersByIdMemberURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
@@ -86629,7 +94059,7 @@ export default class TweakApi {
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/member';
+        let path = '/ImageFolderMembers/{id}/member';
 
         path = path.replace('{id}', `${parameters['id']}`);
         if (parameters['refresh'] !== undefined) {
@@ -86649,19 +94079,19 @@ export default class TweakApi {
     /**
     * Fetches belongsTo relation member.
     * @method
-    * @name TweakApi#getTeamMemberImageFoldersByIdMember
-         * @param {string} id - TeamMemberImageFolder id
+    * @name TweakApi#getImageFolderMembersByIdMember
+         * @param {string} id - ImageFolderMember id
          * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    getTeamMemberImageFoldersByIdMember(parameters: {
+    getImageFolderMembersByIdMember(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/member';
+        let path = '/ImageFolderMembers/{id}/member';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -86690,7 +94120,7 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersByIdFolderURL(parameters: {
+    getImageFolderMembersByIdFolderURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
@@ -86698,7 +94128,7 @@ export default class TweakApi {
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/folder';
+        let path = '/ImageFolderMembers/{id}/folder';
 
         path = path.replace('{id}', `${parameters['id']}`);
         if (parameters['refresh'] !== undefined) {
@@ -86718,19 +94148,19 @@ export default class TweakApi {
     /**
     * Fetches belongsTo relation folder.
     * @method
-    * @name TweakApi#getTeamMemberImageFoldersByIdFolder
-         * @param {string} id - TeamMemberImageFolder id
+    * @name TweakApi#getImageFolderMembersByIdFolder
+         * @param {string} id - ImageFolderMember id
          * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    getTeamMemberImageFoldersByIdFolder(parameters: {
+    getImageFolderMembersByIdFolder(parameters: {
         'id': string,
         'refresh' ? : boolean,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/folder';
+        let path = '/ImageFolderMembers/{id}/folder';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -86759,14 +94189,14 @@ export default class TweakApi {
         });
     }
 
-    postTeamMemberImageFoldersURL(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    postImageFolderMembersURL(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -86783,16 +94213,16 @@ export default class TweakApi {
     /**
      * Create a new instance of the model and persist it into the data source.
      * @method
-     * @name TweakApi#postTeamMemberImageFolders
+     * @name TweakApi#postImageFolderMembers
      * @param {} data - Model instance data
      */
-    postTeamMemberImageFolders(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    postImageFolderMembers(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -86817,14 +94247,14 @@ export default class TweakApi {
         });
     }
 
-    patchTeamMemberImageFoldersURL(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    patchImageFolderMembersURL(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -86839,16 +94269,16 @@ export default class TweakApi {
     /**
      * Patch an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#patchTeamMemberImageFolders
+     * @name TweakApi#patchImageFolderMembers
      * @param {} data - Model instance data
      */
-    patchTeamMemberImageFolders(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    patchImageFolderMembers(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -86870,14 +94300,14 @@ export default class TweakApi {
         });
     }
 
-    putTeamMemberImageFoldersURL(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    putImageFolderMembersURL(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -86892,16 +94322,16 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#putTeamMemberImageFolders
+     * @name TweakApi#putImageFolderMembers
      * @param {} data - Model instance data
      */
-    putTeamMemberImageFolders(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    putImageFolderMembers(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -86923,14 +94353,14 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersURL(parameters: {
+    getImageFolderMembersURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
         }
@@ -86948,16 +94378,16 @@ export default class TweakApi {
     /**
      * Find all instances of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#getTeamMemberImageFolders
+     * @name TweakApi#getImageFolderMembers
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
      */
-    getTeamMemberImageFolders(parameters: {
+    getImageFolderMembers(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders';
+        let path = '/ImageFolderMembers';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -86979,14 +94409,14 @@ export default class TweakApi {
         });
     }
 
-    postTeamMemberImageFoldersReplaceOrCreateURL(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    postImageFolderMembersReplaceOrCreateURL(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/replaceOrCreate';
+        let path = '/ImageFolderMembers/replaceOrCreate';
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -87003,16 +94433,16 @@ export default class TweakApi {
     /**
      * Replace an existing model instance or insert a new one into the data source.
      * @method
-     * @name TweakApi#postTeamMemberImageFoldersReplaceOrCreate
+     * @name TweakApi#postImageFolderMembersReplaceOrCreate
      * @param {} data - Model instance data
      */
-    postTeamMemberImageFoldersReplaceOrCreate(parameters: {
-        'data' ? : TeamMemberImageFolder,
+    postImageFolderMembersReplaceOrCreate(parameters: {
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/replaceOrCreate';
+        let path = '/ImageFolderMembers/replaceOrCreate';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87037,15 +94467,15 @@ export default class TweakApi {
         });
     }
 
-    postTeamMemberImageFoldersUpsertWithWhereURL(parameters: {
+    postImageFolderMembersUpsertWithWhereURL(parameters: {
         'where' ? : string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/upsertWithWhere';
+        let path = '/ImageFolderMembers/upsertWithWhere';
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
         }
@@ -87065,18 +94495,18 @@ export default class TweakApi {
     /**
      * Update an existing model instance or insert a new one into the data source based on the where criteria.
      * @method
-     * @name TweakApi#postTeamMemberImageFoldersUpsertWithWhere
+     * @name TweakApi#postImageFolderMembersUpsertWithWhere
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    postTeamMemberImageFoldersUpsertWithWhere(parameters: {
+    postImageFolderMembersUpsertWithWhere(parameters: {
         'where' ? : string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/upsertWithWhere';
+        let path = '/ImageFolderMembers/upsertWithWhere';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87105,14 +94535,14 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersByIdExistsURL(parameters: {
+    getImageFolderMembersByIdExistsURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/exists';
+        let path = '/ImageFolderMembers/{id}/exists';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -87129,16 +94559,16 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#getTeamMemberImageFoldersByIdExists
+     * @name TweakApi#getImageFolderMembersByIdExists
      * @param {string} id - Model id
      */
-    getTeamMemberImageFoldersByIdExists(parameters: {
+    getImageFolderMembersByIdExists(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/exists';
+        let path = '/ImageFolderMembers/{id}/exists';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87163,14 +94593,14 @@ export default class TweakApi {
         });
     }
 
-    headTeamMemberImageFoldersByIdURL(parameters: {
+    headImageFolderMembersByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -87187,16 +94617,16 @@ export default class TweakApi {
     /**
      * Check whether a model instance exists in the data source.
      * @method
-     * @name TweakApi#headTeamMemberImageFoldersById
+     * @name TweakApi#headImageFolderMembersById
      * @param {string} id - Model id
      */
-    headTeamMemberImageFoldersById(parameters: {
+    headImageFolderMembersById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87221,7 +94651,7 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersByIdURL(parameters: {
+    getImageFolderMembersByIdURL(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
@@ -87229,7 +94659,7 @@ export default class TweakApi {
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
 
         path = path.replace('{id}', `${parameters['id']}`);
         if (parameters['filter'] !== undefined) {
@@ -87249,18 +94679,18 @@ export default class TweakApi {
     /**
      * Find a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#getTeamMemberImageFoldersById
+     * @name TweakApi#getImageFolderMembersById
      * @param {string} id - Model id
      * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
      */
-    getTeamMemberImageFoldersById(parameters: {
+    getImageFolderMembersById(parameters: {
         'id': string,
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87289,15 +94719,15 @@ export default class TweakApi {
         });
     }
 
-    putTeamMemberImageFoldersByIdURL(parameters: {
+    putImageFolderMembersByIdURL(parameters: {
         'id': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -87314,18 +94744,18 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#putTeamMemberImageFoldersById
+     * @name TweakApi#putImageFolderMembersById
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    putTeamMemberImageFoldersById(parameters: {
+    putImageFolderMembersById(parameters: {
         'id': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87354,14 +94784,14 @@ export default class TweakApi {
         });
     }
 
-    deleteTeamMemberImageFoldersByIdURL(parameters: {
+    deleteImageFolderMembersByIdURL(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -87378,16 +94808,16 @@ export default class TweakApi {
     /**
      * Delete a model instance by {{id}} from the data source.
      * @method
-     * @name TweakApi#deleteTeamMemberImageFoldersById
+     * @name TweakApi#deleteImageFolderMembersById
      * @param {string} id - Model id
      */
-    deleteTeamMemberImageFoldersById(parameters: {
+    deleteImageFolderMembersById(parameters: {
         'id': string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87412,15 +94842,15 @@ export default class TweakApi {
         });
     }
 
-    patchTeamMemberImageFoldersByIdURL(parameters: {
+    patchImageFolderMembersByIdURL(parameters: {
         'id': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -87437,18 +94867,18 @@ export default class TweakApi {
     /**
      * Patch attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#patchTeamMemberImageFoldersById
-     * @param {string} id - TeamMemberImageFolder id
+     * @name TweakApi#patchImageFolderMembersById
+     * @param {string} id - ImageFolderMember id
      * @param {} data - An object of model property name/value pairs
      */
-    patchTeamMemberImageFoldersById(parameters: {
+    patchImageFolderMembersById(parameters: {
         'id': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}';
+        let path = '/ImageFolderMembers/{id}';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87477,15 +94907,15 @@ export default class TweakApi {
         });
     }
 
-    postTeamMemberImageFoldersByIdReplaceURL(parameters: {
+    postImageFolderMembersByIdReplaceURL(parameters: {
         'id': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/replace';
+        let path = '/ImageFolderMembers/{id}/replace';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -87504,18 +94934,18 @@ export default class TweakApi {
     /**
      * Replace attributes for a model instance and persist it into the data source.
      * @method
-     * @name TweakApi#postTeamMemberImageFoldersByIdReplace
+     * @name TweakApi#postImageFolderMembersByIdReplace
      * @param {string} id - Model id
      * @param {} data - Model instance data
      */
-    postTeamMemberImageFoldersByIdReplace(parameters: {
+    postImageFolderMembersByIdReplace(parameters: {
         'id': string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/{id}/replace';
+        let path = '/ImageFolderMembers/{id}/replace';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87547,14 +94977,14 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersFindOneURL(parameters: {
+    getImageFolderMembersFindOneURL(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/findOne';
+        let path = '/ImageFolderMembers/findOne';
         if (parameters['filter'] !== undefined) {
             queryParameters['filter'] = parameters['filter'];
         }
@@ -87572,16 +95002,16 @@ export default class TweakApi {
     /**
      * Find first instance of the model matched by filter from the data source.
      * @method
-     * @name TweakApi#getTeamMemberImageFoldersFindOne
+     * @name TweakApi#getImageFolderMembersFindOne
      * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
      */
-    getTeamMemberImageFoldersFindOne(parameters: {
+    getImageFolderMembersFindOne(parameters: {
         'filter' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/findOne';
+        let path = '/ImageFolderMembers/findOne';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87603,15 +95033,15 @@ export default class TweakApi {
         });
     }
 
-    postTeamMemberImageFoldersUpdateURL(parameters: {
+    postImageFolderMembersUpdateURL(parameters: {
         'where' ? : string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/update';
+        let path = '/ImageFolderMembers/update';
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
         }
@@ -87631,18 +95061,18 @@ export default class TweakApi {
     /**
      * Update instances of the model matched by {{where}} from the data source.
      * @method
-     * @name TweakApi#postTeamMemberImageFoldersUpdate
+     * @name TweakApi#postImageFolderMembersUpdate
      * @param {string} where - Criteria to match model instances
      * @param {} data - An object of model property name/value pairs
      */
-    postTeamMemberImageFoldersUpdate(parameters: {
+    postImageFolderMembersUpdate(parameters: {
         'where' ? : string,
-        'data' ? : TeamMemberImageFolder,
+        'data' ? : ImageFolderMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/update';
+        let path = '/ImageFolderMembers/update';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87671,14 +95101,14 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersCountURL(parameters: {
+    getImageFolderMembersCountURL(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/count';
+        let path = '/ImageFolderMembers/count';
         if (parameters['where'] !== undefined) {
             queryParameters['where'] = parameters['where'];
         }
@@ -87696,16 +95126,16 @@ export default class TweakApi {
     /**
      * Count instances of the model matched by where from the data source.
      * @method
-     * @name TweakApi#getTeamMemberImageFoldersCount
+     * @name TweakApi#getImageFolderMembersCount
      * @param {string} where - Criteria to match model instances
      */
-    getTeamMemberImageFoldersCount(parameters: {
+    getImageFolderMembersCount(parameters: {
         'where' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/count';
+        let path = '/ImageFolderMembers/count';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87727,14 +95157,14 @@ export default class TweakApi {
         });
     }
 
-    postTeamMemberImageFoldersChangeStreamURL(parameters: {
+    postImageFolderMembersChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/change-stream';
+        let path = '/ImageFolderMembers/change-stream';
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -87751,17 +95181,17 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#postTeamMemberImageFoldersChangeStream
+    * @name TweakApi#postImageFolderMembersChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    postTeamMemberImageFoldersChangeStream(parameters: {
+    postImageFolderMembersChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/change-stream';
+        let path = '/ImageFolderMembers/change-stream';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -87786,14 +95216,14 @@ export default class TweakApi {
         });
     }
 
-    getTeamMemberImageFoldersChangeStreamURL(parameters: {
+    getImageFolderMembersChangeStreamURL(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/change-stream';
+        let path = '/ImageFolderMembers/change-stream';
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];
         }
@@ -87811,17 +95241,17 @@ export default class TweakApi {
     /**
     * Create a change stream.
     * @method
-    * @name TweakApi#getTeamMemberImageFoldersChangeStream
+    * @name TweakApi#getImageFolderMembersChangeStream
          * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    getTeamMemberImageFoldersChangeStream(parameters: {
+    getImageFolderMembersChangeStream(parameters: {
         'options' ? : string,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMemberImageFolders/change-stream';
+        let path = '/ImageFolderMembers/change-stream';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};

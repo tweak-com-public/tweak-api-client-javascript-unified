@@ -9,21 +9,22 @@
 
         /**
          * Constructor, with class name
-         * @param name     {string}    [REQUIRED]    
-         * @param path     {string}                  default: /  
-         * @param created  {string}                  format: date-time  
-         * @param modified {string}                  format: date-time  
-         * @param id       {string}                  
-         * @param teamId   {string}                  
-         * @param parentId {string}                  
-         * @param images   {array}                   items: $ref: #/definitions/Image    
-         * @param team     {object}                  $ref: #/definitions/Team  
-         * @param portals  {array}                   items: $ref: #/definitions/Portal    
-         * @param members  {array}                   items: $ref: #/definitions/TeamMember    
-         * @param parent   {object}                  $ref: #/definitions/ImageFolder  
-         * @param children {array}                   items: $ref: #/definitions/ImageFolder    
+         * @param name          {string}    [REQUIRED]    
+         * @param path          {string}                  default: /  
+         * @param created       {string}                  format: date-time  
+         * @param modified      {string}                  format: date-time  
+         * @param id            {string}                  
+         * @param teamId        {string}                  
+         * @param parentId      {string}                  
+         * @param images        {array}                   items: $ref: #/definitions/Image    
+         * @param team          {object}                  $ref: #/definitions/Team  
+         * @param portals       {array}                   items: $ref: #/definitions/Portal    
+         * @param members       {array}                   items: $ref: #/definitions/TeamMember    
+         * @param folderMembers {array}                   items: $ref: #/definitions/ImageFolderMember    
+         * @param parent        {object}                  $ref: #/definitions/ImageFolder  
+         * @param children      {array}                   items: $ref: #/definitions/ImageFolder    
          */
-        function TweakImageFolder(name, path, created, modified, id, teamId, parentId, images, team, portals, members, parent, children) {
+        function TweakImageFolder(name, path, created, modified, id, teamId, parentId, images, team, portals, members, folderMembers, parent, children) {
             this.name = name;
             this.path = path;
             this.created = created;
@@ -35,6 +36,7 @@
             this.team = team;
             this.portals = portals;
             this.members = members;
+            this.folderMembers = folderMembers;
             this.parent = parent;
             this.children = children;
             constructorValidation(this);
@@ -43,8 +45,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'path', 'created', 'modified', 'id', 'teamId', 'parentId', 'images', 'team', 'portals', 'members', 'parent', 'children'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array'];
+        var parameters = ['name', 'path', 'created', 'modified', 'id', 'teamId', 'parentId', 'images', 'team', 'portals', 'members', 'folderMembers', 'parent', 'children'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'array', 'object', 'array'];
         var requiredParameters = ['name'];
 
         /**
@@ -81,6 +83,7 @@
                 data.team,
                 data.portals,
                 data.members,
+                data.folderMembers,
                 data.parent,
                 data.children
             );

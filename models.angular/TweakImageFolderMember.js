@@ -1,21 +1,25 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTeamMemberImageFolder', TweakTeamMemberImageFolder);
+        .factory('TweakImageFolderMember', TweakImageFolderMember);
 
-    TweakTeamMemberImageFolder.$inject = ['$log'];
+    TweakImageFolderMember.$inject = ['$log'];
 
-    function TweakTeamMemberImageFolder($log) {
+    function TweakImageFolderMember($log) {
 
         /**
          * Constructor, with class name
+         * @param created  {string}    format: date-time  
+         * @param modified {string}    format: date-time  
          * @param id       {string}    
          * @param memberId {string}    
          * @param folderId {string}    
          * @param member   {object}    $ref: #/definitions/TeamMember  
          * @param folder   {object}    $ref: #/definitions/ImageFolder  
          */
-        function TweakTeamMemberImageFolder(id, memberId, folderId, member, folder) {
+        function TweakImageFolderMember(created, modified, id, memberId, folderId, member, folder) {
+            this.created = created;
+            this.modified = modified;
             this.id = id;
             this.memberId = memberId;
             this.folderId = folderId;
@@ -27,8 +31,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'memberId', 'folderId', 'member', 'folder'];
-        var parametersType = ['string', 'string', 'string', 'object', 'object'];
+        var parameters = ['created', 'modified', 'id', 'memberId', 'folderId', 'member', 'folder'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**
@@ -52,8 +56,10 @@
         /**
          * Static method, assigned to class
          */
-        TweakTeamMemberImageFolder.build = function (data) {
-            return new TweakTeamMemberImageFolder(
+        TweakImageFolderMember.build = function (data) {
+            return new TweakImageFolderMember(
+                data.created,
+                data.modified,
                 data.id,
                 data.memberId,
                 data.folderId,
@@ -62,16 +68,16 @@
             );
         };
 
-        TweakTeamMemberImageFolder.apiResponseTransformer = function (responseData) {
+        TweakImageFolderMember.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTeamMemberImageFolder.build).filter(Boolean);
+                return responseData.map(TweakImageFolderMember.build).filter(Boolean);
             }
-            return TweakTeamMemberImageFolder.build(responseData);
+            return TweakImageFolderMember.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTeamMemberImageFolder;
+        return TweakImageFolderMember;
     }
 })();

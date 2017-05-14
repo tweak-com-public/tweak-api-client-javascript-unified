@@ -29,7 +29,7 @@
          * @param designComments         {array}                   items: $ref: #/definitions/DesignComment    
          * @param designFolders          {array}                   items: $ref: #/definitions/DesignFolder    
          * @param workflows              {array}                   items: $ref: #/definitions/Workflow    
-         * @param imageFolders           {array}                   items: $ref: #/definitions/Image    
+         * @param imageFolders           {array}                   items: $ref: #/definitions/ImageFolder    
          */
         function TweakTeamMember(roles, created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets, requestedDesigns, requestedDesignExports, assignedDesigns, reviewedDesigns, commentedDesigns, designComments, designFolders, workflows, imageFolders) {
             this.roles = roles;
