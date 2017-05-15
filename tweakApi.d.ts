@@ -4088,7 +4088,65 @@ export default class TweakApi {
         });
     }
 
-    postCustomersInvitationTicketsAcceptURL(parameters: {
+    getCustomersInvitationTicketsByTokenURL(parameters: {
+        'token': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/invitationTickets/{token}';
+
+        path = path.replace('{token}', `${parameters['token']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get invitation details with token
+     * @method
+     * @name TweakApi#getCustomersInvitationTicketsByToken
+     * @param {string} token - Token describing invitation ticket
+     */
+    getCustomersInvitationTicketsByToken(parameters: {
+        'token': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/invitationTickets/{token}';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{token}', `${parameters['token']}`);
+
+            if (parameters['token'] === undefined) {
+                reject(new Error('Missing required  parameter: token'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    postCustomersInvitationTicketsByTokenAcceptURL(parameters: {
         'token': string,
         'data' ? : Customer,
         $queryParameters ? : any,
@@ -4096,10 +4154,9 @@ export default class TweakApi {
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/invitationTickets/accept';
-        if (parameters['token'] !== undefined) {
-            queryParameters['token'] = parameters['token'];
-        }
+        let path = '/Customers/invitationTickets/{token}/accept';
+
+        path = path.replace('{token}', `${parameters['token']}`);
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -4116,18 +4173,18 @@ export default class TweakApi {
     /**
      * Accept invitation with token
      * @method
-     * @name TweakApi#postCustomersInvitationTicketsAccept
+     * @name TweakApi#postCustomersInvitationTicketsByTokenAccept
      * @param {string} token - Token describing invitation ticket
      * @param {} data - Customer data in case new customer
      */
-    postCustomersInvitationTicketsAccept(parameters: {
+    postCustomersInvitationTicketsByTokenAccept(parameters: {
         'token': string,
         'data' ? : Customer,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/Customers/invitationTickets/accept';
+        let path = '/Customers/invitationTickets/{token}/accept';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -4135,9 +4192,7 @@ export default class TweakApi {
         return new Promise((resolve, reject) => {
             headers['Content-Type'] = 'application/json';
 
-            if (parameters['token'] !== undefined) {
-                queryParameters['token'] = parameters['token'];
-            }
+            path = path.replace('{token}', `${parameters['token']}`);
 
             if (parameters['token'] === undefined) {
                 reject(new Error('Missing required  parameter: token'));

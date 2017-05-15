@@ -3384,21 +3384,20 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Accept invitation with token
+             * Get invitation details with token
              * @method
-             * @name TweakApi#postCustomersInvitationTicketsAccept
+             * @name TweakApi#getCustomersInvitationTicketsByToken
              * @param {string} token - Token describing invitation ticket
-             * @param {} data - Customer data in case new customer
              * 
              */
-            TweakApi.prototype.postCustomersInvitationTicketsAccept = function(parameters) {
+            TweakApi.prototype.getCustomersInvitationTicketsByToken = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/Customers/invitationTickets/accept';
+                var path = '/Customers/invitationTickets/{token}';
 
                 var body;
                 var queryParameters = {};
@@ -3415,9 +3414,58 @@ angular.module('Tweak', [])
 
                 headers['Content-Type'] = ['application/json'];
 
-                if (parameters['token'] !== undefined) {
-                    queryParameters['token'] = parameters['token'];
+                path = path.replace('{token}', parameters['token']);
+
+                if (parameters['token'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: token'));
+                    return deferred.promise;
                 }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Accept invitation with token
+             * @method
+             * @name TweakApi#postCustomersInvitationTicketsByTokenAccept
+             * @param {string} token - Token describing invitation ticket
+             * @param {} data - Customer data in case new customer
+             * 
+             */
+            TweakApi.prototype.postCustomersInvitationTicketsByTokenAccept = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/invitationTickets/{token}/accept';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{token}', parameters['token']);
 
                 if (parameters['token'] === undefined) {
                     deferred.reject(new Error('Missing required  parameter: token'));
