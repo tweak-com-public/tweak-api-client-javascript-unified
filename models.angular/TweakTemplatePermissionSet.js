@@ -9,25 +9,23 @@
 
         /**
          * Constructor, with class name
-         * @param canEdit       {boolean}   default: false  
-         * @param needApproval  {boolean}   default: false  
-         * @param canBeOrdered  {boolean}   default: false  
-         * @param printPdf      {boolean}   default: false  
-         * @param proofPdf      {boolean}   default: false  
-         * @param jpegs         {boolean}   default: false  
-         * @param socialSharing {boolean}   default: false  
-         * @param id            {string}    
-         * @param templateId    {string}    
-         * @param template      {object}    $ref: #/definitions/Template  
+         * @param highResPdf        {boolean}   default: false  
+         * @param proofPdf          {boolean}   default: false  
+         * @param jpegs             {boolean}   default: false  
+         * @param socialSharing     {boolean}   default: false  
+         * @param canEdit           {boolean}   default: false  
+         * @param needAdminApproval {boolean}   default: false  
+         * @param id                {string}    
+         * @param templateId        {string}    
+         * @param template          {object}    $ref: #/definitions/Template  
          */
-        function TweakTemplatePermissionSet(canEdit, needApproval, canBeOrdered, printPdf, proofPdf, jpegs, socialSharing, id, templateId, template) {
-            this.canEdit = canEdit;
-            this.needApproval = needApproval;
-            this.canBeOrdered = canBeOrdered;
-            this.printPdf = printPdf;
+        function TweakTemplatePermissionSet(highResPdf, proofPdf, jpegs, socialSharing, canEdit, needAdminApproval, id, templateId, template) {
+            this.highResPdf = highResPdf;
             this.proofPdf = proofPdf;
             this.jpegs = jpegs;
             this.socialSharing = socialSharing;
+            this.canEdit = canEdit;
+            this.needAdminApproval = needAdminApproval;
             this.id = id;
             this.templateId = templateId;
             this.template = template;
@@ -37,8 +35,8 @@
         /**
          * Private properties
          */
-        var parameters = ['canEdit', 'needApproval', 'canBeOrdered', 'printPdf', 'proofPdf', 'jpegs', 'socialSharing', 'id', 'templateId', 'template'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
+        var parameters = ['highResPdf', 'proofPdf', 'jpegs', 'socialSharing', 'canEdit', 'needAdminApproval', 'id', 'templateId', 'template'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**
@@ -64,13 +62,12 @@
          */
         TweakTemplatePermissionSet.build = function (data) {
             return new TweakTemplatePermissionSet(
-                data.canEdit,
-                data.needApproval,
-                data.canBeOrdered,
-                data.printPdf,
+                data.highResPdf,
                 data.proofPdf,
                 data.jpegs,
                 data.socialSharing,
+                data.canEdit,
+                data.needAdminApproval,
                 data.id,
                 data.templateId,
                 data.template

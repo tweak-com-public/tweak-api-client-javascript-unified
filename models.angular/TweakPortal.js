@@ -22,13 +22,12 @@
          * @param members         {array}                   items: $ref: #/definitions/TeamMember    
          * @param portalMembers   {array}                   items: $ref: #/definitions/PortalMember    
          * @param team            {object}                  $ref: #/definitions/Team  
-         * @param permission      {object}                  $ref: #/definitions/PortalPermissionSet  
          * @param designs         {array}                   items: $ref: #/definitions/Design    
          * @param templateFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
          * @param designFolders   {array}                   items: $ref: #/definitions/DesignFolder    
          * @param imageFolders    {array}                   items: $ref: #/definitions/Image    
          */
-        function TweakPortal(name, logo, status, language, created, modified, id, teamId, templates, templateRels, members, portalMembers, team, permission, designs, templateFolders, designFolders, imageFolders) {
+        function TweakPortal(name, logo, status, language, created, modified, id, teamId, templates, templateRels, members, portalMembers, team, designs, templateFolders, designFolders, imageFolders) {
             this.name = name;
             this.logo = logo;
             this.status = status;
@@ -42,7 +41,6 @@
             this.members = members;
             this.portalMembers = portalMembers;
             this.team = team;
-            this.permission = permission;
             this.designs = designs;
             this.templateFolders = templateFolders;
             this.designFolders = designFolders;
@@ -53,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'templates', 'templateRels', 'members', 'portalMembers', 'team', 'permission', 'designs', 'templateFolders', 'designFolders', 'imageFolders'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'array'];
+        var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'templates', 'templateRels', 'members', 'portalMembers', 'team', 'designs', 'templateFolders', 'designFolders', 'imageFolders'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**
@@ -93,7 +91,6 @@
                 data.members,
                 data.portalMembers,
                 data.team,
-                data.permission,
                 data.designs,
                 data.templateFolders,
                 data.designFolders,

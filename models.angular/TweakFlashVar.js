@@ -10,8 +10,8 @@
         /**
          * Constructor, with class name
          * @param apiPartnerAuthUrl               {string}    default:   
-         * @param productId                       {string}    default:   
-         * @param savedPluginProductId            {string}    default:   
+         * @param productId                       {string}    
+         * @param savedPluginProductId            {string}    
          * @param allowAddImage                   {boolean}   default: false  
          * @param allowAddText                    {boolean}   default: false  
          * @param allowJPEG                       {boolean}   default: false  
@@ -24,7 +24,7 @@
          * @param showConfirm                     {boolean}   default: false  
          * @param allowApprovePluginProduct       {boolean}   default: false  
          * @param allowSendToApprovePluginProduct {boolean}   default: false  
-         * @param approvalFormID                  {object}    default:   
+         * @param approvalFormID                  {array}     default: items: type: object    
          * @param showPluginImages                {boolean}   default: false  
          * @param pluginImageLibraries            {array}     default: items: type: string    
          * @param id                              {string}    
@@ -80,7 +80,7 @@
          * Private properties
          */
         var parameters = ['apiPartnerAuthUrl', 'productId', 'savedPluginProductId', 'allowAddImage', 'allowAddText', 'allowJPEG', 'allowLowResPDF', 'allowHighResPDF', 'allowSaveForLater', 'allowSaveAsTemplate', 'blockEditing', 'makeAllItemsEditable', 'showConfirm', 'allowApprovePluginProduct', 'allowSendToApprovePluginProduct', 'approvalFormID', 'showPluginImages', 'pluginImageLibraries', 'id', 'teamId', 'team', 'teamMemberId', 'teamMember', 'portalId', 'portal', 'portalMemberId', 'portalMember', 'designId', 'design', 'templateId', 'template'];
-        var parametersType = ['string', 'string', 'string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'object', 'boolean', 'array', 'string', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object'];
+        var parametersType = ['string', 'string', 'string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'array', 'boolean', 'array', 'string', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object'];
         var requiredParameters = [];
 
         /**
