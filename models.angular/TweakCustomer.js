@@ -13,7 +13,7 @@
          * @param firstName         {string}    [REQUIRED]    
          * @param lastName          {string}    [REQUIRED]    
          * @param initials          {string}    [REQUIRED]    minimum: 2  maximum: 2  
-         * @param status            {string}                  default: active  enum: active, inactive
+         * @param status            {string}                  default: active  enum: active, inactive, godmode
          * @param created           {string}                  format: date-time  
          * @param modified          {string}                  format: date-time  
          * @param realm             {string}                  
