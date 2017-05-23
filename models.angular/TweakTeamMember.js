@@ -31,28 +31,13 @@
          * @param workflows              {array}                   items: $ref: #/definitions/Workflow    
          * @param imageFolders           {array}                   items: $ref: #/definitions/ImageFolder    
          */
-        function TweakTeamMember(roles, created, modified, id, customerId, teamId, customer, team, portals, uploadedTemplates, templates, invitationTickets, requestedDesigns, requestedDesignExports, assignedDesigns, reviewedDesigns, commentedDesigns, designComments, designFolders, workflows, imageFolders) {
-            this.roles = roles;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.customerId = customerId;
-            this.teamId = teamId;
-            this.customer = customer;
-            this.team = team;
-            this.portals = portals;
-            this.uploadedTemplates = uploadedTemplates;
-            this.templates = templates;
-            this.invitationTickets = invitationTickets;
-            this.requestedDesigns = requestedDesigns;
-            this.requestedDesignExports = requestedDesignExports;
-            this.assignedDesigns = assignedDesigns;
-            this.reviewedDesigns = reviewedDesigns;
-            this.commentedDesigns = commentedDesigns;
-            this.designComments = designComments;
-            this.designFolders = designFolders;
-            this.workflows = workflows;
-            this.imageFolders = imageFolders;
+        function TweakTeamMember(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -85,29 +70,7 @@
          * Static method, assigned to class
          */
         TweakTeamMember.build = function (data) {
-            return new TweakTeamMember(
-                data.roles,
-                data.created,
-                data.modified,
-                data.id,
-                data.customerId,
-                data.teamId,
-                data.customer,
-                data.team,
-                data.portals,
-                data.uploadedTemplates,
-                data.templates,
-                data.invitationTickets,
-                data.requestedDesigns,
-                data.requestedDesignExports,
-                data.assignedDesigns,
-                data.reviewedDesigns,
-                data.commentedDesigns,
-                data.designComments,
-                data.designFolders,
-                data.workflows,
-                data.imageFolders
-            );
+            return new TweakTeamMember(data);
         };
 
         TweakTeamMember.apiResponseTransformer = function (responseData) {

@@ -44,41 +44,13 @@
          * @param commenters      {array}                   items: $ref: #/definitions/TeamMember    
          * @param folder          {object}                  $ref: #/definitions/DesignFolder  
          */
-        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, rejectionReason, formData, edited, expired, path, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
-            this.colors = colors;
-            this.image = image;
-            this.name = name;
-            this.object = object;
-            this.thumbnail = thumbnail;
-            this.description = description;
-            this.purpose = purpose;
-            this.status = status;
-            this.rejectionReason = rejectionReason;
-            this.formData = formData;
-            this.edited = edited;
-            this.expired = expired;
-            this.path = path;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.customerId = customerId;
-            this.requesterId = requesterId;
-            this.assigneeId = assigneeId;
-            this.reviewerId = reviewerId;
-            this.templateId = templateId;
-            this.portalId = portalId;
-            this.folderId = folderId;
-            this.tags = tags;
-            this.customer = customer;
-            this.template = template;
-            this.portal = portal;
-            this.comments = comments;
-            this.exports = exports;
-            this.requester = requester;
-            this.assignee = assignee;
-            this.reviewer = reviewer;
-            this.commenters = commenters;
-            this.folder = folder;
+        function TweakDesign(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -111,42 +83,7 @@
          * Static method, assigned to class
          */
         TweakDesign.build = function (data) {
-            return new TweakDesign(
-                data.colors,
-                data.image,
-                data.name,
-                data.object,
-                data.thumbnail,
-                data.description,
-                data.purpose,
-                data.status,
-                data.rejectionReason,
-                data.formData,
-                data.edited,
-                data.expired,
-                data.path,
-                data.created,
-                data.modified,
-                data.id,
-                data.customerId,
-                data.requesterId,
-                data.assigneeId,
-                data.reviewerId,
-                data.templateId,
-                data.portalId,
-                data.folderId,
-                data.tags,
-                data.customer,
-                data.template,
-                data.portal,
-                data.comments,
-                data.exports,
-                data.requester,
-                data.assignee,
-                data.reviewer,
-                data.commenters,
-                data.folder
-            );
+            return new TweakDesign(data);
         };
 
         TweakDesign.apiResponseTransformer = function (responseData) {

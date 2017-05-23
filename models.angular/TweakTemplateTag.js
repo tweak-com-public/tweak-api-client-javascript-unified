@@ -15,12 +15,13 @@
          * @param tag        {object}    $ref: #/definitions/Tag  
          * @param template   {object}    $ref: #/definitions/Template  
          */
-        function TweakTemplateTag(id, tagId, templateId, tag, template) {
-            this.id = id;
-            this.tagId = tagId;
-            this.templateId = templateId;
-            this.tag = tag;
-            this.template = template;
+        function TweakTemplateTag(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -53,13 +54,7 @@
          * Static method, assigned to class
          */
         TweakTemplateTag.build = function (data) {
-            return new TweakTemplateTag(
-                data.id,
-                data.tagId,
-                data.templateId,
-                data.tag,
-                data.template
-            );
+            return new TweakTemplateTag(data);
         };
 
         TweakTemplateTag.apiResponseTransformer = function (responseData) {

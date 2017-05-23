@@ -13,10 +13,13 @@
          * @param y  {number}    [REQUIRED]    default: 0  format: double  
          * @param id {string}                  
          */
-        function TweakAxes(x, y, id) {
-            this.x = x;
-            this.y = y;
-            this.id = id;
+        function TweakAxes(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -49,11 +52,7 @@
          * Static method, assigned to class
          */
         TweakAxes.build = function (data) {
-            return new TweakAxes(
-                data.x,
-                data.y,
-                data.id
-            );
+            return new TweakAxes(data);
         };
 
         TweakAxes.apiResponseTransformer = function (responseData) {

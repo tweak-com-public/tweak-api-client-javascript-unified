@@ -15,12 +15,13 @@
          * @param portal   {object}    $ref: #/definitions/Portal  
          * @param folder   {object}    $ref: #/definitions/ImageFolder  
          */
-        function TweakPortalImageFolder(id, portalId, folderId, portal, folder) {
-            this.id = id;
-            this.portalId = portalId;
-            this.folderId = folderId;
-            this.portal = portal;
-            this.folder = folder;
+        function TweakPortalImageFolder(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -53,13 +54,7 @@
          * Static method, assigned to class
          */
         TweakPortalImageFolder.build = function (data) {
-            return new TweakPortalImageFolder(
-                data.id,
-                data.portalId,
-                data.folderId,
-                data.portal,
-                data.folder
-            );
+            return new TweakPortalImageFolder(data);
         };
 
         TweakPortalImageFolder.apiResponseTransformer = function (responseData) {

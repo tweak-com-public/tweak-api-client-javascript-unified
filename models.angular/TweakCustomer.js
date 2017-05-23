@@ -27,24 +27,13 @@
          * @param accessTokens      {array}                   items: $ref: #/definitions/TeamMemberAccessToken    
          * @param permission        {object}                  $ref: #/definitions/CustomerPermissionSet  
          */
-        function TweakCustomer(profilePicture, firstName, lastName, initials, status, created, modified, realm, username, email, emailVerified, id, designs, teams, invitationTickets, accessTokens, permission) {
-            this.profilePicture = profilePicture;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.initials = initials;
-            this.status = status;
-            this.created = created;
-            this.modified = modified;
-            this.realm = realm;
-            this.username = username;
-            this.email = email;
-            this.emailVerified = emailVerified;
-            this.id = id;
-            this.designs = designs;
-            this.teams = teams;
-            this.invitationTickets = invitationTickets;
-            this.accessTokens = accessTokens;
-            this.permission = permission;
+        function TweakCustomer(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -77,25 +66,7 @@
          * Static method, assigned to class
          */
         TweakCustomer.build = function (data) {
-            return new TweakCustomer(
-                data.profilePicture,
-                data.firstName,
-                data.lastName,
-                data.initials,
-                data.status,
-                data.created,
-                data.modified,
-                data.realm,
-                data.username,
-                data.email,
-                data.emailVerified,
-                data.id,
-                data.designs,
-                data.teams,
-                data.invitationTickets,
-                data.accessTokens,
-                data.permission
-            );
+            return new TweakCustomer(data);
         };
 
         TweakCustomer.apiResponseTransformer = function (responseData) {

@@ -24,21 +24,13 @@
          * @param commenter   {object}                  $ref: #/definitions/TeamMember  
          * @param replyOf     {object}                  $ref: #/definitions/DesignComment  
          */
-        function TweakDesignComment(comment, position, pageIndex, status, created, modified, id, designId, commentId, commenterId, design, replies, commenter, replyOf) {
-            this.comment = comment;
-            this.position = position;
-            this.pageIndex = pageIndex;
-            this.status = status;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.designId = designId;
-            this.commentId = commentId;
-            this.commenterId = commenterId;
-            this.design = design;
-            this.replies = replies;
-            this.commenter = commenter;
-            this.replyOf = replyOf;
+        function TweakDesignComment(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -71,22 +63,7 @@
          * Static method, assigned to class
          */
         TweakDesignComment.build = function (data) {
-            return new TweakDesignComment(
-                data.comment,
-                data.position,
-                data.pageIndex,
-                data.status,
-                data.created,
-                data.modified,
-                data.id,
-                data.designId,
-                data.commentId,
-                data.commenterId,
-                data.design,
-                data.replies,
-                data.commenter,
-                data.replyOf
-            );
+            return new TweakDesignComment(data);
         };
 
         TweakDesignComment.apiResponseTransformer = function (responseData) {

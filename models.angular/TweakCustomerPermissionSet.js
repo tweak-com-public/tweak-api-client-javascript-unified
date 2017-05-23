@@ -14,11 +14,13 @@
          * @param customerId {string}    
          * @param customer   {object}    $ref: #/definitions/Customer  
          */
-        function TweakCustomerPermissionSet(tweakEmail, id, customerId, customer) {
-            this.tweakEmail = tweakEmail;
-            this.id = id;
-            this.customerId = customerId;
-            this.customer = customer;
+        function TweakCustomerPermissionSet(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -51,12 +53,7 @@
          * Static method, assigned to class
          */
         TweakCustomerPermissionSet.build = function (data) {
-            return new TweakCustomerPermissionSet(
-                data.tweakEmail,
-                data.id,
-                data.customerId,
-                data.customer
-            );
+            return new TweakCustomerPermissionSet(data);
         };
 
         TweakCustomerPermissionSet.apiResponseTransformer = function (responseData) {

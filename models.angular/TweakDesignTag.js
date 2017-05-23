@@ -15,12 +15,13 @@
          * @param design   {object}    $ref: #/definitions/Design  
          * @param tag      {object}    $ref: #/definitions/Tag  
          */
-        function TweakDesignTag(id, designId, tagId, design, tag) {
-            this.id = id;
-            this.designId = designId;
-            this.tagId = tagId;
-            this.design = design;
-            this.tag = tag;
+        function TweakDesignTag(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -53,13 +54,7 @@
          * Static method, assigned to class
          */
         TweakDesignTag.build = function (data) {
-            return new TweakDesignTag(
-                data.id,
-                data.designId,
-                data.tagId,
-                data.design,
-                data.tag
-            );
+            return new TweakDesignTag(data);
         };
 
         TweakDesignTag.apiResponseTransformer = function (responseData) {

@@ -41,38 +41,13 @@
          * @param templateId                      {string}    
          * @param template                        {object}    $ref: #/definitions/Template  
          */
-        function TweakFlashVar(apiPartnerAuthUrl, productId, savedPluginProductId, allowAddImage, allowAddText, allowJPEG, allowLowResPDF, allowHighResPDF, allowSaveForLater, allowSaveAsTemplate, blockEditing, makeAllItemsEditable, showConfirm, allowApprovePluginProduct, allowSendToApprovePluginProduct, approvalFormID, showPluginImages, pluginImageLibraries, id, teamId, team, teamMemberId, teamMember, portalId, portal, portalMemberId, portalMember, designId, design, templateId, template) {
-            this.apiPartnerAuthUrl = apiPartnerAuthUrl;
-            this.productId = productId;
-            this.savedPluginProductId = savedPluginProductId;
-            this.allowAddImage = allowAddImage;
-            this.allowAddText = allowAddText;
-            this.allowJPEG = allowJPEG;
-            this.allowLowResPDF = allowLowResPDF;
-            this.allowHighResPDF = allowHighResPDF;
-            this.allowSaveForLater = allowSaveForLater;
-            this.allowSaveAsTemplate = allowSaveAsTemplate;
-            this.blockEditing = blockEditing;
-            this.makeAllItemsEditable = makeAllItemsEditable;
-            this.showConfirm = showConfirm;
-            this.allowApprovePluginProduct = allowApprovePluginProduct;
-            this.allowSendToApprovePluginProduct = allowSendToApprovePluginProduct;
-            this.approvalFormID = approvalFormID;
-            this.showPluginImages = showPluginImages;
-            this.pluginImageLibraries = pluginImageLibraries;
-            this.id = id;
-            this.teamId = teamId;
-            this.team = team;
-            this.teamMemberId = teamMemberId;
-            this.teamMember = teamMember;
-            this.portalId = portalId;
-            this.portal = portal;
-            this.portalMemberId = portalMemberId;
-            this.portalMember = portalMember;
-            this.designId = designId;
-            this.design = design;
-            this.templateId = templateId;
-            this.template = template;
+        function TweakFlashVar(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -105,39 +80,7 @@
          * Static method, assigned to class
          */
         TweakFlashVar.build = function (data) {
-            return new TweakFlashVar(
-                data.apiPartnerAuthUrl,
-                data.productId,
-                data.savedPluginProductId,
-                data.allowAddImage,
-                data.allowAddText,
-                data.allowJPEG,
-                data.allowLowResPDF,
-                data.allowHighResPDF,
-                data.allowSaveForLater,
-                data.allowSaveAsTemplate,
-                data.blockEditing,
-                data.makeAllItemsEditable,
-                data.showConfirm,
-                data.allowApprovePluginProduct,
-                data.allowSendToApprovePluginProduct,
-                data.approvalFormID,
-                data.showPluginImages,
-                data.pluginImageLibraries,
-                data.id,
-                data.teamId,
-                data.team,
-                data.teamMemberId,
-                data.teamMember,
-                data.portalId,
-                data.portal,
-                data.portalMemberId,
-                data.portalMember,
-                data.designId,
-                data.design,
-                data.templateId,
-                data.template
-            );
+            return new TweakFlashVar(data);
         };
 
         TweakFlashVar.apiResponseTransformer = function (responseData) {

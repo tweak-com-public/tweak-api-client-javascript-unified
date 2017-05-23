@@ -21,18 +21,13 @@
          * @param parent    {object}                  $ref: #/definitions/PortalTemplateFolder  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          */
-        function TweakPortalTemplateFolder(name, path, created, modified, id, portalId, parentId, portal, children, parent, templates) {
-            this.name = name;
-            this.path = path;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.portalId = portalId;
-            this.parentId = parentId;
-            this.portal = portal;
-            this.children = children;
-            this.parent = parent;
-            this.templates = templates;
+        function TweakPortalTemplateFolder(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -65,19 +60,7 @@
          * Static method, assigned to class
          */
         TweakPortalTemplateFolder.build = function (data) {
-            return new TweakPortalTemplateFolder(
-                data.name,
-                data.path,
-                data.created,
-                data.modified,
-                data.id,
-                data.portalId,
-                data.parentId,
-                data.portal,
-                data.children,
-                data.parent,
-                data.templates
-            );
+            return new TweakPortalTemplateFolder(data);
         };
 
         TweakPortalTemplateFolder.apiResponseTransformer = function (responseData) {

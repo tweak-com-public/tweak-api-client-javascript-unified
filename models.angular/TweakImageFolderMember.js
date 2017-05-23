@@ -17,14 +17,13 @@
          * @param member   {object}    $ref: #/definitions/TeamMember  
          * @param folder   {object}    $ref: #/definitions/ImageFolder  
          */
-        function TweakImageFolderMember(created, modified, id, memberId, folderId, member, folder) {
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.memberId = memberId;
-            this.folderId = folderId;
-            this.member = member;
-            this.folder = folder;
+        function TweakImageFolderMember(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -57,15 +56,7 @@
          * Static method, assigned to class
          */
         TweakImageFolderMember.build = function (data) {
-            return new TweakImageFolderMember(
-                data.created,
-                data.modified,
-                data.id,
-                data.memberId,
-                data.folderId,
-                data.member,
-                data.folder
-            );
+            return new TweakImageFolderMember(data);
         };
 
         TweakImageFolderMember.apiResponseTransformer = function (responseData) {

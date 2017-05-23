@@ -23,20 +23,13 @@
          * @param portal         {object}                  $ref: #/definitions/Portal  
          * @param portalMember   {object}                  $ref: #/definitions/PortalMember  
          */
-        function TweakTeamMemberAccessToken(id, ttl, created, userId, teamId, teamMemberId, portalId, portalMemberId, customer, team, teamMember, portal, portalMember) {
-            this.id = id;
-            this.ttl = ttl;
-            this.created = created;
-            this.userId = userId;
-            this.teamId = teamId;
-            this.teamMemberId = teamMemberId;
-            this.portalId = portalId;
-            this.portalMemberId = portalMemberId;
-            this.customer = customer;
-            this.team = team;
-            this.teamMember = teamMember;
-            this.portal = portal;
-            this.portalMember = portalMember;
+        function TweakTeamMemberAccessToken(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -69,21 +62,7 @@
          * Static method, assigned to class
          */
         TweakTeamMemberAccessToken.build = function (data) {
-            return new TweakTeamMemberAccessToken(
-                data.id,
-                data.ttl,
-                data.created,
-                data.userId,
-                data.teamId,
-                data.teamMemberId,
-                data.portalId,
-                data.portalMemberId,
-                data.customer,
-                data.team,
-                data.teamMember,
-                data.portal,
-                data.portalMember
-            );
+            return new TweakTeamMemberAccessToken(data);
         };
 
         TweakTeamMemberAccessToken.apiResponseTransformer = function (responseData) {

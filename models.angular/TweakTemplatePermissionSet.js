@@ -19,16 +19,13 @@
          * @param templateId        {string}    
          * @param template          {object}    $ref: #/definitions/Template  
          */
-        function TweakTemplatePermissionSet(highResPdf, proofPdf, jpegs, socialSharing, canEdit, needAdminApproval, id, templateId, template) {
-            this.highResPdf = highResPdf;
-            this.proofPdf = proofPdf;
-            this.jpegs = jpegs;
-            this.socialSharing = socialSharing;
-            this.canEdit = canEdit;
-            this.needAdminApproval = needAdminApproval;
-            this.id = id;
-            this.templateId = templateId;
-            this.template = template;
+        function TweakTemplatePermissionSet(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -61,17 +58,7 @@
          * Static method, assigned to class
          */
         TweakTemplatePermissionSet.build = function (data) {
-            return new TweakTemplatePermissionSet(
-                data.highResPdf,
-                data.proofPdf,
-                data.jpegs,
-                data.socialSharing,
-                data.canEdit,
-                data.needAdminApproval,
-                data.id,
-                data.templateId,
-                data.template
-            );
+            return new TweakTemplatePermissionSet(data);
         };
 
         TweakTemplatePermissionSet.apiResponseTransformer = function (responseData) {

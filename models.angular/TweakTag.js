@@ -16,13 +16,13 @@
          * @param templates {array}                   items: $ref: #/definitions/Template    
          * @param designs   {array}                   items: $ref: #/definitions/Design    
          */
-        function TweakTag(name, created, modified, id, templates, designs) {
-            this.name = name;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.templates = templates;
-            this.designs = designs;
+        function TweakTag(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -55,14 +55,7 @@
          * Static method, assigned to class
          */
         TweakTag.build = function (data) {
-            return new TweakTag(
-                data.name,
-                data.created,
-                data.modified,
-                data.id,
-                data.templates,
-                data.designs
-            );
+            return new TweakTag(data);
         };
 
         TweakTag.apiResponseTransformer = function (responseData) {

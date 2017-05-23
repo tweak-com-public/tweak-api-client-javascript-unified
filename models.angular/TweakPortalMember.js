@@ -18,15 +18,13 @@
          * @param portal   {object}                  $ref: #/definitions/Portal  
          * @param member   {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakPortalMember(roles, created, modified, id, portalId, memberId, portal, member) {
-            this.roles = roles;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.portalId = portalId;
-            this.memberId = memberId;
-            this.portal = portal;
-            this.member = member;
+        function TweakPortalMember(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -59,16 +57,7 @@
          * Static method, assigned to class
          */
         TweakPortalMember.build = function (data) {
-            return new TweakPortalMember(
-                data.roles,
-                data.created,
-                data.modified,
-                data.id,
-                data.portalId,
-                data.memberId,
-                data.portal,
-                data.member
-            );
+            return new TweakPortalMember(data);
         };
 
         TweakPortalMember.apiResponseTransformer = function (responseData) {

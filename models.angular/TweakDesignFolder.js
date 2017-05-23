@@ -23,20 +23,13 @@
          * @param designs  {array}                   items: $ref: #/definitions/Design    
          * @param portal   {object}                  $ref: #/definitions/Portal  
          */
-        function TweakDesignFolder(name, path, created, modified, id, memberId, parentId, portalId, member, children, parent, designs, portal) {
-            this.name = name;
-            this.path = path;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.memberId = memberId;
-            this.parentId = parentId;
-            this.portalId = portalId;
-            this.member = member;
-            this.children = children;
-            this.parent = parent;
-            this.designs = designs;
-            this.portal = portal;
+        function TweakDesignFolder(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -69,21 +62,7 @@
          * Static method, assigned to class
          */
         TweakDesignFolder.build = function (data) {
-            return new TweakDesignFolder(
-                data.name,
-                data.path,
-                data.created,
-                data.modified,
-                data.id,
-                data.memberId,
-                data.parentId,
-                data.portalId,
-                data.member,
-                data.children,
-                data.parent,
-                data.designs,
-                data.portal
-            );
+            return new TweakDesignFolder(data);
         };
 
         TweakDesignFolder.apiResponseTransformer = function (responseData) {

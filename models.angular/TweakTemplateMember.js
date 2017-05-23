@@ -17,14 +17,13 @@
          * @param template   {object}    $ref: #/definitions/Template  
          * @param member     {object}    $ref: #/definitions/TeamMember  
          */
-        function TweakTemplateMember(uploader, viewOnly, id, templateId, memberId, template, member) {
-            this.uploader = uploader;
-            this.viewOnly = viewOnly;
-            this.id = id;
-            this.templateId = templateId;
-            this.memberId = memberId;
-            this.template = template;
-            this.member = member;
+        function TweakTemplateMember(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -57,15 +56,7 @@
          * Static method, assigned to class
          */
         TweakTemplateMember.build = function (data) {
-            return new TweakTemplateMember(
-                data.uploader,
-                data.viewOnly,
-                data.id,
-                data.templateId,
-                data.memberId,
-                data.template,
-                data.member
-            );
+            return new TweakTemplateMember(data);
         };
 
         TweakTemplateMember.apiResponseTransformer = function (responseData) {

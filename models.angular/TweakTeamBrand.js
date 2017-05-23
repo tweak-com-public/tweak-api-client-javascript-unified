@@ -14,11 +14,13 @@
          * @param teamId {string}    
          * @param team   {object}    $ref: #/definitions/Team  
          */
-        function TweakTeamBrand(name, id, teamId, team) {
-            this.name = name;
-            this.id = id;
-            this.teamId = teamId;
-            this.team = team;
+        function TweakTeamBrand(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -51,12 +53,7 @@
          * Static method, assigned to class
          */
         TweakTeamBrand.build = function (data) {
-            return new TweakTeamBrand(
-                data.name,
-                data.id,
-                data.teamId,
-                data.team
-            );
+            return new TweakTeamBrand(data);
         };
 
         TweakTeamBrand.apiResponseTransformer = function (responseData) {

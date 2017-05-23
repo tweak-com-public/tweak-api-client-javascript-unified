@@ -32,29 +32,13 @@
          * @param images          {array}                   items: $ref: #/definitions/Image    
          * @param imageFolders    {array}                   items: $ref: #/definitions/ImageFolder    
          */
-        function TweakTeam(name, logo, subdomain, created, modified, id, icon, clientKey, javaScriptKey, restApiKey, windowsKey, masterKey, status, members, teamMembers, portals, templates, brand, templateFolders, workflows, images, imageFolders) {
-            this.name = name;
-            this.logo = logo;
-            this.subdomain = subdomain;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.icon = icon;
-            this.clientKey = clientKey;
-            this.javaScriptKey = javaScriptKey;
-            this.restApiKey = restApiKey;
-            this.windowsKey = windowsKey;
-            this.masterKey = masterKey;
-            this.status = status;
-            this.members = members;
-            this.teamMembers = teamMembers;
-            this.portals = portals;
-            this.templates = templates;
-            this.brand = brand;
-            this.templateFolders = templateFolders;
-            this.workflows = workflows;
-            this.images = images;
-            this.imageFolders = imageFolders;
+        function TweakTeam(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -87,30 +71,7 @@
          * Static method, assigned to class
          */
         TweakTeam.build = function (data) {
-            return new TweakTeam(
-                data.name,
-                data.logo,
-                data.subdomain,
-                data.created,
-                data.modified,
-                data.id,
-                data.icon,
-                data.clientKey,
-                data.javaScriptKey,
-                data.restApiKey,
-                data.windowsKey,
-                data.masterKey,
-                data.status,
-                data.members,
-                data.teamMembers,
-                data.portals,
-                data.templates,
-                data.brand,
-                data.templateFolders,
-                data.workflows,
-                data.images,
-                data.imageFolders
-            );
+            return new TweakTeam(data);
         };
 
         TweakTeam.apiResponseTransformer = function (responseData) {

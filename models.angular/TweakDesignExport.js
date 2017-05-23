@@ -17,14 +17,13 @@
          * @param designs     {object}                  $ref: #/definitions/Design  
          * @param requester   {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakDesignExport(type, created, id, designId, requesterId, designs, requester) {
-            this.type = type;
-            this.created = created;
-            this.id = id;
-            this.designId = designId;
-            this.requesterId = requesterId;
-            this.designs = designs;
-            this.requester = requester;
+        function TweakDesignExport(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -57,15 +56,7 @@
          * Static method, assigned to class
          */
         TweakDesignExport.build = function (data) {
-            return new TweakDesignExport(
-                data.type,
-                data.created,
-                data.id,
-                data.designId,
-                data.requesterId,
-                data.designs,
-                data.requester
-            );
+            return new TweakDesignExport(data);
         };
 
         TweakDesignExport.apiResponseTransformer = function (responseData) {

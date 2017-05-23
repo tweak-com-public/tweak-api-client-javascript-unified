@@ -27,24 +27,13 @@
          * @param designFolders   {array}                   items: $ref: #/definitions/DesignFolder    
          * @param imageFolders    {array}                   items: $ref: #/definitions/Image    
          */
-        function TweakPortal(name, logo, status, language, created, modified, id, teamId, templates, templateRels, members, portalMembers, team, designs, templateFolders, designFolders, imageFolders) {
-            this.name = name;
-            this.logo = logo;
-            this.status = status;
-            this.language = language;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.teamId = teamId;
-            this.templates = templates;
-            this.templateRels = templateRels;
-            this.members = members;
-            this.portalMembers = portalMembers;
-            this.team = team;
-            this.designs = designs;
-            this.templateFolders = templateFolders;
-            this.designFolders = designFolders;
-            this.imageFolders = imageFolders;
+        function TweakPortal(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -77,25 +66,7 @@
          * Static method, assigned to class
          */
         TweakPortal.build = function (data) {
-            return new TweakPortal(
-                data.name,
-                data.logo,
-                data.status,
-                data.language,
-                data.created,
-                data.modified,
-                data.id,
-                data.teamId,
-                data.templates,
-                data.templateRels,
-                data.members,
-                data.portalMembers,
-                data.team,
-                data.designs,
-                data.templateFolders,
-                data.designFolders,
-                data.imageFolders
-            );
+            return new TweakPortal(data);
         };
 
         TweakPortal.apiResponseTransformer = function (responseData) {

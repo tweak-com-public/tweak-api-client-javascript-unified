@@ -24,21 +24,13 @@
          * @param invitee      {object}                  $ref: #/definitions/Customer  
          * @param inviter      {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakInvitationTicket(message, token, inviteeEmail, targetModel, targetId, targetAttrs, status, created, modified, id, inviteeId, inviterId, invitee, inviter) {
-            this.message = message;
-            this.token = token;
-            this.inviteeEmail = inviteeEmail;
-            this.targetModel = targetModel;
-            this.targetId = targetId;
-            this.targetAttrs = targetAttrs;
-            this.status = status;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.inviteeId = inviteeId;
-            this.inviterId = inviterId;
-            this.invitee = invitee;
-            this.inviter = inviter;
+        function TweakInvitationTicket(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -71,22 +63,7 @@
          * Static method, assigned to class
          */
         TweakInvitationTicket.build = function (data) {
-            return new TweakInvitationTicket(
-                data.message,
-                data.token,
-                data.inviteeEmail,
-                data.targetModel,
-                data.targetId,
-                data.targetAttrs,
-                data.status,
-                data.created,
-                data.modified,
-                data.id,
-                data.inviteeId,
-                data.inviterId,
-                data.invitee,
-                data.inviter
-            );
+            return new TweakInvitationTicket(data);
         };
 
         TweakInvitationTicket.apiResponseTransformer = function (responseData) {

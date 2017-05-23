@@ -20,17 +20,13 @@
          * @param template   {object}    $ref: #/definitions/Template  
          * @param folder     {object}    $ref: #/definitions/PortalTemplateFolder  
          */
-        function TweakPortalTemplate(path, created, modified, id, portalId, templateId, folderId, portal, template, folder) {
-            this.path = path;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.portalId = portalId;
-            this.templateId = templateId;
-            this.folderId = folderId;
-            this.portal = portal;
-            this.template = template;
-            this.folder = folder;
+        function TweakPortalTemplate(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -63,18 +59,7 @@
          * Static method, assigned to class
          */
         TweakPortalTemplate.build = function (data) {
-            return new TweakPortalTemplate(
-                data.path,
-                data.created,
-                data.modified,
-                data.id,
-                data.portalId,
-                data.templateId,
-                data.folderId,
-                data.portal,
-                data.template,
-                data.folder
-            );
+            return new TweakPortalTemplate(data);
         };
 
         TweakPortalTemplate.apiResponseTransformer = function (responseData) {

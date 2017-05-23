@@ -24,21 +24,13 @@
          * @param parent        {object}                  $ref: #/definitions/ImageFolder  
          * @param children      {array}                   items: $ref: #/definitions/ImageFolder    
          */
-        function TweakImageFolder(name, path, created, modified, id, teamId, parentId, images, team, portals, members, folderMembers, parent, children) {
-            this.name = name;
-            this.path = path;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.teamId = teamId;
-            this.parentId = parentId;
-            this.images = images;
-            this.team = team;
-            this.portals = portals;
-            this.members = members;
-            this.folderMembers = folderMembers;
-            this.parent = parent;
-            this.children = children;
+        function TweakImageFolder(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -71,22 +63,7 @@
          * Static method, assigned to class
          */
         TweakImageFolder.build = function (data) {
-            return new TweakImageFolder(
-                data.name,
-                data.path,
-                data.created,
-                data.modified,
-                data.id,
-                data.teamId,
-                data.parentId,
-                data.images,
-                data.team,
-                data.portals,
-                data.members,
-                data.folderMembers,
-                data.parent,
-                data.children
-            );
+            return new TweakImageFolder(data);
         };
 
         TweakImageFolder.apiResponseTransformer = function (responseData) {

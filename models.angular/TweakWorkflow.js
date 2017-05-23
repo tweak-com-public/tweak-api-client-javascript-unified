@@ -21,18 +21,13 @@
          * @param templates {array}                   items: $ref: #/definitions/Template    
          * @param creator   {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakWorkflow(name, form, edited, created, modified, id, teamId, creatorId, team, templates, creator) {
-            this.name = name;
-            this.form = form;
-            this.edited = edited;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.teamId = teamId;
-            this.creatorId = creatorId;
-            this.team = team;
-            this.templates = templates;
-            this.creator = creator;
+        function TweakWorkflow(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -65,19 +60,7 @@
          * Static method, assigned to class
          */
         TweakWorkflow.build = function (data) {
-            return new TweakWorkflow(
-                data.name,
-                data.form,
-                data.edited,
-                data.created,
-                data.modified,
-                data.id,
-                data.teamId,
-                data.creatorId,
-                data.team,
-                data.templates,
-                data.creator
-            );
+            return new TweakWorkflow(data);
         };
 
         TweakWorkflow.apiResponseTransformer = function (responseData) {

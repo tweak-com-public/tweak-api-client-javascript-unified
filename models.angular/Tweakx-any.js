@@ -10,7 +10,13 @@
         /**
          * Constructor, with class name
          */
-        function Tweakx-any() {
+        function Tweakx-any(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -43,8 +49,7 @@
          * Static method, assigned to class
          */
         Tweakx-any.build = function (data) {
-            return new Tweakx-any(
-            );
+            return new Tweakx-any(data);
         };
 
         Tweakx-any.apiResponseTransformer = function (responseData) {

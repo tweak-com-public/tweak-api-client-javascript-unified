@@ -21,18 +21,13 @@
          * @param parent    {object}                  $ref: #/definitions/TeamTemplateFolder  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          */
-        function TweakTeamTemplateFolder(name, path, created, modified, id, teamId, parentId, team, children, parent, templates) {
-            this.name = name;
-            this.path = path;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.teamId = teamId;
-            this.parentId = parentId;
-            this.team = team;
-            this.children = children;
-            this.parent = parent;
-            this.templates = templates;
+        function TweakTeamTemplateFolder(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -65,19 +60,7 @@
          * Static method, assigned to class
          */
         TweakTeamTemplateFolder.build = function (data) {
-            return new TweakTeamTemplateFolder(
-                data.name,
-                data.path,
-                data.created,
-                data.modified,
-                data.id,
-                data.teamId,
-                data.parentId,
-                data.team,
-                data.children,
-                data.parent,
-                data.templates
-            );
+            return new TweakTeamTemplateFolder(data);
         };
 
         TweakTeamTemplateFolder.apiResponseTransformer = function (responseData) {

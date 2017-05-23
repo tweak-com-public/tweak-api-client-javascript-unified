@@ -35,32 +35,13 @@
          * @param workflow        {object}                  $ref: #/definitions/Workflow  
          * @param uploader        {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakTemplate(name, thumbnail, object, description, edited, teamPath, status, created, modified, id, teamId, uploaderId, teamFolderId, workflowId, portals, team, members, templateMembers, permission, designs, tags, teamFolder, portalFolders, workflow, uploader) {
-            this.name = name;
-            this.thumbnail = thumbnail;
-            this.object = object;
-            this.description = description;
-            this.edited = edited;
-            this.teamPath = teamPath;
-            this.status = status;
-            this.created = created;
-            this.modified = modified;
-            this.id = id;
-            this.teamId = teamId;
-            this.uploaderId = uploaderId;
-            this.teamFolderId = teamFolderId;
-            this.workflowId = workflowId;
-            this.portals = portals;
-            this.team = team;
-            this.members = members;
-            this.templateMembers = templateMembers;
-            this.permission = permission;
-            this.designs = designs;
-            this.tags = tags;
-            this.teamFolder = teamFolder;
-            this.portalFolders = portalFolders;
-            this.workflow = workflow;
-            this.uploader = uploader;
+        function TweakTemplate(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
             constructorValidation(this);
         }
 
@@ -93,33 +74,7 @@
          * Static method, assigned to class
          */
         TweakTemplate.build = function (data) {
-            return new TweakTemplate(
-                data.name,
-                data.thumbnail,
-                data.object,
-                data.description,
-                data.edited,
-                data.teamPath,
-                data.status,
-                data.created,
-                data.modified,
-                data.id,
-                data.teamId,
-                data.uploaderId,
-                data.teamFolderId,
-                data.workflowId,
-                data.portals,
-                data.team,
-                data.members,
-                data.templateMembers,
-                data.permission,
-                data.designs,
-                data.tags,
-                data.teamFolder,
-                data.portalFolders,
-                data.workflow,
-                data.uploader
-            );
+            return new TweakTemplate(data);
         };
 
         TweakTemplate.apiResponseTransformer = function (responseData) {
