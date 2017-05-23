@@ -9,40 +9,42 @@
 
         /**
          * Constructor, with class name
-         * @param colors      {array}                   items: type: string    
-         * @param image       {string}                  
-         * @param name        {string}    [REQUIRED]    
-         * @param object      {object}    [REQUIRED]    
-         * @param thumbnail   {string}                  
-         * @param description {string}                  default:   
-         * @param purpose     {string}                  default: none  enum: none, printOrder
-         * @param status      {string}                  default: pendingAction  enum: pendingAction, pendingApproval, approved, rejected
-         * @param edited      {string}                  format: date-time  
-         * @param expired     {string}                  format: date-time  
-         * @param path        {string}                  default: /  
-         * @param created     {string}                  format: date-time  
-         * @param modified    {string}                  format: date-time  
-         * @param id          {string}                  
-         * @param customerId  {string}                  
-         * @param requesterId {string}                  
-         * @param assigneeId  {string}                  
-         * @param reviewerId  {string}                  
-         * @param templateId  {string}                  
-         * @param portalId    {string}                  
-         * @param folderId    {string}                  
-         * @param tags        {array}                   items: $ref: #/definitions/Tag    
-         * @param customer    {object}                  $ref: #/definitions/Customer  
-         * @param template    {object}                  $ref: #/definitions/Template  
-         * @param portal      {object}                  $ref: #/definitions/Portal  
-         * @param comments    {array}                   items: $ref: #/definitions/DesignComment    
-         * @param exports     {array}                   items: $ref: #/definitions/DesignExport    
-         * @param requester   {object}                  $ref: #/definitions/TeamMember  
-         * @param assignee    {object}                  $ref: #/definitions/TeamMember  
-         * @param reviewer    {object}                  $ref: #/definitions/TeamMember  
-         * @param commenters  {array}                   items: $ref: #/definitions/TeamMember    
-         * @param folder      {object}                  $ref: #/definitions/DesignFolder  
+         * @param colors          {array}                   items: type: string    
+         * @param image           {string}                  
+         * @param name            {string}    [REQUIRED]    
+         * @param object          {object}    [REQUIRED]    
+         * @param thumbnail       {string}                  
+         * @param description     {string}                  default:   
+         * @param purpose         {string}                  default: none  enum: none, printOrder
+         * @param status          {string}                  default: pendingAction  enum: pendingAction, pendingApproval, approved, rejected
+         * @param rejectionReason {string}                  default:   
+         * @param formData        {array}                   default: items: type: object    
+         * @param edited          {string}                  format: date-time  
+         * @param expired         {string}                  format: date-time  
+         * @param path            {string}                  default: /  
+         * @param created         {string}                  format: date-time  
+         * @param modified        {string}                  format: date-time  
+         * @param id              {string}                  
+         * @param customerId      {string}                  
+         * @param requesterId     {string}                  
+         * @param assigneeId      {string}                  
+         * @param reviewerId      {string}                  
+         * @param templateId      {string}                  
+         * @param portalId        {string}                  
+         * @param folderId        {string}                  
+         * @param tags            {array}                   items: $ref: #/definitions/Tag    
+         * @param customer        {object}                  $ref: #/definitions/Customer  
+         * @param template        {object}                  $ref: #/definitions/Template  
+         * @param portal          {object}                  $ref: #/definitions/Portal  
+         * @param comments        {array}                   items: $ref: #/definitions/DesignComment    
+         * @param exports         {array}                   items: $ref: #/definitions/DesignExport    
+         * @param requester       {object}                  $ref: #/definitions/TeamMember  
+         * @param assignee        {object}                  $ref: #/definitions/TeamMember  
+         * @param reviewer        {object}                  $ref: #/definitions/TeamMember  
+         * @param commenters      {array}                   items: $ref: #/definitions/TeamMember    
+         * @param folder          {object}                  $ref: #/definitions/DesignFolder  
          */
-        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, edited, expired, path, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
+        function TweakDesign(colors, image, name, object, thumbnail, description, purpose, status, rejectionReason, formData, edited, expired, path, created, modified, id, customerId, requesterId, assigneeId, reviewerId, templateId, portalId, folderId, tags, customer, template, portal, comments, exports, requester, assignee, reviewer, commenters, folder) {
             this.colors = colors;
             this.image = image;
             this.name = name;
@@ -51,6 +53,8 @@
             this.description = description;
             this.purpose = purpose;
             this.status = status;
+            this.rejectionReason = rejectionReason;
+            this.formData = formData;
             this.edited = edited;
             this.expired = expired;
             this.path = path;
@@ -81,8 +85,8 @@
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'rejectionReason', 'formData', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -116,6 +120,8 @@
                 data.description,
                 data.purpose,
                 data.status,
+                data.rejectionReason,
+                data.formData,
                 data.edited,
                 data.expired,
                 data.path,
