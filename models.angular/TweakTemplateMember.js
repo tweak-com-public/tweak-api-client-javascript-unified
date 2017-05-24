@@ -14,8 +14,10 @@
          * @param id         {string}    
          * @param templateId {string}    
          * @param memberId   {string}    
+         * @param portalId   {string}    
          * @param template   {object}    $ref: #/definitions/Template  
          * @param member     {object}    $ref: #/definitions/TeamMember  
+         * @param portal     {object}    $ref: #/definitions/Portal  
          */
         function TweakTemplateMember(data) {
             data = data || {};
@@ -30,8 +32,8 @@
         /**
          * Private properties
          */
-        var parameters = ['uploader', 'viewOnly', 'id', 'templateId', 'memberId', 'template', 'member'];
-        var parametersType = ['boolean', 'boolean', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['uploader', 'viewOnly', 'id', 'templateId', 'memberId', 'portalId', 'template', 'member', 'portal'];
+        var parametersType = ['boolean', 'boolean', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**

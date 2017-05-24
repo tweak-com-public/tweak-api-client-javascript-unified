@@ -46204,6 +46204,75 @@ export default class TweakApi {
         });
     }
 
+    getTemplateMembersByIdPortalURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TemplateMembers/{id}/portal';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation portal.
+    * @method
+    * @name TweakApi#getTemplateMembersByIdPortal
+         * @param {string} id - TemplateMember id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTemplateMembersByIdPortal(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TemplateMembers/{id}/portal';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     postTemplateMembersURL(parameters: {
         'data' ? : TemplateMember,
         $queryParameters ? : any,
