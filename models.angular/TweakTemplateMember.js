@@ -9,8 +9,6 @@
 
         /**
          * Constructor, with class name
-         * @param uploader   {boolean}   
-         * @param viewOnly   {boolean}   
          * @param id         {string}    
          * @param templateId {string}    
          * @param memberId   {string}    
@@ -32,8 +30,8 @@
         /**
          * Private properties
          */
-        var parameters = ['uploader', 'viewOnly', 'id', 'templateId', 'memberId', 'portalId', 'template', 'member', 'portal'];
-        var parametersType = ['boolean', 'boolean', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
+        var parameters = ['id', 'templateId', 'memberId', 'portalId', 'template', 'member', 'portal'];
+        var parametersType = ['string', 'string', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**
