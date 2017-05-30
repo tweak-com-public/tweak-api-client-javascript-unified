@@ -9,20 +9,36 @@
 
         /**
          * Constructor, with class name
-         * @param message      {string}                  default:   
-         * @param token        {string}                  
-         * @param inviteeEmail {string}                  
-         * @param targetModel  {string}    [REQUIRED]    enum: Team, Portal, Template, ImageFolder, Design
-         * @param targetId     {string}    [REQUIRED]    
-         * @param targetAttrs  {object}                  default:   
-         * @param status       {string}                  default: pending  enum: pending, accepted
-         * @param created      {string}                  format: date-time  
-         * @param modified     {string}                  format: date-time  
-         * @param id           {string}                  
-         * @param inviteeId    {string}                  
-         * @param inviterId    {string}                  
-         * @param invitee      {object}                  $ref: #/definitions/Customer  
-         * @param inviter      {object}                  $ref: #/definitions/TeamMember  
+         * @param message                   {string}                  default:   
+         * @param token                     {string}                  
+         * @param inviteeEmail              {string}                  
+         * @param targetModel               {string}    [REQUIRED]    enum: Team, Portal, Template, ImageFolder, Design
+         * @param targetId                  {string}    [REQUIRED]    
+         * @param targetAttrs               {object}                  default:   
+         * @param status                    {string}                  default: pending  enum: pending, accepted
+         * @param created                   {string}                  format: date-time  
+         * @param modified                  {string}                  format: date-time  
+         * @param id                        {string}                  
+         * @param inviteeId                 {string}                  
+         * @param inviterId                 {string}                  
+         * @param targetTeamId              {string}                  
+         * @param targetTeamMemberId        {string}                  
+         * @param targetPortalId            {string}                  
+         * @param targetPortalMemberId      {string}                  
+         * @param targetTemplateId          {string}                  
+         * @param targetTemplateMemberId    {string}                  
+         * @param targetImageFolderId       {string}                  
+         * @param targetImageFolderMemberId {string}                  
+         * @param invitee                   {object}                  $ref: #/definitions/Customer  
+         * @param inviter                   {object}                  $ref: #/definitions/TeamMember  
+         * @param targetTeam                {object}                  $ref: #/definitions/Team  
+         * @param targetTeamMember          {object}                  $ref: #/definitions/TeamMember  
+         * @param targetPortal              {object}                  $ref: #/definitions/Portal  
+         * @param targetPortalMember        {object}                  $ref: #/definitions/PortalMember  
+         * @param targetTemplate            {object}                  $ref: #/definitions/Template  
+         * @param targetTemplateMember      {object}                  $ref: #/definitions/TemplateMember  
+         * @param targetImageFolder         {object}                  $ref: #/definitions/ImageFolder  
+         * @param targetImageFolderMember   {object}                  $ref: #/definitions/ImageFolderMember  
          */
         function TweakInvitationTicket(data) {
             data = data || {};
@@ -37,8 +53,8 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'token', 'inviteeEmail', 'targetModel', 'targetId', 'targetAttrs', 'status', 'created', 'modified', 'id', 'inviteeId', 'inviterId', 'invitee', 'inviter'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['message', 'token', 'inviteeEmail', 'targetModel', 'targetId', 'targetAttrs', 'status', 'created', 'modified', 'id', 'inviteeId', 'inviterId', 'targetTeamId', 'targetTeamMemberId', 'targetPortalId', 'targetPortalMemberId', 'targetTemplateId', 'targetTemplateMemberId', 'targetImageFolderId', 'targetImageFolderMemberId', 'invitee', 'inviter', 'targetTeam', 'targetTeamMember', 'targetPortal', 'targetPortalMember', 'targetTemplate', 'targetTemplateMember', 'targetImageFolder', 'targetImageFolderMember'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['targetModel', 'targetId'];
 
         /**

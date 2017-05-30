@@ -55590,6 +55590,454 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Fetches belongsTo relation targetTeam.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetTeam
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetTeam = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetTeam';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetTeamMember.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetTeamMember
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetTeamMember = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetTeamMember';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetPortal.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetPortal
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetPortal = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetPortal';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetPortalMember.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetPortalMember
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetPortalMember = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetPortalMember';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetTemplate.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetTemplate
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetTemplate = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetTemplate';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetTemplateMember.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetTemplateMember
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetTemplateMember = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetTemplateMember';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetImageFolder.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetImageFolder
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetImageFolder = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetImageFolder';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Fetches belongsTo relation targetImageFolderMember.
+     * @method
+     * @name TweakApi#getInvitationTicketsByIdTargetImageFolderMember
+     * @param {string} id - InvitationTicket id
+     * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+     * 
+     */
+    TweakApi.prototype.getInvitationTicketsByIdTargetImageFolderMember = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/InvitationTickets/{id}/targetImageFolderMember';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Create a new instance of the model and persist it into the data source.
      * @method
      * @name TweakApi#postInvitationTickets
