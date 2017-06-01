@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param name            {string}    [REQUIRED]    
-         * @param logo            {string}                  
+         * @param logo            {object}                  default:   
          * @param subdomain       {string}                  
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**
