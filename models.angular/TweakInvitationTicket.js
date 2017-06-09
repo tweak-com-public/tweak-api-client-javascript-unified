@@ -47,6 +47,18 @@
                 this[d] = data[d];
             }
 
+
+            for (var i = 0; i < parameters.length; i++) {
+
+                if (this[parameters[i]] && parametersType[i] === 'string' ) {
+
+                    this[parameters[i]] = '' + this[parameters[i]];
+
+                }
+
+            }
+
+
             constructorValidation(this);
         }
 

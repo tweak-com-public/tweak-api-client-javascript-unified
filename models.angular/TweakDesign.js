@@ -19,6 +19,9 @@
          * @param status          {string}                  default: pendingAction  enum: pendingAction, pendingApproval, approved, rejected
          * @param rejectionReason {string}                  default:   
          * @param formData        {array}                   default: items: type: object    
+         * @param highResPdfUrl   {string}                  default:   
+         * @param proofPdfUrl     {string}                  default:   
+         * @param jpegsUrl        {string}                  default:   
          * @param edited          {string}                  format: date-time  
          * @param expired         {string}                  format: date-time  
          * @param path            {string}                  default: /  
@@ -51,14 +54,26 @@
                 this[d] = data[d];
             }
 
+
+            for (var i = 0; i < parameters.length; i++) {
+
+                if (this[parameters[i]] && parametersType[i] === 'string' ) {
+
+                    this[parameters[i]] = '' + this[parameters[i]];
+
+                }
+
+            }
+
+
             constructorValidation(this);
         }
 
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'rejectionReason', 'formData', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'rejectionReason', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
