@@ -37,6 +37,7 @@ type TemplateMember = any;
 type FlashVar = any;
 type PersistedModel = any;
 type QTask = any;
+type ObjectID = string;
 type Axes = any;
 
 type Logger = {

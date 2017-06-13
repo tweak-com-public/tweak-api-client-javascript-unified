@@ -24,8 +24,8 @@
          * @param result    {object}    
          * @param error     {object}    
          * @param stack     {object}    
-         * @param id        {number}    format: double  
-         * @param itemId    {number}    format: double  
+         * @param id        {object}    $ref: #/definitions/ObjectID  
+         * @param itemId    {object}    $ref: #/definitions/ObjectID  
          * @param itemType  {string}    
          */
         function TweakQTask(data) {
@@ -54,7 +54,7 @@
          * Private properties
          */
         var parameters = ['chain', 'events', 'status', 'params', 'queue', 'count', 'attempts', 'remaining', 'delay', 'priority', 'ended', 'enqueued', 'result', 'error', 'stack', 'id', 'itemId', 'itemType'];
-        var parametersType = ['array', 'array', 'string', 'object', 'string', 'number', 'number', 'number', 'string', 'number', 'string', 'string', 'object', 'object', 'object', 'number', 'number', 'string'];
+        var parametersType = ['array', 'array', 'string', 'object', 'string', 'number', 'number', 'number', 'string', 'number', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'string'];
         var requiredParameters = [];
 
         /**
