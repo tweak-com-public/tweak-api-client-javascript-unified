@@ -1,0 +1,116 @@
+(function () {
+    'use strict';
+    angular.module('Tweak')
+        .factory('TweakDesign', TweakDesign);
+
+    TweakDesign.$inject = ['$log'];
+
+    function TweakDesign($log) {
+
+        /**
+         * Constructor, with class name
+         * @param colors          {array}                   items: type: string    
+         * @param image           {string}                  
+         * @param name            {string}    [REQUIRED]    
+         * @param object          {object}    [REQUIRED]    
+         * @param thumbnail       {string}                  
+         * @param description     {string}                  default:   
+         * @param purpose         {string}                  default: none  enum: none, printOrder
+         * @param status          {string}                  default: pendingAction  enum: pendingAction, pendingApproval, approved, rejected
+         * @param rejectionReason {string}                  default:   
+         * @param formData        {array}                   default: items: type: object    
+         * @param highResPdfUrl   {string}                  default:   
+         * @param proofPdfUrl     {string}                  default:   
+         * @param jpegsUrl        {string}                  default:   
+         * @param edited          {string}                  format: date-time  
+         * @param expired         {string}                  format: date-time  
+         * @param path            {string}                  default: /  
+         * @param created         {string}                  format: date-time  
+         * @param modified        {string}                  format: date-time  
+         * @param id              {string}                  
+         * @param customerId      {string}                  
+         * @param requesterId     {string}                  
+         * @param assigneeId      {string}                  
+         * @param reviewerId      {string}                  
+         * @param templateId      {string}                  
+         * @param portalId        {string}                  
+         * @param folderId        {string}                  
+         * @param tags            {array}                   items: $ref: #/definitions/Tag    
+         * @param customer        {object}                  $ref: #/definitions/Customer  
+         * @param template        {object}                  $ref: #/definitions/Template  
+         * @param portal          {object}                  $ref: #/definitions/Portal  
+         * @param comments        {array}                   items: $ref: #/definitions/DesignComment    
+         * @param exports         {array}                   items: $ref: #/definitions/DesignExport    
+         * @param requester       {object}                  $ref: #/definitions/TeamMember  
+         * @param assignee        {object}                  $ref: #/definitions/TeamMember  
+         * @param reviewer        {object}                  $ref: #/definitions/TeamMember  
+         * @param commenters      {array}                   items: $ref: #/definitions/TeamMember    
+         * @param folder          {object}                  $ref: #/definitions/DesignFolder  
+         */
+        function TweakDesign(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
+
+            for (var i = 0; i < parameters.length; i++) {
+
+                if (this[parameters[i]] && parametersType[i] === 'string' ) {
+
+                    this[parameters[i]] = '' + this[parameters[i]];
+
+                }
+
+            }
+
+
+            constructorValidation(this);
+        }
+
+        /**
+         * Private properties
+         */
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'rejectionReason', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
+        var requiredParameters = ['name', 'object'];
+
+        /**
+         * Private function
+         */
+        function constructorValidation(model) {
+            requiredParameters.forEach(function(requiredParameter) {
+                if (model[requiredParameter] === undefined) {
+                    throw new Error('Required parameter `' + requiredParameter + '` is missing!');
+                }
+            });
+
+            for (var i = 0; i < parameters.length; i++) {
+                var parameterTypeObject = '[object ' + parametersType[i].charAt(0).toUpperCase() + parametersType[i].substr(1) + ']';
+                if (model[parameters[i]] && Object.prototype.toString.call(model[parameters[i]]) !== parameterTypeObject) {
+                    throw new Error('Wrong parameter type for `' + parameters[i] + '`: should be `' + parametersType[i] + '`!');
+                }
+            }
+        }
+
+        /**
+         * Static method, assigned to class
+         */
+        TweakDesign.build = function (data) {
+            return new TweakDesign(data);
+        };
+
+        TweakDesign.apiResponseTransformer = function (responseData) {
+            if (angular.isArray(responseData)) {
+                return responseData.map(TweakDesign.build).filter(Boolean);
+            }
+            return TweakDesign.build(responseData);
+        };
+
+        /**
+         * Return the constructor function
+         */
+        return TweakDesign;
+    }
+})();
