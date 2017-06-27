@@ -25,7 +25,7 @@
          * @param designs         {array}                   items: $ref: #/definitions/Design    
          * @param templateFolders {array}                   items: $ref: #/definitions/PortalTemplateFolder    
          * @param designFolders   {array}                   items: $ref: #/definitions/DesignFolder    
-         * @param imageFolders    {array}                   items: $ref: #/definitions/Image    
+         * @param imageFolders    {array}                   items: $ref: #/definitions/ImageFolder    
          */
         function TweakPortal(data) {
             data = data || {};

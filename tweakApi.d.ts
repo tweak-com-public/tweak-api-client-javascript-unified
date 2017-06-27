@@ -4590,6 +4590,88 @@ export default class TweakApi {
         });
     }
 
+    putCustomersByIdProfilePictureURL(parameters: {
+        'id': string,
+        'id': string,
+        'data': Customer,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/profilePicture';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Change profile picture
+     * @method
+     * @name TweakApi#putCustomersByIdProfilePicture
+     * @param {string} id - Customer id
+     * @param {string} id - Customer id
+     * @param {} data - Profile picture
+     */
+    putCustomersByIdProfilePicture(parameters: {
+        'id': string,
+        'id': string,
+        'data': Customer,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/{id}/profilePicture';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters['data'] === undefined) {
+                reject(new Error('Missing required  parameter: data'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getCustomersByIdTeamsByNkBrandURL(parameters: {
         'id': string,
         'nk': string,
@@ -22935,6 +23017,88 @@ export default class TweakApi {
         });
     }
 
+    putTeamsByIdLogoURL(parameters: {
+        'id': string,
+        'id': string,
+        'data': Team,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/logo';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Change logo
+     * @method
+     * @name TweakApi#putTeamsByIdLogo
+     * @param {string} id - Team id
+     * @param {string} id - Team id
+     * @param {} data - Logo
+     */
+    putTeamsByIdLogo(parameters: {
+        'id': string,
+        'id': string,
+        'data': Team,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/{id}/logo';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters['data'] === undefined) {
+                reject(new Error('Missing required  parameter: data'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamsByIdPortalsByNkTeamURL(parameters: {
         'id': string,
         'nk': string,
@@ -25470,7 +25634,7 @@ export default class TweakApi {
         'id': string,
         'nk': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -25508,7 +25672,7 @@ export default class TweakApi {
         'id': string,
         'nk': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -28092,7 +28256,7 @@ export default class TweakApi {
     postTeamsByIdPortalsByNkImageFoldersURL(parameters: {
         'id': string,
         'nk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -28128,7 +28292,7 @@ export default class TweakApi {
     postTeamsByIdPortalsByNkImageFolders(parameters: {
         'id': string,
         'nk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -46849,6 +47013,182 @@ export default class TweakApi {
         });
     }
 
+    putTeamMembersByIdTeamLogoURL(parameters: {
+        'id': string,
+        'id': string,
+        'data': TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/team/logo';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Change Team logo
+     * @method
+     * @name TweakApi#putTeamMembersByIdTeamLogo
+     * @param {string} id - TeamMember id
+     * @param {string} id - TeamMember id
+     * @param {} data - Logo
+     */
+    putTeamMembersByIdTeamLogo(parameters: {
+        'id': string,
+        'id': string,
+        'data': TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/team/logo';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters['data'] === undefined) {
+                reject(new Error('Missing required  parameter: data'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putTeamMembersByIdPortalsByFkLogoURL(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'data': TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/portals/{fk}/logo';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Change Portal logo
+     * @method
+     * @name TweakApi#putTeamMembersByIdPortalsByFkLogo
+     * @param {string} id - TeamMember id
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Portal id
+     * @param {} data - Logo
+     */
+    putTeamMembersByIdPortalsByFkLogo(parameters: {
+        'id': string,
+        'id': string,
+        'fk': string,
+        'data': TeamMember,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/portals/{fk}/logo';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters['data'] === undefined) {
+                reject(new Error('Missing required  parameter: data'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamMembersByIdTeamBrandURL(parameters: {
         'id': string,
         'refresh' ? : boolean,
@@ -60268,7 +60608,7 @@ export default class TweakApi {
     putPortalsByIdImageFoldersByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -60302,7 +60642,7 @@ export default class TweakApi {
     putPortalsByIdImageFoldersByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -62494,7 +62834,7 @@ export default class TweakApi {
 
     postPortalsByIdImageFoldersURL(parameters: {
         'id': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -62526,7 +62866,7 @@ export default class TweakApi {
     */
     postPortalsByIdImageFolders(parameters: {
         'id': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -64492,6 +64832,88 @@ export default class TweakApi {
             queryParameters = {};
 
             this.request('POST', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    putPortalsByIdLogoURL(parameters: {
+        'id': string,
+        'id': string,
+        'data': Portal,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/logo';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Change logo
+     * @method
+     * @name TweakApi#putPortalsByIdLogo
+     * @param {string} id - Portal id
+     * @param {string} id - Portal id
+     * @param {} data - Logo
+     */
+    putPortalsByIdLogo(parameters: {
+        'id': string,
+        'id': string,
+        'data': Portal,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/logo';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
+            }
+
+            if (parameters['data'] === undefined) {
+                reject(new Error('Missing required  parameter: data'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
