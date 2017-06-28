@@ -12,6 +12,7 @@
          * @param name            {string}    [REQUIRED]    
          * @param logo            {object}                  default:   
          * @param subdomain       {string}                  
+         * @param country         {string}    [REQUIRED]    
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
          * @param id              {string}    [REQUIRED]    
@@ -31,6 +32,8 @@
          * @param workflows       {array}                   items: $ref: #/definitions/Workflow    
          * @param images          {array}                   items: $ref: #/definitions/Image    
          * @param imageFolders    {array}                   items: $ref: #/definitions/ImageFolder    
+         * @param billing         {object}                  $ref: #/definitions/Billing  
+         * @param permission      {object}                  $ref: #/definitions/TeamPermissionSet  
          */
         function TweakTeam(data) {
             data = data || {};
@@ -57,9 +60,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'subdomain', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array'];
-        var requiredParameters = ['name', 'id'];
+        var parameters = ['name', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object'];
+        var requiredParameters = ['name', 'country', 'id'];
 
         /**
          * Private function
