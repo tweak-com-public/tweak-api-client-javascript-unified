@@ -25634,7 +25634,7 @@ export default class TweakApi {
         'id': string,
         'nk': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -25672,7 +25672,7 @@ export default class TweakApi {
         'id': string,
         'nk': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -28256,7 +28256,7 @@ export default class TweakApi {
     postTeamsByIdPortalsByNkImageFoldersURL(parameters: {
         'id': string,
         'nk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -28292,7 +28292,7 @@ export default class TweakApi {
     postTeamsByIdPortalsByNkImageFolders(parameters: {
         'id': string,
         'nk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -60608,7 +60608,7 @@ export default class TweakApi {
     putPortalsByIdImageFoldersByFkURL(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -60642,7 +60642,7 @@ export default class TweakApi {
     putPortalsByIdImageFoldersByFk(parameters: {
         'id': string,
         'fk': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -62834,7 +62834,7 @@ export default class TweakApi {
 
     postPortalsByIdImageFoldersURL(parameters: {
         'id': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -62866,7 +62866,7 @@ export default class TweakApi {
     */
     postPortalsByIdImageFolders(parameters: {
         'id': string,
-        'data' ? : Image,
+        'data' ? : ImageFolder,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
