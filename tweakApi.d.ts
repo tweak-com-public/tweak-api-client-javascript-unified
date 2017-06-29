@@ -6,7 +6,6 @@ import {
 } from "superagent";
 
 type CallbackHandler = (err: any, res ? : request.Response) => void;
-type x - any = any;
 type Design = any;
 type Team = any;
 type TeamMember = any;
@@ -46987,8 +46986,8 @@ export default class TweakApi {
         'id': string,
         'targetModel': string,
         'targetId': string,
-        'data' ? : Array < x - any >
-            | x - any
+        'data' ? : Array < {} >
+            | {}
 
             ,
         $queryParameters ? : any,
@@ -47037,8 +47036,8 @@ export default class TweakApi {
         'id': string,
         'targetModel': string,
         'targetId': string,
-        'data' ? : Array < x - any >
-            | x - any
+        'data' ? : Array < {} >
+            | {}
 
             ,
         $queryParameters ? : any,
@@ -66809,8 +66808,8 @@ export default class TweakApi {
         'id': string,
         'id': string,
         'fk': string,
-        'data' ? : Array < x - any >
-            | x - any
+        'data' ? : Array < {} >
+            | {}
 
             ,
         $queryParameters ? : any,
@@ -66854,8 +66853,8 @@ export default class TweakApi {
         'id': string,
         'id': string,
         'fk': string,
-        'data' ? : Array < x - any >
-            | x - any
+        'data' ? : Array < {} >
+            | {}
 
             ,
         $queryParameters ? : any,
