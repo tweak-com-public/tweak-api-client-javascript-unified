@@ -12,7 +12,7 @@
          * @param name            {string}    [REQUIRED]    
          * @param logo            {object}                  default:   
          * @param subdomain       {string}                  
-         * @param country         {string}    [REQUIRED]    
+         * @param country         {string}                  default: Ireland  
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
          * @param id              {string}    [REQUIRED]    
@@ -62,7 +62,7 @@
          */
         var parameters = ['name', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission'];
         var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object'];
-        var requiredParameters = ['name', 'country', 'id'];
+        var requiredParameters = ['name', 'id'];
 
         /**
          * Private function
