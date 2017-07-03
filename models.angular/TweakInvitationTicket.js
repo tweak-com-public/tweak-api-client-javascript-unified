@@ -15,7 +15,7 @@
          * @param targetModel               {string}    [REQUIRED]    enum: Team, Portal, Template, ImageFolder, Design
          * @param targetId                  {string}    [REQUIRED]    
          * @param targetAttrs               {object}                  default:   
-         * @param status                    {string}                  default: pending  enum: pending, accepted
+         * @param status                    {string}                  enum: pending, accepted
          * @param created                   {string}                  format: date-time  
          * @param modified                  {string}                  format: date-time  
          * @param id                        {string}                  

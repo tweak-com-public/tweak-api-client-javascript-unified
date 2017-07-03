@@ -15,8 +15,8 @@
          * @param object          {object}    [REQUIRED]    
          * @param thumbnail       {string}                  
          * @param description     {string}                  default:   
-         * @param purpose         {string}                  default: none  enum: none, printOrder
-         * @param status          {string}                  default: pendingAction  enum: pendingAction, pendingApproval, approved, rejected
+         * @param purpose         {string}                  enum: none, printOrder
+         * @param status          {string}                  enum: pendingAction, pendingApproval, approved, rejected
          * @param rejectionReason {string}                  default:   
          * @param formData        {array}                   default: items: type: object    
          * @param highResPdfUrl   {string}                  default:   
