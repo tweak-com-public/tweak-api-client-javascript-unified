@@ -18,6 +18,7 @@
          * @param statementDescriptor  {string}                  
          * @param statementDescription {string}                  
          * @param trialPeriodDays      {number}                  format: double  
+         * @param type                 {string}                  enum: plan, additional
          * @param created              {string}                  format: date-time  
          */
         function TweakBillingPlan(data) {
@@ -45,8 +46,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'created'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string'];
+        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'created'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string'];
         var requiredParameters = ['id'];
 
         /**
