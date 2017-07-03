@@ -38521,6 +38521,64 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Get URL to review a Team Template
+     * @method
+     * @name TweakApi#getTeamMembersByIdTeamTemplatesByFkUrlReview
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Template id
+     * 
+     */
+    TweakApi.prototype.getTeamMembersByIdTeamTemplatesByFkUrlReview = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/TeamMembers/{id}/team/templates/{fk}/url/review';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        path = path.replace('{fk}', parameters['fk']);
+
+        if (parameters['fk'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: fk'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * List Templates with Designs for the Team of TeamMember
      * @method
      * @name TweakApi#getTeamMembersByIdTeamTemplatesWithDesigns
@@ -48118,6 +48176,56 @@ var TweakApi = (function() {
         }
 
         this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Get URL to review a template
+     * @method
+     * @name TweakApi#getTemplatesByIdUrlReview
+     * @param {string} id - Template id
+     * 
+     */
+    TweakApi.prototype.getTemplatesByIdUrlReview = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Templates/{id}/url/review';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{id}', parameters['id']);
+
+        if (parameters['id'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: id'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
         return deferred.promise;
     };

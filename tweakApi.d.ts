@@ -47550,6 +47550,76 @@ export default class TweakApi {
         });
     }
 
+    getTeamMembersByIdTeamTemplatesByFkUrlReviewURL(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/team/templates/{fk}/url/review';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{fk}', `${parameters['fk']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get URL to review a Team Template
+     * @method
+     * @name TweakApi#getTeamMembersByIdTeamTemplatesByFkUrlReview
+     * @param {string} id - TeamMember id
+     * @param {string} fk - Template id
+     */
+    getTeamMembersByIdTeamTemplatesByFkUrlReview(parameters: {
+        'id': string,
+        'fk': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/team/templates/{fk}/url/review';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{fk}', `${parameters['fk']}`);
+
+            if (parameters['fk'] === undefined) {
+                reject(new Error('Missing required  parameter: fk'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getTeamMembersByIdTeamTemplatesWithDesignsURL(parameters: {
         'id': string,
         'id': string,
@@ -59266,6 +59336,64 @@ export default class TweakApi {
             }
 
             this.request('DELETE', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTemplatesByIdUrlReviewURL(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/url/review';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get URL to review a template
+     * @method
+     * @name TweakApi#getTemplatesByIdUrlReview
+     * @param {string} id - Template id
+     */
+    getTemplatesByIdUrlReview(parameters: {
+        'id': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Templates/{id}/url/review';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 

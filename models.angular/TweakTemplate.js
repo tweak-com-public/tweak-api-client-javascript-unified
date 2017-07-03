@@ -15,7 +15,7 @@
          * @param description     {string}                  default:   
          * @param edited          {string}                  format: date-time  
          * @param teamPath        {string}                  default: /  
-         * @param status          {string}                  default: pendingApproval  enum: pendingApproval, approved, rejected
+         * @param status          {string}                  enum: pendingApproval, approved, rejected
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
          * @param id              {string}                  

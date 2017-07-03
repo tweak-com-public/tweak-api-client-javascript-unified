@@ -12,7 +12,7 @@
          * @param comment     {string}    [REQUIRED]    
          * @param position    {object}                  $ref: #/definitions/Axes  
          * @param pageIndex   {number}                  minimum: 0  default: 0  format: double  
-         * @param status      {string}                  default: unsolved  enum: unsolved, resolved
+         * @param status      {string}                  enum: unsolved, resolved
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
