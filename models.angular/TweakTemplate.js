@@ -14,8 +14,8 @@
          * @param object          {object}    [REQUIRED]    
          * @param description     {string}                  default:   
          * @param edited          {string}                  format: date-time  
-         * @param teamPath        {string}                  default: /  
-         * @param status          {string}                  default: pendingApproval  enum: pendingApproval, approved, rejected
+         * @param path            {string}                  default: /  
+         * @param status          {string}                  enum: pendingApproval, approved, rejected
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
          * @param id              {string}                  
@@ -60,7 +60,7 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'teamPath', 'status', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
         var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 

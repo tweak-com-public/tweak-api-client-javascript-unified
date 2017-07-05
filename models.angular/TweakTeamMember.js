@@ -10,6 +10,16 @@
         /**
          * Constructor, with class name
          * @param roles                  {array}     [REQUIRED]    default: items: type: string    
+         * @param position               {string}                  
+         * @param officePhone            {string}                  
+         * @param mobilePhone            {string}                  
+         * @param website                {string}                  
+         * @param addressCity            {string}                  
+         * @param addressCountry         {string}                  
+         * @param addressLine1           {string}                  
+         * @param addressLine2           {string}                  
+         * @param addressState           {string}                  
+         * @param addressZip             {string}                  
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
          * @param id                     {string}                  
@@ -56,8 +66,8 @@
         /**
          * Private properties
          */
-        var parameters = ['roles', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'workflows', 'imageFolders'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['roles', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'created', 'modified', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'workflows', 'imageFolders'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**
