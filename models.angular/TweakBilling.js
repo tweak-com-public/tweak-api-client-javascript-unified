@@ -14,6 +14,7 @@
          * @param companyVat           {string}    
          * @param companyCard          {object}    $ref: #/definitions/BillingCard  
          * @param subscription         {object}    $ref: #/definitions/BillingSubscription  
+         * @param limit                {object}    $ref: #/definitions/BillingLimit  
          * @param stripeCustomerId     {string}    
          * @param stripeCardId         {string}    
          * @param stripeSubscriptionId {string}    
@@ -46,8 +47,8 @@
         /**
          * Private properties
          */
-        var parameters = ['companyName', 'companyEmail', 'companyVat', 'companyCard', 'subscription', 'stripeCustomerId', 'stripeCardId', 'stripeSubscriptionId', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'object', 'object', 'string', 'string', 'string', 'string', 'string', 'object'];
+        var parameters = ['companyName', 'companyEmail', 'companyVat', 'companyCard', 'subscription', 'limit', 'stripeCustomerId', 'stripeCardId', 'stripeSubscriptionId', 'id', 'teamId', 'team'];
+        var parametersType = ['string', 'string', 'string', 'object', 'object', 'object', 'string', 'string', 'string', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

@@ -21,7 +21,7 @@
          * @param description               {string}                  
          * @param endingBalance             {number}                  format: double  
          * @param forgiven                  {boolean}                 
-         * @param lines                     {object}                  $ref: #/definitions/BillingInvoiceLine  
+         * @param lines                     {array}                   items: $ref: #/definitions/BillingInvoiceLine    
          * @param nextPaymentAttempt        {string}                  format: date-time  
          * @param paid                      {boolean}                 
          * @param periodEnd                 {string}                  format: date-time  
@@ -61,7 +61,7 @@
          * Private properties
          */
         var parameters = ['id', 'amountDue', 'attemptCount', 'attempted', 'charged', 'closed', 'currency', 'customer', 'date', 'description', 'endingBalance', 'forgiven', 'lines', 'nextPaymentAttempt', 'paid', 'periodEnd', 'periodStart', 'reciptNumber', 'startingBalance', 'statementDescriptor', 'subscription', 'subscriptionProrationDate', 'subtotal', 'tax', 'total'];
-        var parametersType = ['string', 'number', 'number', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'number', 'boolean', 'object', 'string', 'boolean', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number'];
+        var parametersType = ['string', 'number', 'number', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'number', 'boolean', 'array', 'string', 'boolean', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number'];
         var requiredParameters = ['id'];
 
         /**
