@@ -4709,6 +4709,210 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Find a related item by id for dataSources.
+             * @method
+             * @name TweakApi#getCustomersByIdTeamsByNkDataSourcesByFk
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * @param {string} fk - Foreign key for dataSources
+             * 
+             */
+            TweakApi.prototype.getCustomersByIdTeamsByNkDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for dataSources.
+             * @method
+             * @name TweakApi#deleteCustomersByIdTeamsByNkDataSourcesByFk
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * @param {string} fk - Foreign key for dataSources
+             * 
+             */
+            TweakApi.prototype.deleteCustomersByIdTeamsByNkDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for dataSources.
+             * @method
+             * @name TweakApi#putCustomersByIdTeamsByNkDataSourcesByFk
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * @param {string} fk - Foreign key for dataSources
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putCustomersByIdTeamsByNkDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Find a related item by id for templates.
              * @method
              * @name TweakApi#getCustomersByIdTeamsByNkTemplatesByFk
@@ -6884,6 +7088,255 @@ angular.module('Tweak', [])
 
                 var domain = this.domain;
                 var path = '/Customers/{id}/teams/{nk}/teamMembers/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries dataSources of Team.
+             * @method
+             * @name TweakApi#getCustomersByIdTeamsByNkDataSources
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getCustomersByIdTeamsByNkDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in dataSources of this model.
+             * @method
+             * @name TweakApi#postCustomersByIdTeamsByNkDataSources
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postCustomersByIdTeamsByNkDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all dataSources of this model.
+             * @method
+             * @name TweakApi#deleteCustomersByIdTeamsByNkDataSources
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * 
+             */
+            TweakApi.prototype.deleteCustomersByIdTeamsByNkDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts dataSources of Team.
+             * @method
+             * @name TweakApi#getCustomersByIdTeamsByNkDataSourcesCount
+             * @param {string} id - Customer id
+             * @param {string} nk - Foreign key for teams.
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getCustomersByIdTeamsByNkDataSourcesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/{id}/teams/{nk}/dataSources/count';
 
                 var body;
                 var queryParameters = {};
@@ -15294,6 +15747,186 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Find a related item by id for dataSources.
+             * @method
+             * @name TweakApi#getTeamsByIdDataSourcesByFk
+             * @param {string} id - Team id
+             * @param {string} fk - Foreign key for dataSources
+             * 
+             */
+            TweakApi.prototype.getTeamsByIdDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for dataSources.
+             * @method
+             * @name TweakApi#deleteTeamsByIdDataSourcesByFk
+             * @param {string} id - Team id
+             * @param {string} fk - Foreign key for dataSources
+             * 
+             */
+            TweakApi.prototype.deleteTeamsByIdDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for dataSources.
+             * @method
+             * @name TweakApi#putTeamsByIdDataSourcesByFk
+             * @param {string} id - Team id
+             * @param {string} fk - Foreign key for dataSources
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamsByIdDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Find a related item by id for templates.
              * @method
              * @name TweakApi#getTeamsByIdTemplatesByFk
@@ -17204,6 +17837,223 @@ angular.module('Tweak', [])
 
                 var domain = this.domain;
                 var path = '/Teams/{id}/teamMembers/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries dataSources of Team.
+             * @method
+             * @name TweakApi#getTeamsByIdDataSources
+             * @param {string} id - Team id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamsByIdDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in dataSources of this model.
+             * @method
+             * @name TweakApi#postTeamsByIdDataSources
+             * @param {string} id - Team id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamsByIdDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all dataSources of this model.
+             * @method
+             * @name TweakApi#deleteTeamsByIdDataSources
+             * @param {string} id - Team id
+             * 
+             */
+            TweakApi.prototype.deleteTeamsByIdDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts dataSources of Team.
+             * @method
+             * @name TweakApi#getTeamsByIdDataSourcesCount
+             * @param {string} id - Team id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getTeamsByIdDataSourcesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/dataSources/count';
 
                 var body;
                 var queryParameters = {};
@@ -40758,6 +41608,186 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Find a related item by id for dataSources.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamDataSourcesByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for dataSources
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for dataSources.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamDataSourcesByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for dataSources
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for dataSources.
+             * @method
+             * @name TweakApi#putTeamMembersByIdTeamDataSourcesByFk
+             * @param {string} id - TeamMember id
+             * @param {string} fk - Foreign key for dataSources
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamMembersByIdTeamDataSourcesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Find a related item by id for templates.
              * @method
              * @name TweakApi#getTeamMembersByIdTeamTemplatesByFk
@@ -42490,6 +43520,223 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Queries dataSources of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamDataSources
+             * @param {string} id - TeamMember id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in dataSources of this model.
+             * @method
+             * @name TweakApi#postTeamMembersByIdTeamDataSources
+             * @param {string} id - TeamMember id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamMembersByIdTeamDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all dataSources of this model.
+             * @method
+             * @name TweakApi#deleteTeamMembersByIdTeamDataSources
+             * @param {string} id - TeamMember id
+             * 
+             */
+            TweakApi.prototype.deleteTeamMembersByIdTeamDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts dataSources of Team.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamDataSourcesCount
+             * @param {string} id - TeamMember id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamDataSourcesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/dataSources/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Queries templates of Team.
              * @method
              * @name TweakApi#getTeamMembersByIdTeamTemplates
@@ -43777,6 +45024,4342 @@ angular.module('Tweak', [])
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation team.
+             * @method
+             * @name TweakApi#getDataSourcesByIdTeam
+             * @param {string} id - DataSourceKey id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdTeam = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/team';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for keys.
+             * @method
+             * @name TweakApi#getDataSourcesByIdKeysByFk
+             * @param {string} id - DataSource id
+             * @param {string} fk - Foreign key for keys
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdKeysByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for keys.
+             * @method
+             * @name TweakApi#deleteDataSourcesByIdKeysByFk
+             * @param {string} id - DataSource id
+             * @param {string} fk - Foreign key for keys
+             * 
+             */
+            TweakApi.prototype.deleteDataSourcesByIdKeysByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for keys.
+             * @method
+             * @name TweakApi#putDataSourcesByIdKeysByFk
+             * @param {string} id - DataSource id
+             * @param {string} fk - Foreign key for keys
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putDataSourcesByIdKeysByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries keys of DataSource.
+             * @method
+             * @name TweakApi#getDataSourcesByIdKeys
+             * @param {string} id - DataSource id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdKeys = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in keys of this model.
+             * @method
+             * @name TweakApi#postDataSourcesByIdKeys
+             * @param {string} id - DataSource id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDataSourcesByIdKeys = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all keys of this model.
+             * @method
+             * @name TweakApi#deleteDataSourcesByIdKeys
+             * @param {string} id - DataSource id
+             * 
+             */
+            TweakApi.prototype.deleteDataSourcesByIdKeys = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts keys of DataSource.
+             * @method
+             * @name TweakApi#getDataSourcesByIdKeysCount
+             * @param {string} id - DataSource id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdKeysCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/keys/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a new instance of the model and persist it into the data source.
+             * @method
+             * @name TweakApi#postDataSources
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#patchDataSources
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.patchDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#putDataSources
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find all instances of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDataSources
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSources = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#postDataSourcesReplaceOrCreate
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourcesReplaceOrCreate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/replaceOrCreate';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             * @method
+             * @name TweakApi#postDataSourcesUpsertWithWhere
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDataSourcesUpsertWithWhere = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/upsertWithWhere';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#getDataSourcesByIdExists
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdExists = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/exists';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#headDataSourcesById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.headDataSourcesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#getDataSourcesById
+             * @param {string} id - Model id
+             * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourcesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#putDataSourcesById
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDataSourcesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#deleteDataSourcesById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.deleteDataSourcesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#patchDataSourcesById
+             * @param {string} id - DataSourceKey id
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.patchDataSourcesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#postDataSourcesByIdReplace
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourcesByIdReplace = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/replace';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find first instance of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDataSourcesFindOne
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourcesFindOne = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/findOne';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update instances of the model matched by {{where}} from the data source.
+             * @method
+             * @name TweakApi#postDataSourcesUpdate
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDataSourcesUpdate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/update';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Count instances of the model matched by where from the data source.
+             * @method
+             * @name TweakApi#getDataSourcesCount
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDataSourcesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#postDataSourcesChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDataSourcesChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    form['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#getDataSourcesChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourcesChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    queryParameters['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation dataSource.
+             * @method
+             * @name TweakApi#getDataSourcesByIdDataSource
+             * @param {string} id - DataSourceKey id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdDataSource = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/dataSource';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for recordValues.
+             * @method
+             * @name TweakApi#getDataSourcesByIdRecordValuesByFk
+             * @param {string} id - DataSourceKey id
+             * @param {string} fk - Foreign key for recordValues
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdRecordValuesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for recordValues.
+             * @method
+             * @name TweakApi#deleteDataSourcesByIdRecordValuesByFk
+             * @param {string} id - DataSourceKey id
+             * @param {string} fk - Foreign key for recordValues
+             * 
+             */
+            TweakApi.prototype.deleteDataSourcesByIdRecordValuesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for recordValues.
+             * @method
+             * @name TweakApi#putDataSourcesByIdRecordValuesByFk
+             * @param {string} id - DataSourceKey id
+             * @param {string} fk - Foreign key for recordValues
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putDataSourcesByIdRecordValuesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries recordValues of DataSourceKey.
+             * @method
+             * @name TweakApi#getDataSourcesByIdRecordValues
+             * @param {string} id - DataSourceKey id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in recordValues of this model.
+             * @method
+             * @name TweakApi#postDataSourcesByIdRecordValues
+             * @param {string} id - DataSourceKey id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDataSourcesByIdRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all recordValues of this model.
+             * @method
+             * @name TweakApi#deleteDataSourcesByIdRecordValues
+             * @param {string} id - DataSourceKey id
+             * 
+             */
+            TweakApi.prototype.deleteDataSourcesByIdRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts recordValues of DataSourceKey.
+             * @method
+             * @name TweakApi#getDataSourcesByIdRecordValuesCount
+             * @param {string} id - DataSourceKey id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDataSourcesByIdRecordValuesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSources/{id}/recordValues/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation team.
+             * @method
+             * @name TweakApi#getDataSourceRecordsByIdTeam
+             * @param {string} id - DataSourceRecord id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsByIdTeam = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/team';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation dataSource.
+             * @method
+             * @name TweakApi#getDataSourceRecordsByIdDataSource
+             * @param {string} id - DataSourceRecord id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsByIdDataSource = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/dataSource';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a related item by id for values.
+             * @method
+             * @name TweakApi#getDataSourceRecordsByIdValuesByFk
+             * @param {string} id - DataSourceRecord id
+             * @param {string} fk - Foreign key for values
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsByIdValuesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a related item by id for values.
+             * @method
+             * @name TweakApi#deleteDataSourceRecordsByIdValuesByFk
+             * @param {string} id - DataSourceRecord id
+             * @param {string} fk - Foreign key for values
+             * 
+             */
+            TweakApi.prototype.deleteDataSourceRecordsByIdValuesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update a related item by id for values.
+             * @method
+             * @name TweakApi#putDataSourceRecordsByIdValuesByFk
+             * @param {string} id - DataSourceRecord id
+             * @param {string} fk - Foreign key for values
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putDataSourceRecordsByIdValuesByFk = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values/{fk}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{fk}', parameters['fk']);
+
+                if (parameters['fk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: fk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Queries values of DataSourceRecord.
+             * @method
+             * @name TweakApi#getDataSourceRecordsByIdValues
+             * @param {string} id - DataSourceRecord id
+             * @param {string} filter - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsByIdValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in values of this model.
+             * @method
+             * @name TweakApi#postDataSourceRecordsByIdValues
+             * @param {string} id - DataSourceRecord id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordsByIdValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes all values of this model.
+             * @method
+             * @name TweakApi#deleteDataSourceRecordsByIdValues
+             * @param {string} id - DataSourceRecord id
+             * 
+             */
+            TweakApi.prototype.deleteDataSourceRecordsByIdValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Counts values of DataSourceRecord.
+             * @method
+             * @name TweakApi#getDataSourceRecordsByIdValuesCount
+             * @param {string} id - DataSourceRecord id
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsByIdValuesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/values/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a new instance of the model and persist it into the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecords
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecords = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#patchDataSourceRecords
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.patchDataSourceRecords = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#putDataSourceRecords
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDataSourceRecords = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find all instances of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecords
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecords = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordsReplaceOrCreate
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordsReplaceOrCreate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/replaceOrCreate';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             * @method
+             * @name TweakApi#postDataSourceRecordsUpsertWithWhere
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordsUpsertWithWhere = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/upsertWithWhere';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordsByIdExists
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsByIdExists = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/exists';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#headDataSourceRecordsById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.headDataSourceRecordsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordsById
+             * @param {string} id - Model id
+             * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#putDataSourceRecordsById
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDataSourceRecordsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#deleteDataSourceRecordsById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.deleteDataSourceRecordsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#patchDataSourceRecordsById
+             * @param {string} id - DataSourceRecord id
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.patchDataSourceRecordsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordsByIdReplace
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordsByIdReplace = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/{id}/replace';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find first instance of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordsFindOne
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsFindOne = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/findOne';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update instances of the model matched by {{where}} from the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordsUpdate
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordsUpdate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/update';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Count instances of the model matched by where from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordsCount
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#postDataSourceRecordsChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordsChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    form['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#getDataSourceRecordsChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordsChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecords/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    queryParameters['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation team.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesByIdTeam
+             * @param {string} id - DataSourceRecordValue id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesByIdTeam = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}/team';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation dataSource.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesByIdDataSource
+             * @param {string} id - DataSourceRecordValue id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesByIdDataSource = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}/dataSource';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation values.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesByIdValues
+             * @param {string} id - DataSourceRecordValue id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesByIdValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}/values';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation key.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesByIdKey
+             * @param {string} id - DataSourceRecordValue id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesByIdKey = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}/key';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a new instance of the model and persist it into the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordValues
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#patchDataSourceRecordValues
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.patchDataSourceRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#putDataSourceRecordValues
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDataSourceRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find all instances of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordValues
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValues = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordValuesReplaceOrCreate
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordValuesReplaceOrCreate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/replaceOrCreate';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             * @method
+             * @name TweakApi#postDataSourceRecordValuesUpsertWithWhere
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordValuesUpsertWithWhere = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/upsertWithWhere';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesByIdExists
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesByIdExists = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}/exists';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#headDataSourceRecordValuesById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.headDataSourceRecordValuesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesById
+             * @param {string} id - Model id
+             * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#putDataSourceRecordValuesById
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDataSourceRecordValuesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#deleteDataSourceRecordValuesById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.deleteDataSourceRecordValuesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#patchDataSourceRecordValuesById
+             * @param {string} id - DataSourceRecordValue id
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.patchDataSourceRecordValuesById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordValuesByIdReplace
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordValuesByIdReplace = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/{id}/replace';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find first instance of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesFindOne
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesFindOne = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/findOne';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update instances of the model matched by {{where}} from the data source.
+             * @method
+             * @name TweakApi#postDataSourceRecordValuesUpdate
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordValuesUpdate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/update';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Count instances of the model matched by where from the data source.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesCount
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#postDataSourceRecordValuesChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDataSourceRecordValuesChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    form['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#getDataSourceRecordValuesChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDataSourceRecordValuesChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DataSourceRecordValues/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    queryParameters['options'] = parameters['options'];
                 }
 
                 if (parameters.$queryParameters) {
