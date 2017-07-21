@@ -15,6 +15,7 @@
          * @param token          {string}    
          * @param number         {string}    
          * @param cvc            {string}    
+         * @param cvcCheck       {string}    
          * @param last4          {string}    
          * @param brand          {string}    
          * @param country        {string}    
@@ -54,8 +55,8 @@
         /**
          * Private properties
          */
-        var parameters = ['cardholderName', 'expMonth', 'expYear', 'token', 'number', 'cvc', 'last4', 'brand', 'country', 'funding', 'type', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'stripeCardId', 'id'];
-        var parametersType = ['string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parameters = ['cardholderName', 'expMonth', 'expYear', 'token', 'number', 'cvc', 'cvcCheck', 'last4', 'brand', 'country', 'funding', 'type', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'stripeCardId', 'id'];
+        var parametersType = ['string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = [];
 
         /**
