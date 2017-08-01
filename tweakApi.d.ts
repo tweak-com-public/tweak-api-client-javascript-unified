@@ -6,52 +6,1339 @@ import {
 } from "superagent";
 
 type CallbackHandler = (err: any, res ? : request.Response) => void;
-type Design = any;
-type Team = any;
-type TeamMember = any;
-type InvitationTicket = any;
-type TeamMemberAccessToken = any;
-type CustomerPermissionSet = any;
-type Customer = any;
-type TeamBrand = any;
-type DataSource = any;
-type Template = any;
-type Portal = any;
-type Image = any;
-type TeamTemplateFolder = any;
-type Workflow = any;
-type ImageFolder = any;
-type Billing = any;
-type TeamPermissionSet = any;
-type DesignComment = any;
-type Tag = any;
-type DesignTag = any;
-type DesignExport = any;
-type DesignFolder = any;
-type TemplateTag = any;
-type PortalMember = any;
-type PortalTemplate = any;
-type PortalTemplateFolder = any;
-type PortalImageFolder = any;
-type ImageFolderMember = any;
-type TemplatePermissionSet = any;
-type TemplateMember = any;
-type FlashVar = any;
-type BillingPlan = any;
-type BillingInvoice = any;
-type DataSourceKey = any;
-type DataSourceRecordValue = any;
-type DataSourceRecord = any;
-type PersistedModel = any;
-type QTask = any;
+type Design = {
+    'colors': Array < string >
+        | string
+
+    'image': string
+
+    'name': string
+
+    'object': {}
+
+    'thumbnail': string
+
+    'description': string
+
+    'purpose': "none" | "printOrder"
+
+    'status': "pendingAction" | "pendingApproval" | "approved" | "rejected"
+
+    'rejectionReason': string
+
+    'formData': Array < {} >
+        | {}
+
+    'highResPdfUrl': string
+
+    'proofPdfUrl': string
+
+    'jpegsUrl': string
+
+    'edited': string
+
+    'expired': string
+
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'customerId': string
+
+    'requesterId': string
+
+    'assigneeId': string
+
+    'reviewerId': string
+
+    'templateId': string
+
+    'portalId': string
+
+    'folderId': string
+
+    'tags': Array < Tag >
+        | Tag
+
+    'customer': Customer
+
+    'template': Template
+
+    'portal': Portal
+
+    'comments': Array < DesignComment >
+        | DesignComment
+
+    'exports': Array < DesignExport >
+        | DesignExport
+
+    'requester': TeamMember
+
+    'assignee': TeamMember
+
+    'reviewer': TeamMember
+
+    'commenters': Array < TeamMember >
+        | TeamMember
+
+    'folder': DesignFolder
+
+};
+type Team = {
+    'name': string
+
+    'logo': {}
+
+    'subdomain': string
+
+    'country': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'icon': string
+
+    'clientKey': string
+
+    'javaScriptKey': string
+
+    'restApiKey': string
+
+    'windowsKey': string
+
+    'masterKey': string
+
+    'status': string
+
+    'members': Array < Customer >
+        | Customer
+
+    'dataSources': Array < DataSource >
+        | DataSource
+
+    'teamMembers': Array < TeamMember >
+        | TeamMember
+
+    'portals': Array < Portal >
+        | Portal
+
+    'templates': Array < Template >
+        | Template
+
+    'brand': TeamBrand
+
+    'templateFolders': Array < TeamTemplateFolder >
+        | TeamTemplateFolder
+
+    'workflows': Array < Workflow >
+        | Workflow
+
+    'images': Array < Image >
+        | Image
+
+    'imageFolders': Array < ImageFolder >
+        | ImageFolder
+
+    'billing': Billing
+
+    'permission': TeamPermissionSet
+
+};
+type TeamMember = {
+    'roles': Array < string >
+        | string
+
+    'previousRoles': Array < string >
+        | string
+
+    'position': string
+
+    'officePhone': string
+
+    'mobilePhone': string
+
+    'website': string
+
+    'addressCity': string
+
+    'addressCountry': string
+
+    'addressLine1': string
+
+    'addressLine2': string
+
+    'addressState': string
+
+    'addressZip': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'customerId': string
+
+    'teamId': string
+
+    'customer': Customer
+
+    'team': Team
+
+    'portals': Array < Portal >
+        | Portal
+
+    'uploadedTemplates': Array < Template >
+        | Template
+
+    'templates': Array < Template >
+        | Template
+
+    'invitationTickets': Array < InvitationTicket >
+        | InvitationTicket
+
+    'requestedDesigns': Array < Design >
+        | Design
+
+    'requestedDesignExports': Array < DesignExport >
+        | DesignExport
+
+    'assignedDesigns': Array < Design >
+        | Design
+
+    'reviewedDesigns': Array < Design >
+        | Design
+
+    'commentedDesigns': Array < Design >
+        | Design
+
+    'designComments': Array < DesignComment >
+        | DesignComment
+
+    'designFolders': Array < DesignFolder >
+        | DesignFolder
+
+    'workflows': Array < Workflow >
+        | Workflow
+
+    'imageFolders': Array < ImageFolder >
+        | ImageFolder
+
+};
+type InvitationTicket = {
+    'message': string
+
+    'token': string
+
+    'inviteeEmail': string
+
+    'targetModel': "Team" | "Portal" | "Template" | "ImageFolder" | "Design"
+
+    'targetId': string
+
+    'targetAttrs': {}
+
+    'status': "pending" | "accepted"
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'inviteeId': string
+
+    'inviterId': string
+
+    'targetTeamId': string
+
+    'targetTeamMemberId': string
+
+    'targetPortalId': string
+
+    'targetPortalMemberId': string
+
+    'targetTemplateId': string
+
+    'targetTemplateMemberId': string
+
+    'targetImageFolderId': string
+
+    'targetImageFolderMemberId': string
+
+    'invitee': Customer
+
+    'inviter': TeamMember
+
+    'targetTeam': Team
+
+    'targetTeamMember': TeamMember
+
+    'targetPortal': Portal
+
+    'targetPortalMember': PortalMember
+
+    'targetTemplate': Template
+
+    'targetTemplateMember': TemplateMember
+
+    'targetImageFolder': ImageFolder
+
+    'targetImageFolderMember': ImageFolderMember
+
+};
+type TeamMemberAccessToken = {
+    'id': string
+
+    'ttl': number
+
+    'scopes': Array < string >
+        | string
+
+    'created': string
+
+    'userId': string
+
+    'teamId': string
+
+    'teamMemberId': string
+
+    'portalId': string
+
+    'portalMemberId': string
+
+    'customer': Customer
+
+    'team': Team
+
+    'teamMember': TeamMember
+
+    'portal': Portal
+
+    'portalMember': PortalMember
+
+};
+type CustomerPermissionSet = {
+    'tweakEmail': boolean
+
+    'id': string
+
+    'customerId': string
+
+    'customer': Customer
+
+};
+type Customer = {
+    'profilePicture': {}
+
+    'firstName': string
+
+    'lastName': string
+
+    'initials': string
+
+    'status': "active" | "inactive" | "godmode"
+
+    'created': string
+
+    'modified': string
+
+    'realm': string
+
+    'username': string
+
+    'email': string
+
+    'emailVerified': boolean
+
+    'id': string
+
+    'designs': Array < Design >
+        | Design
+
+    'teams': Array < Team >
+        | Team
+
+    'invitationTickets': Array < InvitationTicket >
+        | InvitationTicket
+
+    'accessTokens': Array < TeamMemberAccessToken >
+        | TeamMemberAccessToken
+
+    'permission': CustomerPermissionSet
+
+};
+type TeamBrand = {
+    'name': string
+
+    'id': string
+
+    'teamId': string
+
+    'team': Team
+
+};
+type DataSource = {
+    'name': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'team': Team
+
+    'keys': Array < DataSourceKey >
+        | DataSourceKey
+
+};
+type Template = {
+    'name': string
+
+    'thumbnail': string
+
+    'object': {}
+
+    'description': string
+
+    'edited': string
+
+    'path': string
+
+    'status': "pendingApproval" | "approved" | "rejected"
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'uploaderId': string
+
+    'teamFolderId': string
+
+    'workflowId': string
+
+    'portals': Array < Portal >
+        | Portal
+
+    'team': Team
+
+    'members': Array < TeamMember >
+        | TeamMember
+
+    'templateMembers': Array < TemplateMember >
+        | TemplateMember
+
+    'permission': TemplatePermissionSet
+
+    'designs': Array < Design >
+        | Design
+
+    'tags': Array < Tag >
+        | Tag
+
+    'teamFolder': TeamTemplateFolder
+
+    'portalFolders': Array < PortalTemplateFolder >
+        | PortalTemplateFolder
+
+    'workflow': Workflow
+
+    'uploader': TeamMember
+
+};
+type Portal = {
+    'name': string
+
+    'logo': {}
+
+    'status': "private" | "public"
+
+    'language': "sq_AL" | "sq" | "ar_DZ" | "ar_BH" | "ar_EG" | "ar_IQ" | "ar_JO" | "ar_KW" | "ar_LB" | "ar_LY" | "ar_MA" | "ar_OM" | "ar_QA" | "ar_SA" | "ar_SD" | "ar_SY" | "ar_TN" | "ar_AE" | "ar_YE" | "ar" | "be_BY" | "be" | "bg_BG" | "bg" | "ca_ES" | "ca" | "zh_CN" | "zh_HK" | "zh_SG" | "zh_TW" | "zh" | "hr_HR" | "hr" | "cs_CZ" | "cs" | "da_DK" | "da" | "nl_BE" | "nl_NL" | "nl" | "en_AU" | "en_CA" | "en_IN" | "en_IE" | "en_MT" | "en_NZ" | "en_PH" | "en_SG" | "en_ZA" | "en_GB" | "en_US" | "en" | "et_EE" | "et" | "fi_FI" | "fi" | "fr_BE" | "fr_CA" | "fr_FR" | "fr_LU" | "fr_CH" | "fr" | "de_AT" | "de_DE" | "de_LU" | "de_CH" | "de" | "el_CY" | "el_GR" | "el" | "iw_IL" | "iw" | "hi_IN" | "hu_HU" | "hu" | "is_IS" | "is" | "in_ID" | "in" | "ga_IE" | "ga" | "it_IT" | "it_CH" | "it" | "ja_JP" | "ja_JP_JP" | "ja" | "ko_KR" | "ko" | "lv_LV" | "lv" | "lt_LT" | "lt" | "mk_MK" | "mk" | "ms_MY" | "ms" | "mt_MT" | "mt" | "no_NO" | "no_NO_NY" | "no" | "pl_PL" | "pl" | "pt_BR" | "pt_PT" | "pt" | "ro_RO" | "ro" | "ru_RU" | "ru" | "sr_BA" | "sr_ME" | "sr_CS" | "sr_RS" | "sr" | "sk_SK" | "sk" | "sl_SI" | "sl" | "es_AR" | "es_BO" | "es_CL" | "es_CO" | "es_CR" | "es_DO" | "es_EC" | "es_SV" | "es_GT" | "es_HN" | "es_MX" | "es_NI" | "es_PA" | "es_PY" | "es_PE" | "es_PR" | "es_ES" | "es_US" | "es_UY" | "es_VE" | "es" | "sv_SE" | "sv" | "th_TH" | "th_TH_TH" | "th" | "tr_TR" | "tr" | "uk_UA" | "uk" | "vi_VN" | "vi"
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'templates': Array < Template >
+        | Template
+
+    'templateRels': Array < PortalTemplate >
+        | PortalTemplate
+
+    'members': Array < TeamMember >
+        | TeamMember
+
+    'portalMembers': Array < PortalMember >
+        | PortalMember
+
+    'team': Team
+
+    'designs': Array < Design >
+        | Design
+
+    'templateFolders': Array < PortalTemplateFolder >
+        | PortalTemplateFolder
+
+    'designFolders': Array < DesignFolder >
+        | DesignFolder
+
+    'imageFolders': Array < ImageFolder >
+        | ImageFolder
+
+};
+type Image = {
+    'name': string
+
+    'fileName': string
+
+    'link': string
+
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'folderId': string
+
+    'folder': ImageFolder
+
+    'team': Team
+
+};
+type TeamTemplateFolder = {
+    'name': string
+
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'parentId': string
+
+    'team': Team
+
+    'children': Array < TeamTemplateFolder >
+        | TeamTemplateFolder
+
+    'parent': TeamTemplateFolder
+
+    'templates': Array < Template >
+        | Template
+
+};
+type Workflow = {
+    'name': string
+
+    'form': Array < {} >
+        | {}
+
+    'edited': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'creatorId': string
+
+    'team': Team
+
+    'templates': Array < Template >
+        | Template
+
+    'creator': TeamMember
+
+};
+type ImageFolder = {
+    'name': string
+
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'teamId': string
+
+    'parentId': string
+
+    'images': Array < Image >
+        | Image
+
+    'team': Team
+
+    'portals': Array < Portal >
+        | Portal
+
+    'members': Array < TeamMember >
+        | TeamMember
+
+    'folderMembers': Array < ImageFolderMember >
+        | ImageFolderMember
+
+    'parent': ImageFolder
+
+    'children': Array < ImageFolder >
+        | ImageFolder
+
+};
+type Billing = {
+    'companyName': string
+
+    'companyEmail': string
+
+    'companyVat': string
+
+    'companyCard': BillingCard
+
+    'subscription': BillingSubscription
+
+    'limit': BillingLimit
+
+    'taxPercent': number
+
+    'stripeCustomerId': string
+
+    'stripeCardId': string
+
+    'stripeSubscriptionId': string
+
+    'id': string
+
+    'teamId': string
+
+    'team': Team
+
+};
+type TeamPermissionSet = {
+    'emailNotification': boolean
+
+    'id': string
+
+    'teamId': string
+
+    'team': Team
+
+};
+type DesignComment = {
+    'comment': string
+
+    'position': Axes
+
+    'pageIndex': number
+
+    'status': "unsolved" | "resolved"
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'designId': string
+
+    'commentId': string
+
+    'commenterId': string
+
+    'design': Design
+
+    'replies': Array < DesignComment >
+        | DesignComment
+
+    'commenter': TeamMember
+
+    'replyOf': DesignComment
+
+};
+type Tag = {
+    'name': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'templates': Array < Template >
+        | Template
+
+    'designs': Array < Design >
+        | Design
+
+};
+type DesignTag = {
+    'id': string
+
+    'designId': string
+
+    'tagId': string
+
+    'design': Design
+
+    'tag': Tag
+
+};
+type DesignExport = {
+    'type': "proof" | "pdf"
+
+    'created': string
+
+    'id': string
+
+    'designId': string
+
+    'requesterId': string
+
+    'designs': Design
+
+    'requester': TeamMember
+
+};
+type DesignFolder = {
+    'name': string
+
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'memberId': string
+
+    'parentId': string
+
+    'portalId': string
+
+    'member': TeamMember
+
+    'children': Array < DesignFolder >
+        | DesignFolder
+
+    'parent': DesignFolder
+
+    'designs': Array < Design >
+        | Design
+
+    'portal': Portal
+
+};
+type TemplateTag = {
+    'id': string
+
+    'tagId': string
+
+    'templateId': string
+
+    'tag': Tag
+
+    'template': Template
+
+};
+type PortalMember = {
+    'roles': Array < string >
+        | string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'portalId': string
+
+    'memberId': string
+
+    'portal': Portal
+
+    'member': TeamMember
+
+};
+type PortalTemplate = {
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'portalId': string
+
+    'templateId': string
+
+    'folderId': string
+
+    'portal': Portal
+
+    'template': Template
+
+    'folder': PortalTemplateFolder
+
+};
+type PortalTemplateFolder = {
+    'name': string
+
+    'path': string
+
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'portalId': string
+
+    'parentId': string
+
+    'portal': Portal
+
+    'children': Array < PortalTemplateFolder >
+        | PortalTemplateFolder
+
+    'parent': PortalTemplateFolder
+
+    'templates': Array < Template >
+        | Template
+
+};
+type PortalImageFolder = {
+    'id': string
+
+    'portalId': string
+
+    'folderId': string
+
+    'portal': Portal
+
+    'folder': ImageFolder
+
+};
+type ImageFolderMember = {
+    'created': string
+
+    'modified': string
+
+    'id': string
+
+    'memberId': string
+
+    'folderId': string
+
+    'member': TeamMember
+
+    'folder': ImageFolder
+
+};
+type TemplatePermissionSet = {
+    'highResPdf': boolean
+
+    'proofPdf': boolean
+
+    'jpegs': boolean
+
+    'socialSharing': boolean
+
+    'canEdit': boolean
+
+    'needAdminApproval': boolean
+
+    'id': string
+
+    'templateId': string
+
+    'template': Template
+
+};
+type TemplateMember = {
+    'id': string
+
+    'templateId': string
+
+    'memberId': string
+
+    'portalId': string
+
+    'template': Template
+
+    'member': TeamMember
+
+    'portal': Portal
+
+};
+type FlashVar = {
+    'apiPartnerAuthUrl': string
+
+    'pluginProductId': string
+
+    'savedProductId': string
+
+    'allowAddImage': boolean
+
+    'allowAddText': boolean
+
+    'allowJPEG': boolean
+
+    'allowLowResPDF': boolean
+
+    'allowHighResPDF': boolean
+
+    'allowSaveForLater': boolean
+
+    'allowSaveAsTemplate': boolean
+
+    'blockEditing': boolean
+
+    'makeAllItemsEditable': boolean
+
+    'showConfirm': boolean
+
+    'allowApprovePluginProduct': boolean
+
+    'allowSendToApprovePluginProduct': boolean
+
+    'workflowForm': Array < {} >
+        | {}
+
+    'designFormData': Array < {} >
+        | {}
+
+    'showPluginImages': boolean
+
+    'pluginImageLibraries': Array < string >
+        | string
+
+    'isTweakTemplate': boolean
+
+    'showItemNavigator': boolean
+
+    'showItemCounts': boolean
+
+    'showEditableItemToggle': boolean
+
+    'id': string
+
+    'teamId': string
+
+    'team': Team
+
+    'teamMemberId': string
+
+    'teamMember': TeamMember
+
+    'portalId': string
+
+    'portal': Portal
+
+    'portalMemberId': string
+
+    'portalMember': PortalMember
+
+    'designId': string
+
+    'design': Design
+
+    'templateId': string
+
+    'template': Template
+
+};
+type BillingPlan = {
+    'id': string
+
+    'name': string
+
+    'amount': number
+
+    'currency': string
+
+    'interval': string
+
+    'intervalCount': number
+
+    'statementDescriptor': string
+
+    'statementDescription': string
+
+    'trialPeriodDays': number
+
+    'type': "plan" | "additional"
+
+    'limit': BillingLimit
+
+    'created': string
+
+};
+type BillingInvoice = {
+    'id': string
+
+    'amountDue': number
+
+    'attemptCount': number
+
+    'attempted': boolean
+
+    'charged': boolean
+
+    'closed': boolean
+
+    'currency': string
+
+    'customer': string
+
+    'date': string
+
+    'description': string
+
+    'endingBalance': number
+
+    'forgiven': boolean
+
+    'lines': Array < BillingInvoiceLine >
+        | BillingInvoiceLine
+
+    'nextPaymentAttempt': string
+
+    'paid': boolean
+
+    'periodEnd': string
+
+    'periodStart': string
+
+    'reciptNumber': string
+
+    'startingBalance': number
+
+    'statementDescriptor': string
+
+    'subscription': string
+
+    'subscriptionProrationDate': number
+
+    'subtotal': number
+
+    'tax': number
+
+    'total': number
+
+};
+type DataSourceKey = {
+    'label': string
+
+    'column': number
+
+    'valueDefault': string
+
+    'primaryKey': boolean
+
+    'valueRequired': boolean
+
+    'valueMin': number
+
+    'valueMax': number
+
+    'valueType': "string" | "boolean" | "number" | "date"
+
+    'id': string
+
+    'teamId': string
+
+    'dataSourceId': string
+
+    'team': Team
+
+    'dataSource': DataSource
+
+    'recordValues': Array < DataSourceRecordValue >
+        | DataSourceRecordValue
+
+};
+type DataSourceRecordValue = {
+    'value': string
+
+    'id': string
+
+    'teamId': string
+
+    'dataSourceId': string
+
+    'recordId': string
+
+    'keyId': string
+
+    'team': Team
+
+    'dataSource': DataSource
+
+    'values': DataSourceRecord
+
+    'key': DataSourceKey
+
+};
+type DataSourceRecord = {
+    'line': number
+
+    'id': string
+
+    'teamId': string
+
+    'dataSourceId': string
+
+    'team': Team
+
+    'dataSource': DataSource
+
+    'values': Array < DataSourceRecordValue >
+        | DataSourceRecordValue
+
+};
+type PersistedModel = {
+    'id': number
+
+};
+type QTask = {
+    'chain': Array < string >
+        | string
+
+    'events': Array < {} >
+        | {}
+
+    'status': string
+
+    'params': {}
+
+    'queue': string
+
+    'count': number
+
+    'attempts': number
+
+    'remaining': number
+
+    'delay': string
+
+    'priority': number
+
+    'ended': string
+
+    'enqueued': string
+
+    'result': {}
+
+    'error': {}
+
+    'stack': {}
+
+    'id': ObjectID
+
+    'itemId': ObjectID
+
+    'itemType': string
+
+};
 type ObjectID = string;
-type BillingCard = any;
-type BillingSubscription = any;
-type BillingLimit = any;
-type Axes = any;
-type BillingInvoiceLine = any;
-type BillingSubscriptionItem = any;
-type BillingLimitCounter = any;
+type BillingCard = {
+    'cardholderName': string
+
+    'expMonth': number
+
+    'expYear': number
+
+    'token': string
+
+    'number': string
+
+    'cvc': string
+
+    'cvcCheck': string
+
+    'last4': string
+
+    'brand': string
+
+    'country': string
+
+    'funding': string
+
+    'type': string
+
+    'addressCity': string
+
+    'addressCountry': string
+
+    'addressLine1': string
+
+    'addressLine2': string
+
+    'addressState': string
+
+    'addressZip': string
+
+    'stripeCardId': string
+
+    'id': string
+
+};
+type BillingSubscription = {
+    'id': string
+
+    'coupon': string
+
+    'taxPercent': number
+
+    'trialPeriodDays': number
+
+    'subscribedPlans': Array < BillingSubscriptionItem >
+        | BillingSubscriptionItem
+
+    'discount': number
+
+    'status': string
+
+    'cancelAtPeriodEnd': boolean
+
+    'created': string
+
+    'start': string
+
+    'endedAt': string
+
+    'trialEnd': string
+
+    'trialStart': string
+
+    'currentPeriodEnd': string
+
+    'currentPeriodStart': string
+
+    'canceledAt': string
+
+};
+type BillingLimit = {
+    'teamMember': BillingLimitCounter
+
+    'uploader': BillingLimitCounter
+
+    'portal': BillingLimitCounter
+
+    'jpeg': BillingLimitCounter
+
+    'proof': BillingLimitCounter
+
+    'highResPdf': BillingLimitCounter
+
+    'storage': BillingLimitCounter
+
+    'stockImageLibrary': BillingLimitCounter
+
+    'productDbRecord': BillingLimitCounter
+
+    'accountSupport': boolean
+
+    'supportResponse': string
+
+    'bandwidth': BillingLimitCounter
+
+    'printerApi': BillingLimitCounter
+
+    'id': string
+
+};
+type Axes = {
+    'x': number
+
+    'y': number
+
+    'id': string
+
+};
+type BillingInvoiceLine = {
+    'id': string
+
+    'amount': number
+
+    'currency': string
+
+    'customer': string
+
+    'date': string
+
+    'description': string
+
+    'discountable': boolean
+
+    'invoice': string
+
+    'period': {}
+
+    'plan': BillingPlan
+
+    'proration': boolean
+
+    'quantity': number
+
+    'subscription': string
+
+    'subscriptionItem': string
+
+};
+type BillingSubscriptionItem = {
+    'id': string
+
+    'created': string
+
+    'plan': BillingPlan
+
+    'quantity': number
+
+};
+type BillingLimitCounter = {
+    'limit': number
+
+    'count': number
+
+    'unitType': "none" | "binary"
+
+    'unitPrefix': string
+
+    'id': string
+
+};
 
 type Logger = {
     log: (line: string) => any
@@ -160,6 +1447,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -230,6 +1518,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -304,6 +1593,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -378,6 +1668,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -448,6 +1739,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -522,6 +1814,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -600,6 +1893,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -674,6 +1968,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -744,6 +2039,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -814,6 +2110,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -884,6 +2181,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -958,6 +2256,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1032,6 +2331,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1102,6 +2402,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1176,6 +2477,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1252,6 +2554,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1320,6 +2623,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1389,6 +2693,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1451,6 +2756,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1516,6 +2822,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1584,6 +2891,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1649,6 +2957,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1713,6 +3022,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1782,6 +3092,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1850,6 +3161,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1915,6 +3227,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -1979,6 +3292,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2048,6 +3362,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2116,6 +3431,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2181,6 +3497,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2245,6 +3562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2314,6 +3632,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2382,6 +3701,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2447,6 +3767,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2511,6 +3832,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2573,6 +3895,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -2629,6 +3952,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -2682,6 +4006,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -2738,6 +4063,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -2793,6 +4119,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -2857,6 +4184,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -2919,6 +4247,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -2977,6 +4306,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3041,6 +4371,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3106,6 +4437,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3168,6 +4500,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3229,6 +4562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3296,6 +4630,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3362,6 +4697,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -3423,6 +4759,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -3486,6 +4823,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -3542,6 +4880,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -3602,6 +4941,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -3665,6 +5005,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['credentials'] !== undefined) {
@@ -3729,6 +5070,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters.$queryParameters) {
@@ -3785,6 +5127,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -3864,6 +5207,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['uid'] !== undefined) {
@@ -3938,6 +5282,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -4006,6 +5351,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['oldPassword'] !== undefined) {
@@ -4079,6 +5425,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['newPassword'] !== undefined) {
@@ -4147,6 +5494,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4212,6 +5560,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4270,6 +5619,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{token}', `${parameters['token']}`);
@@ -4333,6 +5683,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{token}', `${parameters['token']}`);
@@ -4398,6 +5749,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -4468,6 +5820,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4560,6 +5913,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4650,6 +6004,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4736,6 +6091,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4816,6 +6172,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4897,6 +6254,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -4971,6 +6329,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5046,6 +6405,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5128,6 +6488,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5214,6 +6575,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5304,6 +6666,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5390,6 +6753,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5472,6 +6836,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5554,6 +6919,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5636,6 +7002,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5722,6 +7089,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5808,6 +7176,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5890,6 +7259,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -5976,6 +7346,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6062,6 +7433,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6144,6 +7516,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6230,6 +7603,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6316,6 +7690,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6398,6 +7773,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6484,6 +7860,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6570,6 +7947,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6652,6 +8030,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6738,6 +8117,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6824,6 +8204,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6906,6 +8287,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -6992,6 +8374,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7078,6 +8461,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7160,6 +8544,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7246,6 +8631,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7332,6 +8718,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7414,6 +8801,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7500,6 +8888,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7588,6 +8977,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7668,6 +9058,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7749,6 +9140,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7823,6 +9215,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7900,6 +9293,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -7980,6 +9374,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8061,6 +9456,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8135,6 +9531,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8212,6 +9609,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8292,6 +9690,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8369,6 +9768,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8445,6 +9845,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8526,6 +9927,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8606,6 +10008,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8683,6 +10086,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8759,6 +10163,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8840,6 +10245,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8920,6 +10326,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -8997,6 +10404,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9073,6 +10481,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9154,6 +10563,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9234,6 +10644,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9311,6 +10722,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9387,6 +10799,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9468,6 +10881,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9548,6 +10962,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9625,6 +11040,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9701,6 +11117,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9782,6 +11199,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9862,6 +11280,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -9939,6 +11358,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10015,6 +11435,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10096,6 +11517,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10176,6 +11598,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10253,6 +11676,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10329,6 +11753,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10410,6 +11835,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10490,6 +11916,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10567,6 +11994,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10643,6 +12071,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10724,6 +12153,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10804,6 +12234,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10881,6 +12312,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -10957,6 +12389,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11033,6 +12466,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11102,6 +12536,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11171,6 +12606,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11240,6 +12676,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11309,6 +12746,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11378,6 +12816,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11445,6 +12884,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11515,6 +12955,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11589,6 +13030,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11663,6 +13105,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11733,6 +13176,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11807,6 +13251,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11885,6 +13330,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -11959,6 +13405,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12029,6 +13476,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12099,6 +13547,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12169,6 +13618,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12243,6 +13693,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12321,6 +13772,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12395,6 +13847,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12465,6 +13918,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12535,6 +13989,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12605,6 +14060,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12679,6 +14135,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12755,6 +14212,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12824,6 +14282,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12892,6 +14351,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -12957,6 +14417,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13021,6 +14482,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13090,6 +14552,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13158,6 +14621,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13223,6 +14687,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13287,6 +14752,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13356,6 +14822,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13424,6 +14891,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13489,6 +14957,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13553,6 +15022,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13622,6 +15092,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13690,6 +15161,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13755,6 +15227,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13819,6 +15292,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -13881,6 +15355,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -13937,6 +15412,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -13990,6 +15466,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -14046,6 +15523,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -14101,6 +15579,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -14165,6 +15644,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -14227,6 +15707,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14285,6 +15766,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14349,6 +15831,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14414,6 +15897,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14476,6 +15960,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14537,6 +16022,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14604,6 +16090,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -14670,6 +16157,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -14731,6 +16219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -14794,6 +16283,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -14850,6 +16340,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -14910,6 +16401,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -14972,6 +16464,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15047,6 +16540,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15122,6 +16616,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15202,6 +16697,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15281,6 +16777,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15363,6 +16860,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15449,6 +16947,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15537,6 +17036,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15618,6 +17118,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15699,6 +17200,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15779,6 +17281,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15856,6 +17359,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -15932,6 +17436,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16006,6 +17511,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16076,6 +17582,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16150,6 +17657,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16228,6 +17736,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16302,6 +17811,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16372,6 +17882,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16442,6 +17953,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16512,6 +18024,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16586,6 +18099,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16664,6 +18178,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16738,6 +18253,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16808,6 +18324,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16880,6 +18397,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -16948,6 +18466,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17013,6 +18532,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17077,6 +18597,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17146,6 +18667,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17214,6 +18736,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17279,6 +18802,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17343,6 +18867,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17405,6 +18930,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -17461,6 +18987,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -17514,6 +19041,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -17570,6 +19098,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -17625,6 +19154,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -17689,6 +19219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -17751,6 +19282,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17809,6 +19341,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17873,6 +19406,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -17938,6 +19472,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18000,6 +19535,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18061,6 +19597,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18128,6 +19665,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18194,6 +19732,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -18255,6 +19794,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -18318,6 +19858,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -18374,6 +19915,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -18434,6 +19976,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -18496,6 +20039,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18564,6 +20108,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18633,6 +20178,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18695,6 +20241,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18758,6 +20305,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18828,6 +20376,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18902,6 +20451,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -18980,6 +20530,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19054,6 +20605,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19124,6 +20676,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19194,6 +20747,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19264,6 +20818,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19338,6 +20893,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19412,6 +20968,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19482,6 +21039,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19556,6 +21114,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19630,6 +21189,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19700,6 +21260,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19774,6 +21335,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19848,6 +21410,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19918,6 +21481,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -19992,6 +21556,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20066,6 +21631,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20136,6 +21702,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20210,6 +21777,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20284,6 +21852,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20354,6 +21923,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20428,6 +21998,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20502,6 +22073,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20572,6 +22144,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20646,6 +22219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20720,6 +22294,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20790,6 +22365,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20864,6 +22440,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -20940,6 +22517,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21008,6 +22586,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21077,6 +22656,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21139,6 +22719,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21204,6 +22785,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21272,6 +22854,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21341,6 +22924,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21403,6 +22987,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21468,6 +23053,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21536,6 +23122,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21601,6 +23188,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21665,6 +23253,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21734,6 +23323,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21802,6 +23392,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21867,6 +23458,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -21931,6 +23523,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22000,6 +23593,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22068,6 +23662,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22133,6 +23728,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22197,6 +23793,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22266,6 +23863,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22334,6 +23932,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22399,6 +23998,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22463,6 +24063,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22532,6 +24133,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22600,6 +24202,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22665,6 +24268,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22729,6 +24333,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22798,6 +24403,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22866,6 +24472,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22931,6 +24538,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -22995,6 +24603,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23064,6 +24673,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23132,6 +24742,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23197,6 +24808,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23261,6 +24873,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23330,6 +24943,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23398,6 +25012,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23463,6 +25078,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23527,6 +25143,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23596,6 +25213,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23664,6 +25282,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23729,6 +25348,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23793,6 +25413,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -23855,6 +25476,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -23911,6 +25533,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -23964,6 +25587,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -24020,6 +25644,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -24075,6 +25700,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -24139,6 +25765,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -24201,6 +25828,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24259,6 +25887,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24323,6 +25952,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24388,6 +26018,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24450,6 +26081,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24511,6 +26143,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24578,6 +26211,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -24644,6 +26278,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -24705,6 +26340,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -24768,6 +26404,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -24824,6 +26461,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -24884,6 +26522,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -24950,6 +26589,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25035,6 +26675,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25121,6 +26762,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25204,6 +26846,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25281,6 +26924,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25367,6 +27011,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25446,6 +27091,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25528,6 +27174,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25614,6 +27261,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25700,6 +27348,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25782,6 +27431,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25868,6 +27518,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -25958,6 +27609,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26044,6 +27696,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26126,6 +27779,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26208,6 +27862,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26290,6 +27945,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26376,6 +28032,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26462,6 +28119,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26544,6 +28202,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26630,6 +28289,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26720,6 +28380,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26806,6 +28467,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26888,6 +28550,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -26970,6 +28633,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27052,6 +28716,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27138,6 +28803,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27224,6 +28890,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27306,6 +28973,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27392,6 +29060,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27478,6 +29147,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27560,6 +29230,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27646,6 +29317,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27732,6 +29404,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27814,6 +29487,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27900,6 +29574,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -27990,6 +29665,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28076,6 +29752,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28158,6 +29835,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28242,6 +29920,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28322,6 +30001,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28399,6 +30079,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28475,6 +30156,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28556,6 +30238,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28636,6 +30319,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28713,6 +30397,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28789,6 +30474,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28870,6 +30556,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -28950,6 +30637,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29027,6 +30715,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29103,6 +30792,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29184,6 +30874,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29264,6 +30955,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29341,6 +31033,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29417,6 +31110,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29498,6 +31192,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29578,6 +31273,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29655,6 +31351,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29731,6 +31428,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29812,6 +31510,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29892,6 +31591,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -29969,6 +31669,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30045,6 +31746,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30126,6 +31828,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30206,6 +31909,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30283,6 +31987,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30359,6 +32064,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30440,6 +32146,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30520,6 +32227,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30597,6 +32305,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30673,6 +32382,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30754,6 +32464,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30835,6 +32546,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30914,6 +32626,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -30996,6 +32709,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31082,6 +32796,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31170,6 +32885,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31251,6 +32967,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31330,6 +33047,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31412,6 +33130,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31498,6 +33217,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31584,6 +33304,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31666,6 +33387,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31752,6 +33474,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31842,6 +33565,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -31928,6 +33652,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32010,6 +33735,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32092,6 +33818,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32174,6 +33901,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32260,6 +33988,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32350,6 +34079,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32436,6 +34166,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32518,6 +34249,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32600,6 +34332,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32682,6 +34415,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32768,6 +34502,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32856,6 +34591,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -32936,6 +34672,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33013,6 +34750,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33089,6 +34827,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33170,6 +34909,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33250,6 +34990,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33327,6 +35068,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33403,6 +35145,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33484,6 +35227,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33564,6 +35308,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33641,6 +35386,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33717,6 +35463,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33798,6 +35545,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33878,6 +35626,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -33955,6 +35704,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34031,6 +35781,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34112,6 +35863,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34192,6 +35944,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34269,6 +36022,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34345,6 +36099,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34426,6 +36181,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34505,6 +36261,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34587,6 +36344,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34673,6 +36431,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34761,6 +36520,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34842,6 +36602,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -34922,6 +36683,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35003,6 +36765,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35077,6 +36840,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35152,6 +36916,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35234,6 +36999,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35320,6 +37086,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35410,6 +37177,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35496,6 +37264,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35578,6 +37347,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35660,6 +37430,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35742,6 +37513,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35828,6 +37600,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -35918,6 +37691,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36004,6 +37778,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36086,6 +37861,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36168,6 +37944,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36250,6 +38027,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36336,6 +38114,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36422,6 +38201,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36504,6 +38284,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36590,6 +38371,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36680,6 +38462,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36766,6 +38549,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36848,6 +38632,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -36932,6 +38717,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37011,6 +38797,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37093,6 +38880,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37179,6 +38967,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37269,6 +39058,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37355,6 +39145,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37437,6 +39228,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37521,6 +39313,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37602,6 +39395,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37682,6 +39476,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37759,6 +39554,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37835,6 +39631,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37916,6 +39713,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -37996,6 +39794,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38073,6 +39872,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38149,6 +39949,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38230,6 +40031,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38310,6 +40112,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38387,6 +40190,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38463,6 +40267,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38544,6 +40349,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38624,6 +40430,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38701,6 +40508,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38777,6 +40585,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38858,6 +40667,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -38938,6 +40748,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39015,6 +40826,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39091,6 +40903,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39172,6 +40985,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39252,6 +41066,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39329,6 +41144,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39405,6 +41221,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39481,6 +41298,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39550,6 +41368,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39617,6 +41436,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39687,6 +41507,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39761,6 +41582,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39835,6 +41657,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39905,6 +41728,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -39979,6 +41803,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40053,6 +41878,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40123,6 +41949,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40197,6 +42024,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40271,6 +42099,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40341,6 +42170,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40415,6 +42245,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40489,6 +42320,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40559,6 +42391,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40633,6 +42466,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40711,6 +42545,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40785,6 +42620,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40855,6 +42691,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40925,6 +42762,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -40995,6 +42833,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41069,6 +42908,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41143,6 +42983,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41213,6 +43054,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41287,6 +43129,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41365,6 +43208,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41439,6 +43283,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41509,6 +43354,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41579,6 +43425,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41649,6 +43496,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41723,6 +43571,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41797,6 +43646,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41867,6 +43717,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -41941,6 +43792,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42019,6 +43871,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42093,6 +43946,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42163,6 +44017,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42233,6 +44088,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42303,6 +44159,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42377,6 +44234,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42451,6 +44309,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42521,6 +44380,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42595,6 +44455,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42669,6 +44530,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42739,6 +44601,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42813,6 +44676,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42887,6 +44751,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -42957,6 +44822,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43031,6 +44897,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43109,6 +44976,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43183,6 +45051,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43253,6 +45122,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43325,6 +45195,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43393,6 +45264,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43458,6 +45330,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43522,6 +45395,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43591,6 +45465,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43659,6 +45534,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43724,6 +45600,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43788,6 +45665,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43857,6 +45735,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43925,6 +45804,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -43990,6 +45870,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44054,6 +45935,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44123,6 +46005,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44191,6 +46074,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44256,6 +46140,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44320,6 +46205,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44389,6 +46275,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44457,6 +46344,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44522,6 +46410,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44586,6 +46475,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44655,6 +46545,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44723,6 +46614,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44788,6 +46680,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44852,6 +46745,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44921,6 +46815,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -44989,6 +46884,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45054,6 +46950,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45118,6 +47015,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45187,6 +47085,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45255,6 +47154,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45320,6 +47220,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45384,6 +47285,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45453,6 +47355,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45521,6 +47424,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45586,6 +47490,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45650,6 +47555,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45719,6 +47625,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45787,6 +47694,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45852,6 +47760,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45916,6 +47825,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -45985,6 +47895,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46053,6 +47964,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46118,6 +48030,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46182,6 +48095,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46251,6 +48165,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46319,6 +48234,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46384,6 +48300,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46448,6 +48365,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46517,6 +48435,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46585,6 +48504,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46650,6 +48570,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46714,6 +48635,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -46776,6 +48698,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -46832,6 +48755,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -46885,6 +48809,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -46941,6 +48866,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -46996,6 +48922,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -47060,6 +48987,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -47122,6 +49050,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47180,6 +49109,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47244,6 +49174,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47309,6 +49240,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47371,6 +49303,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47432,6 +49365,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47499,6 +49433,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47565,6 +49500,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -47626,6 +49562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -47689,6 +49626,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -47745,6 +49683,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -47805,6 +49744,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -47878,6 +49818,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -47987,6 +49928,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48110,6 +50052,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48208,6 +50151,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48295,6 +50239,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48389,6 +50334,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48486,6 +50432,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48577,6 +50524,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48661,6 +50609,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48738,6 +50687,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48814,6 +50764,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48894,6 +50845,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -48979,6 +50931,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49071,6 +51024,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49168,6 +51122,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49262,6 +51217,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49347,6 +51303,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49431,6 +51388,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49518,6 +51476,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49605,6 +51564,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49667,6 +51627,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49732,6 +51693,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49798,6 +51760,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49866,6 +51829,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49931,6 +51895,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -49995,6 +51960,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50064,6 +52030,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50126,6 +52093,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50188,6 +52156,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50250,6 +52219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50314,6 +52284,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50383,6 +52354,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50451,6 +52423,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50516,6 +52489,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50584,6 +52558,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50653,6 +52628,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50715,6 +52691,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50778,6 +52755,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50848,6 +52826,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -50922,6 +52901,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51000,6 +52980,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51074,6 +53055,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51144,6 +53126,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51214,6 +53197,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51284,6 +53268,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51358,6 +53343,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51432,6 +53418,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51502,6 +53489,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51576,6 +53564,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51650,6 +53639,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51720,6 +53710,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51794,6 +53785,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51868,6 +53860,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -51938,6 +53931,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52012,6 +54006,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52086,6 +54081,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52156,6 +54152,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52230,6 +54227,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52304,6 +54302,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52374,6 +54373,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52448,6 +54448,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52522,6 +54523,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52592,6 +54594,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52666,6 +54669,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52740,6 +54744,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52810,6 +54815,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52884,6 +54890,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -52960,6 +54967,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53028,6 +55036,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53097,6 +55106,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53159,6 +55169,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53224,6 +55235,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53292,6 +55304,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53357,6 +55370,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53421,6 +55435,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53490,6 +55505,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53558,6 +55574,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53623,6 +55640,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53687,6 +55705,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53756,6 +55775,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53824,6 +55844,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53889,6 +55910,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -53953,6 +55975,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54022,6 +56045,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54090,6 +56114,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54155,6 +56180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54219,6 +56245,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54288,6 +56315,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54356,6 +56384,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54421,6 +56450,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54485,6 +56515,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54554,6 +56585,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54622,6 +56654,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54687,6 +56720,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54751,6 +56785,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54820,6 +56855,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54888,6 +56924,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -54953,6 +56990,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55017,6 +57055,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55086,6 +57125,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55154,6 +57194,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55219,6 +57260,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55283,6 +57325,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55352,6 +57395,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55420,6 +57464,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55485,6 +57530,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55549,6 +57595,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55618,6 +57665,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55685,6 +57733,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55755,6 +57804,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55829,6 +57879,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55905,6 +57956,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -55973,6 +58025,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56038,6 +58091,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56102,6 +58156,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56164,6 +58219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -56220,6 +58276,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -56273,6 +58330,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -56329,6 +58387,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -56384,6 +58443,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -56448,6 +58508,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -56510,6 +58571,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56568,6 +58630,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56632,6 +58695,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56697,6 +58761,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56759,6 +58824,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56820,6 +58886,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56887,6 +58954,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -56953,6 +59021,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -57014,6 +59083,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -57077,6 +59147,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -57133,6 +59204,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -57193,6 +59265,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -57255,6 +59328,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57322,6 +59396,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57392,6 +59467,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57466,6 +59542,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57542,6 +59619,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57610,6 +59688,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57675,6 +59754,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57739,6 +59819,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57808,6 +59889,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57877,6 +59959,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -57944,6 +60027,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58014,6 +60098,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58088,6 +60173,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58164,6 +60250,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58232,6 +60319,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58297,6 +60385,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58361,6 +60450,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58423,6 +60513,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -58479,6 +60570,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -58532,6 +60624,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -58588,6 +60681,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -58643,6 +60737,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -58707,6 +60802,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -58769,6 +60865,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58827,6 +60924,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58891,6 +60989,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -58956,6 +61055,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59018,6 +61118,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59079,6 +61180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59146,6 +61248,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59212,6 +61315,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -59273,6 +61377,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -59336,6 +61441,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -59392,6 +61498,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -59452,6 +61559,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -59514,6 +61622,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59583,6 +61692,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59652,6 +61762,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59721,6 +61832,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -59783,6 +61895,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -59839,6 +61952,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -59892,6 +62006,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -59948,6 +62063,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -60003,6 +62119,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -60067,6 +62184,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -60129,6 +62247,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60187,6 +62306,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60251,6 +62371,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60316,6 +62437,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60378,6 +62500,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60439,6 +62562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60506,6 +62630,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60572,6 +62697,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -60633,6 +62759,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -60696,6 +62823,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -60752,6 +62880,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -60812,6 +62941,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -60874,6 +63004,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -60941,6 +63072,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61011,6 +63143,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61085,6 +63218,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61161,6 +63295,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61230,6 +63365,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61298,6 +63434,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61367,6 +63504,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61429,6 +63567,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61492,6 +63631,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61562,6 +63702,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61636,6 +63777,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61714,6 +63856,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61788,6 +63931,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61858,6 +64002,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61928,6 +64073,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -61998,6 +64144,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62072,6 +64219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62150,6 +64298,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62224,6 +64373,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62294,6 +64444,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62364,6 +64515,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62434,6 +64586,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62508,6 +64661,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62582,6 +64736,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62652,6 +64807,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62726,6 +64882,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62804,6 +64961,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62878,6 +65036,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -62948,6 +65107,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63020,6 +65180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63087,6 +65248,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63157,6 +65319,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63231,6 +65394,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63309,6 +65473,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63383,6 +65548,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63453,6 +65619,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63525,6 +65692,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63594,6 +65762,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63662,6 +65831,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63727,6 +65897,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63791,6 +65962,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63860,6 +66032,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63928,6 +66101,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -63993,6 +66167,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64057,6 +66232,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64126,6 +66302,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64194,6 +66371,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64259,6 +66437,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64323,6 +66502,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64392,6 +66572,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64460,6 +66641,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64525,6 +66707,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64589,6 +66772,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64658,6 +66842,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64726,6 +66911,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64791,6 +66977,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64855,6 +67042,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64924,6 +67112,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -64992,6 +67181,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65057,6 +67247,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65121,6 +67312,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65183,6 +67375,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -65239,6 +67432,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -65292,6 +67486,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -65348,6 +67543,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -65403,6 +67599,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -65467,6 +67664,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -65529,6 +67727,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65587,6 +67786,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65651,6 +67851,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65716,6 +67917,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65778,6 +67980,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65839,6 +68042,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65906,6 +68110,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -65972,6 +68177,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -66033,6 +68239,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -66096,6 +68303,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -66152,6 +68360,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -66212,6 +68421,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -66278,6 +68488,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -66363,6 +68574,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -66449,6 +68661,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -66521,6 +68734,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -66591,6 +68805,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -66670,6 +68885,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -66732,6 +68948,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -66788,6 +69005,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -66841,6 +69059,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -66897,6 +69116,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -66952,6 +69172,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -67016,6 +69237,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -67078,6 +69300,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67136,6 +69359,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67200,6 +69424,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67265,6 +69490,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67327,6 +69553,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67388,6 +69615,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67455,6 +69683,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67521,6 +69750,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -67582,6 +69812,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -67645,6 +69876,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -67701,6 +69933,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -67761,6 +69994,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -67823,6 +70057,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67890,6 +70125,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -67960,6 +70196,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68034,6 +70271,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68108,6 +70346,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68178,6 +70417,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68252,6 +70492,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68330,6 +70571,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68404,6 +70646,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68474,6 +70717,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68544,6 +70788,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68614,6 +70859,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68688,6 +70934,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68762,6 +71009,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68832,6 +71080,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68906,6 +71155,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -68984,6 +71234,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69058,6 +71309,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69128,6 +71380,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69198,6 +71451,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69268,6 +71522,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69342,6 +71597,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69416,6 +71672,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69486,6 +71743,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69560,6 +71818,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69634,6 +71893,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69704,6 +71964,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69778,6 +72039,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69852,6 +72114,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69922,6 +72185,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -69996,6 +72260,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70074,6 +72339,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70148,6 +72414,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70218,6 +72485,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70290,6 +72558,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70358,6 +72627,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70423,6 +72693,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70487,6 +72758,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70556,6 +72828,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70624,6 +72897,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70689,6 +72963,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70753,6 +73028,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70822,6 +73098,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70890,6 +73167,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -70955,6 +73233,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71019,6 +73298,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71088,6 +73368,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71156,6 +73437,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71221,6 +73503,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71285,6 +73568,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71354,6 +73638,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71422,6 +73707,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71487,6 +73773,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71551,6 +73838,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71620,6 +73908,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71688,6 +73977,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71753,6 +74043,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71817,6 +74108,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71886,6 +74178,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -71954,6 +74247,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72019,6 +74313,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72083,6 +74378,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72152,6 +74448,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72220,6 +74517,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72285,6 +74583,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72349,6 +74648,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72411,6 +74711,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -72467,6 +74768,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -72520,6 +74822,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -72576,6 +74879,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -72631,6 +74935,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -72695,6 +75000,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -72757,6 +75063,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72815,6 +75122,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72879,6 +75187,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -72944,6 +75253,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73006,6 +75316,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73067,6 +75378,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73134,6 +75446,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73200,6 +75513,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -73261,6 +75575,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -73324,6 +75639,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -73380,6 +75696,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -73440,6 +75757,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -73506,6 +75824,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73591,6 +75910,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73677,6 +75997,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73760,6 +76081,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73844,6 +76166,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -73938,6 +76261,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74035,6 +76359,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74138,6 +76463,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74225,6 +76551,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74311,6 +76638,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74392,6 +76720,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74473,6 +76802,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74554,6 +76884,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74635,6 +76966,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74716,6 +77048,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74795,6 +77128,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74877,6 +77211,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -74963,6 +77298,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75049,6 +77385,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75131,6 +77468,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75217,6 +77555,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75307,6 +77646,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75393,6 +77733,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75475,6 +77816,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75557,6 +77899,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75639,6 +77982,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75725,6 +78069,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75815,6 +78160,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75901,6 +78247,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -75983,6 +78330,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76065,6 +78413,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76147,6 +78496,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76233,6 +78583,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76321,6 +78672,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76402,6 +78754,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76482,6 +78835,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76559,6 +78913,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76635,6 +78990,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76716,6 +79072,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76796,6 +79153,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76873,6 +79231,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -76949,6 +79308,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77030,6 +79390,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77110,6 +79471,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77187,6 +79549,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77263,6 +79626,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77344,6 +79708,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77424,6 +79789,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77501,6 +79867,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77577,6 +79944,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77653,6 +80021,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77722,6 +80091,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -77784,6 +80154,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -77840,6 +80211,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -77893,6 +80265,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -77949,6 +80322,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -78004,6 +80378,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -78068,6 +80443,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -78130,6 +80506,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78188,6 +80565,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78252,6 +80630,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78317,6 +80696,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78379,6 +80759,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78440,6 +80821,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78507,6 +80889,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78573,6 +80956,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -78634,6 +81018,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -78697,6 +81082,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -78753,6 +81139,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -78813,6 +81200,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -78875,6 +81263,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -78944,6 +81333,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79013,6 +81403,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79082,6 +81473,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79151,6 +81543,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79220,6 +81613,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79289,6 +81683,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79358,6 +81753,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79427,6 +81823,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79496,6 +81893,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79558,6 +81956,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -79614,6 +82013,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -79667,6 +82067,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -79723,6 +82124,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -79778,6 +82180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -79842,6 +82245,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -79904,6 +82308,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -79962,6 +82367,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80026,6 +82432,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80091,6 +82498,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80153,6 +82561,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80214,6 +82623,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80281,6 +82691,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80347,6 +82758,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -80408,6 +82820,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -80471,6 +82884,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -80527,6 +82941,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -80587,6 +83002,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -80649,6 +83065,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80716,6 +83133,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80786,6 +83204,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80860,6 +83279,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -80936,6 +83356,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81005,6 +83426,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81074,6 +83496,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81142,6 +83565,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81207,6 +83631,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81271,6 +83696,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81333,6 +83759,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -81389,6 +83816,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -81442,6 +83870,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -81498,6 +83927,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -81553,6 +83983,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -81617,6 +84048,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -81679,6 +84111,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81737,6 +84170,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81801,6 +84235,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81866,6 +84301,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81928,6 +84364,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -81989,6 +84426,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -82056,6 +84494,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -82122,6 +84561,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -82183,6 +84623,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -82246,6 +84687,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -82302,6 +84744,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -82362,6 +84805,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -82424,6 +84868,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -82493,6 +84938,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -82555,6 +85001,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -82611,6 +85058,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -82664,6 +85112,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -82720,6 +85169,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -82775,6 +85225,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -82839,6 +85290,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -82901,6 +85353,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -82959,6 +85412,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83023,6 +85477,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83088,6 +85543,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83150,6 +85606,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83211,6 +85668,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83278,6 +85736,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83344,6 +85803,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -83405,6 +85865,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -83468,6 +85929,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -83524,6 +85986,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -83584,6 +86047,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -83646,6 +86110,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83715,6 +86180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83784,6 +86250,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -83846,6 +86313,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -83902,6 +86370,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -83955,6 +86424,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -84011,6 +86481,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -84066,6 +86537,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -84130,6 +86602,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -84192,6 +86665,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84250,6 +86724,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84314,6 +86789,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84379,6 +86855,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84441,6 +86918,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84502,6 +86980,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84569,6 +87048,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -84635,6 +87115,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -84696,6 +87177,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -84759,6 +87241,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -84815,6 +87298,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -84875,6 +87359,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -84937,6 +87422,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85006,6 +87492,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85075,6 +87562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85137,6 +87625,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -85193,6 +87682,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -85246,6 +87736,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -85302,6 +87793,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -85357,6 +87849,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -85421,6 +87914,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -85483,6 +87977,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85541,6 +88036,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85605,6 +88101,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85670,6 +88167,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85732,6 +88230,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85793,6 +88292,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85860,6 +88360,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -85926,6 +88427,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -85987,6 +88489,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -86050,6 +88553,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -86106,6 +88610,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -86166,6 +88671,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -86228,6 +88734,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -86297,6 +88804,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -86359,6 +88867,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -86415,6 +88924,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -86468,6 +88978,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -86524,6 +89035,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -86579,6 +89091,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -86643,6 +89156,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -86705,6 +89219,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -86763,6 +89278,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -86827,6 +89343,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -86892,6 +89409,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -86954,6 +89472,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -87015,6 +89534,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -87082,6 +89602,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -87148,6 +89669,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -87209,6 +89731,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -87272,6 +89795,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -87328,6 +89852,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -87388,6 +89913,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -87450,6 +89976,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -87519,6 +90046,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -87581,6 +90109,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -87637,6 +90166,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -87690,6 +90220,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -87746,6 +90277,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -87801,6 +90333,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -87865,6 +90398,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -87927,6 +90461,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -87985,6 +90520,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88049,6 +90585,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88114,6 +90651,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88176,6 +90714,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88237,6 +90776,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88304,6 +90844,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88370,6 +90911,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -88431,6 +90973,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -88494,6 +91037,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -88550,6 +91094,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -88610,6 +91155,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -88672,6 +91218,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88741,6 +91288,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -88803,6 +91351,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -88859,6 +91408,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -88912,6 +91462,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -88968,6 +91519,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -89023,6 +91575,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -89087,6 +91640,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -89149,6 +91703,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89207,6 +91762,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89271,6 +91827,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89336,6 +91893,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89398,6 +91956,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89459,6 +92018,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89526,6 +92086,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89592,6 +92153,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -89653,6 +92215,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -89716,6 +92279,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -89772,6 +92336,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -89832,6 +92397,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -89894,6 +92460,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -89961,6 +92528,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90031,6 +92599,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90105,6 +92674,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90181,6 +92751,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90248,6 +92819,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90318,6 +92890,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90392,6 +92965,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90468,6 +93042,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90536,6 +93111,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90601,6 +93177,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90665,6 +93242,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90734,6 +93312,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90802,6 +93381,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90867,6 +93447,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90931,6 +93512,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -90993,6 +93575,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -91049,6 +93632,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -91102,6 +93686,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -91158,6 +93743,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -91213,6 +93799,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -91277,6 +93864,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -91339,6 +93927,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91397,6 +93986,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91461,6 +94051,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91526,6 +94117,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91588,6 +94180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91649,6 +94242,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91716,6 +94310,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -91782,6 +94377,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -91843,6 +94439,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -91906,6 +94503,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -91962,6 +94560,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -92022,6 +94621,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -92084,6 +94684,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92151,6 +94752,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92221,6 +94823,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92295,6 +94898,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92371,6 +94975,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92438,6 +95043,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92508,6 +95114,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92582,6 +95189,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92660,6 +95268,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92734,6 +95343,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92804,6 +95414,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92876,6 +95487,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -92944,6 +95556,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93009,6 +95622,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93073,6 +95687,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93142,6 +95757,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93210,6 +95826,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93275,6 +95892,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93339,6 +95957,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93401,6 +96020,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -93457,6 +96077,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -93510,6 +96131,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -93566,6 +96188,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -93621,6 +96244,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -93685,6 +96309,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -93747,6 +96372,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93805,6 +96431,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93869,6 +96496,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93934,6 +96562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -93996,6 +96625,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94057,6 +96687,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94124,6 +96755,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94190,6 +96822,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -94251,6 +96884,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -94314,6 +96948,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -94370,6 +97005,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -94430,6 +97066,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -94492,6 +97129,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94559,6 +97197,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94629,6 +97268,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94703,6 +97343,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94779,6 +97420,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94846,6 +97488,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94916,6 +97559,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -94990,6 +97634,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95066,6 +97711,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95135,6 +97781,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95203,6 +97850,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95268,6 +97916,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95332,6 +97981,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95401,6 +98051,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95469,6 +98120,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95534,6 +98186,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95598,6 +98251,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -95660,6 +98314,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -95716,6 +98371,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -95769,6 +98425,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -95825,6 +98482,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -95880,6 +98538,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -95944,6 +98603,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -96006,6 +98666,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96064,6 +98725,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96128,6 +98790,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96193,6 +98856,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96255,6 +98919,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96316,6 +98981,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96383,6 +99049,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96449,6 +99116,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -96510,6 +99178,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -96573,6 +99242,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -96629,6 +99299,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -96689,6 +99360,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -96751,6 +99423,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96818,6 +99491,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96888,6 +99562,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -96962,6 +99637,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97038,6 +99714,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97107,6 +99784,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97175,6 +99853,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97240,6 +99919,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97304,6 +99984,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97366,6 +100047,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -97422,6 +100104,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -97475,6 +100158,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -97531,6 +100215,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -97586,6 +100271,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -97650,6 +100336,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -97712,6 +100399,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97770,6 +100458,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97834,6 +100523,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97899,6 +100589,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -97961,6 +100652,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98022,6 +100714,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98089,6 +100782,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98155,6 +100849,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -98216,6 +100911,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -98279,6 +100975,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -98335,6 +101032,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -98395,6 +101093,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -98455,6 +101154,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98525,6 +101225,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98599,6 +101300,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98675,6 +101377,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98744,6 +101447,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98811,6 +101515,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98881,6 +101586,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -98955,6 +101661,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99029,6 +101736,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99099,6 +101807,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99173,6 +101882,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99251,6 +101961,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99325,6 +102036,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99395,6 +102107,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99465,6 +102178,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99535,6 +102249,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99609,6 +102324,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99687,6 +102403,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99761,6 +102478,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99831,6 +102549,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99901,6 +102620,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -99971,6 +102691,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100045,6 +102766,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100121,6 +102843,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100189,6 +102912,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100254,6 +102978,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100318,6 +103043,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100387,6 +103113,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100455,6 +103182,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100520,6 +103248,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100584,6 +103313,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100653,6 +103383,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100721,6 +103452,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100786,6 +103518,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100850,6 +103583,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100919,6 +103653,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -100987,6 +103722,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101052,6 +103788,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101116,6 +103853,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101185,6 +103923,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101253,6 +103992,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101318,6 +104058,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101382,6 +104123,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101444,6 +104186,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -101500,6 +104243,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -101553,6 +104297,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -101609,6 +104354,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -101664,6 +104410,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -101728,6 +104475,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -101790,6 +104538,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101848,6 +104597,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101912,6 +104662,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -101977,6 +104728,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102039,6 +104791,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102100,6 +104853,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102167,6 +104921,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102233,6 +104988,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -102294,6 +105050,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -102357,6 +105114,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -102413,6 +105171,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -102473,6 +105232,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -102539,6 +105299,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102624,6 +105385,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102710,6 +105472,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102789,6 +105552,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102858,6 +105622,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -102920,6 +105685,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -102976,6 +105742,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -103029,6 +105796,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -103085,6 +105853,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -103140,6 +105909,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -103204,6 +105974,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -103266,6 +106037,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103324,6 +106096,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103388,6 +106161,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103453,6 +106227,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103515,6 +106290,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103576,6 +106352,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103643,6 +106420,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -103709,6 +106487,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -103770,6 +106549,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -103833,6 +106613,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -103889,6 +106670,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -103949,6 +106731,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -104011,6 +106794,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104080,6 +106864,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104142,6 +106927,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -104198,6 +106984,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -104251,6 +107038,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -104307,6 +107095,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -104362,6 +107151,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -104426,6 +107216,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -104488,6 +107279,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104546,6 +107338,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104610,6 +107403,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104675,6 +107469,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104737,6 +107532,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104798,6 +107594,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104865,6 +107662,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -104931,6 +107729,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -104992,6 +107791,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -105055,6 +107855,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -105111,6 +107912,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -105171,6 +107973,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -105226,6 +108029,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -105282,6 +108086,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -105343,6 +108148,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -105410,6 +108216,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -105478,6 +108285,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -105541,6 +108349,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -105601,6 +108410,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -105651,6 +108461,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters.$queryParameters) {
@@ -105709,6 +108520,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{country}', `${parameters['country']}`);
@@ -105781,6 +108593,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -105843,6 +108656,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -105899,6 +108713,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -105952,6 +108767,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -106008,6 +108824,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -106063,6 +108880,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -106127,6 +108945,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -106189,6 +109008,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106247,6 +109067,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106311,6 +109132,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106376,6 +109198,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106438,6 +109261,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106499,6 +109323,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106566,6 +109391,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106632,6 +109458,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -106693,6 +109520,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -106756,6 +109584,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -106812,6 +109641,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -106872,6 +109702,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -106934,6 +109765,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -106996,6 +109828,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -107052,6 +109885,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -107105,6 +109939,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -107161,6 +109996,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -107216,6 +110052,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['data'] !== undefined) {
@@ -107280,6 +110117,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -107342,6 +110180,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107400,6 +110239,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107464,6 +110304,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107529,6 +110370,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107591,6 +110433,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107652,6 +110495,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107719,6 +110563,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             path = path.replace('{id}', `${parameters['id']}`);
@@ -107785,6 +110630,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['filter'] !== undefined) {
@@ -107846,6 +110692,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -107909,6 +110756,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['where'] !== undefined) {
@@ -107965,6 +110813,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
@@ -108025,6 +110874,7 @@ export default class TweakApi {
         let headers: any = {};
         let form: any = {};
         return new Promise((resolve, reject) => {
+            headers['Accept'] = 'application/json';
             headers['Content-Type'] = 'application/json';
 
             if (parameters['options'] !== undefined) {
