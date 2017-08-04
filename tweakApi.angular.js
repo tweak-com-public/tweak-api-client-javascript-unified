@@ -40631,22 +40631,22 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Update Team Billing Card
+             * Update Team Billing Subscription Plan
              * @method
-             * @name TweakApi#putTeamMembersByIdTeamBillingSubscription
+             * @name TweakApi#putTeamMembersByIdTeamBillingSubscriptionPlan
              * @param {string} id - TeamMember id
              * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
                 at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
              * 
              */
-            TweakApi.prototype.putTeamMembersByIdTeamBillingSubscription = function(parameters) {
+            TweakApi.prototype.putTeamMembersByIdTeamBillingSubscriptionPlan = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/TeamMembers/{id}/team/billing/subscription';
+                var path = '/TeamMembers/{id}/team/billing/subscription/plan';
 
                 var body;
                 var queryParameters = {};
