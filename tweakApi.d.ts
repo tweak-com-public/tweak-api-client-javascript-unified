@@ -50145,7 +50145,7 @@ export default class TweakApi {
         });
     }
 
-    putTeamMembersByIdTeamBillingSubscriptionURL(parameters: {
+    putTeamMembersByIdTeamBillingSubscriptionPlanURL(parameters: {
         'id': string,
         'data' ? : TeamMember,
         $queryParameters ? : any,
@@ -50153,7 +50153,7 @@ export default class TweakApi {
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMembers/{id}/team/billing/subscription';
+        let path = '/TeamMembers/{id}/team/billing/subscription/plan';
 
         path = path.replace('{id}', `${parameters['id']}`);
 
@@ -50168,21 +50168,21 @@ export default class TweakApi {
     }
 
     /**
-    * Update Team Billing Card
+    * Update Team Billing Subscription Plan
     * @method
-    * @name TweakApi#putTeamMembersByIdTeamBillingSubscription
+    * @name TweakApi#putTeamMembersByIdTeamBillingSubscriptionPlan
          * @param {string} id - TeamMember id
          * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
         at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
     */
-    putTeamMembersByIdTeamBillingSubscription(parameters: {
+    putTeamMembersByIdTeamBillingSubscriptionPlan(parameters: {
         'id': string,
         'data' ? : TeamMember,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMembers/{id}/team/billing/subscription';
+        let path = '/TeamMembers/{id}/team/billing/subscription/plan';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
