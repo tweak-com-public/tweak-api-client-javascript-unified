@@ -9,6 +9,7 @@
 
         /**
          * Constructor, with class name
+         * @param roles          {array}                   items: type: string    
          * @param id             {string}    [REQUIRED]    
          * @param ttl            {number}                  default: 1209600  description: time to live in seconds (2 weeks by default)  format: double  
          * @param scopes         {array}                   description: Array of scopes granted to this access token.  items: type: string    
@@ -49,8 +50,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'ttl', 'scopes', 'created', 'userId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'team', 'teamMember', 'portal', 'portalMember'];
-        var parametersType = ['string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['roles', 'id', 'ttl', 'scopes', 'created', 'userId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'team', 'teamMember', 'portal', 'portalMember'];
+        var parametersType = ['array', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['id'];
 
         /**
