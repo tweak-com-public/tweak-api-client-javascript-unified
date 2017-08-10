@@ -4219,6 +4219,64 @@ export default class TweakApi {
         });
     }
 
+    getCustomersEmailByEmailExistsURL(parameters: {
+        'email': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/email/{email}/exists';
+
+        path = path.replace('{email}', `${parameters['email']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Define whether customer exists or not
+     * @method
+     * @name TweakApi#getCustomersEmailByEmailExists
+     * @param {string} email - Customer email
+     */
+    getCustomersEmailByEmailExists(parameters: {
+        'email': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/email/{email}/exists';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{email}', `${parameters['email']}`);
+
+            if (parameters['email'] === undefined) {
+                reject(new Error('Missing required  parameter: email'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getCustomersByIdActiveURL(parameters: {
         'id': string,
         $queryParameters ? : any,
@@ -24934,6 +24992,122 @@ export default class TweakApi {
 
             if (parameters['options'] !== undefined) {
                 queryParameters['options'] = parameters['options'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsNameByNameExistsURL(parameters: {
+        'name': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/name/{name}/exists';
+
+        path = path.replace('{name}', `${parameters['name']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Define whether team exists or not
+     * @method
+     * @name TweakApi#getTeamsNameByNameExists
+     * @param {string} name - Team name
+     */
+    getTeamsNameByNameExists(parameters: {
+        'name': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/name/{name}/exists';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{name}', `${parameters['name']}`);
+
+            if (parameters['name'] === undefined) {
+                reject(new Error('Missing required  parameter: name'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamsSubdomainBySubdomainExistsURL(parameters: {
+        'subdomain': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/subdomain/{subdomain}/exists';
+
+        path = path.replace('{subdomain}', `${parameters['subdomain']}`);
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Define whether team exists or not
+     * @method
+     * @name TweakApi#getTeamsSubdomainBySubdomainExists
+     * @param {string} subdomain - Team subdomain
+     */
+    getTeamsSubdomainBySubdomainExists(parameters: {
+        'subdomain': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Teams/subdomain/{subdomain}/exists';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{subdomain}', `${parameters['subdomain']}`);
+
+            if (parameters['subdomain'] === undefined) {
+                reject(new Error('Missing required  parameter: subdomain'));
+                return;
             }
 
             if (parameters.$queryParameters) {

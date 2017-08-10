@@ -3455,6 +3455,56 @@ var TweakApi = (function() {
         return deferred.promise;
     };
     /**
+     * Define whether customer exists or not
+     * @method
+     * @name TweakApi#getCustomersEmailByEmailExists
+     * @param {string} email - Customer email
+     * 
+     */
+    TweakApi.prototype.getCustomersEmailByEmailExists = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Customers/email/{email}/exists';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{email}', parameters['email']);
+
+        if (parameters['email'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: email'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
      * Define whether customer is active or not
      * @method
      * @name TweakApi#getCustomersByIdActive
@@ -20298,6 +20348,106 @@ var TweakApi = (function() {
 
         if (parameters['options'] !== undefined) {
             queryParameters['options'] = parameters['options'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Define whether team exists or not
+     * @method
+     * @name TweakApi#getTeamsNameByNameExists
+     * @param {string} name - Team name
+     * 
+     */
+    TweakApi.prototype.getTeamsNameByNameExists = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/name/{name}/exists';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{name}', parameters['name']);
+
+        if (parameters['name'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: name'));
+            return deferred.promise;
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters)
+                .forEach(function(parameterName) {
+                    var parameter = parameters.$queryParameters[parameterName];
+                    queryParameters[parameterName] = parameter;
+                });
+        }
+
+        this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+        return deferred.promise;
+    };
+    /**
+     * Define whether team exists or not
+     * @method
+     * @name TweakApi#getTeamsSubdomainBySubdomainExists
+     * @param {string} subdomain - Team subdomain
+     * 
+     */
+    TweakApi.prototype.getTeamsSubdomainBySubdomainExists = function(parameters) {
+        if (parameters === undefined) {
+            parameters = {};
+        }
+        var deferred = Q.defer();
+
+        var domain = this.domain;
+        var path = '/Teams/subdomain/{subdomain}/exists';
+
+        var body;
+        var queryParameters = {};
+        var headers = {};
+        var form = {};
+
+        if (this.token.isQuery) {
+            queryParameters[this.token.headerOrQueryName] = this.token.value;
+        } else if (this.token.headerOrQueryName) {
+            headers[this.token.headerOrQueryName] = this.token.value;
+        } else {
+            headers['Authorization'] = 'Bearer ' + this.token.value;
+        }
+
+        headers['Content-Type'] = ['application/json'];
+
+        path = path.replace('{subdomain}', parameters['subdomain']);
+
+        if (parameters['subdomain'] === undefined) {
+            deferred.reject(new Error('Missing required  parameter: subdomain'));
+            return deferred.promise;
         }
 
         if (parameters.$queryParameters) {
