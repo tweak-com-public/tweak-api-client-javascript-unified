@@ -11723,6 +11723,75 @@ export default class TweakApi {
         });
     }
 
+    getDesignsByIdRejectionCommentURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/rejectionComment';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation rejectionComment.
+    * @method
+    * @name TweakApi#getDesignsByIdRejectionComment
+         * @param {string} id - Design id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getDesignsByIdRejectionComment(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Designs/{id}/rejectionComment';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getDesignsByIdCommentersByFkURL(parameters: {
         'id': string,
         'fk': string,
@@ -15183,6 +15252,7 @@ export default class TweakApi {
     postDesignsByIdRejectURL(parameters: {
         'id': string,
         'id': string,
+        'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
@@ -15207,15 +15277,18 @@ export default class TweakApi {
     }
 
     /**
-     * Reject design
-     * @method
-     * @name TweakApi#postDesignsByIdReject
-     * @param {string} id - Design id
-     * @param {string} id - Customer id
-     */
+    * Reject design
+    * @method
+    * @name TweakApi#postDesignsByIdReject
+         * @param {string} id - Design id
+         * @param {string} id - Customer id
+         * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
     postDesignsByIdReject(parameters: {
         'id': string,
         'id': string,
+        'data' ? : Design,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
@@ -15240,6 +15313,10 @@ export default class TweakApi {
             if (parameters['id'] === undefined) {
                 reject(new Error('Missing required  parameter: id'));
                 return;
+            }
+
+            if (parameters['data'] !== undefined) {
+                body = parameters['data'];
             }
 
             if (parameters.$queryParameters) {
@@ -75217,6 +75294,87 @@ export default class TweakApi {
             }
 
             this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getPortalsByIdDesignsByNkRejectionCommentURL(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/designs/{nk}/rejectionComment';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+
+        path = path.replace('{nk}', `${parameters['nk']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches belongsTo relation rejectionComment.
+    * @method
+    * @name TweakApi#getPortalsByIdDesignsByNkRejectionComment
+         * @param {string} id - Portal id
+         * @param {string} nk - Foreign key for designs.
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getPortalsByIdDesignsByNkRejectionComment(parameters: {
+        'id': string,
+        'nk': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Portals/{id}/designs/{nk}/rejectionComment';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            path = path.replace('{nk}', `${parameters['nk']}`);
+
+            if (parameters['nk'] === undefined) {
+                reject(new Error('Missing required  parameter: nk'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 
