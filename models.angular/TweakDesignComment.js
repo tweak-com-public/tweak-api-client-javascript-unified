@@ -13,6 +13,7 @@
          * @param position    {object}                  $ref: #/definitions/Axes  
          * @param pageIndex   {number}                  minimum: 0  default: 0  format: double  
          * @param status      {string}                  enum: unsolved, resolved
+         * @param type        {string}                  enum: comment, rejection, reaction
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
@@ -49,8 +50,8 @@
         /**
          * Private properties
          */
-        var parameters = ['comment', 'position', 'pageIndex', 'status', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object'];
+        var parameters = ['comment', 'position', 'pageIndex', 'status', 'type', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
+        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['comment'];
 
         /**
