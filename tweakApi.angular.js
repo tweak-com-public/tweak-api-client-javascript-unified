@@ -9026,6 +9026,224 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Fetches hasOne relation permission.
+             * @method
+             * @name TweakApi#getDesignsByIdPermission
+             * @param {string} id - Design id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDesignsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in permission of this model.
+             * @method
+             * @name TweakApi#postDesignsByIdPermission
+             * @param {string} id - Design id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDesignsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update permission of this model.
+             * @method
+             * @name TweakApi#putDesignsByIdPermission
+             * @param {string} id - Design id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putDesignsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes permission of this model.
+             * @method
+             * @name TweakApi#deleteDesignsByIdPermission
+             * @param {string} id - Design id
+             * 
+             */
+            TweakApi.prototype.deleteDesignsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Designs/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Fetches belongsTo relation requester.
              * @method
              * @name TweakApi#getDesignsByIdRequester
@@ -13075,6 +13293,961 @@ angular.module('Tweak', [])
 
                 if (parameters['where'] !== undefined) {
                     queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation design.
+             * @method
+             * @name TweakApi#getDesignPermissionSetsByIdDesign
+             * @param {string} id - DesignPermissionSet id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSetsByIdDesign = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}/design';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a new instance of the model and persist it into the data source.
+             * @method
+             * @name TweakApi#postDesignPermissionSets
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDesignPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#patchDesignPermissionSets
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.patchDesignPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#putDesignPermissionSets
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDesignPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find all instances of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDesignPermissionSets
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#postDesignPermissionSetsReplaceOrCreate
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDesignPermissionSetsReplaceOrCreate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/replaceOrCreate';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             * @method
+             * @name TweakApi#postDesignPermissionSetsUpsertWithWhere
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDesignPermissionSetsUpsertWithWhere = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/upsertWithWhere';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#getDesignPermissionSetsByIdExists
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSetsByIdExists = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}/exists';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#headDesignPermissionSetsById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.headDesignPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#getDesignPermissionSetsById
+             * @param {string} id - Model id
+             * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#putDesignPermissionSetsById
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putDesignPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#deleteDesignPermissionSetsById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.deleteDesignPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#patchDesignPermissionSetsById
+             * @param {string} id - DesignPermissionSet id
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.patchDesignPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#postDesignPermissionSetsByIdReplace
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postDesignPermissionSetsByIdReplace = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/{id}/replace';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find first instance of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getDesignPermissionSetsFindOne
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSetsFindOne = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/findOne';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update instances of the model matched by {{where}} from the data source.
+             * @method
+             * @name TweakApi#postDesignPermissionSetsUpdate
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postDesignPermissionSetsUpdate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/update';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Count instances of the model matched by where from the data source.
+             * @method
+             * @name TweakApi#getDesignPermissionSetsCount
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSetsCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#postDesignPermissionSetsChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postDesignPermissionSetsChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    form['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#getDesignPermissionSetsChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getDesignPermissionSetsChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/DesignPermissionSets/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    queryParameters['options'] = parameters['options'];
                 }
 
                 if (parameters.$queryParameters) {
@@ -23184,6 +24357,256 @@ angular.module('Tweak', [])
                 }
 
                 this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches hasOne relation permission.
+             * @method
+             * @name TweakApi#getTeamsByIdPortalsByNkPermission
+             * @param {string} id - Team id
+             * @param {string} nk - Foreign key for portals.
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamsByIdPortalsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/portals/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in permission of this model.
+             * @method
+             * @name TweakApi#postTeamsByIdPortalsByNkPermission
+             * @param {string} id - Team id
+             * @param {string} nk - Foreign key for portals.
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postTeamsByIdPortalsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/portals/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update permission of this model.
+             * @method
+             * @name TweakApi#putTeamsByIdPortalsByNkPermission
+             * @param {string} id - Team id
+             * @param {string} nk - Foreign key for portals.
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putTeamsByIdPortalsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/portals/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes permission of this model.
+             * @method
+             * @name TweakApi#deleteTeamsByIdPortalsByNkPermission
+             * @param {string} id - Team id
+             * @param {string} nk - Foreign key for portals.
+             * 
+             */
+            TweakApi.prototype.deleteTeamsByIdPortalsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Teams/{id}/portals/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
                 return deferred.promise;
             };
@@ -57428,6 +58851,224 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Fetches hasOne relation permission.
+             * @method
+             * @name TweakApi#getPortalsByIdPermission
+             * @param {string} id - Portal id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getPortalsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in permission of this model.
+             * @method
+             * @name TweakApi#postPortalsByIdPermission
+             * @param {string} id - Portal id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postPortalsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update permission of this model.
+             * @method
+             * @name TweakApi#putPortalsByIdPermission
+             * @param {string} id - Portal id
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putPortalsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes permission of this model.
+             * @method
+             * @name TweakApi#deletePortalsByIdPermission
+             * @param {string} id - Portal id
+             * 
+             */
+            TweakApi.prototype.deletePortalsByIdPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Queries designs of Portal.
              * @method
              * @name TweakApi#getPortalsByIdDesigns
@@ -60750,6 +62391,256 @@ angular.module('Tweak', [])
                 }
 
                 this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches hasOne relation permission.
+             * @method
+             * @name TweakApi#getPortalsByIdDesignsByNkPermission
+             * @param {string} id - Portal id
+             * @param {string} nk - Foreign key for designs.
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getPortalsByIdDesignsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/designs/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Creates a new instance in permission of this model.
+             * @method
+             * @name TweakApi#postPortalsByIdDesignsByNkPermission
+             * @param {string} id - Portal id
+             * @param {string} nk - Foreign key for designs.
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postPortalsByIdDesignsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/designs/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update permission of this model.
+             * @method
+             * @name TweakApi#putPortalsByIdDesignsByNkPermission
+             * @param {string} id - Portal id
+             * @param {string} nk - Foreign key for designs.
+             * @param {} data - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.putPortalsByIdDesignsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/designs/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Deletes permission of this model.
+             * @method
+             * @name TweakApi#deletePortalsByIdDesignsByNkPermission
+             * @param {string} id - Portal id
+             * @param {string} nk - Foreign key for designs.
+             * 
+             */
+            TweakApi.prototype.deletePortalsByIdDesignsByNkPermission = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Portals/{id}/designs/{nk}/permission';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                path = path.replace('{nk}', parameters['nk']);
+
+                if (parameters['nk'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: nk'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
                 return deferred.promise;
             };
@@ -87547,6 +89438,961 @@ angular.module('Tweak', [])
 
                 var domain = this.domain;
                 var path = '/TeamPermissionSets/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    queryParameters['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches belongsTo relation portal.
+             * @method
+             * @name TweakApi#getPortalPermissionSetsByIdPortal
+             * @param {string} id - PortalPermissionSet id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSetsByIdPortal = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}/portal';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a new instance of the model and persist it into the data source.
+             * @method
+             * @name TweakApi#postPortalPermissionSets
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postPortalPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#patchPortalPermissionSets
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.patchPortalPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#putPortalPermissionSets
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putPortalPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find all instances of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getPortalPermissionSets
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSets = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace an existing model instance or insert a new one into the data source.
+             * @method
+             * @name TweakApi#postPortalPermissionSetsReplaceOrCreate
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postPortalPermissionSetsReplaceOrCreate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/replaceOrCreate';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update an existing model instance or insert a new one into the data source based on the where criteria.
+             * @method
+             * @name TweakApi#postPortalPermissionSetsUpsertWithWhere
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postPortalPermissionSetsUpsertWithWhere = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/upsertWithWhere';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#getPortalPermissionSetsByIdExists
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSetsByIdExists = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}/exists';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Check whether a model instance exists in the data source.
+             * @method
+             * @name TweakApi#headPortalPermissionSetsById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.headPortalPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('HEAD', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#getPortalPermissionSetsById
+             * @param {string} id - Model id
+             * @param {string} filter - Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#putPortalPermissionSetsById
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.putPortalPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Delete a model instance by {{id}} from the data source.
+             * @method
+             * @name TweakApi#deletePortalPermissionSetsById
+             * @param {string} id - Model id
+             * 
+             */
+            TweakApi.prototype.deletePortalPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('DELETE', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Patch attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#patchPortalPermissionSetsById
+             * @param {string} id - PortalPermissionSet id
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.patchPortalPermissionSetsById = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('PATCH', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Replace attributes for a model instance and persist it into the data source.
+             * @method
+             * @name TweakApi#postPortalPermissionSetsByIdReplace
+             * @param {string} id - Model id
+             * @param {} data - Model instance data
+             * 
+             */
+            TweakApi.prototype.postPortalPermissionSetsByIdReplace = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/{id}/replace';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Find first instance of the model matched by filter from the data source.
+             * @method
+             * @name TweakApi#getPortalPermissionSetsFindOne
+             * @param {string} filter - Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSetsFindOne = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/findOne';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['filter'] !== undefined) {
+                    queryParameters['filter'] = parameters['filter'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Update instances of the model matched by {{where}} from the data source.
+             * @method
+             * @name TweakApi#postPortalPermissionSetsUpdate
+             * @param {string} where - Criteria to match model instances
+             * @param {} data - An object of model property name/value pairs
+             * 
+             */
+            TweakApi.prototype.postPortalPermissionSetsUpdate = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/update';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters['data'] !== undefined) {
+                    body = parameters['data'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Count instances of the model matched by where from the data source.
+             * @method
+             * @name TweakApi#getPortalPermissionSetsCount
+             * @param {string} where - Criteria to match model instances
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSetsCount = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/count';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['where'] !== undefined) {
+                    queryParameters['where'] = parameters['where'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#postPortalPermissionSetsChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.postPortalPermissionSetsChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/change-stream';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['options'] !== undefined) {
+                    form['options'] = parameters['options'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('POST', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Create a change stream.
+             * @method
+             * @name TweakApi#getPortalPermissionSetsChangeStream
+             * @param {string} options - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getPortalPermissionSetsChangeStream = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/PortalPermissionSets/change-stream';
 
                 var body;
                 var queryParameters = {};
