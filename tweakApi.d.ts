@@ -51714,20 +51714,16 @@ export default class TweakApi {
         });
     }
 
-    getTeamMembersByIdTeamBillingURL(parameters: {
+    getTeamMembersByIdTeamBillingUncachedURL(parameters: {
         'id': string,
-        'refresh' ? : boolean,
         $queryParameters ? : any,
         $domain ? : string
     }): string {
         let queryParameters: any = {};
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMembers/{id}/team/billing';
+        let path = '/TeamMembers/{id}/team/billing/uncached';
 
         path = path.replace('{id}', `${parameters['id']}`);
-        if (parameters['refresh'] !== undefined) {
-            queryParameters['refresh'] = parameters['refresh'];
-        }
 
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
@@ -51740,21 +51736,18 @@ export default class TweakApi {
     }
 
     /**
-    * Fetches hasOne relation billing.
-    * @method
-    * @name TweakApi#getTeamMembersByIdTeamBilling
-         * @param {string} id - TeamMember id
-         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
-    */
-    getTeamMembersByIdTeamBilling(parameters: {
+     * Get Team Billing
+     * @method
+     * @name TweakApi#getTeamMembersByIdTeamBillingUncached
+     * @param {string} id - TeamMember id
+     */
+    getTeamMembersByIdTeamBillingUncached(parameters: {
         'id': string,
-        'refresh' ? : boolean,
         $queryParameters ? : any,
         $domain ? : string
     }): Promise < request.Response > {
         const domain = parameters.$domain ? parameters.$domain : this.domain;
-        let path = '/TeamMembers/{id}/team/billing';
+        let path = '/TeamMembers/{id}/team/billing/uncached';
         let body: any;
         let queryParameters: any = {};
         let headers: any = {};
@@ -51767,10 +51760,6 @@ export default class TweakApi {
             if (parameters['id'] === undefined) {
                 reject(new Error('Missing required  parameter: id'));
                 return;
-            }
-
-            if (parameters['refresh'] !== undefined) {
-                queryParameters['refresh'] = parameters['refresh'];
             }
 
             if (parameters.$queryParameters) {
@@ -51846,6 +51835,75 @@ export default class TweakApi {
             }
 
             this.request('PUT', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
+    getTeamMembersByIdTeamBillingURL(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/team/billing';
+
+        path = path.replace('{id}', `${parameters['id']}`);
+        if (parameters['refresh'] !== undefined) {
+            queryParameters['refresh'] = parameters['refresh'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+    * Fetches hasOne relation billing.
+    * @method
+    * @name TweakApi#getTeamMembersByIdTeamBilling
+         * @param {string} id - TeamMember id
+         * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+        at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+    */
+    getTeamMembersByIdTeamBilling(parameters: {
+        'id': string,
+        'refresh' ? : boolean,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/TeamMembers/{id}/team/billing';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            path = path.replace('{id}', `${parameters['id']}`);
+
+            if (parameters['id'] === undefined) {
+                reject(new Error('Missing required  parameter: id'));
+                return;
+            }
+
+            if (parameters['refresh'] !== undefined) {
+                queryParameters['refresh'] = parameters['refresh'];
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
         });
     }
 

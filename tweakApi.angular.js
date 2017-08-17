@@ -41928,22 +41928,20 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
-             * Fetches hasOne relation billing.
+             * Get Team Billing
              * @method
-             * @name TweakApi#getTeamMembersByIdTeamBilling
+             * @name TweakApi#getTeamMembersByIdTeamBillingUncached
              * @param {string} id - TeamMember id
-             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
-                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
              * 
              */
-            TweakApi.prototype.getTeamMembersByIdTeamBilling = function(parameters) {
+            TweakApi.prototype.getTeamMembersByIdTeamBillingUncached = function(parameters) {
                 if (parameters === undefined) {
                     parameters = {};
                 }
                 var deferred = $q.defer();
 
                 var domain = this.domain;
-                var path = '/TeamMembers/{id}/team/billing';
+                var path = '/TeamMembers/{id}/team/billing/uncached';
 
                 var body;
                 var queryParameters = {};
@@ -41965,10 +41963,6 @@ angular.module('Tweak', [])
                 if (parameters['id'] === undefined) {
                     deferred.reject(new Error('Missing required  parameter: id'));
                     return deferred.promise;
-                }
-
-                if (parameters['refresh'] !== undefined) {
-                    queryParameters['refresh'] = parameters['refresh'];
                 }
 
                 if (parameters.$queryParameters) {
@@ -42036,6 +42030,62 @@ angular.module('Tweak', [])
                 }
 
                 this.request('PUT', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
+             * Fetches hasOne relation billing.
+             * @method
+             * @name TweakApi#getTeamMembersByIdTeamBilling
+             * @param {string} id - TeamMember id
+             * @param {boolean} refresh - Tweak API to integrate with all the Tweak services.  You can find out more about Tweak 
+                at <a href='https://www.tweak.com'>https://www.tweak.com</a>, #tweak.
+             * 
+             */
+            TweakApi.prototype.getTeamMembersByIdTeamBilling = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/TeamMembers/{id}/team/billing';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                path = path.replace('{id}', parameters['id']);
+
+                if (parameters['id'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: id'));
+                    return deferred.promise;
+                }
+
+                if (parameters['refresh'] !== undefined) {
+                    queryParameters['refresh'] = parameters['refresh'];
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
                 return deferred.promise;
             };
