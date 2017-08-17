@@ -1,22 +1,25 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTeamPermissionSet', TweakTeamPermissionSet);
+        .factory('TweakDesignPermissionSet', TweakDesignPermissionSet);
 
-    TweakTeamPermissionSet.$inject = ['$log'];
+    TweakDesignPermissionSet.$inject = ['$log'];
 
-    function TweakTeamPermissionSet($log) {
+    function TweakDesignPermissionSet($log) {
 
         /**
          * Constructor, with class name
-         * @param emailNotification       {boolean}   default: true  
-         * @param templatePermission      {object}    $ref: #/definitions/TemplatePermissionSet  
-         * @param tweakTemplatePermission {object}    $ref: #/definitions/TemplatePermissionSet  
-         * @param id                      {string}    
-         * @param teamId                  {string}    
-         * @param team                    {object}    $ref: #/definitions/Team  
+         * @param highResPdf        {boolean}   default: false  
+         * @param proofPdf          {boolean}   default: false  
+         * @param jpegs             {boolean}   default: false  
+         * @param socialSharing     {boolean}   default: false  
+         * @param canEdit           {boolean}   default: false  
+         * @param needAdminApproval {boolean}   default: false  
+         * @param id                {string}    
+         * @param designId          {string}    
+         * @param design            {object}    $ref: #/definitions/Design  
          */
-        function TweakTeamPermissionSet(data) {
+        function TweakDesignPermissionSet(data) {
             data = data || {};
 
             for (var d in data) {
@@ -41,8 +44,8 @@
         /**
          * Private properties
          */
-        var parameters = ['emailNotification', 'templatePermission', 'tweakTemplatePermission', 'id', 'teamId', 'team'];
-        var parametersType = ['boolean', 'object', 'object', 'string', 'string', 'object'];
+        var parameters = ['highResPdf', 'proofPdf', 'jpegs', 'socialSharing', 'canEdit', 'needAdminApproval', 'id', 'designId', 'design'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**
@@ -66,20 +69,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakTeamPermissionSet.build = function (data) {
-            return new TweakTeamPermissionSet(data);
+        TweakDesignPermissionSet.build = function (data) {
+            return new TweakDesignPermissionSet(data);
         };
 
-        TweakTeamPermissionSet.apiResponseTransformer = function (responseData) {
+        TweakDesignPermissionSet.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTeamPermissionSet.build).filter(Boolean);
+                return responseData.map(TweakDesignPermissionSet.build).filter(Boolean);
             }
-            return TweakTeamPermissionSet.build(responseData);
+            return TweakDesignPermissionSet.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTeamPermissionSet;
+        return TweakDesignPermissionSet;
     }
 })();

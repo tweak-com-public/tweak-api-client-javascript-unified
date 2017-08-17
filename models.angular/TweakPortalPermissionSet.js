@@ -1,22 +1,21 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTeamPermissionSet', TweakTeamPermissionSet);
+        .factory('TweakPortalPermissionSet', TweakPortalPermissionSet);
 
-    TweakTeamPermissionSet.$inject = ['$log'];
+    TweakPortalPermissionSet.$inject = ['$log'];
 
-    function TweakTeamPermissionSet($log) {
+    function TweakPortalPermissionSet($log) {
 
         /**
          * Constructor, with class name
-         * @param emailNotification       {boolean}   default: true  
          * @param templatePermission      {object}    $ref: #/definitions/TemplatePermissionSet  
          * @param tweakTemplatePermission {object}    $ref: #/definitions/TemplatePermissionSet  
          * @param id                      {string}    
-         * @param teamId                  {string}    
-         * @param team                    {object}    $ref: #/definitions/Team  
+         * @param portalId                {string}    
+         * @param portal                  {object}    $ref: #/definitions/Portal  
          */
-        function TweakTeamPermissionSet(data) {
+        function TweakPortalPermissionSet(data) {
             data = data || {};
 
             for (var d in data) {
@@ -41,8 +40,8 @@
         /**
          * Private properties
          */
-        var parameters = ['emailNotification', 'templatePermission', 'tweakTemplatePermission', 'id', 'teamId', 'team'];
-        var parametersType = ['boolean', 'object', 'object', 'string', 'string', 'object'];
+        var parameters = ['templatePermission', 'tweakTemplatePermission', 'id', 'portalId', 'portal'];
+        var parametersType = ['object', 'object', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**
@@ -66,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakTeamPermissionSet.build = function (data) {
-            return new TweakTeamPermissionSet(data);
+        TweakPortalPermissionSet.build = function (data) {
+            return new TweakPortalPermissionSet(data);
         };
 
-        TweakTeamPermissionSet.apiResponseTransformer = function (responseData) {
+        TweakPortalPermissionSet.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTeamPermissionSet.build).filter(Boolean);
+                return responseData.map(TweakPortalPermissionSet.build).filter(Boolean);
             }
-            return TweakTeamPermissionSet.build(responseData);
+            return TweakPortalPermissionSet.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTeamPermissionSet;
+        return TweakPortalPermissionSet;
     }
 })();

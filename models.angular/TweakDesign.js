@@ -47,6 +47,7 @@
          * @param reviewer           {object}                  $ref: #/definitions/TeamMember  
          * @param commenters         {array}                   items: $ref: #/definitions/TeamMember    
          * @param folder             {object}                  $ref: #/definitions/DesignFolder  
+         * @param permission         {object}                  $ref: #/definitions/DesignPermissionSet  
          */
         function TweakDesign(data) {
             data = data || {};
@@ -73,8 +74,8 @@
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
