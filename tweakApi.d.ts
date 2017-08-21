@@ -4221,6 +4221,67 @@ export default class TweakApi {
         });
     }
 
+    getCustomersResetPasswordTokenURL(parameters: {
+        'token': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): string {
+        let queryParameters: any = {};
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/reset-password/token';
+        if (parameters['token'] !== undefined) {
+            queryParameters['token'] = parameters['token'];
+        }
+
+        if (parameters.$queryParameters) {
+            Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+            });
+        }
+
+        let keys = Object.keys(queryParameters);
+        return domain + path + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(queryParameters[key])).join('&')) : '');
+    }
+
+    /**
+     * Get token info for reset password token
+     * @method
+     * @name TweakApi#getCustomersResetPasswordToken
+     * @param {string} token - Reset password access token
+     */
+    getCustomersResetPasswordToken(parameters: {
+        'token': string,
+        $queryParameters ? : any,
+        $domain ? : string
+    }): Promise < request.Response > {
+        const domain = parameters.$domain ? parameters.$domain : this.domain;
+        let path = '/Customers/reset-password/token';
+        let body: any;
+        let queryParameters: any = {};
+        let headers: any = {};
+        let form: any = {};
+        return new Promise((resolve, reject) => {
+            headers['Content-Type'] = 'application/json';
+
+            if (parameters['token'] !== undefined) {
+                queryParameters['token'] = parameters['token'];
+            }
+
+            if (parameters['token'] === undefined) {
+                reject(new Error('Missing required  parameter: token'));
+                return;
+            }
+
+            if (parameters.$queryParameters) {
+                Object.keys(parameters.$queryParameters).forEach(function(parameterName) {
+                    queryParameters[parameterName] = parameters.$queryParameters[parameterName];
+                });
+            }
+
+            this.request('GET', domain + path, body, headers, queryParameters, form, reject, resolve);
+        });
+    }
+
     getCustomersEmailByEmailExistsURL(parameters: {
         'email': string,
         $queryParameters ? : any,

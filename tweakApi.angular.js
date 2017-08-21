@@ -3479,6 +3479,58 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Get token info for reset password token
+             * @method
+             * @name TweakApi#getCustomersResetPasswordToken
+             * @param {string} token - Reset password access token
+             * 
+             */
+            TweakApi.prototype.getCustomersResetPasswordToken = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/reset-password/token';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['token'] !== undefined) {
+                    queryParameters['token'] = parameters['token'];
+                }
+
+                if (parameters['token'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: token'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Define whether customer exists or not
              * @method
              * @name TweakApi#getCustomersEmailByEmailExists
