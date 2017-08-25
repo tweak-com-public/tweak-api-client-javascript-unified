@@ -3978,6 +3978,58 @@ angular.module('Tweak', [])
                 return deferred.promise;
             };
             /**
+             * Refresh current access token
+             * @method
+             * @name TweakApi#getCustomersMeTokenRefresh
+             * @param {string} refreshToken - AccessToken refreshToken
+             * 
+             */
+            TweakApi.prototype.getCustomersMeTokenRefresh = function(parameters) {
+                if (parameters === undefined) {
+                    parameters = {};
+                }
+                var deferred = $q.defer();
+
+                var domain = this.domain;
+                var path = '/Customers/me/token/refresh';
+
+                var body;
+                var queryParameters = {};
+                var headers = {};
+                var form = {};
+
+                if (this.token.isQuery) {
+                    queryParameters[this.token.headerOrQueryName] = this.token.value;
+                } else if (this.token.headerOrQueryName) {
+                    headers[this.token.headerOrQueryName] = this.token.value;
+                } else {
+                    headers['Authorization'] = 'Bearer ' + this.token.value;
+                }
+
+                headers['Content-Type'] = ['application/json'];
+
+                if (parameters['refreshToken'] !== undefined) {
+                    queryParameters['refreshToken'] = parameters['refreshToken'];
+                }
+
+                if (parameters['refreshToken'] === undefined) {
+                    deferred.reject(new Error('Missing required  parameter: refreshToken'));
+                    return deferred.promise;
+                }
+
+                if (parameters.$queryParameters) {
+                    Object.keys(parameters.$queryParameters)
+                        .forEach(function(parameterName) {
+                            var parameter = parameters.$queryParameters[parameterName];
+                            queryParameters[parameterName] = parameter;
+                        });
+                }
+
+                this.request('GET', domain + path, parameters, body, headers, queryParameters, form, deferred);
+
+                return deferred.promise;
+            };
+            /**
              * Change profile picture
              * @method
              * @name TweakApi#putCustomersByIdProfilePicture
