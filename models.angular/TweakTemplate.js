@@ -9,31 +9,33 @@
 
         /**
          * Constructor, with class name
-         * @param name            {string}    [REQUIRED]    
-         * @param thumbnail       {string}                  
-         * @param object          {object}    [REQUIRED]    
-         * @param description     {string}                  default:   
-         * @param edited          {string}                  format: date-time  
-         * @param path            {string}                  default: /  
-         * @param status          {string}                  enum: pendingApproval, approved, rejected
-         * @param created         {string}                  format: date-time  
-         * @param modified        {string}                  format: date-time  
-         * @param id              {string}                  
-         * @param teamId          {string}                  
-         * @param uploaderId      {string}                  
-         * @param teamFolderId    {string}                  
-         * @param workflowId      {string}                  
-         * @param portals         {array}                   items: $ref: #/definitions/Portal    
-         * @param team            {object}                  $ref: #/definitions/Team  
-         * @param members         {array}                   items: $ref: #/definitions/TeamMember    
-         * @param templateMembers {array}                   items: $ref: #/definitions/TemplateMember    
-         * @param permission      {object}                  $ref: #/definitions/TemplatePermissionSet  
-         * @param designs         {array}                   items: $ref: #/definitions/Design    
-         * @param tags            {array}                   items: $ref: #/definitions/Tag    
-         * @param teamFolder      {object}                  $ref: #/definitions/TeamTemplateFolder  
-         * @param portalFolders   {array}                   items: $ref: #/definitions/PortalTemplateFolder    
-         * @param workflow        {object}                  $ref: #/definitions/Workflow  
-         * @param uploader        {object}                  $ref: #/definitions/TeamMember  
+         * @param name                 {string}    [REQUIRED]    
+         * @param thumbnail            {string}                  
+         * @param object               {object}    [REQUIRED]    
+         * @param description          {string}                  default:   
+         * @param edited               {string}                  format: date-time  
+         * @param path                 {string}                  default: /  
+         * @param status               {string}                  enum: pendingApproval, approved, rejected
+         * @param shared               {string}                  format: date-time  
+         * @param permissionSetUpdated {string}                  format: date-time  
+         * @param created              {string}                  format: date-time  
+         * @param modified             {string}                  format: date-time  
+         * @param id                   {string}                  
+         * @param teamId               {string}                  
+         * @param uploaderId           {string}                  
+         * @param teamFolderId         {string}                  
+         * @param workflowId           {string}                  
+         * @param portals              {array}                   items: $ref: #/definitions/Portal    
+         * @param team                 {object}                  $ref: #/definitions/Team  
+         * @param members              {array}                   items: $ref: #/definitions/TeamMember    
+         * @param templateMembers      {array}                   items: $ref: #/definitions/TemplateMember    
+         * @param permission           {object}                  $ref: #/definitions/TemplatePermissionSet  
+         * @param designs              {array}                   items: $ref: #/definitions/Design    
+         * @param tags                 {array}                   items: $ref: #/definitions/Tag    
+         * @param teamFolder           {object}                  $ref: #/definitions/TeamTemplateFolder  
+         * @param portalFolders        {array}                   items: $ref: #/definitions/PortalTemplateFolder    
+         * @param workflow             {object}                  $ref: #/definitions/Workflow  
+         * @param uploader             {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakTemplate(data) {
             data = data || {};
@@ -60,8 +62,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
+        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'shared', 'permissionSetUpdated', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
