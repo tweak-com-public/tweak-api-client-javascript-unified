@@ -19,6 +19,7 @@
          * @param allowHighResPDF                 {boolean}   default: false  
          * @param allowSaveForLater               {boolean}   default: false  
          * @param allowSaveAsTemplate             {boolean}   default: false  
+         * @param allowDuplicateDesign            {boolean}   default: false  
          * @param blockEditing                    {boolean}   default: false  
          * @param makeAllItemsEditable            {boolean}   default: false  
          * @param showConfirm                     {boolean}   default: false  
@@ -71,8 +72,8 @@
         /**
          * Private properties
          */
-        var parameters = ['apiPartnerAuthUrl', 'pluginProductId', 'savedProductId', 'allowAddImage', 'allowAddText', 'allowJPEG', 'allowLowResPDF', 'allowHighResPDF', 'allowSaveForLater', 'allowSaveAsTemplate', 'blockEditing', 'makeAllItemsEditable', 'showConfirm', 'allowApprovePluginProduct', 'allowSendToApprovePluginProduct', 'workflowForm', 'designFormData', 'showPluginImages', 'pluginImageLibraries', 'isTweakTemplate', 'showItemNavigator', 'showItemCounts', 'showEditableItemToggle', 'id', 'teamId', 'team', 'teamMemberId', 'teamMember', 'portalId', 'portal', 'portalMemberId', 'portalMember', 'designId', 'design', 'templateId', 'template'];
-        var parametersType = ['string', 'string', 'string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'array', 'array', 'boolean', 'array', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object'];
+        var parameters = ['apiPartnerAuthUrl', 'pluginProductId', 'savedProductId', 'allowAddImage', 'allowAddText', 'allowJPEG', 'allowLowResPDF', 'allowHighResPDF', 'allowSaveForLater', 'allowSaveAsTemplate', 'allowDuplicateDesign', 'blockEditing', 'makeAllItemsEditable', 'showConfirm', 'allowApprovePluginProduct', 'allowSendToApprovePluginProduct', 'workflowForm', 'designFormData', 'showPluginImages', 'pluginImageLibraries', 'isTweakTemplate', 'showItemNavigator', 'showItemCounts', 'showEditableItemToggle', 'id', 'teamId', 'team', 'teamMemberId', 'teamMember', 'portalId', 'portal', 'portalMemberId', 'portalMember', 'designId', 'design', 'templateId', 'template'];
+        var parametersType = ['string', 'string', 'string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'array', 'array', 'boolean', 'array', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object', 'string', 'object'];
         var requiredParameters = [];
 
         /**
