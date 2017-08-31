@@ -9,43 +9,47 @@
 
         /**
          * Constructor, with class name
-         * @param colors          {array}                   items: type: string    
-         * @param image           {string}                  
-         * @param name            {string}    [REQUIRED]    
-         * @param object          {object}    [REQUIRED]    
-         * @param thumbnail       {string}                  
-         * @param description     {string}                  default:   
-         * @param purpose         {string}                  enum: none, printOrder
-         * @param status          {string}                  enum: pendingAction, pendingApproval, approved, rejected
-         * @param rejectionReason {string}                  default:   
-         * @param formData        {array}                   default: items: type: object    
-         * @param highResPdfUrl   {string}                  default:   
-         * @param proofPdfUrl     {string}                  default:   
-         * @param jpegsUrl        {string}                  default:   
-         * @param edited          {string}                  format: date-time  
-         * @param expired         {string}                  format: date-time  
-         * @param path            {string}                  default: /  
-         * @param created         {string}                  format: date-time  
-         * @param modified        {string}                  format: date-time  
-         * @param id              {string}                  
-         * @param customerId      {string}                  
-         * @param requesterId     {string}                  
-         * @param assigneeId      {string}                  
-         * @param reviewerId      {string}                  
-         * @param templateId      {string}                  
-         * @param portalId        {string}                  
-         * @param folderId        {string}                  
-         * @param tags            {array}                   items: $ref: #/definitions/Tag    
-         * @param customer        {object}                  $ref: #/definitions/Customer  
-         * @param template        {object}                  $ref: #/definitions/Template  
-         * @param portal          {object}                  $ref: #/definitions/Portal  
-         * @param comments        {array}                   items: $ref: #/definitions/DesignComment    
-         * @param exports         {array}                   items: $ref: #/definitions/DesignExport    
-         * @param requester       {object}                  $ref: #/definitions/TeamMember  
-         * @param assignee        {object}                  $ref: #/definitions/TeamMember  
-         * @param reviewer        {object}                  $ref: #/definitions/TeamMember  
-         * @param commenters      {array}                   items: $ref: #/definitions/TeamMember    
-         * @param folder          {object}                  $ref: #/definitions/DesignFolder  
+         * @param colors             {array}                   items: type: string    
+         * @param image              {string}                  
+         * @param name               {string}    [REQUIRED]    
+         * @param object             {object}    [REQUIRED]    
+         * @param thumbnail          {string}                  
+         * @param description        {string}                  default:   
+         * @param purpose            {string}                  enum: none, printOrder
+         * @param status             {string}                  enum: pendingAction, pendingApproval, approved, rejected
+         * @param formData           {array}                   default: items: type: object    
+         * @param highResPdfUrl      {string}                  default:   
+         * @param proofPdfUrl        {string}                  default:   
+         * @param jpegsUrl           {string}                  default:   
+         * @param edited             {string}                  format: date-time  
+         * @param expired            {string}                  format: date-time  
+         * @param path               {string}                  default: /  
+         * @param sentForApproval    {string}                  format: date-time  
+         * @param approved           {string}                  format: date-time  
+         * @param created            {string}                  format: date-time  
+         * @param modified           {string}                  format: date-time  
+         * @param id                 {string}                  
+         * @param customerId         {string}                  
+         * @param requesterId        {string}                  
+         * @param assigneeId         {string}                  
+         * @param reviewerId         {string}                  
+         * @param templateId         {string}                  
+         * @param portalId           {string}                  
+         * @param rejectionCommentId {string}                  
+         * @param folderId           {string}                  
+         * @param tags               {array}                   items: $ref: #/definitions/Tag    
+         * @param customer           {object}                  $ref: #/definitions/Customer  
+         * @param template           {object}                  $ref: #/definitions/Template  
+         * @param portal             {object}                  $ref: #/definitions/Portal  
+         * @param comments           {array}                   items: $ref: #/definitions/DesignComment    
+         * @param rejectionComment   {object}                  $ref: #/definitions/DesignComment  
+         * @param exports            {array}                   items: $ref: #/definitions/DesignExport    
+         * @param requester          {object}                  $ref: #/definitions/TeamMember  
+         * @param assignee           {object}                  $ref: #/definitions/TeamMember  
+         * @param reviewer           {object}                  $ref: #/definitions/TeamMember  
+         * @param commenters         {array}                   items: $ref: #/definitions/TeamMember    
+         * @param folder             {object}                  $ref: #/definitions/DesignFolder  
+         * @param permission         {object}                  $ref: #/definitions/DesignPermissionSet  
          */
         function TweakDesign(data) {
             data = data || {};
@@ -72,8 +76,8 @@
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'rejectionReason', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'array', 'object', 'object', 'object', 'array', 'object'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'sentForApproval', 'approved', 'created', 'modified', 'id', 'customerId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**

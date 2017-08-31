@@ -9,10 +9,12 @@
 
         /**
          * Constructor, with class name
-         * @param emailNotification {boolean}   default: true  
-         * @param id                {string}    
-         * @param teamId            {string}    
-         * @param team              {object}    $ref: #/definitions/Team  
+         * @param emailNotification       {boolean}   default: true  
+         * @param templatePermission      {object}    $ref: #/definitions/TemplatePermissionSet  
+         * @param tweakTemplatePermission {object}    $ref: #/definitions/TemplatePermissionSet  
+         * @param id                      {string}    
+         * @param teamId                  {string}    
+         * @param team                    {object}    $ref: #/definitions/Team  
          */
         function TweakTeamPermissionSet(data) {
             data = data || {};
@@ -39,8 +41,8 @@
         /**
          * Private properties
          */
-        var parameters = ['emailNotification', 'id', 'teamId', 'team'];
-        var parametersType = ['boolean', 'string', 'string', 'object'];
+        var parameters = ['emailNotification', 'templatePermission', 'tweakTemplatePermission', 'id', 'teamId', 'team'];
+        var parametersType = ['boolean', 'object', 'object', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

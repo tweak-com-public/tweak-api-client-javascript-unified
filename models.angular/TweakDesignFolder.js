@@ -9,19 +9,20 @@
 
         /**
          * Constructor, with class name
-         * @param name     {string}    [REQUIRED]    
-         * @param path     {string}                  default: /  
-         * @param created  {string}                  format: date-time  
-         * @param modified {string}                  format: date-time  
-         * @param id       {string}                  
-         * @param memberId {string}                  
-         * @param parentId {string}                  
-         * @param portalId {string}                  
-         * @param member   {object}                  $ref: #/definitions/TeamMember  
-         * @param children {array}                   items: $ref: #/definitions/DesignFolder    
-         * @param parent   {object}                  $ref: #/definitions/DesignFolder  
-         * @param designs  {array}                   items: $ref: #/definitions/Design    
-         * @param portal   {object}                  $ref: #/definitions/Portal  
+         * @param name        {string}    [REQUIRED]    
+         * @param description {string}                  default:   
+         * @param path        {string}                  default: /  
+         * @param created     {string}                  format: date-time  
+         * @param modified    {string}                  format: date-time  
+         * @param id          {string}                  
+         * @param memberId    {string}                  
+         * @param parentId    {string}                  
+         * @param portalId    {string}                  
+         * @param member      {object}                  $ref: #/definitions/TeamMember  
+         * @param children    {array}                   items: $ref: #/definitions/DesignFolder    
+         * @param parent      {object}                  $ref: #/definitions/DesignFolder  
+         * @param designs     {array}                   items: $ref: #/definitions/Design    
+         * @param portal      {object}                  $ref: #/definitions/Portal  
          */
         function TweakDesignFolder(data) {
             data = data || {};
@@ -48,8 +49,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'path', 'created', 'modified', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array', 'object'];
+        var parameters = ['name', 'description', 'path', 'created', 'modified', 'id', 'memberId', 'parentId', 'portalId', 'member', 'children', 'parent', 'designs', 'portal'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array', 'object'];
         var requiredParameters = ['name'];
 
         /**
