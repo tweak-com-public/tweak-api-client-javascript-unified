@@ -26,6 +26,7 @@
          * @param paid                      {boolean}                 
          * @param periodEnd                 {string}                  format: date-time  
          * @param periodStart               {string}                  format: date-time  
+         * @param number                    {string}                  
          * @param reciptNumber              {string}                  
          * @param startingBalance           {number}                  format: double  
          * @param statementDescriptor       {string}                  
@@ -60,8 +61,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'amountDue', 'attemptCount', 'attempted', 'charged', 'closed', 'currency', 'customer', 'date', 'description', 'endingBalance', 'forgiven', 'lines', 'nextPaymentAttempt', 'paid', 'periodEnd', 'periodStart', 'reciptNumber', 'startingBalance', 'statementDescriptor', 'subscription', 'subscriptionProrationDate', 'subtotal', 'tax', 'total'];
-        var parametersType = ['string', 'number', 'number', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'number', 'boolean', 'array', 'string', 'boolean', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number'];
+        var parameters = ['id', 'amountDue', 'attemptCount', 'attempted', 'charged', 'closed', 'currency', 'customer', 'date', 'description', 'endingBalance', 'forgiven', 'lines', 'nextPaymentAttempt', 'paid', 'periodEnd', 'periodStart', 'number', 'reciptNumber', 'startingBalance', 'statementDescriptor', 'subscription', 'subscriptionProrationDate', 'subtotal', 'tax', 'total'];
+        var parametersType = ['string', 'number', 'number', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'number', 'boolean', 'array', 'string', 'boolean', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number'];
         var requiredParameters = ['id'];
 
         /**
