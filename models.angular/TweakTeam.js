@@ -24,7 +24,9 @@
          * @param masterKey       {string}                  
          * @param status          {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
          * @param members         {array}                   items: $ref: #/definitions/Customer    
+         * @param builderConfigs  {array}                   items: $ref: #/definitions/TeamBuilderConfig    
          * @param dataSources     {array}                   items: $ref: #/definitions/DataSource    
+         * @param dynamicDatas    {array}                   items: $ref: #/definitions/DynamicData    
          * @param teamMembers     {array}                   items: $ref: #/definitions/TeamMember    
          * @param portals         {array}                   items: $ref: #/definitions/Portal    
          * @param templates       {array}                   items: $ref: #/definitions/Template    
@@ -61,8 +63,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'dataSources', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object'];
+        var parameters = ['name', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'builderConfigs', 'dataSources', 'dynamicDatas', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'id'];
 
         /**

@@ -16,6 +16,7 @@
          * @param validations     {object}                  default:   
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
+         * @param recordCount     {number}                  default: 0  format: double  
          * @param id              {string}                  
          * @param teamId          {string}                  
          * @param team            {object}                  $ref: #/definitions/Team  
@@ -45,8 +46,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'propertiesOrder', 'properties', 'relations', 'validations', 'created', 'modified', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'array', 'object', 'object', 'object', 'string', 'string', 'string', 'string', 'object'];
+        var parameters = ['name', 'propertiesOrder', 'properties', 'relations', 'validations', 'created', 'modified', 'recordCount', 'id', 'teamId', 'team'];
+        var parametersType = ['string', 'array', 'object', 'object', 'object', 'string', 'string', 'number', 'string', 'string', 'object'];
         var requiredParameters = ['name'];
 
         /**
