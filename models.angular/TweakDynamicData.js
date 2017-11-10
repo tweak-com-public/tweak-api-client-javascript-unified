@@ -20,6 +20,7 @@
          * @param id              {string}                  
          * @param teamId          {string}                  
          * @param team            {object}                  $ref: #/definitions/Team  
+         * @param designs         {array}                   items: $ref: #/definitions/Design    
          */
         function TweakDynamicData(data) {
             data = data || {};
@@ -46,8 +47,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'propertiesOrder', 'properties', 'relations', 'validations', 'created', 'modified', 'recordCount', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'array', 'object', 'object', 'object', 'string', 'string', 'number', 'string', 'string', 'object'];
+        var parameters = ['name', 'propertiesOrder', 'properties', 'relations', 'validations', 'created', 'modified', 'recordCount', 'id', 'teamId', 'team', 'designs'];
+        var parametersType = ['string', 'array', 'object', 'object', 'object', 'string', 'string', 'number', 'string', 'string', 'object', 'array'];
         var requiredParameters = ['name'];
 
         /**
