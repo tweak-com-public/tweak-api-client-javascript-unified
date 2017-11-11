@@ -26,10 +26,10 @@
          * @param path               {string}                  default: /  
          * @param sentForApproval    {string}                  format: date-time  
          * @param approved           {string}                  format: date-time  
+         * @param shared             {string}                  format: date-time  
          * @param created            {string}                  format: date-time  
          * @param modified           {string}                  format: date-time  
          * @param id                 {string}                  
-         * @param customerId         {string}                  
          * @param dynamicDataId      {string}                  
          * @param requesterId        {string}                  
          * @param assigneeId         {string}                  
@@ -39,7 +39,6 @@
          * @param rejectionCommentId {string}                  
          * @param folderId           {string}                  
          * @param tags               {array}                   items: $ref: #/definitions/Tag    
-         * @param customer           {object}                  $ref: #/definitions/Customer  
          * @param template           {object}                  $ref: #/definitions/Template  
          * @param portal             {object}                  $ref: #/definitions/Portal  
          * @param comments           {array}                   items: $ref: #/definitions/DesignComment    
@@ -51,6 +50,8 @@
          * @param commenters         {array}                   items: $ref: #/definitions/TeamMember    
          * @param folder             {object}                  $ref: #/definitions/DesignFolder  
          * @param permission         {object}                  $ref: #/definitions/DesignPermissionSet  
+         * @param members            {array}                   items: $ref: #/definitions/TeamMember    
+         * @param designMembers      {array}                   items: $ref: #/definitions/DesignMember    
          * @param dynamicData        {object}                  $ref: #/definitions/DynamicData  
          */
         function TweakDesign(data) {
@@ -78,8 +79,8 @@
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'sentForApproval', 'approved', 'created', 'modified', 'id', 'customerId', 'dynamicDataId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'customer', 'template', 'portal', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'dynamicData'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'object'];
+        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'sentForApproval', 'approved', 'shared', 'created', 'modified', 'id', 'dynamicDataId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'template', 'portal', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
+        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
