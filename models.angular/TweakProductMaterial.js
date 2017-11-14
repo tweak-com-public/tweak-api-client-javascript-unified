@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param name        {string}    [REQUIRED]    
+         * @param code        {string}    [REQUIRED]    
          * @param description {string}                  
          * @param thumbnail   {string}                  
          * @param status      {string}                  enum: public, private
@@ -44,9 +45,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'description', 'thumbnail', 'status', 'created', 'modified', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object'];
-        var requiredParameters = ['name'];
+        var parameters = ['name', 'code', 'description', 'thumbnail', 'status', 'created', 'modified', 'id', 'teamId', 'team'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object'];
+        var requiredParameters = ['name', 'code'];
 
         /**
          * Private function

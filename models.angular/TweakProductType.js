@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param name        {string}    [REQUIRED]    
+         * @param code        {string}    [REQUIRED]    
          * @param description {string}                  
          * @param thumbnail   {string}                  
          * @param created     {string}                  format: date-time  
@@ -44,9 +45,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'description', 'thumbnail', 'created', 'modified', 'id', 'groupId', 'group', 'sizes'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array'];
-        var requiredParameters = ['name'];
+        var parameters = ['name', 'code', 'description', 'thumbnail', 'created', 'modified', 'id', 'groupId', 'group', 'sizes'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array'];
+        var requiredParameters = ['name', 'code'];
 
         /**
          * Private function
