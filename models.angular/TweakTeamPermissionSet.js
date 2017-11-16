@@ -12,6 +12,7 @@
          * @param emailNotification       {boolean}   default: true  
          * @param templatePermission      {object}    $ref: #/definitions/TemplatePermissionSet  
          * @param tweakTemplatePermission {object}    $ref: #/definitions/TemplatePermissionSet  
+         * @param teamCustomerPermission  {object}    $ref: #/definitions/TeamCustomerPermissionSet  
          * @param id                      {string}    
          * @param teamId                  {string}    
          * @param team                    {object}    $ref: #/definitions/Team  
@@ -41,8 +42,8 @@
         /**
          * Private properties
          */
-        var parameters = ['emailNotification', 'templatePermission', 'tweakTemplatePermission', 'id', 'teamId', 'team'];
-        var parametersType = ['boolean', 'object', 'object', 'string', 'string', 'object'];
+        var parameters = ['emailNotification', 'templatePermission', 'tweakTemplatePermission', 'teamCustomerPermission', 'id', 'teamId', 'team'];
+        var parametersType = ['boolean', 'object', 'object', 'object', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

@@ -9,34 +9,38 @@
 
         /**
          * Constructor, with class name
-         * @param name            {string}    [REQUIRED]    
-         * @param logo            {object}                  default:   
-         * @param subdomain       {string}                  
-         * @param country         {string}                  default: Ireland  
-         * @param created         {string}                  format: date-time  
-         * @param modified        {string}                  format: date-time  
-         * @param id              {string}    [REQUIRED]    
-         * @param icon            {string}                  description: The icon image url  
-         * @param clientKey       {string}                  
-         * @param javaScriptKey   {string}                  
-         * @param restApiKey      {string}                  
-         * @param windowsKey      {string}                  
-         * @param masterKey       {string}                  
-         * @param status          {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
-         * @param members         {array}                   items: $ref: #/definitions/Customer    
-         * @param builderConfigs  {array}                   items: $ref: #/definitions/TeamBuilderConfig    
-         * @param dataSources     {array}                   items: $ref: #/definitions/DataSource    
-         * @param dynamicDatas    {array}                   items: $ref: #/definitions/DynamicData    
-         * @param teamMembers     {array}                   items: $ref: #/definitions/TeamMember    
-         * @param portals         {array}                   items: $ref: #/definitions/Portal    
-         * @param templates       {array}                   items: $ref: #/definitions/Template    
-         * @param brand           {object}                  $ref: #/definitions/TeamBrand  
-         * @param templateFolders {array}                   items: $ref: #/definitions/TeamTemplateFolder    
-         * @param workflows       {array}                   items: $ref: #/definitions/Workflow    
-         * @param images          {array}                   items: $ref: #/definitions/Image    
-         * @param imageFolders    {array}                   items: $ref: #/definitions/ImageFolder    
-         * @param billing         {object}                  $ref: #/definitions/Billing  
-         * @param permission      {object}                  $ref: #/definitions/TeamPermissionSet  
+         * @param name                 {string}    [REQUIRED]    
+         * @param logo                 {object}                  default:   
+         * @param subdomain            {string}                  
+         * @param country              {string}                  default: Ireland  
+         * @param created              {string}                  format: date-time  
+         * @param modified             {string}                  format: date-time  
+         * @param id                   {string}    [REQUIRED]    
+         * @param icon                 {string}                  description: The icon image url  
+         * @param clientKey            {string}                  
+         * @param javaScriptKey        {string}                  
+         * @param restApiKey           {string}                  
+         * @param windowsKey           {string}                  
+         * @param masterKey            {string}                  
+         * @param status               {string}                  default: sandbox  description: Status of the application, production/sandbox/disabled  
+         * @param teamDataId           {string}                  
+         * @param members              {array}                   items: $ref: #/definitions/Customer    
+         * @param builderConfigs       {array}                   items: $ref: #/definitions/TeamBuilderConfig    
+         * @param dataSources          {array}                   items: $ref: #/definitions/DataSource    
+         * @param dynamicDatas         {array}                   items: $ref: #/definitions/DynamicData    
+         * @param teamMembers          {array}                   items: $ref: #/definitions/TeamMember    
+         * @param portals              {array}                   items: $ref: #/definitions/Portal    
+         * @param templates            {array}                   items: $ref: #/definitions/Template    
+         * @param brand                {object}                  $ref: #/definitions/TeamBrand  
+         * @param templateFolders      {array}                   items: $ref: #/definitions/TeamTemplateFolder    
+         * @param workflows            {array}                   items: $ref: #/definitions/Workflow    
+         * @param images               {array}                   items: $ref: #/definitions/Image    
+         * @param imageFolders         {array}                   items: $ref: #/definitions/ImageFolder    
+         * @param billing              {object}                  $ref: #/definitions/Billing  
+         * @param permission           {object}                  $ref: #/definitions/TeamPermissionSet  
+         * @param productMaterials     {array}                   items: $ref: #/definitions/ProductMaterial    
+         * @param productSizeMaterials {array}                   items: $ref: #/definitions/ProductSizeMaterial    
+         * @param teamData             {object}                  $ref: #/definitions/DynamicData  
          */
         function TweakTeam(data) {
             data = data || {};
@@ -63,8 +67,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'members', 'builderConfigs', 'dataSources', 'dynamicDatas', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object'];
+        var parameters = ['name', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dataSources', 'dynamicDatas', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission', 'productMaterials', 'productSizeMaterials', 'teamData'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'id'];
 
         /**
