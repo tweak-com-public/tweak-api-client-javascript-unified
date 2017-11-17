@@ -22,7 +22,7 @@
          * @param pdfSize           {object}                  $ref: #/definitions/Dimensions  
          * @param pdfPageCount      {number}                  default: 1  format: double  
          * @param pdfDpi            {number}                  minimum: 10  maximum: 4800  default: 300  format: double  
-         * @param pdfColorProfile   {string}                  default:   
+         * @param printProfile      {object}                  enum: PDFX1A, PDFX3A$ref: #/definitions/stirng  
          * @param customerSize      {object}                  $ref: #/definitions/Dimensions  
          * @param customerPageCount {number}                  default: 1  format: double  
          * @param maxBleed          {object}                  default: right: 0    $ref: #/definitions/Bounds  
@@ -38,11 +38,13 @@
          * @param created           {string}                  format: date-time  
          * @param modified          {string}                  format: date-time  
          * @param id                {string}                  
+         * @param pdfColorProfileId {string}                  
          * @param typeId            {string}                  
          * @param type              {object}                  $ref: #/definitions/ProductType  
          * @param materials         {array}                   items: $ref: #/definitions/ProductMaterial    
          * @param sizeMaterials     {array}                   items: $ref: #/definitions/ProductSizeMaterial    
          * @param products          {array}                   items: $ref: #/definitions/Product    
+         * @param pdfColorProfile   {object}                  $ref: #/definitions/ProductPdfColorProfile  
          */
         function TweakProductSize(data) {
             data = data || {};
@@ -69,8 +71,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'thumbnail', 'foldingType', 'foldingMethod', 'bindingType', 'doubleSided', 'dieCut', 'unfoldedSize', 'foldedSize', 'pdfSize', 'pdfPageCount', 'pdfDpi', 'pdfColorProfile', 'customerSize', 'customerPageCount', 'maxBleed', 'defaultBleed', 'safeArea', 'unit', 'frame', 'shape', 'orientation', 'format', 'envelopeWindow', 'canvasImageCount', 'created', 'modified', 'id', 'typeId', 'type', 'materials', 'sizeMaterials', 'products'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'string', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array'];
+        var parameters = ['name', 'code', 'thumbnail', 'foldingType', 'foldingMethod', 'bindingType', 'doubleSided', 'dieCut', 'unfoldedSize', 'foldedSize', 'pdfSize', 'pdfPageCount', 'pdfDpi', 'printProfile', 'customerSize', 'customerPageCount', 'maxBleed', 'defaultBleed', 'safeArea', 'unit', 'frame', 'shape', 'orientation', 'format', 'envelopeWindow', 'canvasImageCount', 'created', 'modified', 'id', 'pdfColorProfileId', 'typeId', 'type', 'materials', 'sizeMaterials', 'products', 'pdfColorProfile'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'object', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'code', 'format'];
 
         /**

@@ -9,22 +9,24 @@
 
         /**
          * Constructor, with class name
-         * @param code            {string}    [REQUIRED]    
-         * @param description     {string}                  
-         * @param thumbnail       {string}                  
-         * @param status          {string}                  enum: public, private
-         * @param bindingType     {string}                  enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
-         * @param defaultBleed    {object}                  default: right: 0    $ref: #/definitions/Bounds  
-         * @param pdfColorProfile {string}                  default:   
-         * @param created         {string}                  format: date-time  
-         * @param modified        {string}                  format: date-time  
-         * @param id              {string}                  
-         * @param materialId      {string}                  
-         * @param teamId          {string}                  
-         * @param sizeId          {string}                  
-         * @param size            {object}                  $ref: #/definitions/ProductSize  
-         * @param material        {object}                  $ref: #/definitions/ProductMaterial  
-         * @param team            {object}                  $ref: #/definitions/Team  
+         * @param code              {string}    [REQUIRED]    
+         * @param description       {string}                  
+         * @param thumbnail         {string}                  
+         * @param status            {string}                  enum: public, private
+         * @param bindingType       {string}                  enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
+         * @param defaultBleed      {object}                  default: right: 0    $ref: #/definitions/Bounds  
+         * @param printProfile      {object}                  enum: PDFX1A, PDFX3A$ref: #/definitions/stirng  
+         * @param created           {string}                  format: date-time  
+         * @param modified          {string}                  format: date-time  
+         * @param id                {string}                  
+         * @param materialId        {string}                  
+         * @param teamId            {string}                  
+         * @param pdfColorProfileId {string}                  
+         * @param sizeId            {string}                  
+         * @param size              {object}                  $ref: #/definitions/ProductSize  
+         * @param material          {object}                  $ref: #/definitions/ProductMaterial  
+         * @param team              {object}                  $ref: #/definitions/Team  
+         * @param pdfColorProfile   {object}                  $ref: #/definitions/ProductPdfColorProfile  
          */
         function TweakProductSizeMaterial(data) {
             data = data || {};
@@ -51,8 +53,8 @@
         /**
          * Private properties
          */
-        var parameters = ['code', 'description', 'thumbnail', 'status', 'bindingType', 'defaultBleed', 'pdfColorProfile', 'created', 'modified', 'id', 'materialId', 'teamId', 'sizeId', 'size', 'material', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
+        var parameters = ['code', 'description', 'thumbnail', 'status', 'bindingType', 'defaultBleed', 'printProfile', 'created', 'modified', 'id', 'materialId', 'teamId', 'pdfColorProfileId', 'sizeId', 'size', 'material', 'team', 'pdfColorProfile'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['code'];
 
         /**
