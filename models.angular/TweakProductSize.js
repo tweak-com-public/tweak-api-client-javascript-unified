@@ -22,7 +22,7 @@
          * @param pdfSize           {object}                  $ref: #/definitions/Dimensions  
          * @param pdfPageCount      {number}                  default: 1  format: double  
          * @param pdfDpi            {number}                  minimum: 10  maximum: 4800  default: 300  format: double  
-         * @param printProfile      {object}                  enum: PDFX1A, PDFX3A$ref: #/definitions/stirng  
+         * @param printProfile      {string}                  enum: PDFX1A, PDFX3A
          * @param customerSize      {object}                  $ref: #/definitions/Dimensions  
          * @param customerPageCount {number}                  default: 1  format: double  
          * @param maxBleed          {object}                  default: right: 0    $ref: #/definitions/Bounds  
@@ -72,7 +72,7 @@
          * Private properties
          */
         var parameters = ['name', 'code', 'thumbnail', 'foldingType', 'foldingMethod', 'bindingType', 'doubleSided', 'dieCut', 'unfoldedSize', 'foldedSize', 'pdfSize', 'pdfPageCount', 'pdfDpi', 'printProfile', 'customerSize', 'customerPageCount', 'maxBleed', 'defaultBleed', 'safeArea', 'unit', 'frame', 'shape', 'orientation', 'format', 'envelopeWindow', 'canvasImageCount', 'created', 'modified', 'id', 'pdfColorProfileId', 'typeId', 'type', 'materials', 'sizeMaterials', 'products', 'pdfColorProfile'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'object', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'string', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'code', 'format'];
 
         /**

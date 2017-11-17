@@ -15,7 +15,7 @@
          * @param status            {string}                  enum: public, private
          * @param bindingType       {string}                  enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
          * @param defaultBleed      {object}                  default: right: 0    $ref: #/definitions/Bounds  
-         * @param printProfile      {object}                  enum: PDFX1A, PDFX3A$ref: #/definitions/stirng  
+         * @param printProfile      {string}                  enum: PDFX1A, PDFX3A
          * @param created           {string}                  format: date-time  
          * @param modified          {string}                  format: date-time  
          * @param id                {string}                  
@@ -54,7 +54,7 @@
          * Private properties
          */
         var parameters = ['code', 'description', 'thumbnail', 'status', 'bindingType', 'defaultBleed', 'printProfile', 'created', 'modified', 'id', 'materialId', 'teamId', 'pdfColorProfileId', 'sizeId', 'size', 'material', 'team', 'pdfColorProfile'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['code'];
 
         /**
