@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param name              {string}    [REQUIRED]    
          * @param code              {string}    [REQUIRED]    
-         * @param thumbnail         {string}                  
+         * @param thumbnail         {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param foldingType       {string}                  enum: none, accordian-left, accordian-right, accordion, letter-left, letter-right, rollover
          * @param foldingMethod     {string}                  enum: none, fold, crease, prefolded
          * @param bindingType       {string}                  enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
@@ -72,7 +72,7 @@
          * Private properties
          */
         var parameters = ['name', 'code', 'thumbnail', 'foldingType', 'foldingMethod', 'bindingType', 'doubleSided', 'dieCut', 'unfoldedSize', 'foldedSize', 'pdfSize', 'pdfPageCount', 'pdfDpi', 'printProfile', 'customerSize', 'customerPageCount', 'maxBleed', 'defaultBleed', 'safeArea', 'unit', 'frame', 'shape', 'orientation', 'format', 'envelopeWindow', 'canvasImageCount', 'created', 'modified', 'id', 'pdfColorProfileId', 'typeId', 'type', 'materials', 'sizeMaterials', 'products', 'pdfColorProfile'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'string', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
+        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'string', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'code', 'format'];
 
         /**

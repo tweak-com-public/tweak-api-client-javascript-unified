@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param name                    {string}    [REQUIRED]    
-         * @param logo                    {object}                  default:   
+         * @param logo                    {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param subdomain               {string}                  
          * @param country                 {string}                  default: Ireland  
          * @param created                 {string}                  format: date-time  
