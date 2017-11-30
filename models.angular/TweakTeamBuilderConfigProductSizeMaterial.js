@@ -11,14 +11,16 @@
          * Constructor, with class name
          * @param bindingType           {string}    enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
          * @param defaultBleed          {object}    default: right: 0    $ref: #/definitions/Bounds  
-         * @param pdfColorProfile       {string}    default:   
+         * @param printProfile          {string}    enum: PDFX1A, PDFX3A
          * @param created               {string}    format: date-time  
          * @param modified              {string}    format: date-time  
          * @param id                    {string}    
          * @param productSizeMaterialId {string}    
+         * @param pdfColorProfileId     {string}    
          * @param builderConfigId       {string}    
          * @param builderConfig         {object}    $ref: #/definitions/TeamBuilderConfig  
          * @param productSizeMaterial   {object}    $ref: #/definitions/ProductSizeMaterial  
+         * @param pdfColorProfile       {object}    $ref: #/definitions/ProductPdfColorProfile  
          */
         function TweakTeamBuilderConfigProductSizeMaterial(data) {
             data = data || {};
@@ -45,8 +47,8 @@
         /**
          * Private properties
          */
-        var parameters = ['bindingType', 'defaultBleed', 'pdfColorProfile', 'created', 'modified', 'id', 'productSizeMaterialId', 'builderConfigId', 'builderConfig', 'productSizeMaterial'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['bindingType', 'defaultBleed', 'printProfile', 'created', 'modified', 'id', 'productSizeMaterialId', 'pdfColorProfileId', 'builderConfigId', 'builderConfig', 'productSizeMaterial', 'pdfColorProfile'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**

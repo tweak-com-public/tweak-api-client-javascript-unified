@@ -12,7 +12,7 @@
          * @param name        {string}    [REQUIRED]    
          * @param code        {string}    [REQUIRED]    
          * @param description {string}                  
-         * @param thumbnail   {string}                  
+         * @param thumbnail   {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
@@ -46,7 +46,7 @@
          * Private properties
          */
         var parameters = ['name', 'code', 'description', 'thumbnail', 'created', 'modified', 'id', 'groupId', 'group', 'sizes'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array'];
+        var parametersType = ['string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'object', 'array'];
         var requiredParameters = ['name', 'code'];
 
         /**

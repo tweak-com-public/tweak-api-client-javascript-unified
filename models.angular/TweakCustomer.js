@@ -9,7 +9,7 @@
 
         /**
          * Constructor, with class name
-         * @param profilePicture    {object}                  default:   
+         * @param profilePicture    {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param firstName         {string}    [REQUIRED]    
          * @param lastName          {string}    [REQUIRED]    
          * @param initials          {string}    [REQUIRED]    minimum: 2  maximum: 2  
