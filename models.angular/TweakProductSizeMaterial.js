@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param code              {string}    [REQUIRED]    
+         * @param legacyCode        {string}                  
          * @param description       {string}                  
          * @param thumbnail         {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param status            {string}                  enum: public, private
@@ -53,8 +54,8 @@
         /**
          * Private properties
          */
-        var parameters = ['code', 'description', 'thumbnail', 'status', 'bindingType', 'defaultBleed', 'printProfile', 'created', 'modified', 'id', 'materialId', 'teamId', 'pdfColorProfileId', 'sizeId', 'size', 'material', 'team', 'pdfColorProfile'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object'];
+        var parameters = ['code', 'legacyCode', 'description', 'thumbnail', 'status', 'bindingType', 'defaultBleed', 'printProfile', 'created', 'modified', 'id', 'materialId', 'teamId', 'pdfColorProfileId', 'sizeId', 'size', 'material', 'team', 'pdfColorProfile'];
+        var parametersType = ['string', 'string', 'string', 'object', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['code'];
 
         /**
