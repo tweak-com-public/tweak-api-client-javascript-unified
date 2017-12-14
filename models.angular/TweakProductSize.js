@@ -11,6 +11,7 @@
          * Constructor, with class name
          * @param name              {string}    [REQUIRED]    
          * @param code              {string}    [REQUIRED]    
+         * @param legacyCode        {string}                  
          * @param thumbnail         {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param foldingType       {string}                  enum: none, accordian-left, accordian-right, accordion, letter-left, letter-right, rollover
          * @param foldingMethod     {string}                  enum: none, fold, crease, prefolded
@@ -22,6 +23,7 @@
          * @param pdfSize           {object}                  $ref: #/definitions/Dimensions  
          * @param pdfPageCount      {number}                  default: 1  format: double  
          * @param pdfDpi            {number}                  minimum: 10  maximum: 4800  default: 300  format: double  
+         * @param pdfOutputScale    {number}                  minimum: 1  maximum: 1000  default: 100  format: double  
          * @param printProfile      {string}                  enum: PDFX1A, PDFX3A
          * @param customerSize      {object}                  $ref: #/definitions/Dimensions  
          * @param customerPageCount {number}                  default: 1  format: double  
@@ -35,6 +37,8 @@
          * @param format            {string}    [REQUIRED]    enum: eu, us
          * @param envelopeWindow    {string}                  enum: none, left, right
          * @param canvasImageCount  {number}                  default: 0  format: double  
+         * @param options           {string}                  default: none  
+         * @param displayType       {string}                  default: none  
          * @param created           {string}                  format: date-time  
          * @param modified          {string}                  format: date-time  
          * @param id                {string}                  
@@ -71,8 +75,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'thumbnail', 'foldingType', 'foldingMethod', 'bindingType', 'doubleSided', 'dieCut', 'unfoldedSize', 'foldedSize', 'pdfSize', 'pdfPageCount', 'pdfDpi', 'printProfile', 'customerSize', 'customerPageCount', 'maxBleed', 'defaultBleed', 'safeArea', 'unit', 'frame', 'shape', 'orientation', 'format', 'envelopeWindow', 'canvasImageCount', 'created', 'modified', 'id', 'pdfColorProfileId', 'typeId', 'type', 'materials', 'sizeMaterials', 'products', 'pdfColorProfile'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'string', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
+        var parameters = ['name', 'code', 'legacyCode', 'thumbnail', 'foldingType', 'foldingMethod', 'bindingType', 'doubleSided', 'dieCut', 'unfoldedSize', 'foldedSize', 'pdfSize', 'pdfPageCount', 'pdfDpi', 'pdfOutputScale', 'printProfile', 'customerSize', 'customerPageCount', 'maxBleed', 'defaultBleed', 'safeArea', 'unit', 'frame', 'shape', 'orientation', 'format', 'envelopeWindow', 'canvasImageCount', 'options', 'displayType', 'created', 'modified', 'id', 'pdfColorProfileId', 'typeId', 'type', 'materials', 'sizeMaterials', 'products', 'pdfColorProfile'];
+        var parametersType = ['string', 'string', 'string', 'object', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'object', 'object', 'number', 'number', 'number', 'string', 'object', 'number', 'object', 'object', 'object', 'string', 'number', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'code', 'format'];
 
         /**
