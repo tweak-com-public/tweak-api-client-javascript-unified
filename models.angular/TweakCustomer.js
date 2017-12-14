@@ -9,7 +9,7 @@
 
         /**
          * Constructor, with class name
-         * @param profilePicture    {object}                  default:   
+         * @param profilePicture    {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param firstName         {string}    [REQUIRED]    
          * @param lastName          {string}    [REQUIRED]    
          * @param initials          {string}    [REQUIRED]    minimum: 2  maximum: 2  
@@ -21,7 +21,6 @@
          * @param email             {string}    [REQUIRED]    
          * @param emailVerified     {boolean}                 
          * @param id                {string}                  
-         * @param designs           {array}                   items: $ref: #/definitions/Design    
          * @param teams             {array}                   items: $ref: #/definitions/Team    
          * @param invitationTickets {array}                   items: $ref: #/definitions/InvitationTicket    
          * @param accessTokens      {array}                   items: $ref: #/definitions/TeamMemberAccessToken    
@@ -52,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['profilePicture', 'firstName', 'lastName', 'initials', 'status', 'created', 'modified', 'realm', 'username', 'email', 'emailVerified', 'id', 'designs', 'teams', 'invitationTickets', 'accessTokens', 'permission'];
-        var parametersType = ['object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'array', 'array', 'array', 'array', 'object'];
+        var parameters = ['profilePicture', 'firstName', 'lastName', 'initials', 'status', 'created', 'modified', 'realm', 'username', 'email', 'emailVerified', 'id', 'teams', 'invitationTickets', 'accessTokens', 'permission'];
+        var parametersType = ['object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['firstName', 'lastName', 'initials', 'email'];
 
         /**

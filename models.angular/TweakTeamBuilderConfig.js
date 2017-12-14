@@ -9,15 +9,20 @@
 
         /**
          * Constructor, with class name
-         * @param name      {string}    
-         * @param debugMode {boolean}   default: false  
-         * @param features  {object}    default:   
-         * @param ui        {object}    default:   
-         * @param created   {string}    format: date-time  
-         * @param modified  {string}    format: date-time  
-         * @param id        {string}    
-         * @param teamId    {string}    
-         * @param team      {object}    $ref: #/definitions/Team  
+         * @param name                    {string}    
+         * @param debugMode               {boolean}   default: false  
+         * @param features                {object}    default:   
+         * @param ui                      {object}    default:   
+         * @param created                 {string}    format: date-time  
+         * @param modified                {string}    format: date-time  
+         * @param id                      {string}    
+         * @param teamId                  {string}    
+         * @param team                    {object}    $ref: #/definitions/Team  
+         * @param productGroups           {array}     items: $ref: #/definitions/ProductGroup    
+         * @param productTypes            {array}     items: $ref: #/definitions/ProductType    
+         * @param productSizes            {array}     items: $ref: #/definitions/ProductSize    
+         * @param productSizeMaterials    {array}     items: $ref: #/definitions/ProductSizeMaterial    
+         * @param productSizeMaterialsRel {array}     items: $ref: #/definitions/TeamBuilderConfigProductSizeMaterial    
          */
         function TweakTeamBuilderConfig(data) {
             data = data || {};
@@ -44,8 +49,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'debugMode', 'features', 'ui', 'created', 'modified', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'boolean', 'object', 'object', 'string', 'string', 'string', 'string', 'object'];
+        var parameters = ['name', 'debugMode', 'features', 'ui', 'created', 'modified', 'id', 'teamId', 'team', 'productGroups', 'productTypes', 'productSizes', 'productSizeMaterials', 'productSizeMaterialsRel'];
+        var parametersType = ['string', 'boolean', 'object', 'object', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = [];
 
         /**
