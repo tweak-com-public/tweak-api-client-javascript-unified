@@ -9,9 +9,10 @@
 
         /**
          * Constructor, with class name
-         * @param name {string}    [REQUIRED]    
-         * @param path {string}    [REQUIRED]    
-         * @param id   {string}                  
+         * @param name      {string}    [REQUIRED]    
+         * @param path      {string}    [REQUIRED]    
+         * @param thumbnail {object}                  $ref: #/definitions/CloudinaryImage  
+         * @param id        {string}                  
          */
         function TweakBuilderAssetBackgroundFolder(data) {
             data = data || {};
@@ -38,8 +39,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'path', 'id'];
-        var parametersType = ['string', 'string', 'string'];
+        var parameters = ['name', 'path', 'thumbnail', 'id'];
+        var parametersType = ['string', 'string', 'object', 'string'];
         var requiredParameters = ['name', 'path'];
 
         /**
