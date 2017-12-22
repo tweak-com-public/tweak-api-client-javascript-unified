@@ -9,23 +9,26 @@
 
         /**
          * Constructor, with class name
-         * @param publicId         {string}                  
-         * @param version          {string}                  
-         * @param signature        {string}                  
-         * @param width            {number}                  format: double  
-         * @param height           {number}                  format: double  
-         * @param format           {string}                  
-         * @param resourceType     {string}                  enum: image
-         * @param createdAt        {string}                  
-         * @param tags             {array}                   items: type: string    
-         * @param bytes            {number}                  format: double  
-         * @param type             {string}                  
-         * @param etag             {string}                  
-         * @param url              {string}    [REQUIRED]    
-         * @param secureUrl        {string}    [REQUIRED]    
-         * @param originalFilename {string}                  
-         * @param isBase64         {boolean}                 default: false  
-         * @param id               {string}                  
+         * @param publicId           {string}                  
+         * @param version            {string}                  
+         * @param signature          {string}                  
+         * @param width              {number}                  format: double  
+         * @param height             {number}                  format: double  
+         * @param format             {string}                  
+         * @param resourceType       {string}                  enum: image
+         * @param createdAt          {string}                  
+         * @param tags               {array}                   items: type: string    
+         * @param bytes              {number}                  format: double  
+         * @param type               {string}                  
+         * @param etag               {string}                  
+         * @param url                {string}    [REQUIRED]    
+         * @param secureUrl          {string}    [REQUIRED]    
+         * @param thumbnailUrl       {string}                  
+         * @param thumbnailSecureUrl {string}                  
+         * @param originalFilename   {string}                  
+         * @param isBase64           {boolean}                 default: false  
+         * @param resp               {object}                  
+         * @param id                 {string}                  
          */
         function TweakCloudinaryImage(data) {
             data = data || {};
@@ -52,8 +55,8 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'version', 'signature', 'width', 'height', 'format', 'resourceType', 'createdAt', 'tags', 'bytes', 'type', 'etag', 'url', 'secureUrl', 'originalFilename', 'isBase64', 'id'];
-        var parametersType = ['string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'array', 'number', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string'];
+        var parameters = ['publicId', 'version', 'signature', 'width', 'height', 'format', 'resourceType', 'createdAt', 'tags', 'bytes', 'type', 'etag', 'url', 'secureUrl', 'thumbnailUrl', 'thumbnailSecureUrl', 'originalFilename', 'isBase64', 'resp', 'id'];
+        var parametersType = ['string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'array', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'object', 'string'];
         var requiredParameters = ['url', 'secureUrl'];
 
         /**
