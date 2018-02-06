@@ -19,6 +19,7 @@
          * @param statementDescription {string}                  
          * @param trialPeriodDays      {number}                  format: double  
          * @param type                 {string}                  enum: plan, additional
+         * @param teamId               {string}                  
          * @param limit                {object}                  $ref: #/definitions/BillingLimit  
          * @param created              {string}                  format: date-time  
          */
@@ -47,8 +48,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'limit', 'created'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'object', 'string'];
+        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'created'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'string'];
         var requiredParameters = ['id'];
 
         /**
