@@ -23,6 +23,7 @@
          * @param routingNumber      {string}    
          * @param status             {string}    
          * @param token              {string}    
+         * @param address            {object}    $ref: #/definitions/BillingAddress  
          */
         function TweakBillingBankAccount(data) {
             data = data || {};
@@ -49,8 +50,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'object', 'account', 'accountHolderName', 'accountHolderType', 'bankName', 'country', 'currency', 'defaultForCurrency', 'fingerprint', 'last4', 'routingNumber', 'status', 'token'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string'];
+        var parameters = ['id', 'object', 'account', 'accountHolderName', 'accountHolderType', 'bankName', 'country', 'currency', 'defaultForCurrency', 'fingerprint', 'last4', 'routingNumber', 'status', 'token', 'address'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**
