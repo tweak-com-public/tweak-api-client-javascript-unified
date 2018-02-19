@@ -9,11 +9,11 @@
 
         /**
          * Constructor, with class name
-         * @param address         {string}    
+         * @param address         {object}    $ref: #/definitions/BillingAddress  
          * @param email           {string}    
          * @param name            {string}    
          * @param phone           {string}    
-         * @param verifiedAddress {string}    
+         * @param verifiedAddress {object}    $ref: #/definitions/BillingAddress  
          * @param verifiedEmail   {string}    
          * @param verifiedName    {string}    
          * @param verifiedPhone   {string}    
@@ -45,7 +45,7 @@
          * Private properties
          */
         var parameters = ['address', 'email', 'name', 'phone', 'verifiedAddress', 'verifiedEmail', 'verifiedName', 'verifiedPhone', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['object', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string'];
         var requiredParameters = [];
 
         /**
