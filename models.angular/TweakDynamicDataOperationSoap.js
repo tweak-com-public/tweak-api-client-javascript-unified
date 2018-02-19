@@ -11,9 +11,9 @@
          * Constructor, with class name
          * @param name         {string}    [REQUIRED]    
          * @param params       {object}                  default:   
-         * @param root         {object}                  default: *  $ref: #/definitions/x-any  
+         * @param root         {object}                  $ref: #/definitions/x-any  
          * @param parseRootXml {boolean}                 default: false  
-         * @param map          {object}                  default: *  $ref: #/definitions/x-any  
+         * @param map          {object}                  $ref: #/definitions/x-any  
          * @param id           {string}                  
          */
         function TweakDynamicDataOperationSoap(data) {

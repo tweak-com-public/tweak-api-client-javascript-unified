@@ -28,6 +28,7 @@
          * @param members                 {array}                   items: $ref: #/definitions/Customer    
          * @param builderConfigs          {array}                   items: $ref: #/definitions/TeamBuilderConfig    
          * @param dynamicDatas            {array}                   items: $ref: #/definitions/DynamicData    
+         * @param dataSourceSoaps         {array}                   items: $ref: #/definitions/DataSourceSoap    
          * @param teamMembers             {array}                   items: $ref: #/definitions/TeamMember    
          * @param portals                 {array}                   items: $ref: #/definitions/Portal    
          * @param templates               {array}                   items: $ref: #/definitions/Template    
@@ -68,8 +69,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData'];
-        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'object'];
+        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData'];
+        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'id'];
 
         /**
