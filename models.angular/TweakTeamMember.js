@@ -28,6 +28,8 @@
          * @param email                  {string}                  
          * @param key                    {string}                  
          * @param teamDataRecordId       {string}                  
+         * @param isLegacyUser           {boolean}                 default: false  
+         * @param legacyUserToken        {string}                  
          * @param id                     {string}                  
          * @param customerId             {string}                  
          * @param teamId                 {string}                  
@@ -75,8 +77,8 @@
         /**
          * Private properties
          */
-        var parameters = ['roles', 'previousRoles', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'language', 'timezone', 'created', 'modified', 'email', 'key', 'teamDataRecordId', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'sharedDesigns', 'designShares', 'workflows', 'imageFolders', 'notifications'];
-        var parametersType = ['array', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['roles', 'previousRoles', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'language', 'timezone', 'created', 'modified', 'email', 'key', 'teamDataRecordId', 'isLegacyUser', 'legacyUserToken', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'sharedDesigns', 'designShares', 'workflows', 'imageFolders', 'notifications'];
+        var parametersType = ['array', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**
