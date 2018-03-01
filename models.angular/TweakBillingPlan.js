@@ -21,6 +21,8 @@
          * @param type                 {string}                  enum: plan, additional
          * @param teamId               {string}                  
          * @param limit                {object}                  $ref: #/definitions/BillingLimit  
+         * @param deprecated           {boolean}                 default: false  
+         * @param similarPlan          {string}                  
          * @param created              {string}                  format: date-time  
          */
         function TweakBillingPlan(data) {
@@ -48,8 +50,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'created'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'string'];
+        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'deprecated', 'similarPlan', 'created'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'boolean', 'string', 'string'];
         var requiredParameters = ['id'];
 
         /**
