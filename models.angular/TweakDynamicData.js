@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param name                   {string}    [REQUIRED]    
+         * @param propertyPrimaryKey     {string}                  
          * @param propertiesOrder        {array}                   default: items: type: string    
          * @param properties             {object}                  default:   
          * @param relations              {object}                  default:   
@@ -63,8 +64,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'propertiesOrder', 'properties', 'relations', 'validations', 'dataSource', 'operationSoap', 'created', 'modified', 'recordCount', 'id', 'dataSourceSoapId', 'dataSourceRestId', 'dataSourceMySqlId', 'dataSourceMsSqlId', 'dataSourcePostgreSqlId', 'dataSourceMongoId', 'dataSourceOracleId', 'teamId', 'team', 'designs', 'dataSourceSoap', 'dataSourceRest', 'dataSourceMySql', 'dataSourceMsSql', 'dataSourcePostgreSql', 'dataSourceMongo', 'dataSourceOracle'];
-        var parametersType = ['string', 'array', 'object', 'object', 'object', 'string', 'object', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['name', 'propertyPrimaryKey', 'propertiesOrder', 'properties', 'relations', 'validations', 'dataSource', 'operationSoap', 'created', 'modified', 'recordCount', 'id', 'dataSourceSoapId', 'dataSourceRestId', 'dataSourceMySqlId', 'dataSourceMsSqlId', 'dataSourcePostgreSqlId', 'dataSourceMongoId', 'dataSourceOracleId', 'teamId', 'team', 'designs', 'dataSourceSoap', 'dataSourceRest', 'dataSourceMySql', 'dataSourceMsSql', 'dataSourcePostgreSql', 'dataSourceMongo', 'dataSourceOracle'];
+        var parametersType = ['string', 'string', 'array', 'object', 'object', 'object', 'string', 'object', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['name'];
 
         /**
