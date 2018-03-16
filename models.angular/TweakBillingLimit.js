@@ -9,20 +9,21 @@
 
         /**
          * Constructor, with class name
-         * @param teamMember        {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param uploader          {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param portal            {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param jpeg              {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param proof             {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param highResPdf        {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param storage           {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param stockImageLibrary {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param productDbRecord   {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param accountSupport    {boolean}   default: false  
-         * @param supportResponse   {string}    
-         * @param bandwidth         {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param printerApi        {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param id                {string}    
+         * @param teamMember           {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param uploader             {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param portal               {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param jpeg                 {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param proof                {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param highResPdf           {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param storage              {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param stockImageLibrary    {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param transformationCredit {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param productDbRecord      {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param accountSupport       {boolean}   default: false  
+         * @param supportResponse      {string}    
+         * @param bandwidth            {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param printerApi           {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param id                   {string}    
          */
         function TweakBillingLimit(data) {
             data = data || {};
@@ -49,8 +50,8 @@
         /**
          * Private properties
          */
-        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'id'];
-        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'string'];
+        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'id'];
+        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'string'];
         var requiredParameters = [];
 
         /**
