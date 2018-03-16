@@ -14,6 +14,7 @@
          * @param root         {object}                  $ref: #/definitions/x-any  
          * @param parseRootXml {boolean}                 default: false  
          * @param map          {object}                  $ref: #/definitions/x-any  
+         * @param format       {object}                  $ref: #/definitions/x-any  
          * @param id           {string}                  
          */
         function TweakDynamicDataOperationSoap(data) {
@@ -41,8 +42,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'params', 'root', 'parseRootXml', 'map', 'id'];
-        var parametersType = ['string', 'object', 'object', 'boolean', 'object', 'string'];
+        var parameters = ['name', 'params', 'root', 'parseRootXml', 'map', 'format', 'id'];
+        var parametersType = ['string', 'object', 'object', 'boolean', 'object', 'object', 'string'];
         var requiredParameters = ['name'];
 
         /**
