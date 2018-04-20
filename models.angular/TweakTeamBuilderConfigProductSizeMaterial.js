@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param bindingType           {string}    enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
-         * @param defaultBleed          {object}    default: right: 0    $ref: #/definitions/Bounds  
+         * @param defaultBleed          {object}    $ref: #/definitions/Bounds  
          * @param printProfile          {string}    enum: PDFX1A, PDFX3A
          * @param customerTitle         {string}    default:   
          * @param customerDescription   {string}    default:   
