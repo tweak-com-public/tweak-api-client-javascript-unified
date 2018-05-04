@@ -11,6 +11,7 @@
          * Constructor, with class name
          * @param roles                  {array}     [REQUIRED]    default: items: type: string    
          * @param previousRoles          {array}                   default: items: type: string    
+         * @param profilePicture         {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param position               {string}                  
          * @param officePhone            {string}                  
          * @param mobilePhone            {string}                  
@@ -77,8 +78,8 @@
         /**
          * Private properties
          */
-        var parameters = ['roles', 'previousRoles', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'language', 'timezone', 'created', 'modified', 'email', 'key', 'teamDataRecordId', 'isLegacyUser', 'legacyUserToken', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'sharedDesigns', 'designShares', 'workflows', 'imageFolders', 'notifications'];
-        var parametersType = ['array', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['roles', 'previousRoles', 'profilePicture', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'language', 'timezone', 'created', 'modified', 'email', 'key', 'teamDataRecordId', 'isLegacyUser', 'legacyUserToken', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'sharedDesigns', 'designShares', 'workflows', 'imageFolders', 'notifications'];
+        var parametersType = ['array', 'array', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**
