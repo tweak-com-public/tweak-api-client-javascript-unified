@@ -16,6 +16,7 @@
          * @param templates {array}                   items: $ref: #/definitions/Template    
          * @param designs   {array}                   items: $ref: #/definitions/Design    
          * @param products  {array}                   items: $ref: #/definitions/Product    
+         * @param assets    {array}                   items: $ref: #/definitions/Asset    
          */
         function TweakTag(data) {
             data = data || {};
@@ -42,8 +43,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'templates', 'designs', 'products'];
-        var parametersType = ['string', 'string', 'string', 'string', 'array', 'array', 'array'];
+        var parameters = ['name', 'created', 'modified', 'id', 'templates', 'designs', 'products', 'assets'];
+        var parametersType = ['string', 'string', 'string', 'string', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**
