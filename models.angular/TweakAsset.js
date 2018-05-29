@@ -17,7 +17,7 @@
          * @param format          {string}                  
          * @param bytes           {number}    [REQUIRED]    format: double  
          * @param description     {string}                  
-         * @param status          {string}    [REQUIRED]    enum: pendingAction, approved, rejected
+         * @param status          {string}    [REQUIRED]    enum: pendingAction, approved, needsChanges, rejected
          * @param thumbnailUrl    {string}                  
          * @param version         {number}                  format: double  
          * @param signature       {string}                  
@@ -35,6 +35,7 @@
          * @param frameRate       {number}                  default: 0  format: double  
          * @param duration        {number}                  default: 0  format: double  
          * @param rotation        {number}                  default: 0  format: double  
+         * @param published       {string}                  format: date-time  
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
          * @param id              {string}                  
@@ -78,8 +79,8 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'created', 'modified', 'id', 'termsId', 'assetCategoryId', 'assetOptionId', 'teamId', 'uploaderId', 'tags', 'categories', 'options', 'comments', 'events', 'collections', 'terms', 'uploader', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'object', 'object'];
+        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'id', 'termsId', 'assetCategoryId', 'assetOptionId', 'teamId', 'uploaderId', 'tags', 'categories', 'options', 'comments', 'events', 'collections', 'terms', 'uploader', 'team'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'object', 'object'];
         var requiredParameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'bytes', 'status'];
 
         /**

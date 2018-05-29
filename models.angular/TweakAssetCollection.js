@@ -9,15 +9,20 @@
 
         /**
          * Constructor, with class name
-         * @param name         {string}    [REQUIRED]    
-         * @param code         {string}    [REQUIRED]    
-         * @param thumbnailUrl {string}                  
-         * @param created      {string}                  format: date-time  
-         * @param modified     {string}                  format: date-time  
-         * @param id           {string}                  
-         * @param teamId       {string}                  
-         * @param assets       {array}                   items: $ref: #/definitions/Asset    
-         * @param team         {object}                  $ref: #/definitions/Team  
+         * @param name          {string}    [REQUIRED]    
+         * @param code          {string}    [REQUIRED]    
+         * @param thumbnailUrl  {string}                  
+         * @param viewCount     {number}                  default: 0  format: double  
+         * @param downloadCount {number}                  default: 0  format: double  
+         * @param shareCount    {number}                  default: 0  format: double  
+         * @param created       {string}                  format: date-time  
+         * @param modified      {string}                  format: date-time  
+         * @param id            {string}                  
+         * @param teamId        {string}                  
+         * @param teamMemberId  {string}                  
+         * @param assets        {array}                   items: $ref: #/definitions/Asset    
+         * @param team          {object}                  $ref: #/definitions/Team  
+         * @param createdBy     {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakAssetCollection(data) {
             data = data || {};
@@ -44,8 +49,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'thumbnailUrl', 'created', 'modified', 'id', 'teamId', 'assets', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object'];
+        var parameters = ['name', 'code', 'thumbnailUrl', 'viewCount', 'downloadCount', 'shareCount', 'created', 'modified', 'id', 'teamId', 'teamMemberId', 'assets', 'team', 'createdBy'];
+        var parametersType = ['string', 'string', 'string', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'code'];
 
         /**
