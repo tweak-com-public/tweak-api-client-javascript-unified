@@ -46,7 +46,7 @@
          * @param assets                  {array}                   items: $ref: #/definitions/Asset    
          * @param terms                   {array}                   items: $ref: #/definitions/AssetTerms    
          * @param assetCategories         {array}                   items: $ref: #/definitions/AssetCategory    
-         * @param tags                    {array}                   items: $ref: #/definitions/AssetTag    
+         * @param tags                    {array}                   items: $ref: #/definitions/Tag    
          * @param assetCollections        {array}                   items: $ref: #/definitions/AssetCollection    
          * @param assetChannels           {array}                   items: $ref: #/definitions/AssetChannel    
          */
