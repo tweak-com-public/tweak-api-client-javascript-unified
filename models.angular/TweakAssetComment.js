@@ -9,21 +9,25 @@
 
         /**
          * Constructor, with class name
-         * @param comment     {string}    [REQUIRED]    
-         * @param position    {object}                  $ref: #/definitions/Axes  
-         * @param pageIndex   {number}                  minimum: 0  default: 0  format: double  
-         * @param status      {string}                  enum: unsolved, resolved
-         * @param type        {string}                  enum: comment, rejection, reaction
-         * @param created     {string}                  format: date-time  
-         * @param modified    {string}                  format: date-time  
-         * @param id          {string}                  
-         * @param assetId     {string}                  
-         * @param commentId   {string}                  
-         * @param commenterId {string}                  
-         * @param asset       {object}                  $ref: #/definitions/Asset  
-         * @param replies     {array}                   items: $ref: #/definitions/AssetComment    
-         * @param commenter   {object}                  $ref: #/definitions/TeamMember  
-         * @param replyOf     {object}                  $ref: #/definitions/AssetComment  
+         * @param comment      {string}    [REQUIRED]    
+         * @param position     {object}                  $ref: #/definitions/Axes  
+         * @param pageIndex    {number}                  minimum: 0  default: 0  format: double  
+         * @param status       {string}                  enum: unsolved, resolved
+         * @param designStatus {string}                  enum: unsolved, resolved
+         * @param type         {string}                  enum: comment, rejection, reaction
+         * @param created      {string}                  format: date-time  
+         * @param modified     {string}                  format: date-time  
+         * @param id           {string}                  
+         * @param assetId      {string}                  
+         * @param commentId    {string}                  
+         * @param commenterId  {string}                  
+         * @param assignTo     {string}                  
+         * @param asset        {object}                  $ref: #/definitions/Asset  
+         * @param replies      {array}                   items: $ref: #/definitions/AssetComment    
+         * @param commenter    {object}                  $ref: #/definitions/TeamMember  
+         * @param replyOf      {object}                  $ref: #/definitions/AssetComment  
+         * @param assign       {object}                  $ref: #/definitions/TeamMember  
+         * @param mentions     {array}                   items: $ref: #/definitions/TeamMember    
          */
         function TweakAssetComment(data) {
             data = data || {};
@@ -50,8 +54,8 @@
         /**
          * Private properties
          */
-        var parameters = ['comment', 'position', 'pageIndex', 'status', 'type', 'created', 'modified', 'id', 'assetId', 'commentId', 'commenterId', 'asset', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object'];
+        var parameters = ['comment', 'position', 'pageIndex', 'status', 'designStatus', 'type', 'created', 'modified', 'id', 'assetId', 'commentId', 'commenterId', 'assignTo', 'asset', 'replies', 'commenter', 'replyOf', 'assign', 'mentions'];
+        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'object', 'array'];
         var requiredParameters = ['comment'];
 
         /**
