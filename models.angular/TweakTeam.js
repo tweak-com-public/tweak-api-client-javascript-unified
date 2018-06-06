@@ -43,6 +43,12 @@
          * @param productSizeMaterials    {array}                   items: $ref: #/definitions/ProductSizeMaterial    
          * @param productPdfColorProfiles {array}                   items: $ref: #/definitions/ProductPdfColorProfile    
          * @param teamData                {object}                  $ref: #/definitions/DynamicData  
+         * @param assets                  {array}                   items: $ref: #/definitions/Asset    
+         * @param terms                   {array}                   items: $ref: #/definitions/AssetTerms    
+         * @param assetCategories         {array}                   items: $ref: #/definitions/AssetCategory    
+         * @param tags                    {array}                   items: $ref: #/definitions/Tag    
+         * @param assetCollections        {array}                   items: $ref: #/definitions/AssetCollection    
+         * @param assetChannels           {array}                   items: $ref: #/definitions/AssetChannel    
          */
         function TweakTeam(data) {
             data = data || {};
@@ -69,8 +75,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData'];
-        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'object'];
+        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData', 'assets', 'terms', 'assetCategories', 'tags', 'assetCollections', 'assetChannels'];
+        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**

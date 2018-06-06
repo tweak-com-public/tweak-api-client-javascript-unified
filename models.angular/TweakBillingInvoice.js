@@ -35,6 +35,7 @@
          * @param subtotal                  {number}                  format: double  
          * @param tax                       {number}                  format: double  
          * @param total                     {number}                  format: double  
+         * @param charge                    {object}                  $ref: #/definitions/BillingCharge  
          */
         function TweakBillingInvoice(data) {
             data = data || {};
@@ -61,8 +62,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'amountDue', 'attemptCount', 'attempted', 'charged', 'closed', 'currency', 'customer', 'date', 'description', 'endingBalance', 'forgiven', 'lines', 'nextPaymentAttempt', 'paid', 'periodEnd', 'periodStart', 'number', 'reciptNumber', 'startingBalance', 'statementDescriptor', 'subscription', 'subscriptionProrationDate', 'subtotal', 'tax', 'total'];
-        var parametersType = ['string', 'number', 'number', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'number', 'boolean', 'array', 'string', 'boolean', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number'];
+        var parameters = ['id', 'amountDue', 'attemptCount', 'attempted', 'charged', 'closed', 'currency', 'customer', 'date', 'description', 'endingBalance', 'forgiven', 'lines', 'nextPaymentAttempt', 'paid', 'periodEnd', 'periodStart', 'number', 'reciptNumber', 'startingBalance', 'statementDescriptor', 'subscription', 'subscriptionProrationDate', 'subtotal', 'tax', 'total', 'charge'];
+        var parametersType = ['string', 'number', 'number', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'number', 'boolean', 'array', 'string', 'boolean', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'object'];
         var requiredParameters = ['id'];
 
         /**
