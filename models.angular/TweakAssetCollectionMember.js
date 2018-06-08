@@ -1,0 +1,86 @@
+(function () {
+    'use strict';
+    angular.module('Tweak')
+        .factory('TweakAssetCollectionMember', TweakAssetCollectionMember);
+
+    TweakAssetCollectionMember.$inject = ['$log'];
+
+    function TweakAssetCollectionMember($log) {
+
+        /**
+         * Constructor, with class name
+         * @param created      {string}    format: date-time  
+         * @param modified     {string}    format: date-time  
+         * @param id           {string}    
+         * @param collectionId {string}    
+         * @param memberId     {string}    
+         * @param design       {object}    $ref: #/definitions/AssetCollection  
+         * @param member       {object}    $ref: #/definitions/TeamMember  
+         */
+        function TweakAssetCollectionMember(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
+
+            for (var i = 0; i < parameters.length; i++) {
+
+                if (this[parameters[i]] && parametersType[i] === 'string' ) {
+
+                    this[parameters[i]] = '' + this[parameters[i]];
+
+                }
+
+            }
+
+
+            constructorValidation(this);
+        }
+
+        /**
+         * Private properties
+         */
+        var parameters = ['created', 'modified', 'id', 'collectionId', 'memberId', 'design', 'member'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var requiredParameters = [];
+
+        /**
+         * Private function
+         */
+        function constructorValidation(model) {
+            requiredParameters.forEach(function(requiredParameter) {
+                if (model[requiredParameter] === undefined) {
+                    throw new Error('Required parameter `' + requiredParameter + '` is missing!');
+                }
+            });
+
+            for (var i = 0; i < parameters.length; i++) {
+                var parameterTypeObject = '[object ' + parametersType[i].charAt(0).toUpperCase() + parametersType[i].substr(1) + ']';
+                if (model[parameters[i]] && Object.prototype.toString.call(model[parameters[i]]) !== parameterTypeObject) {
+                    throw new Error('Wrong parameter type for `' + parameters[i] + '`: should be `' + parametersType[i] + '`!');
+                }
+            }
+        }
+
+        /**
+         * Static method, assigned to class
+         */
+        TweakAssetCollectionMember.build = function (data) {
+            return new TweakAssetCollectionMember(data);
+        };
+
+        TweakAssetCollectionMember.apiResponseTransformer = function (responseData) {
+            if (angular.isArray(responseData)) {
+                return responseData.map(TweakAssetCollectionMember.build).filter(Boolean);
+            }
+            return TweakAssetCollectionMember.build(responseData);
+        };
+
+        /**
+         * Return the constructor function
+         */
+        return TweakAssetCollectionMember;
+    }
+})();
