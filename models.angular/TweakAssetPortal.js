@@ -9,13 +9,17 @@
 
         /**
          * Constructor, with class name
-         * @param created  {string}    format: date-time  
-         * @param modified {string}    format: date-time  
-         * @param id       {string}    
-         * @param assetId  {string}    
-         * @param portalId {string}    
-         * @param design   {object}    $ref: #/definitions/Asset  
-         * @param member   {object}    $ref: #/definitions/Portal  
+         * @param message               {string}                  
+         * @param requireToLogin        {boolean}                 default: false  
+         * @param downloadLowResolution {boolean}                 default: false  
+         * @param options               {string}    [REQUIRED]    enum: downloadCollection, downloadCollectionAndEdit, view
+         * @param created               {string}                  format: date-time  
+         * @param modified              {string}                  format: date-time  
+         * @param id                    {string}                  
+         * @param assetId               {string}                  
+         * @param portalId              {string}                  
+         * @param asset                 {object}                  $ref: #/definitions/Asset  
+         * @param member                {object}                  $ref: #/definitions/Portal  
          */
         function TweakAssetPortal(data) {
             data = data || {};
@@ -42,9 +46,9 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetId', 'portalId', 'design', 'member'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
-        var requiredParameters = [];
+        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'assetId', 'portalId', 'asset', 'member'];
+        var parametersType = ['string', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var requiredParameters = ['options'];
 
         /**
          * Private function

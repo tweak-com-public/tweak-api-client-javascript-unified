@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param assetCategoryId                {string}    [REQUIRED]    
+         * @param value                          {object}                  
          * @param selectType                     {string}                  enum: autoComplete, text, longText, date, linkAsset, sourcefile, vector
          * @param filterable                     {boolean}                 default: true  
          * @param required                       {boolean}                 default: true  
@@ -50,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['assetCategoryId', 'selectType', 'filterable', 'required', 'mainFilter', 'multiSelect', 'multiFilter', 'displayField', 'showInListView', 'showInDuplicateView', 'showInGridView', 'showInContactSheetView', 'hidePublic', 'hideOptionsWithoutDependencies', 'id'];
-        var parametersType = ['string', 'string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string'];
+        var parameters = ['assetCategoryId', 'value', 'selectType', 'filterable', 'required', 'mainFilter', 'multiSelect', 'multiFilter', 'displayField', 'showInListView', 'showInDuplicateView', 'showInGridView', 'showInContactSheetView', 'hidePublic', 'hideOptionsWithoutDependencies', 'id'];
+        var parametersType = ['string', 'object', 'string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string'];
         var requiredParameters = ['assetCategoryId'];
 
         /**

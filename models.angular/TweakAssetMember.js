@@ -18,7 +18,7 @@
          * @param id                    {string}                  
          * @param assetId               {string}                  
          * @param memberId              {string}                  
-         * @param design                {object}                  $ref: #/definitions/Asset  
+         * @param asset                 {object}                  $ref: #/definitions/Asset  
          * @param member                {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakAssetMember(data) {
@@ -46,7 +46,7 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'assetId', 'memberId', 'design', 'member'];
+        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'assetId', 'memberId', 'asset', 'member'];
         var parametersType = ['string', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = ['options'];
 
