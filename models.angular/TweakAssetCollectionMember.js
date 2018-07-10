@@ -18,7 +18,7 @@
          * @param id                    {string}                  
          * @param collectionId          {string}                  
          * @param memberId              {string}                  
-         * @param asset                 {object}                  $ref: #/definitions/AssetCollection  
+         * @param assetCollection       {object}                  $ref: #/definitions/AssetCollection  
          * @param member                {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakAssetCollectionMember(data) {
@@ -46,7 +46,7 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'collectionId', 'memberId', 'asset', 'member'];
+        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'collectionId', 'memberId', 'assetCollection', 'member'];
         var parametersType = ['string', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = ['options'];
 

@@ -18,8 +18,8 @@
          * @param id                    {string}                  
          * @param collectionId          {string}                  
          * @param portalId              {string}                  
-         * @param asset                 {object}                  $ref: #/definitions/AssetCollection  
-         * @param member                {object}                  $ref: #/definitions/Portal  
+         * @param assetCollection       {object}                  $ref: #/definitions/AssetCollection  
+         * @param portal                {object}                  $ref: #/definitions/Portal  
          */
         function TweakAssetCollectionPortal(data) {
             data = data || {};
@@ -46,7 +46,7 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'collectionId', 'portalId', 'asset', 'member'];
+        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'collectionId', 'portalId', 'assetCollection', 'portal'];
         var parametersType = ['string', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = ['options'];
 
