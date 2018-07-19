@@ -20,6 +20,7 @@
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
          * @param recordCount            {number}                  default: 0  format: double  
+         * @param example                {object}                  default:   
          * @param id                     {string}                  
          * @param dataSourceSoapId       {string}                  
          * @param dataSourceRestId       {string}                  
@@ -30,6 +31,7 @@
          * @param dataSourceOracleId     {string}                  
          * @param teamId                 {string}                  
          * @param team                   {object}                  $ref: #/definitions/Team  
+         * @param portals                {array}                   items: $ref: #/definitions/Portal    
          * @param designs                {array}                   items: $ref: #/definitions/Design    
          * @param dataSourceSoap         {object}                  $ref: #/definitions/DataSourceSoap  
          * @param dataSourceRest         {object}                  $ref: #/definitions/DataSourceRest  
@@ -64,8 +66,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'propertyPrimaryKey', 'propertiesOrder', 'properties', 'relations', 'validations', 'dataSource', 'operationSoap', 'created', 'modified', 'recordCount', 'id', 'dataSourceSoapId', 'dataSourceRestId', 'dataSourceMySqlId', 'dataSourceMsSqlId', 'dataSourcePostgreSqlId', 'dataSourceMongoId', 'dataSourceOracleId', 'teamId', 'team', 'designs', 'dataSourceSoap', 'dataSourceRest', 'dataSourceMySql', 'dataSourceMsSql', 'dataSourcePostgreSql', 'dataSourceMongo', 'dataSourceOracle'];
-        var parametersType = ['string', 'string', 'array', 'object', 'object', 'object', 'string', 'object', 'string', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['name', 'propertyPrimaryKey', 'propertiesOrder', 'properties', 'relations', 'validations', 'dataSource', 'operationSoap', 'created', 'modified', 'recordCount', 'example', 'id', 'dataSourceSoapId', 'dataSourceRestId', 'dataSourceMySqlId', 'dataSourceMsSqlId', 'dataSourcePostgreSqlId', 'dataSourceMongoId', 'dataSourceOracleId', 'teamId', 'team', 'portals', 'designs', 'dataSourceSoap', 'dataSourceRest', 'dataSourceMySql', 'dataSourceMsSql', 'dataSourcePostgreSql', 'dataSourceMongo', 'dataSourceOracle'];
+        var parametersType = ['string', 'string', 'array', 'object', 'object', 'object', 'string', 'object', 'string', 'string', 'number', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['name'];
 
         /**
