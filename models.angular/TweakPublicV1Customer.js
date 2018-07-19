@@ -9,10 +9,28 @@
 
         /**
          * Constructor, with class name
+         * @param id              {string}    
          * @param email           {string}    
          * @param isLegacyUser    {boolean}   
          * @param legacyUserToken {string}    
-         * @param key             {string}    
+         * @param isAnonymous     {boolean}   
+         * @param position        {string}    
+         * @param officePhone     {string}    
+         * @param mobilePhone     {string}    
+         * @param website         {string}    
+         * @param addressCity     {string}    
+         * @param addressCountry  {string}    
+         * @param addressLine1    {string}    
+         * @param addressLine2    {string}    
+         * @param addressState    {string}    
+         * @param addressZip      {string}    
+         * @param firstName       {string}    
+         * @param lastName        {string}    
+         * @param initials        {string}    minimum: 2  maximum: 2  
+         * @param language        {string}    enum: en
+         * @param timezone        {string}    enum: 
+         * @param created         {string}    format: date-time  
+         * @param modified        {string}    format: date-time  
          */
         function TweakPublicV1Customer(data) {
             data = data || {};
@@ -39,8 +57,8 @@
         /**
          * Private properties
          */
-        var parameters = ['email', 'isLegacyUser', 'legacyUserToken', 'key'];
-        var parametersType = ['string', 'boolean', 'string', 'string'];
+        var parameters = ['id', 'email', 'isLegacyUser', 'legacyUserToken', 'isAnonymous', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'firstName', 'lastName', 'initials', 'language', 'timezone', 'created', 'modified'];
+        var parametersType = ['string', 'string', 'boolean', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
         var requiredParameters = [];
 
         /**

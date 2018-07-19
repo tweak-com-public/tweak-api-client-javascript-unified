@@ -29,6 +29,7 @@
          * @param designFolders          {array}                   items: $ref: #/definitions/DesignFolder    
          * @param imageFolders           {array}                   items: $ref: #/definitions/ImageFolder    
          * @param permission             {object}                  $ref: #/definitions/PortalPermissionSet  
+         * @param dynamicDatas           {array}                   items: $ref: #/definitions/DynamicData    
          */
         function TweakPortal(data) {
             data = data || {};
@@ -55,8 +56,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'defaultBuilderConfigId', 'defaultBuilderConfig', 'templates', 'templateRels', 'members', 'portalMembers', 'team', 'designs', 'templateFolders', 'designFolders', 'imageFolders', 'permission'];
-        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object'];
+        var parameters = ['name', 'logo', 'status', 'language', 'created', 'modified', 'id', 'teamId', 'defaultBuilderConfigId', 'defaultBuilderConfig', 'templates', 'templateRels', 'members', 'portalMembers', 'team', 'designs', 'templateFolders', 'designFolders', 'imageFolders', 'permission', 'dynamicDatas'];
+        var parametersType = ['string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'array'];
         var requiredParameters = ['name'];
 
         /**

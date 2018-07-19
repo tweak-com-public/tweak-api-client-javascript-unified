@@ -15,6 +15,7 @@
          * @param viewCount     {number}                  default: 0  format: double  
          * @param downloadCount {number}                  default: 0  format: double  
          * @param shareCount    {number}                  default: 0  format: double  
+         * @param status        {string}    [REQUIRED]    enum: published, pendingAction, rejected, inReview
          * @param created       {string}                  format: date-time  
          * @param modified      {string}                  format: date-time  
          * @param id            {string}                  
@@ -49,9 +50,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'thumbnailUrl', 'viewCount', 'downloadCount', 'shareCount', 'created', 'modified', 'id', 'teamId', 'teamMemberId', 'assets', 'team', 'createdBy'];
-        var parametersType = ['string', 'string', 'string', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
-        var requiredParameters = ['name', 'code'];
+        var parameters = ['name', 'code', 'thumbnailUrl', 'viewCount', 'downloadCount', 'shareCount', 'status', 'created', 'modified', 'id', 'teamId', 'teamMemberId', 'assets', 'team', 'createdBy'];
+        var parametersType = ['string', 'string', 'string', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
+        var requiredParameters = ['name', 'code', 'status'];
 
         /**
          * Private function
