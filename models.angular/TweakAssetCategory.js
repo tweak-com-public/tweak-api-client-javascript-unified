@@ -12,12 +12,14 @@
          * @param name        {string}    [REQUIRED]    
          * @param code        {string}    [REQUIRED]    
          * @param description {string}                  
+         * @param textValue   {string}                  
          * @param created     {string}                  format: date-time  
          * @param modified    {string}                  format: date-time  
          * @param id          {string}                  
          * @param teamId      {string}                  
          * @param permission  {object}                  $ref: #/definitions/AssetCategoryPermissionSet  
          * @param options     {array}                   items: $ref: #/definitions/AssetOption    
+         * @param assetLinks  {array}                   items: $ref: #/definitions/Asset    
          * @param team        {object}                  $ref: #/definitions/Team  
          * @param assets      {array}                   items: $ref: #/definitions/Asset    
          */
@@ -46,8 +48,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'description', 'created', 'modified', 'id', 'teamId', 'permission', 'options', 'team', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'array'];
+        var parameters = ['name', 'code', 'description', 'textValue', 'created', 'modified', 'id', 'teamId', 'permission', 'options', 'assetLinks', 'team', 'assets'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'object', 'array'];
         var requiredParameters = ['name', 'code'];
 
         /**
