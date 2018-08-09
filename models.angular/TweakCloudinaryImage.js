@@ -20,6 +20,7 @@
          * @param tags               {array}                   items: type: string    
          * @param bytes              {number}                  format: double  
          * @param type               {string}                  
+         * @param pages              {number}                  format: double  
          * @param etag               {string}                  
          * @param url                {string}    [REQUIRED]    
          * @param secureUrl          {string}    [REQUIRED]    
@@ -55,8 +56,8 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'version', 'signature', 'width', 'height', 'format', 'resourceType', 'createdAt', 'tags', 'bytes', 'type', 'etag', 'url', 'secureUrl', 'thumbnailUrl', 'thumbnailSecureUrl', 'originalFilename', 'isBase64', 'resp', 'id'];
-        var parametersType = ['string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'array', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'object', 'string'];
+        var parameters = ['publicId', 'version', 'signature', 'width', 'height', 'format', 'resourceType', 'createdAt', 'tags', 'bytes', 'type', 'pages', 'etag', 'url', 'secureUrl', 'thumbnailUrl', 'thumbnailSecureUrl', 'originalFilename', 'isBase64', 'resp', 'id'];
+        var parametersType = ['string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'array', 'number', 'string', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'object', 'string'];
         var requiredParameters = ['url', 'secureUrl'];
 
         /**

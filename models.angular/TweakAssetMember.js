@@ -9,17 +9,19 @@
 
         /**
          * Constructor, with class name
-         * @param message               {string}                  
-         * @param requireToLogin        {boolean}                 default: false  
-         * @param downloadLowResolution {boolean}                 default: false  
-         * @param options               {string}    [REQUIRED]    enum: downloadCollection, downloadCollectionAndEdit, view
-         * @param created               {string}                  format: date-time  
-         * @param modified              {string}                  format: date-time  
-         * @param id                    {string}                  
-         * @param assetId               {string}                  
-         * @param memberId              {string}                  
-         * @param asset                 {object}                  $ref: #/definitions/Asset  
-         * @param member                {object}                  $ref: #/definitions/TeamMember  
+         * @param message               {string}    
+         * @param requireToLogin        {boolean}   default: false  
+         * @param downloadLowResolution {boolean}   default: false  
+         * @param hasDownloadPermission {boolean}   default: false  
+         * @param hasEditPermission     {boolean}   default: false  
+         * @param hasViewPermission     {boolean}   default: false  
+         * @param created               {string}    format: date-time  
+         * @param modified              {string}    format: date-time  
+         * @param id                    {string}    
+         * @param assetId               {string}    
+         * @param memberId              {string}    
+         * @param asset                 {object}    $ref: #/definitions/Asset  
+         * @param member                {object}    $ref: #/definitions/TeamMember  
          */
         function TweakAssetMember(data) {
             data = data || {};
@@ -46,9 +48,9 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'options', 'created', 'modified', 'id', 'assetId', 'memberId', 'asset', 'member'];
-        var parametersType = ['string', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
-        var requiredParameters = ['options'];
+        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'hasDownloadPermission', 'hasEditPermission', 'hasViewPermission', 'created', 'modified', 'id', 'assetId', 'memberId', 'asset', 'member'];
+        var parametersType = ['string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var requiredParameters = [];
 
         /**
          * Private function
