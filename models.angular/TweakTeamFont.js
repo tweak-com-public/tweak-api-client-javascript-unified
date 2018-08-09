@@ -12,6 +12,7 @@
          * @param gen        {string}    [REQUIRED]    
          * @param postScript {string}    [REQUIRED]    
          * @param fileName   {string}    [REQUIRED]    
+         * @param customName {string}                  
          * @param extension  {string}    [REQUIRED]    
          * @param fontBase   {string}    [REQUIRED]    
          * @param fontStyle  {string}                  
@@ -23,6 +24,7 @@
          * @param id         {string}                  
          * @param teamId     {string}                  
          * @param team       {object}                  $ref: #/definitions/Team  
+         * @param portals    {array}                   items: $ref: #/definitions/Portal    
          */
         function TweakTeamFont(data) {
             data = data || {};
@@ -49,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['gen', 'postScript', 'fileName', 'extension', 'fontBase', 'fontStyle', 'ascent12', 'descent12', 'remoteURL', 'created', 'modified', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'object'];
+        var parameters = ['gen', 'postScript', 'fileName', 'customName', 'extension', 'fontBase', 'fontStyle', 'ascent12', 'descent12', 'remoteURL', 'created', 'modified', 'id', 'teamId', 'team', 'portals'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array'];
         var requiredParameters = ['gen', 'postScript', 'fileName', 'extension', 'fontBase'];
 
         /**
