@@ -9,10 +9,16 @@
 
         /**
          * Constructor, with class name
-         * @param id           {string}    
-         * @param teamId       {string}    
-         * @param team         {object}    $ref: #/definitions/Team  
-         * @param dynamicDatas {array}     items: $ref: #/definitions/DynamicData    
+         * @param name         {string}    [REQUIRED]    
+         * @param baseURL      {string}    [REQUIRED]    
+         * @param options      {object}                  default:   
+         * @param operations   {array}                   default: items: $ref: #/definitions/DataSourceRestOperation    
+         * @param created      {string}                  format: date-time  
+         * @param modified     {string}                  format: date-time  
+         * @param id           {string}                  
+         * @param teamId       {string}                  
+         * @param team         {object}                  $ref: #/definitions/Team  
+         * @param dynamicDatas {array}                   items: $ref: #/definitions/DynamicData    
          */
         function TweakDataSourceRest(data) {
             data = data || {};
@@ -39,9 +45,9 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'teamId', 'team', 'dynamicDatas'];
-        var parametersType = ['string', 'string', 'object', 'array'];
-        var requiredParameters = [];
+        var parameters = ['name', 'baseURL', 'options', 'operations', 'created', 'modified', 'id', 'teamId', 'team', 'dynamicDatas'];
+        var parametersType = ['string', 'string', 'object', 'array', 'string', 'string', 'string', 'string', 'object', 'array'];
+        var requiredParameters = ['name', 'baseURL'];
 
         /**
          * Private function
