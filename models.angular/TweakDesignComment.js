@@ -9,21 +9,23 @@
 
         /**
          * Constructor, with class name
-         * @param comment     {string}    [REQUIRED]    
-         * @param position    {object}                  $ref: #/definitions/Axes  
-         * @param pageIndex   {number}                  minimum: 0  default: 0  format: double  
-         * @param status      {string}                  enum: unsolved, resolved
-         * @param type        {string}                  enum: comment, rejection, reaction
-         * @param created     {string}                  format: date-time  
-         * @param modified    {string}                  format: date-time  
-         * @param id          {string}                  
-         * @param designId    {string}                  
-         * @param commentId   {string}                  
-         * @param commenterId {string}                  
-         * @param design      {object}                  $ref: #/definitions/Design  
-         * @param replies     {array}                   items: $ref: #/definitions/DesignComment    
-         * @param commenter   {object}                  $ref: #/definitions/TeamMember  
-         * @param replyOf     {object}                  $ref: #/definitions/DesignComment  
+         * @param comment         {string}    [REQUIRED]    
+         * @param position        {object}                  $ref: #/definitions/Axes  
+         * @param pageIndex       {number}                  minimum: 0  default: 0  format: double  
+         * @param status          {string}                  enum: unsolved, resolved
+         * @param type            {string}                  enum: comment, rejection, reaction
+         * @param created         {string}                  format: date-time  
+         * @param modified        {string}                  format: date-time  
+         * @param id              {string}                  
+         * @param designId        {string}                  
+         * @param commentId       {string}                  
+         * @param commenterId     {string}                  
+         * @param design          {object}                  $ref: #/definitions/Design  
+         * @param replies         {array}                   items: $ref: #/definitions/DesignComment    
+         * @param commenter       {object}                  $ref: #/definitions/TeamMember  
+         * @param replyOf         {object}                  $ref: #/definitions/DesignComment  
+         * @param mentions        {array}                   items: $ref: #/definitions/TeamMember    
+         * @param commentMentions {array}                   items: $ref: #/definitions/DesignCommentMention    
          */
         function TweakDesignComment(data) {
             data = data || {};
@@ -50,8 +52,8 @@
         /**
          * Private properties
          */
-        var parameters = ['comment', 'position', 'pageIndex', 'status', 'type', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf'];
-        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object'];
+        var parameters = ['comment', 'position', 'pageIndex', 'status', 'type', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf', 'mentions', 'commentMentions'];
+        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'array', 'array'];
         var requiredParameters = ['comment'];
 
         /**
