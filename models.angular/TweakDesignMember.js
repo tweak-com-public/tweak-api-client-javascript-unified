@@ -9,6 +9,7 @@
 
         /**
          * Constructor, with class name
+         * @param canEdit  {boolean}   default: false  
          * @param created  {string}    format: date-time  
          * @param modified {string}    format: date-time  
          * @param id       {string}    
@@ -42,8 +43,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'designId', 'memberId', 'design', 'member'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['canEdit', 'created', 'modified', 'id', 'designId', 'memberId', 'design', 'member'];
+        var parametersType = ['boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**
