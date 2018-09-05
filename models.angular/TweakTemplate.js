@@ -9,6 +9,7 @@
 
         /**
          * Constructor, with class name
+         * @param previewId            {string}                  
          * @param name                 {string}    [REQUIRED]    
          * @param thumbnail            {string}                  
          * @param object               {object}    [REQUIRED]    
@@ -19,6 +20,7 @@
          * @param isDynamic            {boolean}                 default: false  
          * @param shared               {string}                  format: date-time  
          * @param permissionSetUpdated {string}                  format: date-time  
+         * @param pagesPreviews        {array}                   items: $ref: #/definitions/CloudinaryImage    
          * @param created              {string}                  format: date-time  
          * @param modified             {string}                  format: date-time  
          * @param id                   {string}                  
@@ -63,8 +65,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
-        var parametersType = ['string', 'string', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
+        var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parametersType = ['string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
