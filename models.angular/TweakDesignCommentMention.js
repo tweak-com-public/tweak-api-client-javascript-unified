@@ -1,24 +1,23 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakDesignMember', TweakDesignMember);
+        .factory('TweakDesignCommentMention', TweakDesignCommentMention);
 
-    TweakDesignMember.$inject = ['$log'];
+    TweakDesignCommentMention.$inject = ['$log'];
 
-    function TweakDesignMember($log) {
+    function TweakDesignCommentMention($log) {
 
         /**
          * Constructor, with class name
-         * @param canEdit  {boolean}   default: false  
-         * @param created  {string}    format: date-time  
-         * @param modified {string}    format: date-time  
-         * @param id       {string}    
-         * @param designId {string}    
-         * @param memberId {string}    
-         * @param design   {object}    $ref: #/definitions/Design  
-         * @param member   {object}    $ref: #/definitions/TeamMember  
+         * @param created   {string}    format: date-time  
+         * @param modified  {string}    format: date-time  
+         * @param id        {string}    
+         * @param commentId {string}    
+         * @param mentionId {string}    
+         * @param comment   {object}    $ref: #/definitions/DesignComment  
+         * @param mention   {object}    $ref: #/definitions/TeamMember  
          */
-        function TweakDesignMember(data) {
+        function TweakDesignCommentMention(data) {
             data = data || {};
 
             for (var d in data) {
@@ -43,8 +42,8 @@
         /**
          * Private properties
          */
-        var parameters = ['canEdit', 'created', 'modified', 'id', 'designId', 'memberId', 'design', 'member'];
-        var parametersType = ['boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['created', 'modified', 'id', 'commentId', 'mentionId', 'comment', 'mention'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**
@@ -68,20 +67,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakDesignMember.build = function (data) {
-            return new TweakDesignMember(data);
+        TweakDesignCommentMention.build = function (data) {
+            return new TweakDesignCommentMention(data);
         };
 
-        TweakDesignMember.apiResponseTransformer = function (responseData) {
+        TweakDesignCommentMention.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakDesignMember.build).filter(Boolean);
+                return responseData.map(TweakDesignCommentMention.build).filter(Boolean);
             }
-            return TweakDesignMember.build(responseData);
+            return TweakDesignCommentMention.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakDesignMember;
+        return TweakDesignCommentMention;
     }
 })();
