@@ -9,6 +9,7 @@
 
         /**
          * Constructor, with class name
+         * @param previewId          {string}                  
          * @param colors             {array}                   items: type: string    
          * @param image              {string}                  
          * @param name               {string}    [REQUIRED]    
@@ -28,6 +29,7 @@
          * @param sentForApproval    {string}                  format: date-time  
          * @param approved           {string}                  format: date-time  
          * @param shared             {string}                  format: date-time  
+         * @param pagesPreviews      {array}                   items: $ref: #/definitions/CloudinaryImage    
          * @param created            {string}                  format: date-time  
          * @param modified           {string}                  format: date-time  
          * @param id                 {string}                  
@@ -82,8 +84,8 @@
         /**
          * Private properties
          */
-        var parameters = ['colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'isDynamic', 'sentForApproval', 'approved', 'shared', 'created', 'modified', 'id', 'dynamicDataId', 'teamId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'template', 'portal', 'team', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
-        var parametersType = ['array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
+        var parameters = ['previewId', 'colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'isDynamic', 'sentForApproval', 'approved', 'shared', 'pagesPreviews', 'created', 'modified', 'id', 'dynamicDataId', 'teamId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'template', 'portal', 'team', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
+        var parametersType = ['string', 'array', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**

@@ -9,15 +9,18 @@
 
         /**
          * Constructor, with class name
-         * @param highResPdf        {boolean}   default: false  
-         * @param proofPdf          {boolean}   default: false  
-         * @param jpegs             {boolean}   default: false  
-         * @param socialSharing     {boolean}   default: false  
-         * @param canEdit           {boolean}   default: false  
-         * @param needAdminApproval {boolean}   default: false  
-         * @param id                {string}    
-         * @param designId          {string}    
-         * @param design            {object}    $ref: #/definitions/Design  
+         * @param highResPdf           {boolean}   default: false  
+         * @param proofPdf             {boolean}   default: false  
+         * @param jpegs                {boolean}   default: false  
+         * @param socialSharing        {boolean}   default: false  
+         * @param canEdit              {boolean}   default: false  
+         * @param needAdminApproval    {boolean}   default: false  
+         * @param externalCommenting   {boolean}   default: false  
+         * @param externalRequireLogin {boolean}   default: false  
+         * @param externalPdfDownload  {boolean}   default: false  
+         * @param id                   {string}    
+         * @param designId             {string}    
+         * @param design               {object}    $ref: #/definitions/Design  
          */
         function TweakDesignPermissionSet(data) {
             data = data || {};
@@ -44,8 +47,8 @@
         /**
          * Private properties
          */
-        var parameters = ['highResPdf', 'proofPdf', 'jpegs', 'socialSharing', 'canEdit', 'needAdminApproval', 'id', 'designId', 'design'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
+        var parameters = ['highResPdf', 'proofPdf', 'jpegs', 'socialSharing', 'canEdit', 'needAdminApproval', 'externalCommenting', 'externalRequireLogin', 'externalPdfDownload', 'id', 'designId', 'design'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

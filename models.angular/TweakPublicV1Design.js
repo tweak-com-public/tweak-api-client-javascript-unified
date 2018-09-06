@@ -1,24 +1,17 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakDesignMember', TweakDesignMember);
+        .factory('TweakPublicV1Design', TweakPublicV1Design);
 
-    TweakDesignMember.$inject = ['$log'];
+    TweakPublicV1Design.$inject = ['$log'];
 
-    function TweakDesignMember($log) {
+    function TweakPublicV1Design($log) {
 
         /**
          * Constructor, with class name
-         * @param canEdit  {boolean}   default: false  
-         * @param created  {string}    format: date-time  
-         * @param modified {string}    format: date-time  
-         * @param id       {string}    
-         * @param designId {string}    
-         * @param memberId {string}    
-         * @param design   {object}    $ref: #/definitions/Design  
-         * @param member   {object}    $ref: #/definitions/TeamMember  
+         * @param id {string}    
          */
-        function TweakDesignMember(data) {
+        function TweakPublicV1Design(data) {
             data = data || {};
 
             for (var d in data) {
@@ -43,8 +36,8 @@
         /**
          * Private properties
          */
-        var parameters = ['canEdit', 'created', 'modified', 'id', 'designId', 'memberId', 'design', 'member'];
-        var parametersType = ['boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['id'];
+        var parametersType = ['string'];
         var requiredParameters = [];
 
         /**
@@ -68,20 +61,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakDesignMember.build = function (data) {
-            return new TweakDesignMember(data);
+        TweakPublicV1Design.build = function (data) {
+            return new TweakPublicV1Design(data);
         };
 
-        TweakDesignMember.apiResponseTransformer = function (responseData) {
+        TweakPublicV1Design.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakDesignMember.build).filter(Boolean);
+                return responseData.map(TweakPublicV1Design.build).filter(Boolean);
             }
-            return TweakDesignMember.build(responseData);
+            return TweakPublicV1Design.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakDesignMember;
+        return TweakPublicV1Design;
     }
 })();
