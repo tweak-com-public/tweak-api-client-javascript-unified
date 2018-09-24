@@ -14,6 +14,7 @@
          * @param pageIndex       {number}                  minimum: 0  default: 0  format: double  
          * @param status          {string}                  enum: unsolved, resolved
          * @param type            {string}                  enum: comment, rejection, reaction
+         * @param guest           {object}                  $ref: #/definitions/Guest  
          * @param created         {string}                  format: date-time  
          * @param modified        {string}                  format: date-time  
          * @param id              {string}                  
@@ -52,8 +53,8 @@
         /**
          * Private properties
          */
-        var parameters = ['comment', 'position', 'pageIndex', 'status', 'type', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf', 'mentions', 'commentMentions'];
-        var parametersType = ['string', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'array', 'array'];
+        var parameters = ['comment', 'position', 'pageIndex', 'status', 'type', 'guest', 'created', 'modified', 'id', 'designId', 'commentId', 'commenterId', 'design', 'replies', 'commenter', 'replyOf', 'mentions', 'commentMentions'];
+        var parametersType = ['string', 'object', 'number', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'object', 'object', 'array', 'array'];
         var requiredParameters = ['comment'];
 
         /**
