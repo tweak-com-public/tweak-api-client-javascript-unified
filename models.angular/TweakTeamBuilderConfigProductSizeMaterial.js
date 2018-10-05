@@ -11,6 +11,7 @@
          * Constructor, with class name
          * @param bindingType           {string}    enum: none, saddle-stitched, perfect, section-sewn, wiro, cased-in-wiro, pamphlet-stitched, coptic, japanese, screw-post
          * @param defaultBleed          {object}    $ref: #/definitions/Bounds  
+         * @param bleed                 {object}    $ref: #/definitions/Bounds  
          * @param printProfile          {string}    enum: PDFX1A, PDFX3A
          * @param trim                  {object}    default: right: 0    $ref: #/definitions/Bounds  
          * @param customerTitle         {string}    default:   
@@ -50,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['bindingType', 'defaultBleed', 'printProfile', 'trim', 'customerTitle', 'customerDescription', 'created', 'modified', 'id', 'productSizeMaterialId', 'pdfColorProfileId', 'builderConfigId', 'builderConfig', 'productSizeMaterial', 'pdfColorProfile'];
-        var parametersType = ['string', 'object', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
+        var parameters = ['bindingType', 'defaultBleed', 'bleed', 'printProfile', 'trim', 'customerTitle', 'customerDescription', 'created', 'modified', 'id', 'productSizeMaterialId', 'pdfColorProfileId', 'builderConfigId', 'builderConfig', 'productSizeMaterial', 'pdfColorProfile'];
+        var parametersType = ['string', 'object', 'object', 'string', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**
