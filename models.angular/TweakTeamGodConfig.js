@@ -1,0 +1,87 @@
+(function () {
+    'use strict';
+    angular.module('Tweak')
+        .factory('TweakTeamGodConfig', TweakTeamGodConfig);
+
+    TweakTeamGodConfig.$inject = ['$log'];
+
+    function TweakTeamGodConfig($log) {
+
+        /**
+         * Constructor, with class name
+         * @param name      {string}    
+         * @param features  {object}    default:   
+         * @param isDefault {boolean}   default: false  
+         * @param created   {string}    format: date-time  
+         * @param modified  {string}    format: date-time  
+         * @param id        {string}    
+         * @param teamId    {string}    
+         * @param team      {object}    $ref: #/definitions/Team  
+         */
+        function TweakTeamGodConfig(data) {
+            data = data || {};
+
+            for (var d in data) {
+                this[d] = data[d];
+            }
+
+
+            for (var i = 0; i < parameters.length; i++) {
+
+                if (this[parameters[i]] && parametersType[i] === 'string' ) {
+
+                    this[parameters[i]] = '' + this[parameters[i]];
+
+                }
+
+            }
+
+
+            constructorValidation(this);
+        }
+
+        /**
+         * Private properties
+         */
+        var parameters = ['name', 'features', 'isDefault', 'created', 'modified', 'id', 'teamId', 'team'];
+        var parametersType = ['string', 'object', 'boolean', 'string', 'string', 'string', 'string', 'object'];
+        var requiredParameters = [];
+
+        /**
+         * Private function
+         */
+        function constructorValidation(model) {
+            requiredParameters.forEach(function(requiredParameter) {
+                if (model[requiredParameter] === undefined) {
+                    throw new Error('Required parameter `' + requiredParameter + '` is missing!');
+                }
+            });
+
+            for (var i = 0; i < parameters.length; i++) {
+                var parameterTypeObject = '[object ' + parametersType[i].charAt(0).toUpperCase() + parametersType[i].substr(1) + ']';
+                if (model[parameters[i]] && Object.prototype.toString.call(model[parameters[i]]) !== parameterTypeObject) {
+                    throw new Error('Wrong parameter type for `' + parameters[i] + '`: should be `' + parametersType[i] + '`!');
+                }
+            }
+        }
+
+        /**
+         * Static method, assigned to class
+         */
+        TweakTeamGodConfig.build = function (data) {
+            return new TweakTeamGodConfig(data);
+        };
+
+        TweakTeamGodConfig.apiResponseTransformer = function (responseData) {
+            if (angular.isArray(responseData)) {
+                return responseData.map(TweakTeamGodConfig.build).filter(Boolean);
+            }
+            return TweakTeamGodConfig.build(responseData);
+        };
+
+        /**
+         * Return the constructor function
+         */
+        return TweakTeamGodConfig;
+    }
+})();
