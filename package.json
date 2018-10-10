@@ -1,6 +1,6 @@
 {
 	"name": "tweak-api",
-	"version": "1.0.32-alpha.2",
+	"version": "1.0.32-alpha.3",
 	"license": "Apache-2.0",
 	"description": "Tweak_API_to_integrate_with_all_the_Tweak_services___You_can_find_out_more_about_Tweak_____at_a_hrefhttpswww_tweak_comhttpswww_tweak_coma_tweak_",
 	"main": "tweakApi.server.js"
