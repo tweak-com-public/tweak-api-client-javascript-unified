@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param gen        {string}    [REQUIRED]    
+         * @param publicId   {string}    [REQUIRED]    
          * @param postScript {string}    [REQUIRED]    
          * @param fileName   {string}    [REQUIRED]    
          * @param customName {string}                  
@@ -51,9 +52,9 @@
         /**
          * Private properties
          */
-        var parameters = ['gen', 'postScript', 'fileName', 'customName', 'extension', 'fontBase', 'fontStyle', 'ascent12', 'descent12', 'remoteURL', 'created', 'modified', 'id', 'teamId', 'team', 'portals'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array'];
-        var requiredParameters = ['gen', 'postScript', 'fileName', 'extension', 'fontBase'];
+        var parameters = ['gen', 'publicId', 'postScript', 'fileName', 'customName', 'extension', 'fontBase', 'fontStyle', 'ascent12', 'descent12', 'remoteURL', 'created', 'modified', 'id', 'teamId', 'team', 'portals'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'object', 'array'];
+        var requiredParameters = ['gen', 'publicId', 'postScript', 'fileName', 'extension', 'fontBase'];
 
         /**
          * Private function
