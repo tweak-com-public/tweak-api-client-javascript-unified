@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param previewId            {string}                  
          * @param name                 {string}    [REQUIRED]    
-         * @param thumbnail            {string}                  
+         * @param thumbnail            {object}                  $ref: #/definitions/x-any  
          * @param object               {object}    [REQUIRED]    
          * @param description          {string}                  default:   
          * @param edited               {string}                  format: date-time  
@@ -66,7 +66,7 @@
          * Private properties
          */
         var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
-        var parametersType = ['string', 'string', 'string', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
+        var parametersType = ['string', 'string', 'object', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
