@@ -9,15 +9,16 @@
 
         /**
          * Constructor, with class name
-         * @param highResPdf        {boolean}   default: false  
-         * @param proofPdf          {boolean}   default: false  
-         * @param jpegs             {boolean}   default: false  
-         * @param socialSharing     {boolean}   default: false  
-         * @param canEdit           {boolean}   default: false  
-         * @param needAdminApproval {boolean}   default: false  
-         * @param id                {string}    
-         * @param templateId        {string}    
-         * @param template          {object}    $ref: #/definitions/Template  
+         * @param highResPdf            {boolean}   default: false  
+         * @param proofPdf              {boolean}   default: false  
+         * @param jpegs                 {boolean}   default: false  
+         * @param socialSharing         {boolean}   default: false  
+         * @param canEdit               {boolean}   default: false  
+         * @param needAdminApproval     {boolean}   default: false  
+         * @param builderConfigOverride {object}    default:   
+         * @param id                    {string}    
+         * @param templateId            {string}    
+         * @param template              {object}    $ref: #/definitions/Template  
          */
         function TweakTemplatePermissionSet(data) {
             data = data || {};
@@ -44,8 +45,8 @@
         /**
          * Private properties
          */
-        var parameters = ['highResPdf', 'proofPdf', 'jpegs', 'socialSharing', 'canEdit', 'needAdminApproval', 'id', 'templateId', 'template'];
-        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object'];
+        var parameters = ['highResPdf', 'proofPdf', 'jpegs', 'socialSharing', 'canEdit', 'needAdminApproval', 'builderConfigOverride', 'id', 'templateId', 'template'];
+        var parametersType = ['boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'object', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**

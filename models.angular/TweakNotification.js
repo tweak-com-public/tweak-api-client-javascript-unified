@@ -9,11 +9,12 @@
 
         /**
          * Constructor, with class name
-         * @param type     {string}    [REQUIRED]    enum: team.billing.subscription.trial_will_end, team.billing.subscription.updated_plan, team.billing.subscription.updated_additional, team.billing.subscription.deleted, team.billing.invoice.created, team.billing.invoice.upcoming, team.billing.invoice.payment_succeeded, team.billing.invoice.payment_failed
+         * @param type     {string}    [REQUIRED]    enum: team.billing.subscription.trial_will_end, team.billing.subscription.updated_plan, team.billing.subscription.updated_additional, team.billing.subscription.deleted, team.billing.invoice.created, team.billing.invoice.upcoming, team.billing.invoice.payment_succeeded, team.billing.invoice.payment_failed, team.pdf.upload.converting, team.pdf.upload.succeeded, team.pdf.upload.failed
          * @param title    {string}    [REQUIRED]    
          * @param body     {string}                  
          * @param read     {boolean}                 default: false  
          * @param buttons  {array}                   default: items: $ref: #/definitions/NotificationButton    
+         * @param metadata {object}                  
          * @param created  {string}                  format: date-time  
          * @param modified {string}                  format: date-time  
          * @param id       {string}                  
@@ -49,8 +50,8 @@
         /**
          * Private properties
          */
-        var parameters = ['type', 'title', 'body', 'read', 'buttons', 'created', 'modified', 'id', 'teamId', 'portalId', 'memberId', 'team', 'portal', 'member'];
-        var parametersType = ['string', 'string', 'string', 'boolean', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
+        var parameters = ['type', 'title', 'body', 'read', 'buttons', 'metadata', 'created', 'modified', 'id', 'teamId', 'portalId', 'memberId', 'team', 'portal', 'member'];
+        var parametersType = ['string', 'string', 'string', 'boolean', 'array', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = ['type', 'title'];
 
         /**
