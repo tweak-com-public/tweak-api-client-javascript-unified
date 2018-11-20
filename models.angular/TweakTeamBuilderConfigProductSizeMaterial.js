@@ -13,7 +13,7 @@
          * @param defaultBleed          {object}    $ref: #/definitions/Bounds  
          * @param bleed                 {object}    $ref: #/definitions/Bounds  
          * @param printProfile          {string}    enum: PDFX1A, PDFX3A
-         * @param trim                  {object}    default: right: 0    $ref: #/definitions/Bounds  
+         * @param trim                  {object}    default: right: 0    $ref: #/definitions/BoundsNegative  
          * @param customerTitle         {string}    default:   
          * @param customerDescription   {string}    default:   
          * @param created               {string}    format: date-time  
