@@ -19,12 +19,14 @@
          * @param created        {string}                  format: date-time  
          * @param userId         {string}                  
          * @param designId       {string}                  
+         * @param templateId     {string}                  
          * @param teamId         {string}                  
          * @param teamMemberId   {string}                  
          * @param portalId       {string}                  
          * @param portalMemberId {string}                  
          * @param customer       {object}                  $ref: #/definitions/Customer  
          * @param design         {object}                  $ref: #/definitions/Design  
+         * @param template       {object}                  $ref: #/definitions/Template  
          * @param team           {object}                  $ref: #/definitions/Team  
          * @param teamMember     {object}                  $ref: #/definitions/TeamMember  
          * @param portal         {object}                  $ref: #/definitions/Portal  
@@ -55,8 +57,8 @@
         /**
          * Private properties
          */
-        var parameters = ['roles', 'refreshToken', 'sessionId', 'shortId', 'id', 'ttl', 'scopes', 'created', 'userId', 'designId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'design', 'team', 'teamMember', 'portal', 'portalMember'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['roles', 'refreshToken', 'sessionId', 'shortId', 'id', 'ttl', 'scopes', 'created', 'userId', 'designId', 'templateId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'design', 'template', 'team', 'teamMember', 'portal', 'portalMember'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['id'];
 
         /**
