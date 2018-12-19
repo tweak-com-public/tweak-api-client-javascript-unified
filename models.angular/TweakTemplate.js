@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param previewId            {string}                  
          * @param name                 {string}    [REQUIRED]    
-         * @param thumbnail            {object}                  $ref: #/definitions/x-any  
+         * @param thumbnail            {object}                  
          * @param object               {object}    [REQUIRED]    
          * @param description          {string}                  default:   
          * @param edited               {string}                  format: date-time  
