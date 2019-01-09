@@ -14,7 +14,7 @@
          * @param image              {string}                  
          * @param name               {string}    [REQUIRED]    
          * @param object             {object}    [REQUIRED]    
-         * @param thumbnail          {object}                  
+         * @param thumbnail          {object}                  $ref: #/definitions/x-any  
          * @param description        {string}                  default:   
          * @param purpose            {string}                  enum: none, printOrder
          * @param status             {string}                  enum: pendingAction, pendingApproval, approved, rejected
