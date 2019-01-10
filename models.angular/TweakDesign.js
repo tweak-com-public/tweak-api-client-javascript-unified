@@ -14,7 +14,7 @@
          * @param image              {string}                  
          * @param name               {string}    [REQUIRED]    
          * @param object             {object}    [REQUIRED]    
-         * @param thumbnail          {object}                  $ref: #/definitions/x-any  
+         * @param thumbnail          {any}                     $ref: #/definitions/x-any  
          * @param description        {string}                  default:   
          * @param purpose            {string}                  enum: none, printOrder
          * @param status             {string}                  enum: pendingAction, pendingApproval, approved, rejected
@@ -85,7 +85,7 @@
          * Private properties
          */
         var parameters = ['previewId', 'colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'isDynamic', 'sentForApproval', 'approved', 'shared', 'pagesPreviews', 'created', 'modified', 'id', 'dynamicDataId', 'teamId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'template', 'portal', 'team', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
-        var parametersType = ['string', 'array', 'string', 'string', 'object', 'object', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
+        var parametersType = ['string', 'array', 'string', 'string', 'object', 'any', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
         var requiredParameters = ['name', 'object'];
 
         /**
@@ -99,6 +99,9 @@
             });
 
             for (var i = 0; i < parameters.length; i++) {
+                if (parametersType[i].match(/^any$/i)) {
+                    continue;
+                }
                 var parameterTypeObject = '[object ' + parametersType[i].charAt(0).toUpperCase() + parametersType[i].substr(1) + ']';
                 if (model[parameters[i]] && Object.prototype.toString.call(model[parameters[i]]) !== parameterTypeObject) {
                     throw new Error('Wrong parameter type for `' + parameters[i] + '`: should be `' + parametersType[i] + '`!');
