@@ -11,10 +11,10 @@
          * Constructor, with class name
          * @param name   {string}    [REQUIRED]    
          * @param params {object}                  default:   
-         * @param root   {object}                  $ref: #/definitions/x-any  
+         * @param root   {any}                     $ref: #/definitions/x-any  
          * @param isXml  {boolean}                 default: false  
-         * @param map    {object}                  $ref: #/definitions/x-any  
-         * @param format {object}                  $ref: #/definitions/x-any  
+         * @param map    {any}                     $ref: #/definitions/x-any  
+         * @param format {any}                     $ref: #/definitions/x-any  
          * @param id     {string}                  
          */
         function TweakDynamicDataOperationRest(data) {
@@ -43,7 +43,7 @@
          * Private properties
          */
         var parameters = ['name', 'params', 'root', 'isXml', 'map', 'format', 'id'];
-        var parametersType = ['string', 'object', 'object', 'boolean', 'object', 'object', 'string'];
+        var parametersType = ['string', 'object', 'any', 'boolean', 'any', 'any', 'string'];
         var requiredParameters = ['name'];
 
         /**
@@ -57,6 +57,9 @@
             });
 
             for (var i = 0; i < parameters.length; i++) {
+                if (parametersType[i].match(/^any$/i)) {
+                    continue;
+                }
                 var parameterTypeObject = '[object ' + parametersType[i].charAt(0).toUpperCase() + parametersType[i].substr(1) + ']';
                 if (model[parameters[i]] && Object.prototype.toString.call(model[parameters[i]]) !== parameterTypeObject) {
                     throw new Error('Wrong parameter type for `' + parameters[i] + '`: should be `' + parametersType[i] + '`!');

@@ -65,6 +65,9 @@
             });
 
             for (var i = 0; i < parameters.length; i++) {
+                if (parametersType[i].match(/^any$/i)) {
+                    continue;
+                }
                 var parameterTypeObject = '[object ' + parametersType[i].charAt(0).toUpperCase() + parametersType[i].substr(1) + ']';
                 if (model[parameters[i]] && Object.prototype.toString.call(model[parameters[i]]) !== parameterTypeObject) {
                     throw new Error('Wrong parameter type for `' + parameters[i] + '`: should be `' + parametersType[i] + '`!');
