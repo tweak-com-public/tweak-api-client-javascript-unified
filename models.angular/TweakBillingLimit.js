@@ -23,6 +23,7 @@
          * @param supportResponse      {string}    
          * @param bandwidth            {object}    $ref: #/definitions/BillingLimitCounter  
          * @param printerApi           {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param dam                  {object}    $ref: #/definitions/BillingLimitDam  
          * @param id                   {string}    
          */
         function TweakBillingLimit(data) {
@@ -50,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'id'];
-        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'string'];
+        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'dam', 'id'];
+        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'string'];
         var requiredParameters = [];
 
         /**
