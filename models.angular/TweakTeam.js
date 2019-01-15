@@ -15,8 +15,8 @@
          * @param subdomain               {string}                  
          * @param country                 {string}                  default: Ireland  
          * @param featureHtmlBuilder      {boolean}                 default: false  
-         * @param legacyProductLanguage   {string}                  
-         * @param legacySizeType          {string}                  
+         * @param legacyProductLanguage   {string}                  default: en  
+         * @param legacySizeType          {string}                  default: mm  
          * @param created                 {string}                  format: date-time  
          * @param modified                {string}                  format: date-time  
          * @param id                      {string}    [REQUIRED]    
