@@ -14,10 +14,10 @@
          * @param modified  {string}                  format: date-time  
          * @param id        {string}                  
          * @param teamId    {string}                  
+         * @param team      {object}                  $ref: #/definitions/Team  
          * @param templates {array}                   items: $ref: #/definitions/Template    
          * @param designs   {array}                   items: $ref: #/definitions/Design    
          * @param products  {array}                   items: $ref: #/definitions/Product    
-         * @param tags      {object}                  $ref: #/definitions/Team  
          * @param assets    {array}                   items: $ref: #/definitions/Asset    
          */
         function TweakTag(data) {
@@ -45,8 +45,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'templates', 'designs', 'products', 'tags', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'object', 'array'];
+        var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'team', 'templates', 'designs', 'products', 'assets'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name'];
 
         /**
