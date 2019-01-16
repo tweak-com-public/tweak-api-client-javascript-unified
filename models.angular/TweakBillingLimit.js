@@ -24,6 +24,11 @@
          * @param bandwidth            {object}    $ref: #/definitions/BillingLimitCounter  
          * @param printerApi           {object}    $ref: #/definitions/BillingLimitCounter  
          * @param dam                  {object}    $ref: #/definitions/BillingLimitDam  
+         * @param portals              {object}    $ref: #/definitions/BillingLimitPortal  
+         * @param designs              {object}    $ref: #/definitions/BillingLimitDesign  
+         * @param templates            {object}    $ref: #/definitions/BillingLimitTemplate  
+         * @param workflows            {object}    $ref: #/definitions/BillingLimitWorkflow  
+         * @param activity             {object}    $ref: #/definitions/BillingLimitActivity  
          * @param id                   {string}    
          */
         function TweakBillingLimit(data) {
@@ -51,8 +56,8 @@
         /**
          * Private properties
          */
-        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'dam', 'id'];
-        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'string'];
+        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'dam', 'portals', 'designs', 'templates', 'workflows', 'activity', 'id'];
+        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'string'];
         var requiredParameters = [];
 
         /**
