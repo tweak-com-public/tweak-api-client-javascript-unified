@@ -1,26 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTag', TweakTag);
+        .factory('TweakBillingLimitDam', TweakBillingLimitDam);
 
-    TweakTag.$inject = ['$log'];
+    TweakBillingLimitDam.$inject = ['$log'];
 
-    function TweakTag($log) {
+    function TweakBillingLimitDam($log) {
 
         /**
          * Constructor, with class name
-         * @param name      {string}    [REQUIRED]    
-         * @param created   {string}                  format: date-time  
-         * @param modified  {string}                  format: date-time  
-         * @param id        {string}                  
-         * @param teamId    {string}                  
-         * @param team      {object}                  $ref: #/definitions/Team  
-         * @param templates {array}                   items: $ref: #/definitions/Template    
-         * @param designs   {array}                   items: $ref: #/definitions/Design    
-         * @param products  {array}                   items: $ref: #/definitions/Product    
-         * @param assets    {array}                   items: $ref: #/definitions/Asset    
+         * @param enabled {boolean}   default: false  
+         * @param id      {string}    
          */
-        function TweakTag(data) {
+        function TweakBillingLimitDam(data) {
             data = data || {};
 
             for (var d in data) {
@@ -45,9 +37,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'team', 'templates', 'designs', 'products', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array'];
-        var requiredParameters = ['name'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
+        var requiredParameters = [];
 
         /**
          * Private function
@@ -73,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakTag.build = function (data) {
-            return new TweakTag(data);
+        TweakBillingLimitDam.build = function (data) {
+            return new TweakBillingLimitDam(data);
         };
 
-        TweakTag.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitDam.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTag.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitDam.build).filter(Boolean);
             }
-            return TweakTag.build(responseData);
+            return TweakBillingLimitDam.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTag;
+        return TweakBillingLimitDam;
     }
 })();

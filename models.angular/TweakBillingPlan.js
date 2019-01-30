@@ -23,6 +23,7 @@
          * @param limit                {object}                  $ref: #/definitions/BillingLimit  
          * @param deprecated           {boolean}                 default: false  
          * @param similarPlan          {string}                  
+         * @param visible              {boolean}                 default: true  
          * @param created              {string}                  format: date-time  
          */
         function TweakBillingPlan(data) {
@@ -50,8 +51,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'deprecated', 'similarPlan', 'created'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'boolean', 'string', 'string'];
+        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'deprecated', 'similarPlan', 'visible', 'created'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'boolean', 'string', 'boolean', 'string'];
         var requiredParameters = ['id'];
 
         /**

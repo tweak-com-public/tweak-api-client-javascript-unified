@@ -1,23 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetCategoryRel', TweakAssetCategoryRel);
+        .factory('TweakBillingLimitTemplate', TweakBillingLimitTemplate);
 
-    TweakAssetCategoryRel.$inject = ['$log'];
+    TweakBillingLimitTemplate.$inject = ['$log'];
 
-    function TweakAssetCategoryRel($log) {
+    function TweakBillingLimitTemplate($log) {
 
         /**
          * Constructor, with class name
-         * @param created         {string}    format: date-time  
-         * @param modified        {string}    format: date-time  
-         * @param id              {string}    
-         * @param assetCategoryId {string}    
-         * @param assetId         {string}    
-         * @param category        {object}    $ref: #/definitions/AssetCategory  
-         * @param asset           {object}    $ref: #/definitions/Asset  
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetCategoryRel(data) {
+        function TweakBillingLimitTemplate(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,8 +37,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetCategoryId', 'assetId', 'category', 'asset'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
         var requiredParameters = [];
 
         /**
@@ -70,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetCategoryRel.build = function (data) {
-            return new TweakAssetCategoryRel(data);
+        TweakBillingLimitTemplate.build = function (data) {
+            return new TweakBillingLimitTemplate(data);
         };
 
-        TweakAssetCategoryRel.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitTemplate.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetCategoryRel.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitTemplate.build).filter(Boolean);
             }
-            return TweakAssetCategoryRel.build(responseData);
+            return TweakBillingLimitTemplate.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetCategoryRel;
+        return TweakBillingLimitTemplate;
     }
 })();

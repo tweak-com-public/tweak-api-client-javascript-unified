@@ -1,21 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetCategoryLink', TweakAssetCategoryLink);
+        .factory('TweakBillingLimitWorkflow', TweakBillingLimitWorkflow);
 
-    TweakAssetCategoryLink.$inject = ['$log'];
+    TweakBillingLimitWorkflow.$inject = ['$log'];
 
-    function TweakAssetCategoryLink($log) {
+    function TweakBillingLimitWorkflow($log) {
 
         /**
          * Constructor, with class name
-         * @param id              {string}    
-         * @param assetCategoryId {string}    
-         * @param assetId         {string}    
-         * @param category        {object}    $ref: #/definitions/AssetCategory  
-         * @param assets          {object}    $ref: #/definitions/Asset  
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetCategoryLink(data) {
+        function TweakBillingLimitWorkflow(data) {
             data = data || {};
 
             for (var d in data) {
@@ -40,8 +37,8 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'assetCategoryId', 'assetId', 'category', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'object', 'object'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
         var requiredParameters = [];
 
         /**
@@ -68,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetCategoryLink.build = function (data) {
-            return new TweakAssetCategoryLink(data);
+        TweakBillingLimitWorkflow.build = function (data) {
+            return new TweakBillingLimitWorkflow(data);
         };
 
-        TweakAssetCategoryLink.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitWorkflow.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetCategoryLink.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitWorkflow.build).filter(Boolean);
             }
-            return TweakAssetCategoryLink.build(responseData);
+            return TweakBillingLimitWorkflow.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetCategoryLink;
+        return TweakBillingLimitWorkflow;
     }
 })();

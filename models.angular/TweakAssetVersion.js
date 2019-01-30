@@ -47,8 +47,6 @@
          * @param teamId         {string}                  
          * @param uploaderId     {string}                  
          * @param tags           {array}                   items: $ref: #/definitions/Tag    
-         * @param categories     {array}                   items: $ref: #/definitions/AssetCategory    
-         * @param options        {array}                   items: $ref: #/definitions/AssetOption    
          * @param comments       {array}                   items: $ref: #/definitions/AssetComment    
          * @param events         {array}                   items: $ref: #/definitions/AssetEvent    
          * @param collections    {array}                   items: $ref: #/definitions/AssetCollection    
@@ -82,8 +80,8 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'versionNumber', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'assetCreated', 'rollbackFromId', 'id', 'termsId', 'assetId', 'teamId', 'uploaderId', 'tags', 'categories', 'options', 'comments', 'events', 'collections', 'terms', 'uploader', 'team', 'asset'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'object', 'object', 'object'];
+        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'versionNumber', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'assetCreated', 'rollbackFromId', 'id', 'termsId', 'assetId', 'teamId', 'uploaderId', 'tags', 'comments', 'events', 'collections', 'terms', 'uploader', 'team', 'asset'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'bytes', 'status'];
 
         /**

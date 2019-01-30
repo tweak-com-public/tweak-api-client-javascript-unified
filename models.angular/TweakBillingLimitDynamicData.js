@@ -1,23 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetOptionRel', TweakAssetOptionRel);
+        .factory('TweakBillingLimitDynamicData', TweakBillingLimitDynamicData);
 
-    TweakAssetOptionRel.$inject = ['$log'];
+    TweakBillingLimitDynamicData.$inject = ['$log'];
 
-    function TweakAssetOptionRel($log) {
+    function TweakBillingLimitDynamicData($log) {
 
         /**
          * Constructor, with class name
-         * @param created       {string}    format: date-time  
-         * @param modified      {string}    format: date-time  
-         * @param id            {string}    
-         * @param assetId       {string}    
-         * @param assetOptionId {string}    
-         * @param option        {object}    $ref: #/definitions/AssetOption  
-         * @param asset         {object}    $ref: #/definitions/Asset  
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetOptionRel(data) {
+        function TweakBillingLimitDynamicData(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,8 +37,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetId', 'assetOptionId', 'option', 'asset'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
         var requiredParameters = [];
 
         /**
@@ -70,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetOptionRel.build = function (data) {
-            return new TweakAssetOptionRel(data);
+        TweakBillingLimitDynamicData.build = function (data) {
+            return new TweakBillingLimitDynamicData(data);
         };
 
-        TweakAssetOptionRel.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitDynamicData.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetOptionRel.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitDynamicData.build).filter(Boolean);
             }
-            return TweakAssetOptionRel.build(responseData);
+            return TweakBillingLimitDynamicData.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetOptionRel;
+        return TweakBillingLimitDynamicData;
     }
 })();
