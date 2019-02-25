@@ -15,8 +15,10 @@
          * @param modified         {string}                  format: date-time  
          * @param id               {string}                  
          * @param teamId           {string}                  
+         * @param uploaderId       {string}                  
          * @param assets           {array}                   items: $ref: #/definitions/Asset    
          * @param team             {object}                  $ref: #/definitions/Team  
+         * @param uploader         {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakAssetUpload(data) {
             data = data || {};
@@ -43,8 +45,8 @@
         /**
          * Private properties
          */
-        var parameters = ['status', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'assets', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'array', 'object'];
+        var parameters = ['status', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'assets', 'team', 'uploader'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
         var requiredParameters = ['status'];
 
         /**
