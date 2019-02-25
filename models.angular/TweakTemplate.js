@@ -12,7 +12,7 @@
          * @param previewId            {string}                  
          * @param name                 {string}    [REQUIRED]    
          * @param thumbnail            {any}                     $ref: #/definitions/x-any  
-         * @param object               {object}    [REQUIRED]    
+         * @param object               {object}                  
          * @param description          {string}                  default:   
          * @param edited               {string}                  format: date-time  
          * @param path                 {string}                  default: /  
@@ -67,7 +67,7 @@
          */
         var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
         var parametersType = ['string', 'string', 'any', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
-        var requiredParameters = ['name', 'object'];
+        var requiredParameters = ['name'];
 
         /**
          * Private function

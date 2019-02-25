@@ -13,7 +13,7 @@
          * @param colors             {array}                   items: type: string    
          * @param image              {string}                  
          * @param name               {string}    [REQUIRED]    
-         * @param object             {object}    [REQUIRED]    
+         * @param object             {object}                  
          * @param thumbnail          {any}                     $ref: #/definitions/x-any  
          * @param description        {string}                  default:   
          * @param purpose            {string}                  enum: none, printOrder
@@ -86,7 +86,7 @@
          */
         var parameters = ['previewId', 'colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'isDynamic', 'sentForApproval', 'approved', 'shared', 'pagesPreviews', 'created', 'modified', 'id', 'dynamicDataId', 'teamId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'template', 'portal', 'team', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
         var parametersType = ['string', 'array', 'string', 'string', 'object', 'any', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
-        var requiredParameters = ['name', 'object'];
+        var requiredParameters = ['name'];
 
         /**
          * Private function
