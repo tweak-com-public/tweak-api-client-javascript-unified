@@ -10,6 +10,7 @@
         /**
          * Constructor, with class name
          * @param status           {array}     [REQUIRED]    items: $ref: #/definitions/x-any    
+         * @param isEmpty          {boolean}                 
          * @param rejectionMessage {string}                  
          * @param created          {string}                  format: date-time  
          * @param modified         {string}                  format: date-time  
@@ -45,8 +46,8 @@
         /**
          * Private properties
          */
-        var parameters = ['status', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'assets', 'team', 'uploader'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
+        var parameters = ['status', 'isEmpty', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'assets', 'team', 'uploader'];
+        var parametersType = ['array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
         var requiredParameters = ['status'];
 
         /**
