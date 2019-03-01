@@ -42,6 +42,7 @@
          * @param portalId           {string}                  
          * @param rejectionCommentId {string}                  
          * @param folderId           {string}                  
+         * @param versions           {array}                   items: $ref: #/definitions/DesignVersion    
          * @param tags               {array}                   items: $ref: #/definitions/Tag    
          * @param template           {object}                  $ref: #/definitions/Template  
          * @param portal             {object}                  $ref: #/definitions/Portal  
@@ -84,8 +85,8 @@
         /**
          * Private properties
          */
-        var parameters = ['previewId', 'colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'isDynamic', 'sentForApproval', 'approved', 'shared', 'pagesPreviews', 'created', 'modified', 'id', 'dynamicDataId', 'teamId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'tags', 'template', 'portal', 'team', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
-        var parametersType = ['string', 'array', 'string', 'string', 'object', 'any', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
+        var parameters = ['previewId', 'colors', 'image', 'name', 'object', 'thumbnail', 'description', 'purpose', 'status', 'formData', 'highResPdfUrl', 'proofPdfUrl', 'jpegsUrl', 'edited', 'expired', 'path', 'isDynamic', 'sentForApproval', 'approved', 'shared', 'pagesPreviews', 'created', 'modified', 'id', 'dynamicDataId', 'teamId', 'requesterId', 'assigneeId', 'reviewerId', 'templateId', 'portalId', 'rejectionCommentId', 'folderId', 'versions', 'tags', 'template', 'portal', 'team', 'comments', 'rejectionComment', 'exports', 'requester', 'assignee', 'reviewer', 'commenters', 'folder', 'permission', 'members', 'designMembers', 'dynamicData'];
+        var parametersType = ['string', 'array', 'string', 'string', 'object', 'any', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'object', 'object', 'array', 'object', 'array', 'object', 'object', 'object', 'array', 'object', 'object', 'array', 'array', 'object'];
         var requiredParameters = ['name'];
 
         /**
