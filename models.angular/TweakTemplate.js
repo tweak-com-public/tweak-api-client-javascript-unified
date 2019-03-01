@@ -9,37 +9,39 @@
 
         /**
          * Constructor, with class name
-         * @param previewId            {string}                  
-         * @param name                 {string}    [REQUIRED]    
-         * @param thumbnail            {any}                     $ref: #/definitions/x-any  
-         * @param object               {object}                  
-         * @param description          {string}                  default:   
-         * @param edited               {string}                  format: date-time  
-         * @param path                 {string}                  default: /  
-         * @param status               {string}                  enum: pendingApproval, approved, rejected
-         * @param isDynamic            {boolean}                 default: false  
-         * @param shared               {string}                  format: date-time  
-         * @param permissionSetUpdated {string}                  format: date-time  
-         * @param pagesPreviews        {array}                   items: $ref: #/definitions/CloudinaryImage    
-         * @param created              {string}                  format: date-time  
-         * @param modified             {string}                  format: date-time  
-         * @param id                   {string}                  
-         * @param teamId               {string}                  
-         * @param uploaderId           {string}                  
-         * @param teamFolderId         {string}                  
-         * @param workflowId           {string}                  
-         * @param versions             {array}                   items: $ref: #/definitions/DesignVersion    
-         * @param portals              {array}                   items: $ref: #/definitions/Portal    
-         * @param team                 {object}                  $ref: #/definitions/Team  
-         * @param members              {array}                   items: $ref: #/definitions/TeamMember    
-         * @param templateMembers      {array}                   items: $ref: #/definitions/TemplateMember    
-         * @param permission           {object}                  $ref: #/definitions/TemplatePermissionSet  
-         * @param designs              {array}                   items: $ref: #/definitions/Design    
-         * @param tags                 {array}                   items: $ref: #/definitions/Tag    
-         * @param teamFolder           {object}                  $ref: #/definitions/TeamTemplateFolder  
-         * @param portalFolders        {array}                   items: $ref: #/definitions/PortalTemplateFolder    
-         * @param workflow             {object}                  $ref: #/definitions/Workflow  
-         * @param uploader             {object}                  $ref: #/definitions/TeamMember  
+         * @param previewId             {string}                  
+         * @param name                  {string}    [REQUIRED]    
+         * @param thumbnail             {any}                     $ref: #/definitions/x-any  
+         * @param object                {object}                  
+         * @param description           {string}                  default:   
+         * @param edited                {string}                  format: date-time  
+         * @param path                  {string}                  default: /  
+         * @param status                {string}                  enum: pendingApproval, approved, rejected
+         * @param isDynamic             {boolean}                 default: false  
+         * @param shared                {string}                  format: date-time  
+         * @param permissionSetUpdated  {string}                  format: date-time  
+         * @param pagesPreviews         {array}                   items: $ref: #/definitions/CloudinaryImage    
+         * @param isTweakTemplate       {boolean}                 
+         * @param legacyPluginProductId {string}                  
+         * @param created               {string}                  format: date-time  
+         * @param modified              {string}                  format: date-time  
+         * @param id                    {string}                  
+         * @param teamId                {string}                  
+         * @param uploaderId            {string}                  
+         * @param teamFolderId          {string}                  
+         * @param workflowId            {string}                  
+         * @param versions              {array}                   items: $ref: #/definitions/DesignVersion    
+         * @param portals               {array}                   items: $ref: #/definitions/Portal    
+         * @param team                  {object}                  $ref: #/definitions/Team  
+         * @param members               {array}                   items: $ref: #/definitions/TeamMember    
+         * @param templateMembers       {array}                   items: $ref: #/definitions/TemplateMember    
+         * @param permission            {object}                  $ref: #/definitions/TemplatePermissionSet  
+         * @param designs               {array}                   items: $ref: #/definitions/Design    
+         * @param tags                  {array}                   items: $ref: #/definitions/Tag    
+         * @param teamFolder            {object}                  $ref: #/definitions/TeamTemplateFolder  
+         * @param portalFolders         {array}                   items: $ref: #/definitions/PortalTemplateFolder    
+         * @param workflow              {object}                  $ref: #/definitions/Workflow  
+         * @param uploader              {object}                  $ref: #/definitions/TeamMember  
          */
         function TweakTemplate(data) {
             data = data || {};
@@ -66,8 +68,8 @@
         /**
          * Private properties
          */
-        var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'versions', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
-        var parametersType = ['string', 'string', 'any', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
+        var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'isTweakTemplate', 'legacyPluginProductId', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'versions', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parametersType = ['string', 'string', 'any', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name'];
 
         /**
