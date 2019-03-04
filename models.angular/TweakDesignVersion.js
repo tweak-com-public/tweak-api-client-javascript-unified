@@ -1,27 +1,23 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetUpload', TweakAssetUpload);
+        .factory('TweakDesignVersion', TweakDesignVersion);
 
-    TweakAssetUpload.$inject = ['$log'];
+    TweakDesignVersion.$inject = ['$log'];
 
-    function TweakAssetUpload($log) {
+    function TweakDesignVersion($log) {
 
         /**
          * Constructor, with class name
-         * @param status           {array}     [REQUIRED]    items: $ref: #/definitions/x-any    
-         * @param isEmpty          {boolean}                 
-         * @param rejectionMessage {string}                  
-         * @param created          {string}                  format: date-time  
-         * @param modified         {string}                  format: date-time  
-         * @param id               {string}                  
-         * @param teamId           {string}                  
-         * @param uploaderId       {string}                  
-         * @param assets           {array}                   items: $ref: #/definitions/Asset    
-         * @param team             {object}                  $ref: #/definitions/Team  
-         * @param uploader         {object}                  $ref: #/definitions/TeamMember  
+         * @param objectVersion  {string}    
+         * @param objectS3Path   {string}    
+         * @param objectS3Bucket {string}    
+         * @param created        {string}    format: date-time  
+         * @param id             {string}    
+         * @param designId       {string}    
+         * @param design         {object}    $ref: #/definitions/Design  
          */
-        function TweakAssetUpload(data) {
+        function TweakDesignVersion(data) {
             data = data || {};
 
             for (var d in data) {
@@ -46,9 +42,9 @@
         /**
          * Private properties
          */
-        var parameters = ['status', 'isEmpty', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'assets', 'team', 'uploader'];
-        var parametersType = ['array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
-        var requiredParameters = ['status'];
+        var parameters = ['objectVersion', 'objectS3Path', 'objectS3Bucket', 'created', 'id', 'designId', 'design'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object'];
+        var requiredParameters = [];
 
         /**
          * Private function
@@ -74,20 +70,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetUpload.build = function (data) {
-            return new TweakAssetUpload(data);
+        TweakDesignVersion.build = function (data) {
+            return new TweakDesignVersion(data);
         };
 
-        TweakAssetUpload.apiResponseTransformer = function (responseData) {
+        TweakDesignVersion.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetUpload.build).filter(Boolean);
+                return responseData.map(TweakDesignVersion.build).filter(Boolean);
             }
-            return TweakAssetUpload.build(responseData);
+            return TweakDesignVersion.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetUpload;
+        return TweakDesignVersion;
     }
 })();
