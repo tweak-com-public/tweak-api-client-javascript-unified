@@ -9,20 +9,28 @@
 
         /**
          * Constructor, with class name
-         * @param teamMember           {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param uploader             {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param portal               {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param jpeg                 {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param proof                {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param highResPdf           {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param storage              {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param stockImageLibrary    {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param transformationCredit {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param productDbRecord      {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param teamMember           {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param uploader             {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param portal               {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param jpeg                 {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param proof                {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param highResPdf           {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param storage              {object}    default: unitPrefix: GB    $ref: #/definitions/BillingLimitCounter  
+         * @param stockImageLibrary    {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param transformationCredit {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param productDbRecord      {object}    default:   $ref: #/definitions/BillingLimitCounter  
          * @param accountSupport       {boolean}   default: false  
          * @param supportResponse      {string}    
-         * @param bandwidth            {object}    $ref: #/definitions/BillingLimitCounter  
-         * @param printerApi           {object}    $ref: #/definitions/BillingLimitCounter  
+         * @param bandwidth            {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param printerApi           {object}    default:   $ref: #/definitions/BillingLimitCounter  
+         * @param dam                  {object}    default:   $ref: #/definitions/BillingLimitDam  
+         * @param portals              {object}    default:   $ref: #/definitions/BillingLimitPortal  
+         * @param designs              {object}    default:   $ref: #/definitions/BillingLimitDesign  
+         * @param templates            {object}    default:   $ref: #/definitions/BillingLimitTemplate  
+         * @param workflows            {object}    default:   $ref: #/definitions/BillingLimitWorkflow  
+         * @param activity             {object}    default:   $ref: #/definitions/BillingLimitActivity  
+         * @param builder              {object}    default:   $ref: #/definitions/BillingLimitBuilder  
+         * @param dynamicData          {object}    default:   $ref: #/definitions/BillingLimitDynamicData  
          * @param id                   {string}    
          */
         function TweakBillingLimit(data) {
@@ -50,8 +58,8 @@
         /**
          * Private properties
          */
-        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'id'];
-        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'string'];
+        var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'dam', 'portals', 'designs', 'templates', 'workflows', 'activity', 'builder', 'dynamicData', 'id'];
+        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'string'];
         var requiredParameters = [];
 
         /**

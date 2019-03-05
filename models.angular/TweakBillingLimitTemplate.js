@@ -1,23 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetOptionRel', TweakAssetOptionRel);
+        .factory('TweakBillingLimitTemplate', TweakBillingLimitTemplate);
 
-    TweakAssetOptionRel.$inject = ['$log'];
+    TweakBillingLimitTemplate.$inject = ['$log'];
 
-    function TweakAssetOptionRel($log) {
+    function TweakBillingLimitTemplate($log) {
 
         /**
          * Constructor, with class name
-         * @param created       {string}    format: date-time  
-         * @param modified      {string}    format: date-time  
-         * @param id            {string}    
-         * @param assetId       {string}    
-         * @param assetOptionId {string}    
-         * @param option        {object}    $ref: #/definitions/AssetOption  
-         * @param asset         {object}    $ref: #/definitions/Asset  
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetOptionRel(data) {
+        function TweakBillingLimitTemplate(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,8 +37,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetId', 'assetOptionId', 'option', 'asset'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
         var requiredParameters = [];
 
         /**
@@ -70,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetOptionRel.build = function (data) {
-            return new TweakAssetOptionRel(data);
+        TweakBillingLimitTemplate.build = function (data) {
+            return new TweakBillingLimitTemplate(data);
         };
 
-        TweakAssetOptionRel.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitTemplate.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetOptionRel.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitTemplate.build).filter(Boolean);
             }
-            return TweakAssetOptionRel.build(responseData);
+            return TweakBillingLimitTemplate.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetOptionRel;
+        return TweakBillingLimitTemplate;
     }
 })();

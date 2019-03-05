@@ -1,29 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetMember', TweakAssetMember);
+        .factory('TweakBillingLimitDesign', TweakBillingLimitDesign);
 
-    TweakAssetMember.$inject = ['$log'];
+    TweakBillingLimitDesign.$inject = ['$log'];
 
-    function TweakAssetMember($log) {
+    function TweakBillingLimitDesign($log) {
 
         /**
          * Constructor, with class name
-         * @param message               {string}    
-         * @param requireToLogin        {boolean}   default: false  
-         * @param downloadLowResolution {boolean}   default: false  
-         * @param hasDownloadPermission {boolean}   default: false  
-         * @param hasEditPermission     {boolean}   default: false  
-         * @param hasViewPermission     {boolean}   default: false  
-         * @param created               {string}    format: date-time  
-         * @param modified              {string}    format: date-time  
-         * @param id                    {string}    
-         * @param assetId               {string}    
-         * @param memberId              {string}    
-         * @param asset                 {object}    $ref: #/definitions/Asset  
-         * @param member                {object}    $ref: #/definitions/TeamMember  
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetMember(data) {
+        function TweakBillingLimitDesign(data) {
             data = data || {};
 
             for (var d in data) {
@@ -48,8 +37,8 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'hasDownloadPermission', 'hasEditPermission', 'hasViewPermission', 'created', 'modified', 'id', 'assetId', 'memberId', 'asset', 'member'];
-        var parametersType = ['string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
         var requiredParameters = [];
 
         /**
@@ -76,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetMember.build = function (data) {
-            return new TweakAssetMember(data);
+        TweakBillingLimitDesign.build = function (data) {
+            return new TweakBillingLimitDesign(data);
         };
 
-        TweakAssetMember.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitDesign.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetMember.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitDesign.build).filter(Boolean);
             }
-            return TweakAssetMember.build(responseData);
+            return TweakBillingLimitDesign.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetMember;
+        return TweakBillingLimitDesign;
     }
 })();

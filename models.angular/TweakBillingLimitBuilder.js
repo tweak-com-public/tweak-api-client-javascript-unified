@@ -1,26 +1,19 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTag', TweakTag);
+        .factory('TweakBillingLimitBuilder', TweakBillingLimitBuilder);
 
-    TweakTag.$inject = ['$log'];
+    TweakBillingLimitBuilder.$inject = ['$log'];
 
-    function TweakTag($log) {
+    function TweakBillingLimitBuilder($log) {
 
         /**
          * Constructor, with class name
-         * @param name      {string}    [REQUIRED]    
-         * @param created   {string}                  format: date-time  
-         * @param modified  {string}                  format: date-time  
-         * @param id        {string}                  
-         * @param teamId    {string}                  
-         * @param team      {object}                  $ref: #/definitions/Team  
-         * @param templates {array}                   items: $ref: #/definitions/Template    
-         * @param designs   {array}                   items: $ref: #/definitions/Design    
-         * @param products  {array}                   items: $ref: #/definitions/Product    
-         * @param assets    {array}                   items: $ref: #/definitions/Asset    
+         * @param enabled {boolean}   default: true  
+         * @param configs {object}    default:   $ref: #/definitions/BillingLimitBuilderConfig  
+         * @param id      {string}    
          */
-        function TweakTag(data) {
+        function TweakBillingLimitBuilder(data) {
             data = data || {};
 
             for (var d in data) {
@@ -45,9 +38,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'team', 'templates', 'designs', 'products', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array'];
-        var requiredParameters = ['name'];
+        var parameters = ['enabled', 'configs', 'id'];
+        var parametersType = ['boolean', 'object', 'string'];
+        var requiredParameters = [];
 
         /**
          * Private function
@@ -73,20 +66,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakTag.build = function (data) {
-            return new TweakTag(data);
+        TweakBillingLimitBuilder.build = function (data) {
+            return new TweakBillingLimitBuilder(data);
         };
 
-        TweakTag.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitBuilder.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTag.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitBuilder.build).filter(Boolean);
             }
-            return TweakTag.build(responseData);
+            return TweakBillingLimitBuilder.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTag;
+        return TweakBillingLimitBuilder;
     }
 })();

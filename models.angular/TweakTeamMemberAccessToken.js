@@ -13,6 +13,7 @@
          * @param refreshToken   {string}                  
          * @param sessionId      {string}                  default: no-session  
          * @param shortId        {string}                  
+         * @param subdomain      {string}                  
          * @param id             {string}    [REQUIRED]    
          * @param ttl            {number}                  default: 1209600  description: time to live in seconds (2 weeks by default)  format: double  
          * @param scopes         {array}                   description: Array of scopes granted to this access token.  items: type: string    
@@ -57,8 +58,8 @@
         /**
          * Private properties
          */
-        var parameters = ['roles', 'refreshToken', 'sessionId', 'shortId', 'id', 'ttl', 'scopes', 'created', 'userId', 'designId', 'templateId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'design', 'template', 'team', 'teamMember', 'portal', 'portalMember'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['roles', 'refreshToken', 'sessionId', 'shortId', 'subdomain', 'id', 'ttl', 'scopes', 'created', 'userId', 'designId', 'templateId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'design', 'template', 'team', 'teamMember', 'portal', 'portalMember'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['id'];
 
         /**

@@ -1,23 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetChannel', TweakAssetChannel);
+        .factory('TweakBillingLimitBuilderConfig', TweakBillingLimitBuilderConfig);
 
-    TweakAssetChannel.$inject = ['$log'];
+    TweakBillingLimitBuilderConfig.$inject = ['$log'];
 
-    function TweakAssetChannel($log) {
+    function TweakBillingLimitBuilderConfig($log) {
 
         /**
          * Constructor, with class name
-         * @param thumbnail {string}                  
-         * @param query     {string}    [REQUIRED]    
-         * @param created   {string}                  format: date-time  
-         * @param modified  {string}                  format: date-time  
-         * @param id        {string}                  
-         * @param teamId    {string}                  
-         * @param team      {object}                  $ref: #/definitions/Team  
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetChannel(data) {
+        function TweakBillingLimitBuilderConfig(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,9 +37,9 @@
         /**
          * Private properties
          */
-        var parameters = ['thumbnail', 'query', 'created', 'modified', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object'];
-        var requiredParameters = ['query'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
+        var requiredParameters = [];
 
         /**
          * Private function
@@ -70,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetChannel.build = function (data) {
-            return new TweakAssetChannel(data);
+        TweakBillingLimitBuilderConfig.build = function (data) {
+            return new TweakBillingLimitBuilderConfig(data);
         };
 
-        TweakAssetChannel.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitBuilderConfig.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetChannel.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitBuilderConfig.build).filter(Boolean);
             }
-            return TweakAssetChannel.build(responseData);
+            return TweakBillingLimitBuilderConfig.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetChannel;
+        return TweakBillingLimitBuilderConfig;
     }
 })();

@@ -1,23 +1,23 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetCategoryRel', TweakAssetCategoryRel);
+        .factory('TweakDesignVersion', TweakDesignVersion);
 
-    TweakAssetCategoryRel.$inject = ['$log'];
+    TweakDesignVersion.$inject = ['$log'];
 
-    function TweakAssetCategoryRel($log) {
+    function TweakDesignVersion($log) {
 
         /**
          * Constructor, with class name
-         * @param created         {string}    format: date-time  
-         * @param modified        {string}    format: date-time  
-         * @param id              {string}    
-         * @param assetCategoryId {string}    
-         * @param assetId         {string}    
-         * @param category        {object}    $ref: #/definitions/AssetCategory  
-         * @param asset           {object}    $ref: #/definitions/Asset  
+         * @param objectVersion  {string}    
+         * @param objectS3Path   {string}    
+         * @param objectS3Bucket {string}    
+         * @param created        {string}    format: date-time  
+         * @param id             {string}    
+         * @param designId       {string}    
+         * @param design         {object}    $ref: #/definitions/Design  
          */
-        function TweakAssetCategoryRel(data) {
+        function TweakDesignVersion(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,8 +42,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetCategoryId', 'assetId', 'category', 'asset'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['objectVersion', 'objectS3Path', 'objectS3Bucket', 'created', 'id', 'designId', 'design'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object'];
         var requiredParameters = [];
 
         /**
@@ -70,20 +70,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetCategoryRel.build = function (data) {
-            return new TweakAssetCategoryRel(data);
+        TweakDesignVersion.build = function (data) {
+            return new TweakDesignVersion(data);
         };
 
-        TweakAssetCategoryRel.apiResponseTransformer = function (responseData) {
+        TweakDesignVersion.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetCategoryRel.build).filter(Boolean);
+                return responseData.map(TweakDesignVersion.build).filter(Boolean);
             }
-            return TweakAssetCategoryRel.build(responseData);
+            return TweakDesignVersion.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetCategoryRel;
+        return TweakDesignVersion;
     }
 })();

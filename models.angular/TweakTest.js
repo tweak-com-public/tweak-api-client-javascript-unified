@@ -1,26 +1,20 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTag', TweakTag);
+        .factory('TweakTest', TweakTest);
 
-    TweakTag.$inject = ['$log'];
+    TweakTest.$inject = ['$log'];
 
-    function TweakTag($log) {
+    function TweakTest($log) {
 
         /**
          * Constructor, with class name
-         * @param name      {string}    [REQUIRED]    
-         * @param created   {string}                  format: date-time  
-         * @param modified  {string}                  format: date-time  
-         * @param id        {string}                  
-         * @param teamId    {string}                  
-         * @param team      {object}                  $ref: #/definitions/Team  
-         * @param templates {array}                   items: $ref: #/definitions/Template    
-         * @param designs   {array}                   items: $ref: #/definitions/Design    
-         * @param products  {array}                   items: $ref: #/definitions/Product    
-         * @param assets    {array}                   items: $ref: #/definitions/Asset    
+         * @param prop1 {string}    [REQUIRED]    
+         * @param prop2 {string}                  
+         * @param prop3 {string}                  default: a-default-value  
+         * @param id    {string}                  
          */
-        function TweakTag(data) {
+        function TweakTest(data) {
             data = data || {};
 
             for (var d in data) {
@@ -45,9 +39,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'created', 'modified', 'id', 'teamId', 'team', 'templates', 'designs', 'products', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'array', 'array'];
-        var requiredParameters = ['name'];
+        var parameters = ['prop1', 'prop2', 'prop3', 'id'];
+        var parametersType = ['string', 'string', 'string', 'string'];
+        var requiredParameters = ['prop1'];
 
         /**
          * Private function
@@ -73,20 +67,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakTag.build = function (data) {
-            return new TweakTag(data);
+        TweakTest.build = function (data) {
+            return new TweakTest(data);
         };
 
-        TweakTag.apiResponseTransformer = function (responseData) {
+        TweakTest.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTag.build).filter(Boolean);
+                return responseData.map(TweakTest.build).filter(Boolean);
             }
-            return TweakTag.build(responseData);
+            return TweakTest.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTag;
+        return TweakTest;
     }
 })();

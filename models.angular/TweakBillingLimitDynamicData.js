@@ -1,24 +1,18 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetOption', TweakAssetOption);
+        .factory('TweakBillingLimitDynamicData', TweakBillingLimitDynamicData);
 
-    TweakAssetOption.$inject = ['$log'];
+    TweakBillingLimitDynamicData.$inject = ['$log'];
 
-    function TweakAssetOption($log) {
+    function TweakBillingLimitDynamicData($log) {
 
         /**
          * Constructor, with class name
-         * @param name            {string}    [REQUIRED]    
-         * @param code            {string}    [REQUIRED]    
-         * @param description     {string}                  
-         * @param order           {number}    [REQUIRED]    format: double  
-         * @param id              {string}                  
-         * @param assetCategoryId {string}                  
-         * @param category        {object}                  $ref: #/definitions/AssetCategory  
-         * @param assets          {array}                   items: $ref: #/definitions/Asset    
+         * @param enabled {boolean}   default: true  
+         * @param id      {string}    
          */
-        function TweakAssetOption(data) {
+        function TweakBillingLimitDynamicData(data) {
             data = data || {};
 
             for (var d in data) {
@@ -43,9 +37,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'description', 'order', 'id', 'assetCategoryId', 'category', 'assets'];
-        var parametersType = ['string', 'string', 'string', 'number', 'string', 'string', 'object', 'array'];
-        var requiredParameters = ['name', 'code', 'order'];
+        var parameters = ['enabled', 'id'];
+        var parametersType = ['boolean', 'string'];
+        var requiredParameters = [];
 
         /**
          * Private function
@@ -71,20 +65,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetOption.build = function (data) {
-            return new TweakAssetOption(data);
+        TweakBillingLimitDynamicData.build = function (data) {
+            return new TweakBillingLimitDynamicData(data);
         };
 
-        TweakAssetOption.apiResponseTransformer = function (responseData) {
+        TweakBillingLimitDynamicData.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetOption.build).filter(Boolean);
+                return responseData.map(TweakBillingLimitDynamicData.build).filter(Boolean);
             }
-            return TweakAssetOption.build(responseData);
+            return TweakBillingLimitDynamicData.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetOption;
+        return TweakBillingLimitDynamicData;
     }
 })();

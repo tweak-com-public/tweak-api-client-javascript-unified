@@ -1,23 +1,27 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetTerms', TweakAssetTerms);
+        .factory('TweakAssetUpload', TweakAssetUpload);
 
-    TweakAssetTerms.$inject = ['$log'];
+    TweakAssetUpload.$inject = ['$log'];
 
-    function TweakAssetTerms($log) {
+    function TweakAssetUpload($log) {
 
         /**
          * Constructor, with class name
-         * @param name        {string}    
-         * @param description {string}    
-         * @param created     {string}    format: date-time  
-         * @param modified    {string}    format: date-time  
-         * @param id          {string}    
-         * @param teamId      {string}    
-         * @param team        {object}    $ref: #/definitions/Team  
+         * @param status           {array}     [REQUIRED]    items: $ref: #/definitions/x-any    
+         * @param isEmpty          {boolean}                 
+         * @param rejectionMessage {string}                  
+         * @param created          {string}                  format: date-time  
+         * @param modified         {string}                  format: date-time  
+         * @param id               {string}                  
+         * @param teamId           {string}                  
+         * @param uploaderId       {string}                  
+         * @param assets           {array}                   items: $ref: #/definitions/Asset    
+         * @param team             {object}                  $ref: #/definitions/Team  
+         * @param uploader         {object}                  $ref: #/definitions/TeamMember  
          */
-        function TweakAssetTerms(data) {
+        function TweakAssetUpload(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,9 +46,9 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'description', 'created', 'modified', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object'];
-        var requiredParameters = [];
+        var parameters = ['status', 'isEmpty', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'assets', 'team', 'uploader'];
+        var parametersType = ['array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
+        var requiredParameters = ['status'];
 
         /**
          * Private function
@@ -70,20 +74,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetTerms.build = function (data) {
-            return new TweakAssetTerms(data);
+        TweakAssetUpload.build = function (data) {
+            return new TweakAssetUpload(data);
         };
 
-        TweakAssetTerms.apiResponseTransformer = function (responseData) {
+        TweakAssetUpload.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetTerms.build).filter(Boolean);
+                return responseData.map(TweakAssetUpload.build).filter(Boolean);
             }
-            return TweakAssetTerms.build(responseData);
+            return TweakAssetUpload.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetTerms;
+        return TweakAssetUpload;
     }
 })();
