@@ -1,23 +1,26 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetCommentMention', TweakAssetCommentMention);
+        .factory('TweakAssetRatings', TweakAssetRatings);
 
-    TweakAssetCommentMention.$inject = ['$log'];
+    TweakAssetRatings.$inject = ['$log'];
 
-    function TweakAssetCommentMention($log) {
+    function TweakAssetRatings($log) {
 
         /**
          * Constructor, with class name
-         * @param created   {string}    format: date-time  
-         * @param modified  {string}    format: date-time  
-         * @param id        {string}    
-         * @param commentId {string}    
-         * @param mentionId {string}    
-         * @param comment   {object}    $ref: #/definitions/AssetComment  
-         * @param mention   {object}    $ref: #/definitions/TeamMember  
+         * @param starts       {number}    format: double  
+         * @param color        {number}    format: double  
+         * @param favorite     {boolean}   
+         * @param created      {string}    format: date-time  
+         * @param modified     {string}    format: date-time  
+         * @param id           {string}    
+         * @param assetId      {string}    
+         * @param teamMemberId {string}    
+         * @param teamMember   {object}    $ref: #/definitions/TeamMember  
+         * @param asset        {object}    $ref: #/definitions/Asset  
          */
-        function TweakAssetCommentMention(data) {
+        function TweakAssetRatings(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,8 +45,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'commentId', 'mentionId', 'comment', 'mention'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['starts', 'color', 'favorite', 'created', 'modified', 'id', 'assetId', 'teamMemberId', 'teamMember', 'asset'];
+        var parametersType = ['number', 'number', 'boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
         var requiredParameters = [];
 
         /**
@@ -70,20 +73,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetCommentMention.build = function (data) {
-            return new TweakAssetCommentMention(data);
+        TweakAssetRatings.build = function (data) {
+            return new TweakAssetRatings(data);
         };
 
-        TweakAssetCommentMention.apiResponseTransformer = function (responseData) {
+        TweakAssetRatings.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetCommentMention.build).filter(Boolean);
+                return responseData.map(TweakAssetRatings.build).filter(Boolean);
             }
-            return TweakAssetCommentMention.build(responseData);
+            return TweakAssetRatings.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetCommentMention;
+        return TweakAssetRatings;
     }
 })();
