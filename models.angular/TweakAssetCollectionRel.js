@@ -11,11 +11,9 @@
          * Constructor, with class name
          * @param created           {string}    format: date-time  
          * @param modified          {string}    format: date-time  
-         * @param id                {string}    
-         * @param assetCollectionId {string}    
-         * @param assetId           {string}    
-         * @param collection        {object}    $ref: #/definitions/AssetCollection  
-         * @param asset             {object}    $ref: #/definitions/Asset  
+         * @param id                {object}    $ref: #/definitions/ObjectID  
+         * @param assetCollectionId {object}    $ref: #/definitions/ObjectID  
+         * @param assetId           {object}    $ref: #/definitions/ObjectID  
          */
         function TweakAssetCollectionRel(data) {
             data = data || {};
@@ -42,8 +40,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetCollectionId', 'assetId', 'collection', 'asset'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['created', 'modified', 'id', 'assetCollectionId', 'assetId'];
+        var parametersType = ['string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**

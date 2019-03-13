@@ -14,12 +14,9 @@
          * @param rejectionMessage {string}                  
          * @param created          {string}                  format: date-time  
          * @param modified         {string}                  format: date-time  
-         * @param id               {string}                  
+         * @param id               {object}                  $ref: #/definitions/ObjectID  
          * @param teamId           {string}                  
-         * @param uploaderId       {string}                  
-         * @param assets           {array}                   items: $ref: #/definitions/Asset    
-         * @param team             {object}                  $ref: #/definitions/Team  
-         * @param uploader         {object}                  $ref: #/definitions/TeamMember  
+         * @param uploaderId       {object}                  $ref: #/definitions/ObjectID  
          */
         function TweakAssetUpload(data) {
             data = data || {};
@@ -46,8 +43,8 @@
         /**
          * Private properties
          */
-        var parameters = ['status', 'isEmpty', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'assets', 'team', 'uploader'];
-        var parametersType = ['array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
+        var parameters = ['status', 'isEmpty', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId'];
+        var parametersType = ['array', 'boolean', 'string', 'string', 'string', 'object', 'string', 'object'];
         var requiredParameters = ['status'];
 
         /**

@@ -41,14 +41,9 @@
          * @param published              {string}                  format: date-time  
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
-         * @param id                     {string}                  
-         * @param uploadId               {string}                  
+         * @param id                     {object}                  $ref: #/definitions/ObjectID  
+         * @param uploadId               {object}                  $ref: #/definitions/ObjectID  
          * @param teamId                 {string}                  
-         * @param tags                   {array}                   items: $ref: #/definitions/Tag    
-         * @param ratings                {array}                   items: $ref: #/definitions/AssetRatings    
-         * @param collections            {array}                   items: $ref: #/definitions/AssetCollection    
-         * @param team                   {object}                  $ref: #/definitions/Team  
-         * @param upload                 {object}                  $ref: #/definitions/AssetUpload  
          */
         function TweakAsset(data) {
             data = data || {};
@@ -75,8 +70,8 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'searchTags', 'searchOriginalFilename', 'searchImageMetadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'id', 'uploadId', 'teamId', 'tags', 'ratings', 'collections', 'team', 'upload'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'array', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'object', 'object'];
+        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'searchTags', 'searchOriginalFilename', 'searchImageMetadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'id', 'uploadId', 'teamId'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'array', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'object', 'object', 'string'];
         var requiredParameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'bytes', 'status'];
 
         /**
