@@ -44,6 +44,7 @@
          * @param id                     {object}                  $ref: #/definitions/ObjectID  
          * @param uploadId               {object}                  $ref: #/definitions/ObjectID  
          * @param teamId                 {string}                  
+         * @param TeamMemberId           {object}                  $ref: #/definitions/ObjectID  
          */
         function TweakAsset(data) {
             data = data || {};
@@ -70,8 +71,8 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'searchTags', 'searchOriginalFilename', 'searchImageMetadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'id', 'uploadId', 'teamId'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'array', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'object', 'object', 'string'];
+        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'searchTags', 'searchOriginalFilename', 'searchImageMetadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'array', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'object', 'object', 'string', 'object'];
         var requiredParameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'bytes', 'status'];
 
         /**
