@@ -18,12 +18,9 @@
          * @param status        {string}    [REQUIRED]    enum: published, pendingAction, rejected, inReview
          * @param created       {string}                  format: date-time  
          * @param modified      {string}                  format: date-time  
-         * @param id            {string}                  
+         * @param id            {object}                  $ref: #/definitions/ObjectID  
          * @param teamId        {string}                  
-         * @param teamMemberId  {string}                  
-         * @param assets        {array}                   items: $ref: #/definitions/Asset    
-         * @param team          {object}                  $ref: #/definitions/Team  
-         * @param createdBy     {object}                  $ref: #/definitions/TeamMember  
+         * @param teamMemberId  {object}                  $ref: #/definitions/ObjectID  
          */
         function TweakAssetCollection(data) {
             data = data || {};
@@ -50,8 +47,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'code', 'thumbnailUrl', 'viewCount', 'downloadCount', 'shareCount', 'status', 'created', 'modified', 'id', 'teamId', 'teamMemberId', 'assets', 'team', 'createdBy'];
-        var parametersType = ['string', 'string', 'string', 'number', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'object', 'object'];
+        var parameters = ['name', 'code', 'thumbnailUrl', 'viewCount', 'downloadCount', 'shareCount', 'status', 'created', 'modified', 'id', 'teamId', 'teamMemberId'];
+        var parametersType = ['string', 'string', 'string', 'number', 'number', 'number', 'string', 'string', 'string', 'object', 'string', 'object'];
         var requiredParameters = ['name', 'code', 'status'];
 
         /**
