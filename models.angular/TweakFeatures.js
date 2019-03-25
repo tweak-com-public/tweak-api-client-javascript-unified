@@ -1,24 +1,17 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakAssetUpload', TweakAssetUpload);
+        .factory('TweakFeatures', TweakFeatures);
 
-    TweakAssetUpload.$inject = ['$log'];
+    TweakFeatures.$inject = ['$log'];
 
-    function TweakAssetUpload($log) {
+    function TweakFeatures($log) {
 
         /**
          * Constructor, with class name
-         * @param status           {array}     [REQUIRED]    items: $ref: #/definitions/x-any    
-         * @param isEmpty          {boolean}                 
-         * @param rejectionMessage {string}                  
-         * @param created          {string}                  format: date-time  
-         * @param modified         {string}                  format: date-time  
-         * @param id               {object}                  $ref: #/definitions/ObjectID  
-         * @param teamId           {string}                  
-         * @param uploaderId       {object}                  $ref: #/definitions/ObjectID  
+         * @param id {string}    
          */
-        function TweakAssetUpload(data) {
+        function TweakFeatures(data) {
             data = data || {};
 
             for (var d in data) {
@@ -43,9 +36,9 @@
         /**
          * Private properties
          */
-        var parameters = ['status', 'isEmpty', 'rejectionMessage', 'created', 'modified', 'id', 'teamId', 'uploaderId'];
-        var parametersType = ['array', 'boolean', 'string', 'string', 'string', 'object', 'string', 'object'];
-        var requiredParameters = ['status'];
+        var parameters = ['id'];
+        var parametersType = ['string'];
+        var requiredParameters = [];
 
         /**
          * Private function
@@ -71,20 +64,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakAssetUpload.build = function (data) {
-            return new TweakAssetUpload(data);
+        TweakFeatures.build = function (data) {
+            return new TweakFeatures(data);
         };
 
-        TweakAssetUpload.apiResponseTransformer = function (responseData) {
+        TweakFeatures.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakAssetUpload.build).filter(Boolean);
+                return responseData.map(TweakFeatures.build).filter(Boolean);
             }
-            return TweakAssetUpload.build(responseData);
+            return TweakFeatures.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakAssetUpload;
+        return TweakFeatures;
     }
 })();

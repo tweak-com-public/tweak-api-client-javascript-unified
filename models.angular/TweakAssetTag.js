@@ -11,13 +11,10 @@
          * Constructor, with class name
          * @param created  {string}    format: date-time  
          * @param modified {string}    format: date-time  
-         * @param id       {string}    
-         * @param assetId  {string}    
+         * @param id       {object}    $ref: #/definitions/ObjectID  
+         * @param assetId  {object}    $ref: #/definitions/ObjectID  
          * @param tagId    {string}    
          * @param teamId   {string}    
-         * @param asset    {object}    $ref: #/definitions/Asset  
-         * @param team     {object}    $ref: #/definitions/Team  
-         * @param tag      {object}    $ref: #/definitions/Tag  
          */
         function TweakAssetTag(data) {
             data = data || {};
@@ -44,8 +41,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'assetId', 'tagId', 'teamId', 'asset', 'team', 'tag'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object'];
+        var parameters = ['created', 'modified', 'id', 'assetId', 'tagId', 'teamId'];
+        var parametersType = ['string', 'string', 'object', 'object', 'string', 'string'];
         var requiredParameters = [];
 
         /**

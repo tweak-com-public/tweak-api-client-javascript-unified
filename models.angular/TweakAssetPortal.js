@@ -17,11 +17,9 @@
          * @param hasViewPermission     {boolean}   default: false  
          * @param created               {string}    format: date-time  
          * @param modified              {string}    format: date-time  
-         * @param id                    {string}    
-         * @param assetId               {string}    
-         * @param portalId              {string}    
-         * @param asset                 {object}    $ref: #/definitions/Asset  
-         * @param portal                {object}    $ref: #/definitions/Portal  
+         * @param id                    {object}    $ref: #/definitions/ObjectID  
+         * @param assetId               {object}    $ref: #/definitions/ObjectID  
+         * @param portalId              {object}    $ref: #/definitions/ObjectID  
          */
         function TweakAssetPortal(data) {
             data = data || {};
@@ -48,8 +46,8 @@
         /**
          * Private properties
          */
-        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'hasDownloadPermission', 'hasEditPermission', 'hasViewPermission', 'created', 'modified', 'id', 'assetId', 'portalId', 'asset', 'portal'];
-        var parametersType = ['string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['message', 'requireToLogin', 'downloadLowResolution', 'hasDownloadPermission', 'hasEditPermission', 'hasViewPermission', 'created', 'modified', 'id', 'assetId', 'portalId'];
+        var parametersType = ['string', 'boolean', 'boolean', 'boolean', 'boolean', 'boolean', 'string', 'string', 'object', 'object', 'object'];
         var requiredParameters = [];
 
         /**
