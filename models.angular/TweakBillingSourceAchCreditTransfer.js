@@ -14,7 +14,7 @@
          * @param fingerprint   {string}    
          * @param bankName      {string}    
          * @param swiftCode     {string}    
-         * @param id            {string}    
+         * @param id            {number}    format: double  
          */
         function TweakBillingSourceAchCreditTransfer(data) {
             data = data || {};
@@ -42,7 +42,7 @@
          * Private properties
          */
         var parameters = ['accountNumber', 'routingNumber', 'fingerprint', 'bankName', 'swiftCode', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

@@ -31,7 +31,7 @@
          * @param activity             {object}    default:   $ref: #/definitions/BillingLimitActivity  
          * @param builder              {object}    default:   $ref: #/definitions/BillingLimitBuilder  
          * @param dynamicData          {object}    default:   $ref: #/definitions/BillingLimitDynamicData  
-         * @param id                   {string}    
+         * @param id                   {number}    format: double  
          */
         function TweakBillingLimit(data) {
             data = data || {};
@@ -59,7 +59,7 @@
          * Private properties
          */
         var parameters = ['teamMember', 'uploader', 'portal', 'jpeg', 'proof', 'highResPdf', 'storage', 'stockImageLibrary', 'transformationCredit', 'productDbRecord', 'accountSupport', 'supportResponse', 'bandwidth', 'printerApi', 'dam', 'portals', 'designs', 'templates', 'workflows', 'activity', 'builder', 'dynamicData', 'id'];
-        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'string'];
+        var parametersType = ['object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'number'];
         var requiredParameters = [];
 
         /**

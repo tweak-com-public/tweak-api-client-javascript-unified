@@ -42,6 +42,7 @@
          * @param images                  {array}                   items: $ref: #/definitions/Image    
          * @param imageFolders            {array}                   items: $ref: #/definitions/ImageFolder    
          * @param billing                 {object}                  $ref: #/definitions/Billing  
+         * @param billingV2               {object}                  $ref: #/definitions/BillingV2  
          * @param permission              {object}                  $ref: #/definitions/TeamPermissionSet  
          * @param productMaterials        {array}                   items: $ref: #/definitions/ProductMaterial    
          * @param productSizeMaterials    {array}                   items: $ref: #/definitions/ProductSizeMaterial    
@@ -52,7 +53,6 @@
          * @param assetCollections        {array}                   items: $ref: #/definitions/AssetCollection    
          * @param assetUploads            {array}                   items: $ref: #/definitions/AssetUpload    
          * @param fonts                   {array}                   items: $ref: #/definitions/TeamFont    
-         * @param enabledProducts         {array}                   items: $ref: #/definitions/TweakProduct    
          */
         function TweakTeam(data) {
             data = data || {};
@@ -79,8 +79,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'featureHtmlBuilder', 'legacyProductLanguage', 'legacySizeType', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'dataSourceRests', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData', 'assets', 'tags', 'assetCollections', 'assetUploads', 'fonts', 'enabledProducts'];
-        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'featureHtmlBuilder', 'legacyProductLanguage', 'legacySizeType', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'dataSourceRests', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'images', 'imageFolders', 'billing', 'billingV2', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData', 'assets', 'tags', 'assetCollections', 'assetUploads', 'fonts'];
+        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'object', 'object', 'object', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**

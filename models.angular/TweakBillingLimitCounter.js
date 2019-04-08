@@ -13,7 +13,7 @@
          * @param count      {number}    default: 0  format: double  
          * @param unitType   {string}    enum: none, binary
          * @param unitPrefix {string}    
-         * @param id         {string}    
+         * @param id         {number}    format: double  
          */
         function TweakBillingLimitCounter(data) {
             data = data || {};
@@ -41,7 +41,7 @@
          * Private properties
          */
         var parameters = ['limit', 'count', 'unitType', 'unitPrefix', 'id'];
-        var parametersType = ['number', 'number', 'string', 'string', 'string'];
+        var parametersType = ['number', 'number', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

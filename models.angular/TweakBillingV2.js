@@ -1,23 +1,21 @@
 (function () {
     'use strict';
     angular.module('Tweak')
-        .factory('TweakTeamEnabledTweakProducts', TweakTeamEnabledTweakProducts);
+        .factory('TweakBillingV2', TweakBillingV2);
 
-    TweakTeamEnabledTweakProducts.$inject = ['$log'];
+    TweakBillingV2.$inject = ['$log'];
 
-    function TweakTeamEnabledTweakProducts($log) {
+    function TweakBillingV2($log) {
 
         /**
          * Constructor, with class name
-         * @param created        {string}    format: date-time  
-         * @param modified       {string}    format: date-time  
-         * @param id             {string}    
-         * @param teamId         {string}    
-         * @param tweakProductId {string}    
-         * @param team           {object}    $ref: #/definitions/Team  
-         * @param tweakProduct   {object}    $ref: #/definitions/TweakProduct  
+         * @param companyName      {string}    
+         * @param companyEmail     {string}    
+         * @param stripeCustomerId {string}    
+         * @param id               {object}    $ref: #/definitions/ObjectID  
+         * @param teamId           {string}    
          */
-        function TweakTeamEnabledTweakProducts(data) {
+        function TweakBillingV2(data) {
             data = data || {};
 
             for (var d in data) {
@@ -42,8 +40,8 @@
         /**
          * Private properties
          */
-        var parameters = ['created', 'modified', 'id', 'teamId', 'tweakProductId', 'team', 'tweakProduct'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'object', 'object'];
+        var parameters = ['companyName', 'companyEmail', 'stripeCustomerId', 'id', 'teamId'];
+        var parametersType = ['string', 'string', 'string', 'object', 'string'];
         var requiredParameters = [];
 
         /**
@@ -70,20 +68,20 @@
         /**
          * Static method, assigned to class
          */
-        TweakTeamEnabledTweakProducts.build = function (data) {
-            return new TweakTeamEnabledTweakProducts(data);
+        TweakBillingV2.build = function (data) {
+            return new TweakBillingV2(data);
         };
 
-        TweakTeamEnabledTweakProducts.apiResponseTransformer = function (responseData) {
+        TweakBillingV2.apiResponseTransformer = function (responseData) {
             if (angular.isArray(responseData)) {
-                return responseData.map(TweakTeamEnabledTweakProducts.build).filter(Boolean);
+                return responseData.map(TweakBillingV2.build).filter(Boolean);
             }
-            return TweakTeamEnabledTweakProducts.build(responseData);
+            return TweakBillingV2.build(responseData);
         };
 
         /**
          * Return the constructor function
          */
-        return TweakTeamEnabledTweakProducts;
+        return TweakBillingV2;
     }
 })();

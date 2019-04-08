@@ -15,7 +15,7 @@
          * @param last4            {string}    
          * @param mandateReference {string}    
          * @param mandateUrl       {string}    
-         * @param id               {string}    
+         * @param id               {number}    format: double  
          */
         function TweakBillingSourceSepaDebit(data) {
             data = data || {};
@@ -43,7 +43,7 @@
          * Private properties
          */
         var parameters = ['bankCode', 'country', 'fingerprint', 'last4', 'mandateReference', 'mandateUrl', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**
