@@ -12,7 +12,7 @@
          * @param returnUrl {string}    
          * @param status    {string}    
          * @param url       {string}    
-         * @param id        {string}    
+         * @param id        {number}    format: double  
          */
         function TweakBillingSourceRedirect(data) {
             data = data || {};
@@ -40,7 +40,7 @@
          * Private properties
          */
         var parameters = ['returnUrl', 'status', 'url', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

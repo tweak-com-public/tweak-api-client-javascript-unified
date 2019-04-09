@@ -25,9 +25,8 @@
          * @param stripeSubscriptionId {string}    
          * @param customizedAt         {string}    format: date-time  
          * @param customizedFrom       {string}    
-         * @param id                   {string}    
+         * @param id                   {object}    $ref: #/definitions/ObjectID  
          * @param teamId               {string}    
-         * @param team                 {object}    $ref: #/definitions/Team  
          */
         function TweakBilling(data) {
             data = data || {};
@@ -54,8 +53,8 @@
         /**
          * Private properties
          */
-        var parameters = ['companyName', 'companyEmail', 'companyVat', 'companyCard', 'companyBankAccount', 'companySource', 'subscription', 'limit', 'taxPercent', 'stripeCustomerId', 'stripeCardId', 'stripeBankAccountId', 'stripeSourceId', 'stripeSubscriptionId', 'customizedAt', 'customizedFrom', 'id', 'teamId', 'team'];
-        var parametersType = ['string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object'];
+        var parameters = ['companyName', 'companyEmail', 'companyVat', 'companyCard', 'companyBankAccount', 'companySource', 'subscription', 'limit', 'taxPercent', 'stripeCustomerId', 'stripeCardId', 'stripeBankAccountId', 'stripeSourceId', 'stripeSubscriptionId', 'customizedAt', 'customizedFrom', 'id', 'teamId'];
+        var parametersType = ['string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'string'];
         var requiredParameters = [];
 
         /**

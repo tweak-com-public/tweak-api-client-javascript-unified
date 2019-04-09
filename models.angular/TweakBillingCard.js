@@ -28,7 +28,7 @@
          * @param addressState   {string}    
          * @param addressZip     {string}    
          * @param stripeCardId   {string}    
-         * @param id             {string}    
+         * @param id             {number}    format: double  
          */
         function TweakBillingCard(data) {
             data = data || {};
@@ -56,7 +56,7 @@
          * Private properties
          */
         var parameters = ['cardholderName', 'expMonth', 'expYear', 'token', 'number', 'cvc', 'cvcCheck', 'last4', 'brand', 'country', 'funding', 'type', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'stripeCardId', 'id'];
-        var parametersType = ['string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'number', 'number', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

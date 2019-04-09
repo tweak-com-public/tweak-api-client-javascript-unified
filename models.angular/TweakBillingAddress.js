@@ -15,7 +15,7 @@
          * @param line2      {string}    
          * @param postalCode {string}    
          * @param state      {string}    
-         * @param id         {string}    
+         * @param id         {number}    format: double  
          */
         function TweakBillingAddress(data) {
             data = data || {};
@@ -43,7 +43,7 @@
          * Private properties
          */
         var parameters = ['city', 'country', 'line1', 'line2', 'postalCode', 'state', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

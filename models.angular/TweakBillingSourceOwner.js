@@ -17,7 +17,7 @@
          * @param verifiedEmail   {string}    
          * @param verifiedName    {string}    
          * @param verifiedPhone   {string}    
-         * @param id              {string}    
+         * @param id              {number}    format: double  
          */
         function TweakBillingSourceOwner(data) {
             data = data || {};
@@ -45,7 +45,7 @@
          * Private properties
          */
         var parameters = ['address', 'email', 'name', 'phone', 'verifiedAddress', 'verifiedEmail', 'verifiedName', 'verifiedPhone', 'id'];
-        var parametersType = ['object', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'string'];
+        var parametersType = ['object', 'string', 'string', 'string', 'object', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**
