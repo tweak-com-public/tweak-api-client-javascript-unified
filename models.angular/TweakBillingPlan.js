@@ -9,22 +9,21 @@
 
         /**
          * Constructor, with class name
-         * @param id                   {string}    [REQUIRED]    
-         * @param name                 {string}                  
-         * @param amount               {number}                  format: double  
-         * @param currency             {string}                  
-         * @param interval             {string}                  
-         * @param intervalCount        {number}                  format: double  
-         * @param statementDescriptor  {string}                  
-         * @param statementDescription {string}                  
-         * @param trialPeriodDays      {number}                  format: double  
-         * @param type                 {string}                  enum: plan, additional
-         * @param teamId               {string}                  
-         * @param limit                {object}                  $ref: #/definitions/BillingLimit  
-         * @param deprecated           {boolean}                 default: false  
-         * @param similarPlan          {string}                  
-         * @param visible              {boolean}                 default: true  
-         * @param created              {string}                  format: date-time  
+         * @param id                   {string}    
+         * @param name                 {string}    
+         * @param amount               {number}    format: double  
+         * @param currency             {string}    
+         * @param interval             {string}    
+         * @param intervalCount        {number}    format: double  
+         * @param statementDescriptor  {string}    
+         * @param statementDescription {string}    
+         * @param trialPeriodDays      {number}    format: double  
+         * @param type                 {string}    enum: plan, additional
+         * @param teamId               {string}    
+         * @param limit                {object}    $ref: #/definitions/BillingLimit  
+         * @param deprecated           {boolean}   default: false  
+         * @param similarPlan          {string}    
+         * @param created              {string}    format: date-time  
          */
         function TweakBillingPlan(data) {
             data = data || {};
@@ -51,9 +50,9 @@
         /**
          * Private properties
          */
-        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'deprecated', 'similarPlan', 'visible', 'created'];
-        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'boolean', 'string', 'boolean', 'string'];
-        var requiredParameters = ['id'];
+        var parameters = ['id', 'name', 'amount', 'currency', 'interval', 'intervalCount', 'statementDescriptor', 'statementDescription', 'trialPeriodDays', 'type', 'teamId', 'limit', 'deprecated', 'similarPlan', 'created'];
+        var parametersType = ['string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'number', 'string', 'string', 'object', 'boolean', 'string', 'string'];
+        var requiredParameters = [];
 
         /**
          * Private function

@@ -16,7 +16,7 @@
          * @param ibanLast4           {string}    
          * @param preferredLanguage   {string}    
          * @param statementDescriptor {string}    
-         * @param id                  {string}    
+         * @param id                  {number}    format: double  
          */
         function TweakBillingSourceSofort(data) {
             data = data || {};
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['country', 'bankCode', 'bic', 'bankName', 'ibanLast4', 'preferredLanguage', 'statementDescriptor', 'id'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'string'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

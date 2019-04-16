@@ -10,7 +10,7 @@
         /**
          * Constructor, with class name
          * @param enabled {boolean}   default: true  
-         * @param id      {string}    
+         * @param id      {number}    format: double  
          */
         function TweakBillingLimitBuilderConfig(data) {
             data = data || {};
@@ -38,7 +38,7 @@
          * Private properties
          */
         var parameters = ['enabled', 'id'];
-        var parametersType = ['boolean', 'string'];
+        var parametersType = ['boolean', 'number'];
         var requiredParameters = [];
 
         /**

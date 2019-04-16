@@ -15,7 +15,7 @@
          * @param amountReturned         {number}    format: double  
          * @param refundAttributesMethod {string}    
          * @param refundAttributesStatus {string}    
-         * @param id                     {string}    
+         * @param id                     {number}    format: double  
          */
         function TweakBillingSourceReceiver(data) {
             data = data || {};
@@ -43,7 +43,7 @@
          * Private properties
          */
         var parameters = ['address', 'amountCharged', 'amountReceived', 'amountReturned', 'refundAttributesMethod', 'refundAttributesStatus', 'id'];
-        var parametersType = ['string', 'number', 'number', 'number', 'string', 'string', 'string'];
+        var parametersType = ['string', 'number', 'number', 'number', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**
