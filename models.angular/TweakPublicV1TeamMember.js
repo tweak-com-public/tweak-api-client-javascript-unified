@@ -9,7 +9,7 @@
 
         /**
          * Constructor, with class name
-         * @param id {string}    
+         * @param id {number}    format: double  
          */
         function TweakPublicV1TeamMember(data) {
             data = data || {};
@@ -37,7 +37,7 @@
          * Private properties
          */
         var parameters = ['id'];
-        var parametersType = ['string'];
+        var parametersType = ['number'];
         var requiredParameters = [];
 
         /**
