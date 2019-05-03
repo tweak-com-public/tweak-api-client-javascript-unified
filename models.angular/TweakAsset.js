@@ -9,36 +9,33 @@
 
         /**
          * Constructor, with class name
+         * @param modelVersion           {string}    [REQUIRED]    default: 1  
          * @param publicId               {string}    [REQUIRED]    
-         * @param secureUrl              {string}    [REQUIRED]    
-         * @param resourceType           {string}    [REQUIRED]    
-         * @param type                   {string}    [REQUIRED]    
-         * @param etag                   {string}    [REQUIRED]    
+         * @param storageEngine          {string}                  enum: cloudinary, s3
+         * @param originalFilename       {string}                  
+         * @param resourceType           {string}                  
+         * @param etag                   {string}                  
          * @param format                 {string}                  
-         * @param bytes                  {number}    [REQUIRED]    format: double  
-         * @param description            {string}                  
-         * @param status                 {string}    [REQUIRED]    enum: pendingAction, approved, needsChanges, rejected
-         * @param thumbnailUrl           {string}                  
-         * @param version                {number}                  format: double  
-         * @param signature              {string}                  
-         * @param placeholder            {string}                  
          * @param width                  {number}                  format: double  
          * @param height                 {number}                  format: double  
-         * @param pages                  {number}                  format: double  
+         * @param bytes                  {number}                  format: double  
          * @param bitRate                {number}                  format: double  
-         * @param path                   {string}                  
-         * @param orientation            {string}                  enum: none, portrait, landscape
-         * @param metadata               {object}                  
+         * @param frameRate              {number}                  format: double  
+         * @param duration               {number}                  format: double  
+         * @param description            {string}                  
+         * @param resources              {object}                  
+         * @param isAudio                {boolean}                 
+         * @param status                 {string}                  enum: pendingAction, approved, needsChanges, rejected
+         * @param imageMetadata          {object}                  
+         * @param videoMetadata          {object}                  
+         * @param audioMetadata          {object}                  
+         * @param rawMetadata            {object}                  
+         * @param searchImageMetadata    {object}                  
+         * @param searchVideoMetadata    {object}                  
+         * @param searchAudioMetadata    {object}                  
+         * @param searchRawMetadata      {object}                  
          * @param searchTags             {array}                   items: $ref: #/definitions/x-any    
          * @param searchOriginalFilename {string}                  
-         * @param searchImageMetadata    {object}                  
-         * @param viewCount              {number}                  default: 0  format: double  
-         * @param downloadCount          {number}                  default: 0  format: double  
-         * @param shareCount             {number}                  default: 0  format: double  
-         * @param frameRate              {number}                  default: 0  format: double  
-         * @param duration               {number}                  default: 0  format: double  
-         * @param rotation               {number}                  default: 0  format: double  
-         * @param published              {string}                  format: date-time  
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
          * @param id                     {object}                  $ref: #/definitions/ObjectID  
@@ -71,9 +68,9 @@
         /**
          * Private properties
          */
-        var parameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'format', 'bytes', 'description', 'status', 'thumbnailUrl', 'version', 'signature', 'placeholder', 'width', 'height', 'pages', 'bitRate', 'path', 'orientation', 'metadata', 'searchTags', 'searchOriginalFilename', 'searchImageMetadata', 'viewCount', 'downloadCount', 'shareCount', 'frameRate', 'duration', 'rotation', 'published', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'string', 'string', 'string', 'number', 'string', 'string', 'number', 'number', 'number', 'number', 'string', 'string', 'object', 'array', 'string', 'object', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string', 'object', 'object', 'string', 'object'];
-        var requiredParameters = ['publicId', 'secureUrl', 'resourceType', 'type', 'etag', 'bytes', 'status'];
+        var parameters = ['modelVersion', 'publicId', 'storageEngine', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'resources', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'object', 'object', 'string', 'object'];
+        var requiredParameters = ['modelVersion', 'publicId'];
 
         /**
          * Private function
