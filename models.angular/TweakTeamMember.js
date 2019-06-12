@@ -37,12 +37,14 @@
          * @param isLegacyUser            {boolean}                 default: false  
          * @param isAnonymous             {boolean}                 default: false  
          * @param permissions             {object}                  default:   
+         * @param teamOwner               {boolean}                 default: false  
          * @param id                      {string}                  
          * @param customerId              {string}                  
          * @param teamId                  {string}                  
          * @param customer                {object}                  $ref: #/definitions/Customer  
          * @param team                    {object}                  $ref: #/definitions/Team  
          * @param portals                 {array}                   items: $ref: #/definitions/Portal    
+         * @param groups                  {array}                   items: $ref: #/definitions/AssetGroup    
          * @param uploadedTemplates       {array}                   items: $ref: #/definitions/Template    
          * @param templates               {array}                   items: $ref: #/definitions/Template    
          * @param invitationTickets       {array}                   items: $ref: #/definitions/InvitationTicket    
@@ -84,8 +86,8 @@
         /**
          * Private properties
          */
-        var parameters = ['agreeToTermsPrivacy', 'agreeToTermsPrivacyDate', 'roles', 'previousRoles', 'profilePicture', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'firstName', 'lastName', 'initials', 'language', 'timezone', 'created', 'modified', 'email', 'key', 'teamDataRecordId', 'isLegacyUser', 'isAnonymous', 'permissions', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'sharedDesigns', 'designShares', 'workflows', 'imageFolders', 'notifications'];
-        var parametersType = ['boolean', 'string', 'array', 'array', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['agreeToTermsPrivacy', 'agreeToTermsPrivacyDate', 'roles', 'previousRoles', 'profilePicture', 'position', 'officePhone', 'mobilePhone', 'website', 'addressCity', 'addressCountry', 'addressLine1', 'addressLine2', 'addressState', 'addressZip', 'firstName', 'lastName', 'initials', 'language', 'timezone', 'created', 'modified', 'email', 'key', 'teamDataRecordId', 'isLegacyUser', 'isAnonymous', 'permissions', 'teamOwner', 'id', 'customerId', 'teamId', 'customer', 'team', 'portals', 'groups', 'uploadedTemplates', 'templates', 'invitationTickets', 'requestedDesigns', 'requestedDesignExports', 'assignedDesigns', 'reviewedDesigns', 'commentedDesigns', 'designComments', 'designFolders', 'sharedDesigns', 'designShares', 'workflows', 'imageFolders', 'notifications'];
+        var parametersType = ['boolean', 'string', 'array', 'array', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'boolean', 'boolean', 'object', 'boolean', 'string', 'string', 'string', 'object', 'object', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['roles'];
 
         /**
