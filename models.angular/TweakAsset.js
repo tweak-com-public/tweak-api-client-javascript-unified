@@ -24,6 +24,7 @@
          * @param duration               {number}                  format: double  
          * @param description            {string}                  
          * @param resources              {object}                  
+         * @param urls                   {object}                  
          * @param isAudio                {boolean}                 
          * @param status                 {string}                  enum: pendingAction, approved, needsChanges, rejected
          * @param imageMetadata          {object}                  
@@ -68,8 +69,8 @@
         /**
          * Private properties
          */
-        var parameters = ['modelVersion', 'publicId', 'storageEngine', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'resources', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'object', 'object', 'string', 'object'];
+        var parameters = ['modelVersion', 'publicId', 'storageEngine', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'resources', 'urls', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'object', 'object', 'string', 'object'];
         var requiredParameters = ['modelVersion', 'publicId'];
 
         /**
