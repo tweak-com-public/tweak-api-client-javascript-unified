@@ -10,6 +10,8 @@
         /**
          * Constructor, with class name
          * @param name                {string}    [REQUIRED]    
+         * @param title               {string}                  
+         * @param subtitle            {string}                  
          * @param colors              {object}                  
          * @param isPasswordProtected {boolean}                 default: false  
          * @param releaseDate         {number}                  format: double  
@@ -44,8 +46,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'colors', 'isPasswordProtected', 'releaseDate', 'expireDate', 'allowAssetDownload', 'created', 'modified', 'id'];
-        var parametersType = ['string', 'object', 'boolean', 'number', 'number', 'boolean', 'string', 'string', 'object'];
+        var parameters = ['name', 'title', 'subtitle', 'colors', 'isPasswordProtected', 'releaseDate', 'expireDate', 'allowAssetDownload', 'created', 'modified', 'id'];
+        var parametersType = ['string', 'string', 'string', 'object', 'boolean', 'number', 'number', 'boolean', 'string', 'string', 'object'];
         var requiredParameters = ['name'];
 
         /**
