@@ -39,10 +39,10 @@
          * @param searchOriginalFilename {string}                  
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
-         * @param id                     {object}                  $ref: #/definitions/ObjectID  
-         * @param uploadId               {object}                  $ref: #/definitions/ObjectID  
+         * @param id                     {number}                  format: double  
+         * @param uploadId               {number}                  format: double  
          * @param teamId                 {string}                  
-         * @param TeamMemberId           {object}                  $ref: #/definitions/ObjectID  
+         * @param TeamMemberId           {number}                  format: double  
          */
         function TweakAsset(data) {
             data = data || {};
@@ -70,7 +70,7 @@
          * Private properties
          */
         var parameters = ['modelVersion', 'publicId', 'storageEngine', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'resources', 'urls', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'object', 'object', 'string', 'object'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'number', 'number', 'string', 'number'];
         var requiredParameters = ['modelVersion', 'publicId'];
 
         /**

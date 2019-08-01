@@ -11,8 +11,8 @@
          * Constructor, with class name
          * @param created  {string}    format: date-time  
          * @param modified {string}    format: date-time  
-         * @param id       {object}    $ref: #/definitions/ObjectID  
-         * @param assetId  {object}    $ref: #/definitions/ObjectID  
+         * @param id       {number}    format: double  
+         * @param assetId  {number}    format: double  
          * @param tagId    {string}    
          * @param teamId   {string}    
          */
@@ -42,7 +42,7 @@
          * Private properties
          */
         var parameters = ['created', 'modified', 'id', 'assetId', 'tagId', 'teamId'];
-        var parametersType = ['string', 'string', 'object', 'object', 'string', 'string'];
+        var parametersType = ['string', 'string', 'number', 'number', 'string', 'string'];
         var requiredParameters = [];
 
         /**

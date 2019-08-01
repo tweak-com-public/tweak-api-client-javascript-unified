@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param name     {string}    [REQUIRED]    
          * @param legacyId {string}                  
-         * @param id       {object}                  $ref: #/definitions/ObjectID  
+         * @param id       {number}                  format: double  
          */
         function TweakIndustryV2(data) {
             data = data || {};
@@ -39,7 +39,7 @@
          * Private properties
          */
         var parameters = ['name', 'legacyId', 'id'];
-        var parametersType = ['string', 'string', 'object'];
+        var parametersType = ['string', 'string', 'number'];
         var requiredParameters = ['name'];
 
         /**

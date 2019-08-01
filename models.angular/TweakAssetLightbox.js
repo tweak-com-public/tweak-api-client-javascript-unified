@@ -19,7 +19,7 @@
          * @param allowAssetDownload  {boolean}                 default: false  
          * @param created             {string}                  format: date-time  
          * @param modified            {string}                  format: date-time  
-         * @param id                  {object}                  $ref: #/definitions/ObjectID  
+         * @param id                  {number}                  format: double  
          */
         function TweakAssetLightbox(data) {
             data = data || {};
@@ -47,7 +47,7 @@
          * Private properties
          */
         var parameters = ['name', 'title', 'subtitle', 'colors', 'isPasswordProtected', 'releaseDate', 'expireDate', 'allowAssetDownload', 'created', 'modified', 'id'];
-        var parametersType = ['string', 'string', 'string', 'object', 'boolean', 'number', 'number', 'boolean', 'string', 'string', 'object'];
+        var parametersType = ['string', 'string', 'string', 'object', 'boolean', 'number', 'number', 'boolean', 'string', 'string', 'number'];
         var requiredParameters = ['name'];
 
         /**

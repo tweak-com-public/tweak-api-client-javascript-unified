@@ -13,7 +13,7 @@
          * @param from {string}    [REQUIRED]    
          * @param to   {string}    [REQUIRED]    
          * @param data {object}                  
-         * @param id   {object}                  $ref: #/definitions/ObjectID  
+         * @param id   {number}                  format: double  
          */
         function TweakMigrationMap(data) {
             data = data || {};
@@ -41,7 +41,7 @@
          * Private properties
          */
         var parameters = ['type', 'from', 'to', 'data', 'id'];
-        var parametersType = ['string', 'string', 'string', 'object', 'object'];
+        var parametersType = ['string', 'string', 'string', 'object', 'number'];
         var requiredParameters = ['type', 'from', 'to'];
 
         /**

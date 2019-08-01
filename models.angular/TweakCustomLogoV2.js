@@ -9,15 +9,15 @@
 
         /**
          * Constructor, with class name
-         * @param id                   {object}    $ref: #/definitions/ObjectID  
-         * @param originalCustomLogoId {object}    $ref: #/definitions/ObjectID  
+         * @param id                   {number}    format: double  
+         * @param originalCustomLogoId {number}    format: double  
          * @param teamId               {string}    
-         * @param memberId             {object}    $ref: #/definitions/ObjectID  
-         * @param portalId             {object}    $ref: #/definitions/ObjectID  
+         * @param memberId             {number}    format: double  
+         * @param portalId             {number}    format: double  
          * @param created              {string}    format: date-time  
          * @param modified             {string}    format: date-time  
          * @param migrated             {string}    format: date-time  
-         * @param originalLogoId       {object}    $ref: #/definitions/ObjectID  
+         * @param originalLogoId       {number}    format: double  
          */
         function TweakCustomLogoV2(data) {
             data = data || {};
@@ -45,7 +45,7 @@
          * Private properties
          */
         var parameters = ['id', 'originalCustomLogoId', 'teamId', 'memberId', 'portalId', 'created', 'modified', 'migrated', 'originalLogoId'];
-        var parametersType = ['object', 'object', 'string', 'object', 'object', 'string', 'string', 'string', 'object'];
+        var parametersType = ['number', 'number', 'string', 'number', 'number', 'string', 'string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

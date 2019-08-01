@@ -11,8 +11,8 @@
          * Constructor, with class name
          * @param created      {string}    format: date-time  
          * @param modified     {string}    format: date-time  
-         * @param id           {object}    $ref: #/definitions/ObjectID  
-         * @param assetGroupId {object}    $ref: #/definitions/ObjectID  
+         * @param id           {number}    format: double  
+         * @param assetGroupId {number}    format: double  
          * @param teamMemberId {string}    
          */
         function TweakAssetGroupTeamMember(data) {
@@ -41,7 +41,7 @@
          * Private properties
          */
         var parameters = ['created', 'modified', 'id', 'assetGroupId', 'teamMemberId'];
-        var parametersType = ['string', 'string', 'object', 'object', 'string'];
+        var parametersType = ['string', 'string', 'number', 'number', 'string'];
         var requiredParameters = [];
 
         /**

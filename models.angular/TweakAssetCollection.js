@@ -13,9 +13,9 @@
          * @param isDefaultForTeam {boolean}   [REQUIRED]    default: false  
          * @param created          {string}                  format: date-time  
          * @param modified         {string}                  format: date-time  
-         * @param id               {object}                  $ref: #/definitions/ObjectID  
+         * @param id               {number}                  format: double  
          * @param teamId           {string}                  
-         * @param teamMemberId     {object}                  $ref: #/definitions/ObjectID  
+         * @param teamMemberId     {number}                  format: double  
          */
         function TweakAssetCollection(data) {
             data = data || {};
@@ -43,7 +43,7 @@
          * Private properties
          */
         var parameters = ['name', 'isDefaultForTeam', 'created', 'modified', 'id', 'teamId', 'teamMemberId'];
-        var parametersType = ['string', 'boolean', 'string', 'string', 'object', 'string', 'object'];
+        var parametersType = ['string', 'boolean', 'string', 'string', 'number', 'string', 'number'];
         var requiredParameters = ['name', 'isDefaultForTeam'];
 
         /**

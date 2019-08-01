@@ -24,7 +24,7 @@
          * @param legacyId      {string}                  
          * @param width         {number}                  default: 0  format: double  
          * @param height        {number}                  default: 0  format: double  
-         * @param id            {object}                  $ref: #/definitions/ObjectID  
+         * @param id            {number}                  format: double  
          */
         function TweakStockImageV2(data) {
             data = data || {};
@@ -52,7 +52,7 @@
          * Private properties
          */
         var parameters = ['imageUrlBase', 'imageUrls', 'stockKeywords', 'keywords', 'fup', 'rank', 'caption', 'orientation', 'colorInfo', 'hasCutoff', 'name', 'extension', 'legacyId', 'width', 'height', 'id'];
-        var parametersType = ['string', 'object', 'array', 'array', 'number', 'number', 'string', 'string', 'array', 'boolean', 'string', 'string', 'string', 'number', 'number', 'object'];
+        var parametersType = ['string', 'object', 'array', 'array', 'number', 'number', 'string', 'string', 'array', 'boolean', 'string', 'string', 'string', 'number', 'number', 'number'];
         var requiredParameters = ['name', 'extension'];
 
         /**
