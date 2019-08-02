@@ -12,7 +12,7 @@
          * @param companyName      {string}    
          * @param companyEmail     {string}    
          * @param stripeCustomerId {string}    
-         * @param id               {object}    $ref: #/definitions/ObjectID  
+         * @param id               {number}    format: double  
          * @param teamId           {string}    
          */
         function TweakBillingV2(data) {
@@ -41,7 +41,7 @@
          * Private properties
          */
         var parameters = ['companyName', 'companyEmail', 'stripeCustomerId', 'id', 'teamId'];
-        var parametersType = ['string', 'string', 'string', 'object', 'string'];
+        var parametersType = ['string', 'string', 'string', 'number', 'string'];
         var requiredParameters = [];
 
         /**

@@ -13,7 +13,7 @@
          * @param isDefaultForTeam {boolean}   [REQUIRED]    default: false  
          * @param created          {string}                  format: date-time  
          * @param modified         {string}                  format: date-time  
-         * @param id               {object}                  $ref: #/definitions/ObjectID  
+         * @param id               {number}                  format: double  
          * @param teamId           {string}                  
          */
         function TweakAssetGroup(data) {
@@ -42,7 +42,7 @@
          * Private properties
          */
         var parameters = ['name', 'isDefaultForTeam', 'created', 'modified', 'id', 'teamId'];
-        var parametersType = ['string', 'boolean', 'string', 'string', 'object', 'string'];
+        var parametersType = ['string', 'boolean', 'string', 'string', 'number', 'string'];
         var requiredParameters = ['name', 'isDefaultForTeam'];
 
         /**

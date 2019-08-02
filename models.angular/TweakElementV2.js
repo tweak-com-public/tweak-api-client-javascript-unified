@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param legacyId {string}    
          * @param type     {string}    enum: frame, highlights, line, shape
-         * @param id       {object}    $ref: #/definitions/ObjectID  
+         * @param id       {number}    format: double  
          */
         function TweakElementV2(data) {
             data = data || {};
@@ -39,7 +39,7 @@
          * Private properties
          */
         var parameters = ['legacyId', 'type', 'id'];
-        var parametersType = ['string', 'string', 'object'];
+        var parametersType = ['string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

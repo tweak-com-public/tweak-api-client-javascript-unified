@@ -14,9 +14,9 @@
          * @param favorite     {boolean}   
          * @param created      {string}    format: date-time  
          * @param modified     {string}    format: date-time  
-         * @param id           {object}    $ref: #/definitions/ObjectID  
-         * @param assetId      {object}    $ref: #/definitions/ObjectID  
-         * @param teamMemberId {object}    $ref: #/definitions/ObjectID  
+         * @param id           {number}    format: double  
+         * @param assetId      {number}    format: double  
+         * @param teamMemberId {number}    format: double  
          */
         function TweakAssetRatings(data) {
             data = data || {};
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['starts', 'color', 'favorite', 'created', 'modified', 'id', 'assetId', 'teamMemberId'];
-        var parametersType = ['number', 'number', 'boolean', 'string', 'string', 'object', 'object', 'object'];
+        var parametersType = ['number', 'number', 'boolean', 'string', 'string', 'number', 'number', 'number'];
         var requiredParameters = [];
 
         /**
