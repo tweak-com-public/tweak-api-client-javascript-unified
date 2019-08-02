@@ -15,8 +15,8 @@
          * @param x2           {number}    format: double  
          * @param y2           {number}    format: double  
          * @param aoi          {number}    format: double  
-         * @param id           {object}    $ref: #/definitions/ObjectID  
-         * @param stockImageId {object}    $ref: #/definitions/ObjectID  
+         * @param id           {number}    format: double  
+         * @param stockImageId {number}    format: double  
          */
         function TweakStockImageAoiV2(data) {
             data = data || {};
@@ -44,7 +44,7 @@
          * Private properties
          */
         var parameters = ['imageType', 'x1', 'y1', 'x2', 'y2', 'aoi', 'id', 'stockImageId'];
-        var parametersType = ['string', 'number', 'number', 'number', 'number', 'number', 'object', 'object'];
+        var parametersType = ['string', 'number', 'number', 'number', 'number', 'number', 'number', 'number'];
         var requiredParameters = [];
 
         /**

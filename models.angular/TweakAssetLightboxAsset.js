@@ -11,9 +11,9 @@
          * Constructor, with class name
          * @param created         {string}    format: date-time  
          * @param modified        {string}    format: date-time  
-         * @param id              {object}    $ref: #/definitions/ObjectID  
-         * @param assetId         {object}    $ref: #/definitions/ObjectID  
-         * @param assetLightboxId {object}    $ref: #/definitions/ObjectID  
+         * @param id              {number}    format: double  
+         * @param assetId         {number}    format: double  
+         * @param assetLightboxId {number}    format: double  
          */
         function TweakAssetLightboxAsset(data) {
             data = data || {};
@@ -41,7 +41,7 @@
          * Private properties
          */
         var parameters = ['created', 'modified', 'id', 'assetId', 'assetLightboxId'];
-        var parametersType = ['string', 'string', 'object', 'object', 'object'];
+        var parametersType = ['string', 'string', 'number', 'number', 'number'];
         var requiredParameters = [];
 
         /**

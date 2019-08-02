@@ -12,7 +12,7 @@
          * @param name     {string}    [REQUIRED]    
          * @param metadata {array}                   default: items: type: string    
          * @param legacyId {string}                  
-         * @param id       {object}                  $ref: #/definitions/ObjectID  
+         * @param id       {number}                  format: double  
          */
         function TweakBusinessTypeV2(data) {
             data = data || {};
@@ -40,7 +40,7 @@
          * Private properties
          */
         var parameters = ['name', 'metadata', 'legacyId', 'id'];
-        var parametersType = ['string', 'array', 'string', 'object'];
+        var parametersType = ['string', 'array', 'string', 'number'];
         var requiredParameters = ['name'];
 
         /**

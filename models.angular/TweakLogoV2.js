@@ -11,7 +11,7 @@
          * Constructor, with class name
          * @param legacyId {string}    
          * @param language {string}    enum: de, es, en, fr, it, nl, pt_BR
-         * @param id       {object}    $ref: #/definitions/ObjectID  
+         * @param id       {number}    format: double  
          */
         function TweakLogoV2(data) {
             data = data || {};
@@ -39,7 +39,7 @@
          * Private properties
          */
         var parameters = ['legacyId', 'language', 'id'];
-        var parametersType = ['string', 'string', 'object'];
+        var parametersType = ['string', 'string', 'number'];
         var requiredParameters = [];
 
         /**

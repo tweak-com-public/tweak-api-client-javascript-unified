@@ -13,7 +13,7 @@
          * @param storageEngine {string}    enum: s3
          * @param resources     {object}    
          * @param status        {string}    enum: generating, completed, failed
-         * @param id            {object}    $ref: #/definitions/ObjectID  
+         * @param id            {number}    format: double  
          */
         function TweakAssetExternalLink(data) {
             data = data || {};
@@ -41,7 +41,7 @@
          * Private properties
          */
         var parameters = ['expires', 'storageEngine', 'resources', 'status', 'id'];
-        var parametersType = ['string', 'string', 'object', 'string', 'object'];
+        var parametersType = ['string', 'string', 'object', 'string', 'number'];
         var requiredParameters = [];
 
         /**

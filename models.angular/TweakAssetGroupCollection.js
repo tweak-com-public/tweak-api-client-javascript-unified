@@ -13,9 +13,9 @@
          * @param modified          {string}    format: date-time  
          * @param permissions       {object}    
          * @param configs           {object}    
-         * @param id                {object}    $ref: #/definitions/ObjectID  
-         * @param assetGroupId      {object}    $ref: #/definitions/ObjectID  
-         * @param assetCollectionId {object}    $ref: #/definitions/ObjectID  
+         * @param id                {number}    format: double  
+         * @param assetGroupId      {number}    format: double  
+         * @param assetCollectionId {number}    format: double  
          */
         function TweakAssetGroupCollection(data) {
             data = data || {};
@@ -43,7 +43,7 @@
          * Private properties
          */
         var parameters = ['created', 'modified', 'permissions', 'configs', 'id', 'assetGroupId', 'assetCollectionId'];
-        var parametersType = ['string', 'string', 'object', 'object', 'object', 'object', 'object'];
+        var parametersType = ['string', 'string', 'object', 'object', 'number', 'number', 'number'];
         var requiredParameters = [];
 
         /**
