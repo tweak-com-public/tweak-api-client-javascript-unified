@@ -11,7 +11,6 @@
          * Constructor, with class name
          * @param modelVersion           {string}    [REQUIRED]    default: 1  
          * @param publicId               {string}    [REQUIRED]    
-         * @param storageEngine          {string}                  enum: cloudinary, s3
          * @param originalFilename       {string}                  
          * @param resourceType           {string}                  
          * @param etag                   {string}                  
@@ -23,8 +22,6 @@
          * @param frameRate              {number}                  format: double  
          * @param duration               {number}                  format: double  
          * @param description            {string}                  
-         * @param resources              {object}                  
-         * @param urls                   {object}                  
          * @param isAudio                {boolean}                 
          * @param status                 {string}                  enum: pendingAction, approved, needsChanges, rejected
          * @param imageMetadata          {object}                  
@@ -39,6 +36,9 @@
          * @param searchOriginalFilename {string}                  
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
+         * @param storageEngine          {string}                  enum: cloudinary, s3
+         * @param resources              {object}                  
+         * @param urls                   {object}                  
          * @param id                     {number}                  format: double  
          * @param uploadId               {number}                  format: double  
          * @param teamId                 {string}                  
@@ -69,8 +69,8 @@
         /**
          * Private properties
          */
-        var parameters = ['modelVersion', 'publicId', 'storageEngine', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'resources', 'urls', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'object', 'object', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'number', 'number', 'string', 'number'];
+        var parameters = ['modelVersion', 'publicId', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'storageEngine', 'resources', 'urls', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'string', 'object', 'object', 'number', 'number', 'string', 'number'];
         var requiredParameters = ['modelVersion', 'publicId'];
 
         /**
