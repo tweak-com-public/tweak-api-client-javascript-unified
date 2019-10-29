@@ -10,7 +10,6 @@
         /**
          * Constructor, with class name
          * @param roles          {array}                   items: type: string    
-         * @param refreshToken   {string}                  
          * @param sessionId      {string}                  default: no-session  
          * @param shortId        {string}                  
          * @param subdomain      {string}                  
@@ -58,8 +57,8 @@
         /**
          * Private properties
          */
-        var parameters = ['roles', 'refreshToken', 'sessionId', 'shortId', 'subdomain', 'id', 'ttl', 'scopes', 'created', 'userId', 'designId', 'templateId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'design', 'template', 'team', 'teamMember', 'portal', 'portalMember'];
-        var parametersType = ['array', 'string', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['roles', 'sessionId', 'shortId', 'subdomain', 'id', 'ttl', 'scopes', 'created', 'userId', 'designId', 'templateId', 'teamId', 'teamMemberId', 'portalId', 'portalMemberId', 'customer', 'design', 'template', 'team', 'teamMember', 'portal', 'portalMember'];
+        var parametersType = ['array', 'string', 'string', 'string', 'string', 'number', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['id'];
 
         /**
