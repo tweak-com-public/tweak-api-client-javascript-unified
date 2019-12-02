@@ -12,6 +12,7 @@
          * @param name                {string}    [REQUIRED]    
          * @param title               {string}                  
          * @param subtitle            {string}                  
+         * @param description         {string}                  
          * @param colors              {object}                  
          * @param isPasswordProtected {boolean}                 default: false  
          * @param releaseDate         {number}                  format: double  
@@ -46,8 +47,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'title', 'subtitle', 'colors', 'isPasswordProtected', 'releaseDate', 'expireDate', 'allowAssetDownload', 'created', 'modified', 'id'];
-        var parametersType = ['string', 'string', 'string', 'object', 'boolean', 'number', 'number', 'boolean', 'string', 'string', 'number'];
+        var parameters = ['name', 'title', 'subtitle', 'description', 'colors', 'isPasswordProtected', 'releaseDate', 'expireDate', 'allowAssetDownload', 'created', 'modified', 'id'];
+        var parametersType = ['string', 'string', 'string', 'string', 'object', 'boolean', 'number', 'number', 'boolean', 'string', 'string', 'number'];
         var requiredParameters = ['name'];
 
         /**
