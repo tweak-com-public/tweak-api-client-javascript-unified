@@ -9,40 +9,32 @@
 
         /**
          * Constructor, with class name
-         * @param modelVersion           {string}    [REQUIRED]    default: 1  
-         * @param publicId               {string}    [REQUIRED]    
-         * @param originalFilename       {string}                  
-         * @param resourceType           {string}                  
-         * @param etag                   {string}                  
-         * @param format                 {string}                  
-         * @param width                  {number}                  format: double  
-         * @param height                 {number}                  format: double  
-         * @param bytes                  {number}                  format: double  
-         * @param bitRate                {number}                  format: double  
-         * @param frameRate              {number}                  format: double  
-         * @param duration               {number}                  format: double  
-         * @param description            {string}                  
-         * @param isAudio                {boolean}                 
-         * @param status                 {string}                  enum: pendingAction, approved, needsChanges, rejected
-         * @param imageMetadata          {object}                  
-         * @param videoMetadata          {object}                  
-         * @param audioMetadata          {object}                  
-         * @param rawMetadata            {object}                  
-         * @param searchImageMetadata    {object}                  
-         * @param searchVideoMetadata    {object}                  
-         * @param searchAudioMetadata    {object}                  
-         * @param searchRawMetadata      {object}                  
-         * @param searchTags             {array}                   items: $ref: #/definitions/x-any    
-         * @param searchOriginalFilename {string}                  
-         * @param created                {string}                  format: date-time  
-         * @param modified               {string}                  format: date-time  
-         * @param storageEngine          {string}                  enum: cloudinary, s3
-         * @param resources              {object}                  
-         * @param urls                   {object}                  
-         * @param id                     {number}                  format: double  
-         * @param uploadId               {number}                  format: double  
-         * @param teamId                 {string}                  
-         * @param TeamMemberId           {number}                  format: double  
+         * @param modelVersion     {string}    [REQUIRED]    default: 1  
+         * @param publicId         {string}    [REQUIRED]    
+         * @param originalFilename {string}                  
+         * @param resourceType     {string}                  
+         * @param etag             {string}                  
+         * @param format           {string}                  
+         * @param width            {number}                  format: double  
+         * @param height           {number}                  format: double  
+         * @param bytes            {number}                  format: double  
+         * @param bitRate          {number}                  format: double  
+         * @param frameRate        {number}                  format: double  
+         * @param duration         {number}                  format: double  
+         * @param description      {string}                  
+         * @param isAudio          {boolean}                 
+         * @param status           {string}                  enum: pendingAction, approved, needsChanges, rejected
+         * @param imageMetadata    {object}                  
+         * @param videoMetadata    {object}                  
+         * @param audioMetadata    {object}                  
+         * @param rawMetadata      {object}                  
+         * @param created          {string}                  format: date-time  
+         * @param modified         {string}                  format: date-time  
+         * @param urls             {object}                  
+         * @param id               {number}                  format: double  
+         * @param uploadId         {number}                  format: double  
+         * @param teamId           {string}                  
+         * @param TeamMemberId     {number}                  format: double  
          */
         function TweakAsset(data) {
             data = data || {};
@@ -69,8 +61,8 @@
         /**
          * Private properties
          */
-        var parameters = ['modelVersion', 'publicId', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'searchImageMetadata', 'searchVideoMetadata', 'searchAudioMetadata', 'searchRawMetadata', 'searchTags', 'searchOriginalFilename', 'created', 'modified', 'storageEngine', 'resources', 'urls', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
-        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'boolean', 'string', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'object', 'array', 'string', 'string', 'string', 'string', 'object', 'object', 'number', 'number', 'string', 'number'];
+        var parameters = ['modelVersion', 'publicId', 'originalFilename', 'resourceType', 'etag', 'format', 'width', 'height', 'bytes', 'bitRate', 'frameRate', 'duration', 'description', 'isAudio', 'status', 'imageMetadata', 'videoMetadata', 'audioMetadata', 'rawMetadata', 'created', 'modified', 'urls', 'id', 'uploadId', 'teamId', 'TeamMemberId'];
+        var parametersType = ['string', 'string', 'string', 'string', 'string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'boolean', 'string', 'object', 'object', 'object', 'object', 'string', 'string', 'object', 'number', 'number', 'string', 'number'];
         var requiredParameters = ['modelVersion', 'publicId'];
 
         /**
