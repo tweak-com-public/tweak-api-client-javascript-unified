@@ -14,7 +14,7 @@
          * @param logo                    {object}                  default:   $ref: #/definitions/CloudinaryImage  
          * @param subdomain               {string}                  
          * @param country                 {string}                  default: Ireland  
-         * @param featureHtmlBuilder      {boolean}                 default: false  
+         * @param featureHtmlBuilder      {boolean}                 default: true  
          * @param legacyProductLanguage   {string}                  default: en  
          * @param legacySizeType          {string}                  default: mm  
          * @param psKeysGenerated         {string}                  format: date-time  
