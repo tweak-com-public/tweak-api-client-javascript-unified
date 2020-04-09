@@ -11,6 +11,7 @@
          * Constructor, with class name
          * @param name             {string}    [REQUIRED]    
          * @param isDefaultForTeam {boolean}   [REQUIRED]    default: false  
+         * @param folders          {object}                  
          * @param created          {string}                  format: date-time  
          * @param modified         {string}                  format: date-time  
          * @param id               {number}                  format: double  
@@ -42,8 +43,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'isDefaultForTeam', 'created', 'modified', 'id', 'teamId', 'teamMemberId'];
-        var parametersType = ['string', 'boolean', 'string', 'string', 'number', 'string', 'number'];
+        var parameters = ['name', 'isDefaultForTeam', 'folders', 'created', 'modified', 'id', 'teamId', 'teamMemberId'];
+        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'number', 'string', 'number'];
         var requiredParameters = ['name', 'isDefaultForTeam'];
 
         /**
