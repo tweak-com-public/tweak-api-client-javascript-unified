@@ -19,6 +19,7 @@
          * @param legacySizeType          {string}                  default: mm  
          * @param psKeysGenerated         {string}                  format: date-time  
          * @param publicApiVersion        {string}                  default: v2  
+         * @param products                {array}                   items: type: string    
          * @param created                 {string}                  format: date-time  
          * @param modified                {string}                  format: date-time  
          * @param id                      {string}    [REQUIRED]    
@@ -80,8 +81,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'featureHtmlBuilder', 'legacyProductLanguage', 'legacySizeType', 'psKeysGenerated', 'publicApiVersion', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'dataSourceRests', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'imageFolders', 'billing', 'billingV2', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData', 'assets', 'tags', 'assetCollections', 'assetUploads', 'fonts'];
-        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'object', 'object', 'object', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'array'];
+        var parameters = ['name', 'isLegacyPartner', 'logo', 'subdomain', 'country', 'featureHtmlBuilder', 'legacyProductLanguage', 'legacySizeType', 'psKeysGenerated', 'publicApiVersion', 'products', 'created', 'modified', 'id', 'icon', 'clientKey', 'javaScriptKey', 'restApiKey', 'windowsKey', 'masterKey', 'status', 'teamDataId', 'members', 'builderConfigs', 'dynamicDatas', 'dataSourceSoaps', 'dataSourceRests', 'teamMembers', 'portals', 'templates', 'brand', 'templateFolders', 'workflows', 'imageFolders', 'billing', 'billingV2', 'permission', 'productMaterials', 'productSizeMaterials', 'productPdfColorProfiles', 'teamData', 'assets', 'tags', 'assetCollections', 'assetUploads', 'fonts'];
+        var parametersType = ['string', 'boolean', 'object', 'string', 'string', 'boolean', 'string', 'string', 'string', 'string', 'array', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'object', 'object', 'object', 'array', 'array', 'array', 'object', 'array', 'array', 'array', 'array', 'array'];
         var requiredParameters = ['name', 'id'];
 
         /**
