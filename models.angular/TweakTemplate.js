@@ -25,6 +25,8 @@
          * @param legacyPluginProductId {string}                  
          * @param created               {string}                  format: date-time  
          * @param modified              {string}                  format: date-time  
+         * @param flipBookId            {string}                  
+         * @param slideShowId           {string}                  
          * @param id                    {string}                  
          * @param teamId                {string}                  
          * @param uploaderId            {string}                  
@@ -68,8 +70,8 @@
         /**
          * Private properties
          */
-        var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'isTweakTemplate', 'legacyPluginProductId', 'created', 'modified', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'versions', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
-        var parametersType = ['string', 'string', 'any', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
+        var parameters = ['previewId', 'name', 'thumbnail', 'object', 'description', 'edited', 'path', 'status', 'isDynamic', 'shared', 'permissionSetUpdated', 'pagesPreviews', 'isTweakTemplate', 'legacyPluginProductId', 'created', 'modified', 'flipBookId', 'slideShowId', 'id', 'teamId', 'uploaderId', 'teamFolderId', 'workflowId', 'versions', 'portals', 'team', 'members', 'templateMembers', 'permission', 'designs', 'tags', 'teamFolder', 'portalFolders', 'workflow', 'uploader'];
+        var parametersType = ['string', 'string', 'any', 'object', 'string', 'string', 'string', 'string', 'boolean', 'string', 'string', 'array', 'boolean', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'array', 'object', 'array', 'object', 'object'];
         var requiredParameters = ['name'];
 
         /**
