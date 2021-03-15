@@ -20,6 +20,11 @@
          * @param operationRest          {object}                  $ref: #/definitions/DynamicDataOperationRest  
          * @param created                {string}                  format: date-time  
          * @param modified               {string}                  format: date-time  
+         * @param isLocked               {boolean}                 default: false  
+         * @param lockedId               {string}                  
+         * @param lockedErrors           {array}                   default: items: $ref: #/definitions/x-any    
+         * @param lockedResult           {object}                  default:   
+         * @param lastLocked             {string}                  format: date-time  
          * @param recordCount            {number}                  default: 0  format: double  
          * @param example                {object}                  default:   
          * @param id                     {string}                  
@@ -67,8 +72,8 @@
         /**
          * Private properties
          */
-        var parameters = ['name', 'propertyPrimaryKey', 'propertiesOrder', 'properties', 'relations', 'validations', 'dataSource', 'operationSoap', 'operationRest', 'created', 'modified', 'recordCount', 'example', 'id', 'dataSourceSoapId', 'dataSourceRestId', 'dataSourceMySqlId', 'dataSourceMsSqlId', 'dataSourcePostgreSqlId', 'dataSourceMongoId', 'dataSourceOracleId', 'teamId', 'team', 'portals', 'designs', 'dataSourceSoap', 'dataSourceRest', 'dataSourceMySql', 'dataSourceMsSql', 'dataSourcePostgreSql', 'dataSourceMongo', 'dataSourceOracle'];
-        var parametersType = ['string', 'string', 'array', 'object', 'object', 'object', 'string', 'object', 'object', 'string', 'string', 'number', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
+        var parameters = ['name', 'propertyPrimaryKey', 'propertiesOrder', 'properties', 'relations', 'validations', 'dataSource', 'operationSoap', 'operationRest', 'created', 'modified', 'isLocked', 'lockedId', 'lockedErrors', 'lockedResult', 'lastLocked', 'recordCount', 'example', 'id', 'dataSourceSoapId', 'dataSourceRestId', 'dataSourceMySqlId', 'dataSourceMsSqlId', 'dataSourcePostgreSqlId', 'dataSourceMongoId', 'dataSourceOracleId', 'teamId', 'team', 'portals', 'designs', 'dataSourceSoap', 'dataSourceRest', 'dataSourceMySql', 'dataSourceMsSql', 'dataSourcePostgreSql', 'dataSourceMongo', 'dataSourceOracle'];
+        var parametersType = ['string', 'string', 'array', 'object', 'object', 'object', 'string', 'object', 'object', 'string', 'string', 'boolean', 'string', 'array', 'object', 'string', 'number', 'object', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'object', 'array', 'array', 'object', 'object', 'object', 'object', 'object', 'object', 'object'];
         var requiredParameters = ['name'];
 
         /**
